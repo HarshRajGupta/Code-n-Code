@@ -1,2 +1,2 @@
 # Code-n-Code
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+Collection of LeetCode questions to ace the coding interview! - Visit my Profile on [LeetCode](https://leetcode.com/HarshRajGupta/)
