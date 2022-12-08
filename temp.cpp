@@ -37,7 +37,8 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n; cin >> n; cout << n;
+    int n; cin >> n; 
+    cout << n*10;
 }
 
 signed main() {
