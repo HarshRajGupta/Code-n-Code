@@ -1,4 +1,4 @@
-#ifndef __FAST_IO 
+#ifndef __FAST_IO
 #pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
 #pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
 #endif
@@ -8,6 +8,10 @@ using namespace std;
 
 #ifndef debug
 #define debug(...) ;
+#endif
+
+#ifndef __RUN
+#define __RUN solve(), std::cout << '\n'
 #endif
 
 const uint64_t MOD = 1e9 + 7;
@@ -32,18 +36,19 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve(void) {
-    int n; cin >> n;
-    cout << n;
+void solve() {
+    int n; cin >> n; cout << n;
 }
 
-signed main(void) {
-    ios_base::sync_with_stdio(false); 
+signed main() {
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    solve();
+    uint32_t tCs = 1u;
+    cin >> tCs;
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
