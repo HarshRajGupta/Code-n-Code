@@ -38,7 +38,7 @@ const char ln = '\n';
 
 void solve() {
     int n; cin >> n; 
-    cout << n*90;
+    cout << n*70;
 }
 
 signed main() {
@@ -54,4 +54,4 @@ signed main() {
     __TAG2
 #endif
     return 0;
-}
+}   
