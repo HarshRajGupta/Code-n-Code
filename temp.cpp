@@ -33,8 +33,8 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve(void) {
-    debug(1)
-    cout << 2;
+    int n; cin >> n;
+    cout << n;
 }
 
 signed main(void) {
