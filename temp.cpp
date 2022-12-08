@@ -38,7 +38,7 @@ const char ln = '\n';
 
 void solve() {
     int n; cin >> n; 
-    cout << n*20;
+    cout << n*90;
 }
 
 signed main() {
