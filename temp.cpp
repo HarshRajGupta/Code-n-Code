@@ -36,22 +36,21 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    int n; cin >> n; 
-    cout << n*70;
+void solve() { 
+    /* Code */
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u;
+    uint32_t tCs = 1u; 
     cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
     return 0;
-}   
+}
