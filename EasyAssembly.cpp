@@ -46,7 +46,7 @@ void solve(void) {
         arr[i] = e;
     }
     sort(all(a));
-    debug(a)
+    // debug(a)
     int split = 0;
     _for(i, n) {
         _for(j, sz(arr[i]) - 1) {
