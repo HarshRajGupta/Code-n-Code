@@ -33,28 +33,31 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve(void) {
-    int  n; cin >> n;
-    v<v<int>> arr(n);
-    v<int> a;
-    _for(i, n) {
-        int s; cin >> s;
-        v<int> e(s);
-        _for(j, s) {
-            cin >> e[j];
-            a.push_back(e[j]);
-        }
-        arr[i] = e;
-    }
-    sort(all(a));
-    int split = 0;
-    _for(i, n) {
-        _for(j, sz(arr[i]) - 1) {
-            if (++upper_bound(all(a), arr[i][j]) != lower_bound(all(a), arr[i][j + 1])) {
-                split++;
-            }
-        }
-    }
-    cout << split << " " << n - 1 + split;
+    // int  n; cin >> n;
+    // v<v<int>> arr(n);
+    // v<int> a;
+    // _for(i, n) {
+    //     int s; cin >> s;
+    //     v<int> e(s);
+    //     _for(j, s) {
+    //         cin >> e[j];
+    //         a.push_back(e[j]);
+    //     }
+    //     arr[i] = e;
+    // }
+    // sort(all(a));
+    // debug(a)
+    // int split = 0;
+    // _for(i, n) {
+    //     _for(j, sz(arr[i]) - 1) {
+    //         debug(*upper_bound(all(a), arr[i][j]), *lower_bound(all(a), arr[i][j + 1]))
+    //         if (++upper_bound(all(a), arr[i][j]) != lower_bound(all(a), arr[i][j + 1])) {
+    //             split++;
+    //         }
+    //     }
+    // }
+    // cout << split << " " << n - 1 + split;
+    debug(1)
 }
 
 signed main(void) {
