@@ -53,6 +53,7 @@ void solve(void) {
             debug(*upper_bound(all(a), arr[i][j]), *lower_bound(all(a), arr[i][j + 1]))
             if (++upper_bound(all(a), arr[i][j]) != a.end() || ++upper_bound(all(a), arr[i][j]) != lower_bound(all(a), arr[i][j + 1])) {
                 split++;
+                debug(arr[i][j], arr[i][j + 1])
             }
         }
     }
