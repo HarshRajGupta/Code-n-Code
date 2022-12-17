@@ -36,9 +36,8 @@ void nextPermutation(vector<int>& nums) {
     int n = nums.size(), MAX = nums[nums.size() - 1];
     set<int> mini;
     for (int i = n - 1; i >= 0; --i) {
-        if (nums[i] >= MAX) {
-            mini.insert(nums[i]);
-        } else {
+        mini.insert(nums[i]);
+        if (nums[i] < MAX) {
             auto t = mini.upper_bound(nums[i]);
             debug(*t)
             nums[i] = *t;
@@ -49,6 +48,7 @@ void nextPermutation(vector<int>& nums) {
             }
             return;
         }
+        MAX = max(MAX, nums[i]);
     }
     int i = 0;
     for (auto j : mini) {
