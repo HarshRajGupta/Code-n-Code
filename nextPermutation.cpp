@@ -50,6 +50,7 @@ void nextPermutation(vector<int>& nums) {
         }
         MAX = max(MAX, nums[i]);
     }
+    debug(mini)
     int i = 0;
     for (auto j : mini) {
         nums[i++] = j;
