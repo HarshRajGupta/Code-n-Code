@@ -40,8 +40,10 @@ void nextPermutation(vector<int>& nums) {
             mini.insert(nums[i]);
         } else {
             auto t = mini.upper_bound(nums[i]);
+            debug(*t)
             nums[i] = *t;
             mini.erase(t);
+            debug(mini)
             for (auto j : mini) {
                 nums[++i] = j;
             }
