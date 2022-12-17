@@ -34,7 +34,7 @@ const char ln = '\n';
 
 void nextPermutation(vector<int>& nums) {
     int n = nums.size(), MAX = nums[nums.size() - 1];
-    set<int> mini;
+    multiset<int> mini;
     for (int i = n - 1; i >= 0; --i) {
         mini.insert(nums[i]);
         if (nums[i] < MAX) {
