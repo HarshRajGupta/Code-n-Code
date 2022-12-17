@@ -56,7 +56,7 @@ void nextPermutation(vector<int>& nums) {
     }
 }
 void solve(void) {
-    v<int> m = {1, 2, 3, 4};
+    v<int> m = {5, 1, 1};
     nextPermutation(m);
     for (auto i : m) {
         cout << i << " ";
