@@ -84,7 +84,7 @@ public:
 void solve(void) {
     /* Code */
     Solution a;
-    a.maximumMultiple(6, new int[6]{0, 1, 2, 3, 4, 5});
+    a.maximumMultiple(6, new int[6]{-10, -1, -2, -3, -4, -5});
 }
 
 signed main(void) {
