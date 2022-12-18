@@ -81,7 +81,7 @@ public:
 void solve(void) {
     /* Code */
     Solution a;
-    cout << a.maximumMultiple(16, new int[16] { 0, -9, 13, 18, -1, 3, -17, 9, -13, 7, 6, -11, 6, -4, 13, -5});
+    cout << a.maximumMultiple(8, new int[8] { 3, 12, 8, 11, 1, -16, -4, -11});
 }
 
 signed main(void) {
