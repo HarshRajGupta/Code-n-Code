@@ -49,7 +49,7 @@ public:
             if (degree[i] % 2)
                 oddDeg.push_back(i);
         }
-        debug(graph, degree, oddDeg)
+        // debug(graph, degree, oddDeg)
         if (oddDeg.size() == 0 || oddDeg.size() == 2 || oddDeg.size() == 4) {
             if (oddDeg.size() == 0) return true;
             // cout << graph[oddDeg[0]][oddDeg[1]] << ln;
