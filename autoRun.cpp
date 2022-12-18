@@ -37,41 +37,34 @@ public:
     long long maximumMultiple(int N, int A[]) {
         // code here
         maxHeap maxi, ans;
-        minHeap mini;
+        minHeap mini, pos, neg;
         for (int i = 0; i < N; ++i) {
-            maxi.push(A[i]);
-            mini.push(A[i]);
+            if (A[i] < 0) neg.push(A[i]);
+            else pos.push(A[i]);
         }
-        int m = 0;
         for (int i = 0; i < N / 2; ++i) {
-            int64_t minii = mini.top(), maxii = maxi.top();
-
-            if (minii <= 0 && maxii > 0 || minii < 0 && maxii <= 0) {
-                mini.pop();
+            int m = neg.empty() || pos.empty();
+            if (m == 0) {
+                ans.push(pos.top() * neg.top());
+                pos.pop();
+                neg.pop();
+            }
+            else {
+                while (!pos.empty()) {
+                    maxi.push(pos.top());
+                    mini.push(pos.top());
+                    pos.pop();
+                }
+                while (!neg.empty()) {
+                    maxi.push(-1*neg.top());
+                    mini.push(-1*neg.top());
+                    neg.pop();
+                }
+                ans.push(maxi.top() * mini.top());
                 maxi.pop();
-                ans.push(minii * maxii);
-                // maxi.push(minii*maxii);
-                //
-                cout << minii << " " << maxii << endl;
-                m = 0;
-            } else  if (minii > 0 && maxii > 0) {
                 mini.pop();
-                maxii = mini.top();
-                mini.pop();
-                ans.push(minii * maxii);
-                cout << minii << " " << maxii << endl;
-                m = 1;
-                // }
-            } else {
-                maxi.pop();
-                minii = maxi.top();
-                maxi.pop();
-                ans.push(minii * maxii);
-                cout << minii << " " << maxii << endl;
-                m = 2;
             }
         }
-        cout << m;
         return ans.top();
         // int64_t MAX = mini.top();
         // while(!mini.empty()) {
@@ -84,7 +77,7 @@ public:
 void solve(void) {
     /* Code */
     Solution a;
-    cout << a.maximumMultiple(8, new int[8]{-11,10,9,-19,-8,19,-14, 8});
+    cout << a.maximumMultiple(8, new int[8] { -11, 10, 9, -19, -8, 19, -14, 8});
 }
 
 signed main(void) {
