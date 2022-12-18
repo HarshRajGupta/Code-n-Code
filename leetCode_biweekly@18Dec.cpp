@@ -47,22 +47,21 @@ public:
             if (degree[i] % 2)
                 oddDeg.push_back(i);
         }
-        debug(oddDeg, oddDeg.size())
-        // cout << graph[3][4];
-        if (oddDeg.size() != 0 || oddDeg.size() != 2 || oddDeg.size() != 4) return false;
-        if (oddDeg.size() == 0) return true;
-        cout << graph[oddDeg[0]][oddDeg[1]] << ln;
-        if (oddDeg.size() == 2) {
+        if (oddDeg.size() == 0 || oddDeg.size() == 2 || oddDeg.size() == 4) return false; {
+            if (oddDeg.size() == 0) return true;
             cout << graph[oddDeg[0]][oddDeg[1]] << ln;
-            if (!graph[oddDeg[0]][oddDeg[1]]) return true;
-            return false;
+            if (oddDeg.size() == 2) {
+                cout << graph[oddDeg[0]][oddDeg[1]] << ln;
+                if (!graph[oddDeg[0]][oddDeg[1]]) return true;
+                return false;
+            }
+            if (!graph[oddDeg[0]][oddDeg[1]] && !graph[oddDeg[2]][oddDeg[3]])
+                return true;
+            if (!graph[oddDeg[0]][oddDeg[2]] && !graph[oddDeg[1]][oddDeg[3]])
+                return true;
+            if (!graph[oddDeg[0]][oddDeg[3]] && !graph[oddDeg[1]][oddDeg[2]])
+                return true;
         }
-        if (!graph[oddDeg[0]][oddDeg[1]] && !graph[oddDeg[2]][oddDeg[3]])
-            return true;
-        if (!graph[oddDeg[0]][oddDeg[2]] && !graph[oddDeg[1]][oddDeg[3]])
-            return true;
-        if (!graph[oddDeg[0]][oddDeg[3]] && !graph[oddDeg[1]][oddDeg[2]])
-            return true;
         return false;
     }
 };
