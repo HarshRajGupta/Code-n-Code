@@ -33,51 +33,40 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 class Solution {
-    vector<int> p;
-    vector<int> seive(int n) {
-        vector<int> prime(n + 1, 1);
-        prime[0] = prime[1] = 0;
-        for (int i = 2; i <= n; i++) {
-            if (prime[i]) {
-                p.push_back(i);
-                for (int j = i * i; j <= n; j += i) {
-                    prime[j] = 0;
-                }
-            }
-        }
-        return prime;
-    }
 public:
-    int smallestValue(int n) {
-        auto pr = seive(n);
-        vector<int> cal(1e5 + 7, 0);
-        int MIN = n;
-        debug(p, pr)
-        while (!pr[n]) {
-            int t = n, s = 0;
-            while (!pr[t]) {
-                for (auto i : p) {
-                    if (t % i == 0) {
-                        t /= i;
-                        s += i;
-                        break;
-                    }
-                }
-            }
-            debug(s, t, n)
-            MIN = min(n, s + t);
-            if (cal[s + t]) return MIN;
-            cal[n] = 1;
-            n = s + t;
+    bool isPossible(int n, vector<vector<int>>& edges) {
+        vector<int> degree(n), oddDeg;
+        vector<vector<bool>> graph(n, vector<bool>(n, false));
+        for (auto i : edges) {
+            degree[i[0] - 1]++;
+            ++degree[i[1] - 1];
+            graph[i[0] - 1][i[1] - 1] = true;
         }
-        return MIN;
+        for (auto i = 0; i < n; ++i) {
+            if (degree[i] % 2)
+                oddDeg.push_back(i);
+        }
+        if (oddDeg.size() != 0 || oddDeg.size() != 2 || oddDeg.size() != 4) return false;
+        if (oddDeg.size() == 0) return true;
+        if (oddDeg.size() == 2) {
+            if (!graph[oddDeg[0]][oddDeg[1]]) return true;
+            return false;
+        }
+        if (!graph[oddDeg[0]][oddDeg[1]] && !graph[oddDeg[2]][oddDeg[3]])
+            return true;
+        if (!graph[oddDeg[0]][oddDeg[2]] && !graph[oddDeg[1]][oddDeg[3]])
+            return true;
+        if (!graph[oddDeg[0]][oddDeg[3]] && !graph[oddDeg[1]][oddDeg[2]])
+            return true;
+        return false;
     }
 };
 
 void solve(void) {
     /* Code */
     Solution s;
-    cout << s.smallestValue(15);
+    vector<vector<int>> edges = {{1, 2}, {2, 3}, {3, 4}, {4, 2}, {1, 4}, {2, 5}};
+    cout << s.isPossible(5, edges);
 }
 
 signed main(void) {
