@@ -76,7 +76,7 @@ public:
 void solve(void) {
     /* Code */
     Solution s;
-    cout << s.smallestValue(4);
+    cout << s.smallestValue(15);
 }
 
 signed main(void) {
