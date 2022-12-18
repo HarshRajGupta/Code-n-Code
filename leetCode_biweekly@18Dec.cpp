@@ -64,6 +64,7 @@ public:
                     }
                 }
             }
+            debug(s, t, n)
             MIN = min(n, s + t);
             if (cal[s + t]) return MIN;
             cal[n] = 1;
