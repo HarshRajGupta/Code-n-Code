@@ -84,7 +84,7 @@ public:
 void solve(void) {
     /* Code */
     Solution a;
-    cout << a.maximumMultiple(9, new int[8]{-11,10,9,-19,-8,19,-14, 8});
+    cout << a.maximumMultiple(9, new int[8]{-11,10,9,-19,-8,19,-14, 7});
 }
 
 signed main(void) {
