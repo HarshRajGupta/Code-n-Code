@@ -42,16 +42,16 @@ public:
             ++degree[i[1] - 1];
             graph[i[0] - 1][i[1] - 1] = true;
         }
-        debug(graph, degree)
+        // debug(graph, degree)
         for (auto i = 0; i < n; ++i) {
             if (degree[i] % 2)
                 oddDeg.push_back(i);
         }
         if (oddDeg.size() == 0 || oddDeg.size() == 2 || oddDeg.size() == 4) {
             if (oddDeg.size() == 0) return true;
-            cout << graph[oddDeg[0]][oddDeg[1]] << ln;
+            // cout << graph[oddDeg[0]][oddDeg[1]] << ln;
             if (oddDeg.size() == 2) {
-                cout << graph[oddDeg[0]][oddDeg[1]] << ln;
+                // cout << graph[oddDeg[0]][oddDeg[1]] << ln;
                 if (!graph[oddDeg[0]][oddDeg[1]]) return true;
                 return false;
             }
