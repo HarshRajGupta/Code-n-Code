@@ -46,6 +46,7 @@ public:
             debug(i, pos, neg, maxi, mini)
             int m = neg.empty() || pos.empty();
             if (m == 0) {
+                debug(pos.top(), neg.top())
                 ans.push(pos.top() * neg.top());
                 pos.pop();
                 neg.pop();
@@ -61,6 +62,7 @@ public:
                     mini.push(-1*neg.top());
                     neg.pop();
                 }
+                debug(maxi.top(), mini.top())
                 ans.push(maxi.top() * mini.top());
                 maxi.pop();
                 mini.pop();
