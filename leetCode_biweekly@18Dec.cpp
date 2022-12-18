@@ -41,6 +41,7 @@ public:
             degree[i[0] - 1]++;
             ++degree[i[1] - 1];
             graph[i[0] - 1][i[1] - 1] = true;
+            graph[i[1] - 1][i[0] - 1] = true;
         }
         for (auto i = 0; i < n; ++i) {
             if (degree[i] % 2)
