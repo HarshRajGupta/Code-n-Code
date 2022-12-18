@@ -51,6 +51,7 @@ public:
         // cout << graph[3][4];
         if (oddDeg.size() != 0 || oddDeg.size() != 2 || oddDeg.size() != 4) return false;
         if (oddDeg.size() == 0) return true;
+        cout << graph[oddDeg[0]][oddDeg[1]] << ln;
         if (oddDeg.size() == 2) {
             cout << graph[oddDeg[0]][oddDeg[1]] << ln;
             if (!graph[oddDeg[0]][oddDeg[1]]) return true;
