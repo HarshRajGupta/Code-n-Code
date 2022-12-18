@@ -46,7 +46,7 @@ public:
         for (int i = 0; i < N / 2; ++i) {
             int64_t minii = mini.top(), maxii = maxi.top();
 
-            if (minii <= 0 && maxii > 0 || minii < 0 && maxii < 0) {
+            if (minii <= 0 && maxii > 0 || minii < 0 && maxii <= 0) {
                 mini.pop();
                 maxi.pop();
                 ans.push(minii * maxii);
