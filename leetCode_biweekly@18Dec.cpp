@@ -47,6 +47,7 @@ public:
             if (degree[i] % 2)
                 oddDeg.push_back(i);
         }
+        debug(oddDeg)
         if (oddDeg.size() != 0 || oddDeg.size() != 2 || oddDeg.size() != 4) return false;
         if (oddDeg.size() == 0) return true;
         if (oddDeg.size() == 2) {
