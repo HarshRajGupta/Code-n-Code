@@ -66,6 +66,7 @@ public:
                 mini.pop();
             }
         }
+        debug(ans)
         return ans.top();
         // int64_t MAX = mini.top();
         // while(!mini.empty()) {
