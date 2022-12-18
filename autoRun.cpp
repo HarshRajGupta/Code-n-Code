@@ -50,6 +50,7 @@ public:
                 neg.pop();
             }
             else {
+                debug(i, pos, neg, maxi, mini)
                 while (!pos.empty()) {
                     maxi.push(pos.top());
                     mini.push(pos.top());
