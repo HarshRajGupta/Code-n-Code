@@ -42,6 +42,7 @@ public:
             ++degree[i[1] - 1];
             graph[i[0] - 1][i[1] - 1] = true;
         }
+        debug(graph, degree)
         for (auto i = 0; i < n; ++i) {
             if (degree[i] % 2)
                 oddDeg.push_back(i);
