@@ -39,7 +39,7 @@ public:
         maxHeap maxi, ans;
         minHeap mini, pos, neg;
         for (int i = 0; i < N; ++i) {
-            if (A[i] < 0) neg.push(A[i]);
+            if (A[i] <= 0) neg.push(A[i]);
             else pos.push(A[i]);
         }
         for (int i = 0; i < N / 2; ++i) {
