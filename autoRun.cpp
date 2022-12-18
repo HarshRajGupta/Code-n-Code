@@ -42,6 +42,20 @@ public:
             if (A[i] <= 0) neg.push(A[i]);
             else pos.push(A[i]);
         }
+        if (pos.size() > neg.size()) {
+            int n = (N / 2) - neg.size();
+            while (mini.size() != 2 * n) {
+                mini.push(pos.top());
+                maxi.push(pos.top());
+                pos.pop();
+            }
+            for (int i = 0; i < n; ++i) {
+                ans.push(maxi.top() * mini.top());
+                maxi.pop();
+                mini.pop();
+            }
+            return ans.top();
+        }
         for (int i = 0; i < N / 2; ++i) {
             debug(i, pos, neg, maxi, mini)
             int m = neg.empty() || pos.empty();
@@ -58,8 +72,8 @@ public:
                     pos.pop();
                 }
                 while (!neg.empty()) {
-                    maxi.push(-1*neg.top());
-                    mini.push(-1*neg.top());
+                    maxi.push(-1 * neg.top());
+                    mini.push(-1 * neg.top());
                     neg.pop();
                 }
                 debug(maxi.top(), mini.top())
