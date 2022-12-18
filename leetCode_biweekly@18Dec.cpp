@@ -50,7 +50,7 @@ class Solution {
 public:
     int smallestValue(int n) {
         auto pr = seive(n);
-        vector<int> cal(1e5 + 7, -1);
+        vector<int> cal(1e5 + 7, 0);
         int MIN = n;
         debug(p, pr)
         while (!pr[n]) {
@@ -70,7 +70,7 @@ public:
             cal[n] = 1;
             n = s + t;
         }
-        return n;
+        return MIN;
     }
 };
 
