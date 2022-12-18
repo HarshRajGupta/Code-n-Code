@@ -47,7 +47,7 @@ public:
             if (degree[i] % 2)
                 oddDeg.push_back(i);
         }
-        debug(oddDeg)
+        debug(oddDeg, oddDeg.size())
         // cout << graph[3][4];
         if (oddDeg.size() != 0 || oddDeg.size() != 2 || oddDeg.size() != 4) return false;
         if (oddDeg.size() == 0) return true;
