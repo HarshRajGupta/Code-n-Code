@@ -49,7 +49,7 @@ int binarySearch(std::vector<int> arr, int target) {
 }
 
 std::vector<int32_t> __primes;
-std::vector<bool> seive(int n = 10000007) {
+std::vector<bool> seive(int n = 1000000007) {
     std::vector<bool> isPrime(n + 1, true);
     isPrime[0] = false, isPrime[1] = false;
     for (int i = 2; (i * i) <= n; ++i) {
