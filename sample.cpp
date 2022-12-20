@@ -72,6 +72,7 @@ void solve(void) {
             debug(i) cnt++;
         }
     }
+    debug(p)
     cout << cnt << " " << sz(p);
 }
 
