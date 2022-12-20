@@ -69,12 +69,12 @@ void solve(void) {
     /* Code */
     auto prime = seive();
     int pos = 0, cnt = 0;
-    for (auto i : prime) {
-        if (i.ft != p[pos++]) {
-            debug(i) cnt++;
-        }
-    }
-    debug(p)
+    // for (auto i : prime) {
+    //     if (i.ft != p[pos++]) {
+    //         debug(i) cnt++;
+    //     }
+    // }
+    // debug(p)
     cout << cnt << " " << sz(p);
 }
 
