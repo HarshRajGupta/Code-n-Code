@@ -66,10 +66,12 @@ std::unordered_map<int, bool> seive(int n = 100007) {
 void solve(void) {
     /* Code */
     auto prime = seive();
-    int pos = 0;
+    int pos = 0, cnt = 0;
     for (auto i : prime) {
-        if (i.ft != p[pos++]) debug(i)
+        if (i.ft != p[pos++]) {
+            debug(i) cnt++;
         }
+    }
     cout << "complete";
 }
 
