@@ -49,33 +49,25 @@ int binarySearch(std::vector<int> arr, int target) {
 }
 
 v<int> p;
-std::map<int, bool> seive(int n = 100007) {
-    debug(n)
-    std::map<int, bool> prime;
+std::vector<bool> seive(int n = 100007) {
     std::vector<bool> isPrime(n + 1, true);
     isPrime[0] = false, isPrime[1] = false;
-    for (int i = 2; (i*i) <= n; ++i) {
-        // debug(i)
+    for (int i = 2; (i * i) <= n; ++i) {
         if (isPrime[i]) {
             p.push_back(i);
-            prime[i] = true;
             for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
         }
     }
-    return prime;
+    return isPrime;
 }
 
 void solve(void) {
     /* Code */
     auto prime = seive();
-    int pos = 0, cnt = 0;
-    // for (auto i : prime) {
-    //     if (i.ft != p[pos++]) {
-    //         debug(i) cnt++;
-    //     }
-    // }
-    // debug(p)
-    cout << cnt << " " << sz(p);
+    _for(i, sz(prime)) {
+        cout << i << " ==> " << prime[i] << ln;
+    }
+    // cout << cnt << " " << sz(p);
 }
 
 signed main(void) {
