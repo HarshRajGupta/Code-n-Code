@@ -49,8 +49,8 @@ int binarySearch(std::vector<int> arr, int target) {
 }
 
 v<int> p;
-std::unordered_map<int, bool> seive(int n = 100007) {
-    std::unordered_map<int, bool> prime;
+std::map<int, bool> seive(int n = 100007) {
+    std::map<int, bool> prime;
     std::vector<bool> isPrime(n + 1, true);
     isPrime[0] = false, isPrime[1] = false;
     for (int i = 2; i * i <= n; ++i) {
