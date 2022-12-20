@@ -61,13 +61,25 @@ std::vector<bool> seive(int n = 100007) {
     return isPrime;
 }
 
+std::vector<bool> seive2(int n = 100007) {
+    std::vector<bool> isPrime(n + 1, true);
+    isPrime[0] = false, isPrime[1] = false;
+    for (int i = 2; (i) <= n; ++i) {
+        if (isPrime[i]) {
+            p.push_back(i);
+            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
+        }
+    }
+    return isPrime;
+}
+
 void solve(void) {
     /* Code */
-    auto prime = seive();
+    auto prime = seive(), prime2 = seive2();
     _for(i, sz(prime)) {
-        cout << i << " ==> " << prime[i] << ln;
+        if (prime[i] != prime2[i]) cout << i  << ' ' << prime[i] << ' ' << prime2[i]  << endl;
     }
-    // cout << cnt << " " << sz(p);
+    cout << sz(p);
 }
 
 signed main(void) {
