@@ -55,6 +55,7 @@ std::map<int, bool> seive(int n = 100007) {
     std::vector<bool> isPrime(n + 1, true);
     isPrime[0] = false, isPrime[1] = false;
     for (int i = 2; (i * i) <= n; ++i) {
+        debug(i)
         if (isPrime[i]) {
             p.push_back(i);
             prime[i] = true;
