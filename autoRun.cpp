@@ -35,7 +35,7 @@ const char ln = '\n';
 
 int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
     int XOR1 = 0, XOR2 = 0;
-    _for(i, 32) {
+    _for(i, 8) {
         if (bit[x + 1][i] % 2)
             XOR1 += (1 << i);
         if (bit[arr.size()][i] - bit[x + 1][i] % 2)
@@ -57,7 +57,7 @@ int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
 void solve(void) {
     int n, q; cin >> n >> q;
     v<int> arr(n);
-    v<v<int>> bit(n + 1, v<int>(32));
+    v<v<int>> bit(n + 1, v<int>(8));
     _for(i, n) {
         cin >> arr[i];
         int t = arr[i], j = 0;
