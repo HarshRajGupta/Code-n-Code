@@ -33,6 +33,18 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 
+int fun2(const v<int> &arr, const v<v<int>> &bit, int x) {
+    int XOR1 = 0, XOR2 = 0;
+    _for(i, 8) {
+        if (bit[x + 1][i] % 2)
+            XOR1 += (1 << i);
+        if ((bit[arr.size()][i] - bit[x + 1][i]) % 2)
+            XOR2 += (1 << i);
+    }
+    int S1 = (XOR1 | XOR2), S2 = (XOR1 & (~(XOR2)));
+    return S1 - S2;
+}
+
 int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
     int XOR1 = 0, XOR2 = 0;
     _for(i, 8) {
@@ -50,7 +62,6 @@ int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
         XOR2 = ((XOR2 ^ arr[in - 1])^val);
     }
     int S1 = (XOR1 | XOR2), S2 = (XOR1 & (~(XOR2)));
-    debug(!XOR2)
     return S1 - S2;
 }
 
@@ -68,7 +79,12 @@ void solve(void) {
             ++j;
         }
     }
-    debug(bit)
+    v<pair<int, int>> sc(n);
+    _for(i, n) {
+        sc[i] = {fun2(arr, bit, i), i};
+    }
+    sort(all(sc));
+    reverse(all(sc));
     while (q--) {
         int in, val; cin >> in >> val;
         int MAX = 0;
@@ -79,6 +95,7 @@ void solve(void) {
         }
         cout << MAX << ln;
     }
+    debug(~0)
 }
 
 signed main(void) {
