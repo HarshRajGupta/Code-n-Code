@@ -41,7 +41,7 @@ void solve() {
     v<int> t(m), ty(m);
     _for(i, m) cin >> t[i];
     _for(i, m) cin >> ty[i];
-    int score = 0, a = 0, b = 0, pre = ty[0];
+    int score = 0, a = 0, b = 0;
     if (ty[0] == 1) {
         if (t[0] & 1) {
             a = (t[0] / 2) + 1;
@@ -74,9 +74,9 @@ void solve() {
                 b = 0;
             }
         }
-
+        if (a == b) a = 0, b = 0;
         if (i != m - 1) {
-            int tot = t[i + 1] - t[i] + a + b, A = 0, B = 0;
+            int tot = t[i + 1] - t[i] + a + b, A = 0, B = 0, dif = (t[i + 1] - t[i]);
             if (ty[i + 1] == 1) {
                 if (tot & 1) {
                     A = (tot / 2) + 1;
@@ -88,6 +88,37 @@ void solve() {
                 if (A >= a && B >= b) {
                     a = A;
                     b = B;
+                } else if (a > b) {
+                    if (a - b == 1) {
+                        if (dif & 1) {
+                            a += dif / 2 + 1;
+                            b += dif / 2;
+                        } else {
+                            a += dif / 2;
+                            b += dif / 2;
+                        }
+                    } else if (a - b == 2) {
+                        if (dif & 1) {
+                            a += dif / 2;
+                            b += dif / 2 + 1;
+                        } else {
+                            a += dif / 2;
+                            b += dif / 2;
+                        }
+                    }
+                }
+                else {
+                    if (b - a <= dif) continue;
+                    int t = b - a;
+                    a += t;
+                    dif -= t;
+                    if (dif & 1) {
+                        a += dif / 2 + 1;
+                        b += dif / 2;
+                    } else {
+                        a += dif / 2 + 1;
+                        b += dif / 2 - 1;
+                    }
                 }
             } else {
                 if (tot & 1) {
@@ -100,52 +131,27 @@ void solve() {
                 if (A >= a && B >= b) {
                     a = A;
                     b = B;
+                } else if (b > a) {
+                    if (b - a == 1) {
+                        if (dif & 1) {
+                            b += dif / 2 + 1;
+                            a += dif / 2;
+                        } else {
+                            a += dif / 2;
+                            b += dif / 2;
+                        }
+                    } else if (b - a == 2) {
+                        if (dif & 1) {
+                            a += dif / 2 + 1;
+                            b += dif / 2;
+                        } else {
+                            a += dif / 2;
+                            b += dif / 2;
+                        }
+                    }
                 }
             }
         }
-
-        // if (i != m - 1) {
-        //     int diff = t[i + 1] - t[i];
-        //     // if (diff & 1) {
-        //     //     if (a == b) {
-        //     //         if (ty[i + 1] == 1) {
-        //     //             a += (diff / 2) + 1;
-        //     //             b += (diff / 2);
-        //     //         } else {
-        //     //             a += (diff / 2);
-        //     //             b += (diff / 2) + 1;
-        //     //         }
-        //     //     }
-        //     // } else {
-        //     //     if (a == b) {
-
-        //     //     }
-        //     // }
-        //     if (ty[i] == ty[i + 1]) {
-        //         if (diff & 1) {
-
-        //         } else {
-        //             a += diff / 2;
-        //             b += diff / 2;
-        //         }
-        //     } else {
-        //         if (ty[i + 1] == 1) {
-        //             if (diff + a > b) {
-
-        //             } else {
-        //                 a = 0;
-        //                 b = 0;
-        //             }
-        //         } else {
-        //             if (a < b + diff) {
-
-        //             } else {
-        //                 a = 0;
-        //                 b = 0;
-        //             }
-        //         }
-        //     }
-        // }
     }
     cout << score;
 }
