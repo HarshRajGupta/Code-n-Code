@@ -63,11 +63,11 @@ void solve() {
         if (mp2[arr[i]] == 0) {
             mp2[arr[i]] = nextNum;
             res[i] = nextNum;
-            cnt[nextNum]++;
+            cnt[nextNum++]++;
         } else if (cnt[mp2[arr[i]]] == arr[i]) {
             mp2[arr[i]] = nextNum;
             res[i] = nextNum;
-            cnt[nextNum]++;
+            cnt[nextNum++]++;
         } else {
             res[i] = mp2[arr[i]];
             cnt[res[i]]++;
