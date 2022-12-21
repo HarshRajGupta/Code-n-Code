@@ -95,7 +95,8 @@ void solve(void) {
         }
         cout << MAX << ln;
     }
-    debug(~1)
+    cout << ~0;
+    
 }
 
 signed main(void) {
