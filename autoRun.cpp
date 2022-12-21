@@ -10,14 +10,10 @@ using namespace std;
 #define debug(...) ;
 #endif
 
-#ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
-#endif
-
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-#define int long long
+// #define int long long
 #define ll long double
 
 #define Y std::cout << "YES";
@@ -36,29 +32,54 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    int n; cin >> n;
-    string a, b; cin >> a >> b;
-    int zero = 0, one = 0;
-    _for(i, n) {
-        if (a[i] == '1') one++;
-        else zero++;
-        if (b[i] == '1') one--;
-        else zero--;
-    }
-    if (zero == 0 && one == 0) Y
-        else N
-        }
 
-signed main() {
+int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
+    int XOR1 = 0, XOR2 = 0;
+    _for(i, 32) {
+        if (bit[x + 1][i] % 2)
+            XOR1 += (1 << i);
+        if (bit[arr.size()][i] - bit[x + 1][i] % 2)
+            XOR2 += (1 << i);
+    }
+    if (in - 1 <= x) {
+        XOR1 = ((XOR1 ^ arr[x])^val);
+    }
+    else XOR2 = ((XOR2 ^ arr[x])^val);
+    int S1 = (XOR1 | XOR2), S2 = (XOR1 & (!(XOR2)));
+    return S1 - S2;
+}
+
+void solve(void) {
+    int n, q; cin >> n >> q;
+    v<int> arr(n);
+    v<v<int>> bit(n + 1, v<int>(32));
+    _for(i, n) {
+        cin >> arr[i];
+        int t = arr[i], j = 0;
+        bit[i + 1] = bit[i];
+        while (t) {
+            bit[i + 1][j] += (t % 2);
+            t /= 2;
+            ++j;
+        }
+    }
+    while (q--) {
+        int in, val; cin >> in, val;
+        int MAX = 0;
+        _for(i, n) {
+            MAX = max(MAX, fun(arr, bit, i, in, val));
+        }
+        cout << MAX << ln;
+    }
+}
+
+signed main(void) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u;
-    cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    solve();
 #ifdef __TAG2
     __TAG2
 #endif
