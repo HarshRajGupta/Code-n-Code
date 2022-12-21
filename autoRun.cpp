@@ -64,7 +64,7 @@ void solve(void) {
         }
     }
     while (q--) {
-        int in, val; cin >> in, val;
+        int in, val; cin >> in >> val;
         int MAX = 0;
         _for(i, n) {
             MAX = max(MAX, fun(arr, bit, i, in, val));
