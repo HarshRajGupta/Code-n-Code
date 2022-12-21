@@ -41,6 +41,7 @@ int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
         if (bit[arr.size()][i] - bit[x + 1][i] % 2)
             XOR2 += (1 << i);
     }
+    debug(XOR1, XOR2);
     if (in - 1 <= x) {
         XOR1 = ((XOR1 ^ arr[in - 1])^val);
     }
