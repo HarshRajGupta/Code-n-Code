@@ -38,7 +38,7 @@ int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
     _for(i, 32) {
         if (bit[x + 1][i] % 2)
             XOR1 += (1 << i);
-        if (bit[arr.size()][i] - bit[x + 1][i] % 2)
+        if (bit[arr.size()][i] - bit[x][i] % 2)
             XOR2 += (1 << i);
     }
     if (in - 1 <= x) {
