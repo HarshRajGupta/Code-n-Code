@@ -68,6 +68,7 @@ void solve(void) {
             ++j;
         }
     }
+    debug(bit)
     while (q--) {
         int in, val; cin >> in >> val;
         int MAX = 0;
