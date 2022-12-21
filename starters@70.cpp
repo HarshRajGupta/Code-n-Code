@@ -37,43 +37,117 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n; cin >> n;
-    v<int> arr(n);
-    map<int, int> mp;
-    _for(i, n) {
-        cin >> arr[i];
-        mp[arr[i]]++;
-    }
-    int sum = 0;
-    for (auto &i : mp) {
-        if (i.sd % i.ft != 0) {
-            cout << -1;
-            return;
-        }
-        sum += i.ft * (i.sd / i.ft);
-    }
-    if (sum != n) {
-        cout << -1;
-        return;
-    }
-    int nextNum = 1;
-    v<int> res(n);
-    map<int, int> mp2, cnt;
-    _for(i, n) {
-        if (mp2[arr[i]] == 0) {
-            mp2[arr[i]] = nextNum;
-            res[i] = nextNum;
-            cnt[nextNum++]++;
-        } else if (cnt[mp2[arr[i]]] == arr[i]) {
-            mp2[arr[i]] = nextNum;
-            res[i] = nextNum;
-            cnt[nextNum++]++;
+    int n, m; cin >> n >> m;
+    v<int> t(m), ty(m);
+    _for(i, m) cin >> t[i];
+    _for(i, m) cin >> ty[i];
+    int score = 0, a = 0, b = 0, pre = ty[0];
+    if (ty[0] == 1) {
+        if (t[0] & 1) {
+            a = (t[0] / 2) + 1;
+            b = (t[0] / 2);
         } else {
-            res[i] = mp2[arr[i]];
-            cnt[res[i]]++;
+            a = (t[0] / 2) + 1;
+            b = (t[0] / 2) - 1;
         }
     }
-    _for(i, n) cout << res[i] << ' ';
+    else {
+        if (t[0] & 1) {
+            a = (t[0] / 2);
+            b = (t[0] / 2) + 1;
+        } else {
+            a = (t[0] / 2) - 1;
+            b = (t[0] / 2) + 1;
+        }
+    }
+    rep(i, 0, m) {
+        if (ty[i] == 1) {
+            if (a > b) score++;
+            else {
+                a = 0;
+                b = 0;
+            }
+        } else {
+            if (a < b) score++;
+            else {
+                a = 0;
+                b = 0;
+            }
+        }
+
+        if (i != m - 1) {
+            int tot = t[i + 1] - t[i] + a + b, A = 0, B = 0;
+            if (ty[i + 1] == 1) {
+                if (tot & 1) {
+                    A = (tot / 2) + 1;
+                    B = (tot / 2);
+                } else {
+                    A = (tot / 2) + 1;
+                    B = (tot / 2) - 1;
+                }
+                if (A >= a && B >= b) {
+                    a = A;
+                    b = B;
+                }
+            } else {
+                if (tot & 1) {
+                    A = (tot / 2);
+                    B = (tot / 2) + 1;
+                } else {
+                    A = (tot / 2) - 1;
+                    B = (tot / 2) + 1;
+                }
+                if (A >= a && B >= b) {
+                    a = A;
+                    b = B;
+                }
+            }
+        }
+
+        // if (i != m - 1) {
+        //     int diff = t[i + 1] - t[i];
+        //     // if (diff & 1) {
+        //     //     if (a == b) {
+        //     //         if (ty[i + 1] == 1) {
+        //     //             a += (diff / 2) + 1;
+        //     //             b += (diff / 2);
+        //     //         } else {
+        //     //             a += (diff / 2);
+        //     //             b += (diff / 2) + 1;
+        //     //         }
+        //     //     }
+        //     // } else {
+        //     //     if (a == b) {
+
+        //     //     }
+        //     // }
+        //     if (ty[i] == ty[i + 1]) {
+        //         if (diff & 1) {
+
+        //         } else {
+        //             a += diff / 2;
+        //             b += diff / 2;
+        //         }
+        //     } else {
+        //         if (ty[i + 1] == 1) {
+        //             if (diff + a > b) {
+
+        //             } else {
+        //                 a = 0;
+        //                 b = 0;
+        //             }
+        //         } else {
+        //             if (a < b + diff) {
+
+        //             } else {
+        //                 a = 0;
+        //                 b = 0;
+        //             }
+        //         }
+        //     }
+        // }
+    }
+    cout << score;
 }
 
 signed main() {
