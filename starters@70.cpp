@@ -38,17 +38,42 @@ const char ln = '\n';
 
 void solve() {
     int n; cin >> n;
-    string s; cin >> s;
-    int prevOne = -1, minD = INT_MAX;
+    v<int> arr(n);
+    map<int, int> mp;
     _for(i, n) {
-        if (s[i] == '1') {
-            if (prevOne == -1) prevOne = i;
-            else {
-                minD = min(minD, ((i - prevOne) % 2) ? 1ll : 2ll);
-            }
+        cin >> arr[i];
+        mp[arr[i]]++;
+    }
+    int sum = 0;
+    for (auto &i : mp) {
+        if (i.sd % i.ft != 0) {
+            cout << -1;
+            return;
+        }
+        sum += i.ft * (i.sd / i.ft);
+    }
+    if (sum != n) {
+        cout << -1;
+        return;
+    }
+    int nextNum = 1;
+    v<int> res(n);
+    map<int, int> mp2, cnt;
+    _for(i, n) {
+        if (mp2[arr[i]] == 0) {
+            mp2[arr[i]] = nextNum;
+            res[i] = nextNum;
+            cnt[nextNum]++;
+        } else if (cnt[mp2[arr[i]]] == arr[i]) {
+            mp2[arr[i]] = nextNum;
+            res[i] = nextNum;
+            cnt[nextNum]++;
+        } else {
+            res[i] = mp2[arr[i]];
+            cnt[res[i]]++;
         }
     }
-    cout << minD;
+    _for(i, n) cout << res[i] << ' ';
 }
 
 signed main() {
