@@ -42,9 +42,9 @@ int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
             XOR2 += (1 << i);
     }
     if (in - 1 <= x) {
-        XOR1 = ((XOR1 ^ arr[x])^val);
+        XOR1 = ((XOR1 ^ arr[in - 1])^val);
     }
-    else XOR2 = ((XOR2 ^ arr[x])^val);
+    else XOR2 = ((XOR2 ^ arr[in - 1])^val);
     int S1 = (XOR1 | XOR2), S2 = (XOR1 & (!(XOR2)));
     debug(XOR1, XOR2)
     return S1 - S2;
