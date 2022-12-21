@@ -49,7 +49,7 @@ int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
         // debug(XOR2, XOR2 ^ arr[in - 1], XOR2 ^ arr[in - 1]^val)
         XOR2 = ((XOR2 ^ arr[in - 1])^val);
     }
-    int S1 = (XOR1 | XOR2), S2 = (XOR1 & (!(XOR2)));
+    int S1 = (XOR1 | XOR2), S2 = (XOR1 & (~(XOR2)));
     debug(!XOR2)
     return S1 - S2;
 }
