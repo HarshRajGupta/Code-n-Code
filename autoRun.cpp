@@ -10,6 +10,10 @@ using namespace std;
 #define debug(...) ;
 #endif
 
+#ifndef __RUN
+#define __RUN solve(), std::cout << '\n'
+#endif
+
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -17,7 +21,7 @@ const char ln = '\n';
 #define ll long double
 
 #define Y std::cout << "YES";
-// #define N std::cout << "NO";
+#define N std::cout << "NO";
 
 #define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
@@ -32,79 +36,29 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-class Solution {
-public:
-    long long maximumMultiple(int N, int A[]) {
-        // code here
-        maxHeap maxi, ans;
-        minHeap mini, pos, neg;
-        for (int i = 0; i < N; ++i) {
-            if (A[i] <= 0) neg.push(A[i]);
-            else pos.push(A[i]);
-        }
-        if (pos.size() > neg.size()) {
-            int n = (N / 2) - neg.size();
-            while (mini.size() != 2 * n) {
-                mini.push(pos.top());
-                maxi.push(pos.top());
-                pos.pop();
-            }
-            for (int i = 0; i < n; ++i) {
-                ans.push(maxi.top() * mini.top());
-                maxi.pop();
-                mini.pop();
-            }
-            return ans.top();
-        }
-        for (int i = 0; i < N / 2; ++i) {
-            debug(i, pos, neg, maxi, mini)
-            int m = neg.empty() || pos.empty();
-            if (m == 0) {
-                debug(pos.top(), neg.top())
-                ans.push(pos.top() * neg.top());
-                pos.pop();
-                neg.pop();
-            }
-            else {
-                while (!pos.empty()) {
-                    maxi.push(pos.top());
-                    mini.push(pos.top());
-                    pos.pop();
-                }
-                while (!neg.empty()) {
-                    maxi.push(-1 * neg.top());
-                    mini.push(-1 * neg.top());
-                    neg.pop();
-                }
-                debug(maxi.top(), mini.top())
-                ans.push(maxi.top() * mini.top());
-                maxi.pop();
-                mini.pop();
-            }
-        }
-        debug(ans)
-        return ans.top();
-        // int64_t MAX = mini.top();
-        // while(!mini.empty()) {
-        //     MAX = max(mini.top(), MAX);
-        //     mini.pop();
-        // }
-        // return MAX;
+void solve() {
+    int n; cin >> n;
+    string a, b; cin >> a >> b;
+    int zero = 0, one = 0;
+    _for(i, n) {
+        if (a[i] == '1') one++;
+        else zero++;
+        if (b[i] == '1') one--;
+        else zero--;
     }
-};
-void solve(void) {
-    /* Code */
-    Solution a;
-    cout << a.maximumMultiple(8, new int[8] { 3, 12, 8, 11, 1, -16, -4, -11});
-}
+    if (zero == 0 && one == 0) Y
+        else N
+        }
 
-signed main(void) {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    solve();
+    uint32_t tCs = 1u;
+    cin >> tCs;
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
