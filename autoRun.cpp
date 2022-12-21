@@ -68,7 +68,7 @@ void solve(void) {
         int MAX = 0;
         _for(i, n) {
             int x = fun(arr, bit, i, in, val);
-            debug(x)
+            debug(x, i, q)
             MAX = max(MAX, fun(arr, bit, i, in, val));
         }
         cout << MAX << ln;
