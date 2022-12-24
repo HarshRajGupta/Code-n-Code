@@ -41,9 +41,47 @@ int notXY(int a, int b, int c, int d) {
     return b - a + 1 - x - y + z;
 }
 
+int findNonMultiples(int arr[],
+                     int n, int k)
+{
+    // Stores all unique multiples
+    set<int> multiples;
+
+    // Iterate the array
+    for (int i = 0; i < n; ++i) {
+
+        // For finding duplicates
+        // only once
+        if (multiples.find(arr[i])
+                == multiples.end()) {
+
+            // Inserting all multiples
+            // into the set
+            for (int j = 1;
+                    j <= k / arr[i]; j++) {
+                multiples.insert(arr[i] * j);
+            }
+        }
+    }
+
+    // Returning only the count of
+    // numbers that are not divisible
+    // by any of the array elements
+    return k - multiples.size();
+}
+
+// Function to count the total values
+// in the range [L, R]
+int countValues(int x, int y, int r){
+    int arr[] = {x, y};
+    int n = 2;
+    return findNonMultiples(arr, n, r)
+           - findNonMultiples(arr, n, 1);
+}
+
 void solve(void) {
     /* Code */
-    cout << notXY(1, 13, 2, 4);
+    cout << countValues(2, 4, 13);
 }
 
 signed main(void) {
