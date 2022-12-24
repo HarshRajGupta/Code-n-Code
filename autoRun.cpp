@@ -37,6 +37,7 @@ int notXY(int a, int b, int c, int d) {
     int y = b / d - (a - 1) / d;
     int k = (c * d) / __gcd(c, d);
     int z = b / k - (a - 1) / k;
+    debug(x, y, z, k)
     return b - a + 1 - x - y + z;
 }
 
