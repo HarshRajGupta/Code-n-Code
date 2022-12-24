@@ -32,37 +32,6 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int findNonMultiples(int arr[],
-                     int n, int k)
-{
-    // Stores all unique multiples
-    set<int> multiples;
-    // Iterate the array
-    for (int i = 0; i < n; ++i) {
-        debug(i)
-        if (multiples.find(arr[i])
-                == multiples.end()) {
-
-            for (int j = 1;
-                    j <= k / arr[i]; j++) {
-                multiples.insert(arr[i] * j);
-            }
-        }
-    }
-
-    // Returning only the count of
-    // numbers that are not divisible
-    // by any of the array elements
-    return k - multiples.size();
-}
-
-// Function to count the total values
-// in the range [L, R]
-int countValues(int x, int y, int r) {
-    int arr[] = {x, y};
-    int n = 2;
-    return findNonMultiples(arr, n, r);
-}
 int xNotY(int x, int y, int n) {
     int divX = n / x;
     int divLCM = n / ((x * y) / __gcd(x, y));
@@ -76,14 +45,11 @@ int notXY(int d, int c, int b) {
     debug(b, x, y, k, z)
     return b - x - y + z;
 }
-int tot1(int x, int y, int n) {
-    int ans = xNotY(x, y, n) + xNotY(y, x, n) + notXY(x, y, n);
-    cout << n << " " << ans << " " << xNotY(x, y, n) << " " << xNotY(y, x, n) << " " << notXY(x, y, n) << endl;
-    return ans;
-}
-int tot(int x, int y, int n) {
-    int ans = xNotY(x, y, n) + xNotY(y, x, n) + notXY(x, y, n);
-    // cout << n << " " << ans << " " << xNotY(x, y, n) << " " << xNotY(y, x, n) << " " << notXY(1, n, x, y) << endl;
+
+int tot(int x, int y, int n, int u1, int u2) {
+    int ans = notXY(x, y, n);
+    ans += max(0ll, u2 - xNotY(x, y, n));
+    ans += max(0ll, u1 - xNotY(y, x, n));
     return ans;
 }
 
@@ -92,7 +58,7 @@ int minimizeSet(int d1, int d2, int u1, int u2) {
     while (l <= r) {
         int mid = (l + r) / 2;
         debug(l, r)
-        int ans = tot1(d1, d2, mid);
+        int ans = tot(d1, d2, mid, u1, u2);
         if (ans == u1 + u2) {
             l = mid;
             break;
@@ -105,7 +71,7 @@ int minimizeSet(int d1, int d2, int u1, int u2) {
     // cout << l << " " << r << endl;
     for (int i = ans - 1; i >= 1; --i) {
         // cout << i << endl;
-        int a = tot(d1, d2, i);
+        int a = tot(d1, d2, i, u1, u2);
         if (a >= u1 + u2)
             ans = i;
         else break;
