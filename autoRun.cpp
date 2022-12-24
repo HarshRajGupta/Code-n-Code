@@ -101,9 +101,9 @@ int minimizeSet(int d1, int d2, int u1, int u2) {
         } else l = mid + 1;
     }
     int ans = max(l, r);
-    cout << l << " " << r << endl;
+    // cout << l << " " << r << endl;
     for (int i = ans - 1; i >= 1; --i) {
-        cout << i << endl;
+        // cout << i << endl;
         int a = tot(d1, d2, i);
         if (a >= u1 + u2)
             ans = i;
