@@ -68,7 +68,7 @@ int xNotY(int x, int y, int n) {
     int divLCM = n / ((x * y) / __gcd(x, y));
     return (divX - divLCM);
 }
-int notXY(int b, int d, int c) {
+int notXY(int d, int c, int b) {
     int x = b / c;
     int y = b / d;
     int k = (c * d) / __gcd(c, d);
