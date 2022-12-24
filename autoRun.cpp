@@ -77,7 +77,7 @@ int notXY(int b, int d, int c) {
 }
 int tot1(int x, int y, int n) {
     int ans = xNotY(x, y, n) + xNotY(y, x, n) + notXY(x, y, n);
-    // cout << n << " " << ans << " " << xNotY(x, y, n) << " " << xNotY(y, x, n) << " " << notXY(1, n, x, y) << endl;
+    cout << n << " " << ans << " " << xNotY(x, y, n) << " " << xNotY(y, x, n) << " " << notXY(x, y, n) << endl;
     return ans;
 }
 int tot(int x, int y, int n) {
