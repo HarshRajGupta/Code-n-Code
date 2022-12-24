@@ -59,6 +59,7 @@ int minimizeSet(int d1, int d2, int u1, int u2) {
         int mid = (l + r) / 2;
         debug(l, r)
         int ans = tot(d1, d2, mid, u1, u2);
+        debug(ans)
         if (ans == u1 + u2) {
             l = mid;
             break;
