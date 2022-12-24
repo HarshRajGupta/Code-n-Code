@@ -73,7 +73,7 @@ int notXY(int b, int d, int c) {
     int y = b / d;
     int k = (c * d) / __gcd(c, d);
     int z = b / k;
-    return b - x - y + z;
+    return b + 1 - x - y + z;
 }
 int tot1(int x, int y, int n) {
     int ans = xNotY(x, y, n) + xNotY(y, x, n) + notXY(x, y, n);
