@@ -42,7 +42,7 @@ int notXY(int d, int c, int b) {
     int y = b / d;
     int k = (c * d) / __gcd(c, d);
     int z = b / k;
-    debug(b, x, y, k, z)
+    // debug(b, x, y, k, z)
     return b - x - y + z;
 }
 
@@ -57,7 +57,7 @@ int minimizeSet(int d1, int d2, int u1, int u2) {
     int l = 0, r = INT_MAX;
     while (l <= r) {
         int mid = (l + r) / 2;
-        debug(l, r)
+        // debug(l, r)
         int ans = tot(d1, d2, mid, u1, u2);
         debug(ans)
         if (ans == u1 + u2) {
