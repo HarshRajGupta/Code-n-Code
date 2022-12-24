@@ -73,7 +73,7 @@ int notXY(int b, int d, int c) {
     int y = b / d;
     int k = (c * d) / __gcd(c, d);
     int z = b / k;
-    debug(x, y, k, z)
+    debug(b, x, y, k, z)
     return b + 1 - x - y + z;
 }
 int tot1(int x, int y, int n) {
