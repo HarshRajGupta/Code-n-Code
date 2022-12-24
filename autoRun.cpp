@@ -13,7 +13,7 @@ using namespace std;
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-// #define int long long
+#define int long long
 #define ll long double
 
 #define Y std::cout << "YES";
@@ -32,71 +32,17 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-
-int fun2(const v<int> &arr, const v<v<int>> &bit, int x) {
-    int XOR1 = 0, XOR2 = 0;
-    _for(i, 8) {
-        if (bit[x + 1][i] % 2)
-            XOR1 += (1 << i);
-        if ((bit[arr.size()][i] - bit[x + 1][i]) % 2)
-            XOR2 += (1 << i);
-    }
-    int S1 = (XOR1 | XOR2), S2 = (XOR1 & (~(XOR2)));
-    return S1 - S2;
-}
-
-int fun(const v<int> &arr, const v<v<int>> &bit, int x, int in, int val) {
-    int XOR1 = 0, XOR2 = 0;
-    _for(i, 8) {
-        if (bit[x + 1][i] % 2)
-            XOR1 += (1 << i);
-        if ((bit[arr.size()][i] - bit[x + 1][i]) % 2)
-            XOR2 += (1 << i);
-    }
-    if (in - 1 <= x) {
-        // debug(XOR1, XOR1 ^ arr[in - 1], XOR1 ^ arr[in - 1]^val)
-        XOR1 = ((XOR1 ^ arr[in - 1])^val);
-    }
-    else {
-        // debug(XOR2, XOR2 ^ arr[in - 1], XOR2 ^ arr[in - 1]^val)
-        XOR2 = ((XOR2 ^ arr[in - 1])^val);
-    }
-    int S1 = (XOR1 | XOR2), S2 = (XOR1 & (~(XOR2)));
-    return S1 - S2;
+int notXY(int a, int b, int c, int d) {
+    int x = b / c - (a - 1) / c;
+    int y = b / d - (a - 1) / d;
+    int k = (c * d) / __gcd(c, d);
+    int z = b / k - (a - 1) / k;
+    return b - a + 1 - x - y + z;
 }
 
 void solve(void) {
-    int n, q; cin >> n >> q;
-    v<int> arr(n);
-    v<v<int>> bit(n + 1, v<int>(8));
-    _for(i, n) {
-        cin >> arr[i];
-        int t = arr[i], j = 0;
-        bit[i + 1] = bit[i];
-        while (t) {
-            bit[i + 1][j] += (t % 2);
-            t /= 2;
-            ++j;
-        }
-    }
-    v<pair<int, int>> sc(n);
-    _for(i, n) {
-        sc[i] = {fun2(arr, bit, i), i};
-    }
-    sort(all(sc));
-    reverse(all(sc));
-    while (q--) {
-        int in, val; cin >> in >> val;
-        int MAX = 0;
-        _for(i, n) {
-            int x = fun(arr, bit, i, in, val);
-            debug(x, i, q)
-            MAX = max(MAX, fun(arr, bit, i, in, val));
-        }
-        cout << MAX << ln;
-    }
-    cout << !0;
-
+    /* Code */
+    cout << notXY(1, 13, 2, 4);
 }
 
 signed main(void) {
