@@ -113,8 +113,8 @@ int minimizeSet(int d1, int d2, int u1, int u2) {
 }
 void solve(void) {
     /* Code */
-    // cout << minimizeSet(2, 4, 3, 7);
-    cout << 2;
+    cout << minimizeSet(2, 4, 3, 7);
+    // cout << 2;
 }
 
 signed main(void) {
