@@ -33,47 +33,40 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 int xNotY(int x, int y, int n) {
-    int divX = n / x;
-    int divLCM = n / ((x * y) / __gcd(x, y));
-    return (divX - divLCM);
+    return ((n / x) - (n / ((x * y) / __gcd(x, y))));
 }
-int notXY(int d, int c, int b) {
-    int x = b / c;
-    int y = b / d;
-    int k = (c * d) / __gcd(c, d);
-    int z = b / k;
-    // debug(b, x, y, k, z)
-    return b - x - y + z;
+int notXY(int x, int y, int n) {
+    return (n - (n / x) - (n / y) + (n / ((x * y) / __gcd(x, y))));
 }
 
 int tot(int x, int y, int n, int u1, int u2) {
     int ans = notXY(x, y, n);
-    ans += max(0ll, u2 - xNotY(x, y, n));
-    ans += max(0ll, u1 - xNotY(y, x, n));
-    return ans;
+    if (u1 + u2 < ans) return 1;
+    ans += max(u1, xNotY(y, x, n));
+    ans += max(u2, xNotY(x, y, n));
+    if (u1 + u2 < ans) return 1;
+    if (u1 + u2 > ans) return -1;
+    return 0;
 }
 
 int minimizeSet(int d1, int d2, int u1, int u2) {
     int l = 0, r = INT_MAX;
     while (l <= r) {
         int mid = (l + r) / 2;
-        // debug(l, r)
-        int ans = tot(d1, d2, mid, u1, u2);
-        debug(ans, mid)
-        if (ans == u1 + u2) {
-            l = mid;
+        int c = tot(d1, d2, mid, u1, u2);
+        if (c == 1) {
+            r = mid - 1;
+        } else if (c == -1) {
+            l = mid + 1;
+        } else {
+            r = mid;
             break;
         }
-        else if (ans > u1 + u2) {
-            r = mid - 1;
-        } else l = mid + 1;
     }
     int ans = max(l, r);
-    // cout << l << " " << r << endl;
     for (int i = ans - 1; i >= 1; --i) {
-        // cout << i << endl;
         int a = tot(d1, d2, i, u1, u2);
-        if (a >= u1 + u2)
+        if (a >= 0)
             ans = i;
         else break;
     }
