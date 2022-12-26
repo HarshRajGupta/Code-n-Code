@@ -40,11 +40,11 @@ int notXY(int x, int y, int n) {
 }
 
 int tot(int x, int y, int n, int u1, int u2) {
-    debug(x, y, n, u1, u2)
     int ans = notXY(x, y, n);
     if (u1 + u2 < ans) return 1;
     ans += max(u1, xNotY(y, x, n));
     ans += max(u2, xNotY(x, y, n));
+    debug(x, y, n, u1, u2, xNotY(x, y, n), xNotY(y, x, n), notXY(x, y, n), ans)
     if (u1 + u2 < ans) return 1;
     if (u1 + u2 > ans) return -1;
     return 0;
