@@ -133,6 +133,7 @@ void solve() {
         cin >> arr[i];
     }
     sort(all(arr));
+    debug(arr)
     int sum, p = n; cin >> sum;
     bw(i, n+m-1) {
         sum += arr[i];
