@@ -53,14 +53,13 @@ void solve() {
         v<int> s;
         if (sz(ar) == k-1) {
             int z = ar.top();
-            while(!ar.empty()) {
-                if (ar.top() != z) {
+            _for(i, k-1) {
+                if (ar.empty() || ar.top() != z) {
                     N;
                     return;
                 }
                 ar.pop();
             }
-            break;
         }
         if (sz(ar) < k) {
             cout << "NO";
