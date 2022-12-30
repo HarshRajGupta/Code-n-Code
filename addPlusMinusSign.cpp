@@ -47,6 +47,7 @@ void solve() {
     string ans(n-1, '+');
     bw(i, n-1) {
         if(s[i] == '1') {
+            debug(i, s[i])
             ans[i] = '-';
             --sum;
             if (sum == 0) {
