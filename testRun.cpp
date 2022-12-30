@@ -33,7 +33,7 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve(void) {
-    set<int> s = {0, 1, 3, 5, 6, 7, 8, 9, 10};
+    set<int> s = {0, 1, 3, 5, 6, 8, 9, 10};
     int i = 7;
     cout << *s.lower_bound(i) << " " << *s.upper_bound(i);
 }
