@@ -34,18 +34,17 @@ const char ln = '\n';
 
 class Solution {
     int MAX = 0;
-    int ans(vector<int> &arr, vector<vector<int>> &dp, int prev = 0, int pos = 0, int sum = 0) {
+    int ans(vector<int> &arr, vector<vector<int>> &dp, int prev = 0, int pos = 0) {
         if (pos == arr.size()) {
-            MAX = max(MAX, sum);
-            return sum;
+            return 0;
         }
         if (dp[pos][prev] != -1) {
             return dp[pos][prev];
         }
         if (prev == 0 || arr[pos] > arr[prev - 1]) {
-            return dp[pos][prev] = max(ans(arr, dp, prev, pos + 1, sum), ans(arr, dp, pos + 1, pos + 1, sum + arr[pos]));
+            return dp[pos][prev] = max(ans(arr, dp, prev, pos + 1), ans(arr, dp, pos + 1, pos + 1) + arr[pos]);
         }
-        return dp[pos][prev] = ans(arr, dp, prev, pos + 1, sum);
+        return dp[pos][prev] = ans(arr, dp, prev, pos + 1);
     }
 public:
     int maxSumIS(int arr[], int n)
