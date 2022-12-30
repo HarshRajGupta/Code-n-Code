@@ -36,7 +36,7 @@
 // #define sz(x) ((int)(x).size())
 // #define all(x) (x).begin(), (x).end()
 
-// void solve() { 
+// void solve() {
 //     int n, m, k; cin >> n >> m >> k;
 //     v<int> arr(m);
 //     minHeap ar;
@@ -74,12 +74,12 @@
 // }
 
 // signed main() {
-//     ios_base::sync_with_stdio(false); 
+//     ios_base::sync_with_stdio(false);
 //     cin.tie(NULL);
 // #ifdef __TAG1
 //     __TAG1
 // #endif
-//     uint32_t tCs = 1u; 
+//     uint32_t tCs = 1u;
 //     cin >> tCs;
 //     for(uint32_t tC = 0u; tC++ < tCs; __RUN);
 // #ifdef __TAG2
@@ -126,34 +126,38 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() { 
+void solve() {
     int n, m; cin >> n >> m;
-    v<int> arr(n+m-1);
-    _for(i, n+m-1) {
+    v<int> arr(n + m - 1);
+    _for(i, n + m - 1) {
         cin >> arr[i];
     }
     sort(all(arr));
-    int sum, p = n-1; cin >> sum;
+    int sum, p = n - 1; cin >> sum;
+    if (p == 0) {
+        cout << sum;
+        return;
+    }
     debug(arr, sum)
-    bw(i, n+m-2) {
-        if (--p <= 0) {
+    bw(i, n + m - 2) {
+        sum += arr[i];
+        if (--p == 0) {
             cout << sum;
             return;
         }
-        sum += arr[i];
     }
     cout << sum;
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false); 
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u; 
+    uint32_t tCs = 1u;
     cin >> tCs;
-    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
