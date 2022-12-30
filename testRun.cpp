@@ -34,7 +34,8 @@ const char ln = '\n';
 
 void solve(void) {
     set<int> s = {0, 1, 3, 5, 6, 7, 8, 9, 10};
-    cout << *s.lower_bound(6);
+    int i = 7;
+    cout << *s.lower_bound(i) << " " << *s.upper_bound(i);
 }
 
 signed main(void) {
