@@ -40,14 +40,14 @@ void solve() {
     int n, k; cin >> n >> k;
     int i = 1, j = n;
     v<int> arr;
-    _for(i, n / 2) {
+    _for(k, n / 2) {
         arr.push_back(j--);
         arr.push_back(i++);
     }
     if (n & 1) {
         arr.push_back(i);
     }
-    _for(i, n) cout << arr[i] << " ";
+    _for(k, n) cout << arr[k] << " ";
 }
 
 signed main() {
