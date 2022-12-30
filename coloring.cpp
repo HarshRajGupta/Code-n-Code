@@ -51,7 +51,7 @@ void solve() {
     while(!ar.empty()) {
         int tp = ar.top();
         v<int> s;
-        if (sz(ar) == k-1) {
+        if (sz(ar) <= k-1) {
             _for(i, k-1) {
                 if (ar.empty() || ar.top() != 1) {
                     N;
@@ -60,10 +60,6 @@ void solve() {
                 ar.pop();
             }
             break;
-        }
-        if (sz(ar) < k) {
-            cout << "NO";
-            return;
         }
         _for(i, k) {
             int x = ar.top();
