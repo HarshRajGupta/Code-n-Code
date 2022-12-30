@@ -53,7 +53,7 @@ void solve() {
         v<int> s;
         if (sz(ar) <= k-1) {
             _for(i, k-1) {
-                if (ar.empty() || ar.top() != 1) {
+                if (ar.top() != 1) {
                     N;
                     return;
                 }
