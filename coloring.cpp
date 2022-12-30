@@ -136,11 +136,11 @@ void solve() {
     int sum, p = n-1; cin >> sum;
     debug(arr, sum)
     bw(i, n+m-2) {
-        sum += arr[i];
-        if (--p == 0) {
+        if (--p <= 0) {
             cout << sum;
             return;
         }
+        sum += arr[i];
     }
     cout << sum;
 }
