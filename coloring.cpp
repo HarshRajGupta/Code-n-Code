@@ -51,11 +51,11 @@ void solve() {
     while(!ar.empty()) {
         int tp = ar.top();
         v<int> s;
-        if (sz(ar) < k) {
+        if (sz(ar) < k-1) {
             cout << "NO";
             return;
         }
-        _for(i, k) {
+        _for(i, min(k, sz(ar))) {
             int x = ar.top();
             ar.pop();
             if (x-tp > 0) s.push_back(x-tp);
