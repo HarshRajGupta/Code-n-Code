@@ -44,7 +44,7 @@ void solve() {
         sum += (s[i] - '0');
     }
     sum /= 2;
-    string ans(s.begin(), --s.end());
+    string ans(n-1, '+');
     cout << ans;
 }
 
