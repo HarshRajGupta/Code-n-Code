@@ -45,7 +45,16 @@ void solve() {
     }
     sum /= 2;
     string ans(n-1, '+');
-    cout << ans;
+    bw(i, n-1) {
+        if(s[i] == '1') {
+            ans[i] = '-';
+            --sum;
+            if (sum == 0) {
+                cout << ans;
+                return;
+            }
+        }
+    }
 }
 
 signed main() {
