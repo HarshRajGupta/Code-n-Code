@@ -33,7 +33,6 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 class Solution {
-    int MAX = 0;
     int ans(vector<int> &arr, vector<vector<int>> &dp, int prev = 0, int pos = 0) {
         if (pos == arr.size()) {
             return 0;
