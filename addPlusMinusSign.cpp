@@ -37,15 +37,15 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    // int n; cin >> n;
-    // string s; cin >> s;
-    // int sum = 0;
-    // _for(i, n) {
-    //     sum += (s[i] - '0');
-    // }
-    // sum /= 2;
-    // string ans(s.begin(), --s.end());
-    cout << 1;
+    int n; cin >> n;
+    string s; cin >> s;
+    int sum = 0;
+    _for(i, n) {
+        sum += (s[i] - '0');
+    }
+    sum /= 2;
+    string ans(s.begin(), --s.end());
+    cout << ans;
 }
 
 signed main() {
