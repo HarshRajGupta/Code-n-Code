@@ -55,7 +55,8 @@ void solve() {
             cout << "NO";
             return;
         }
-        _for(i, min(k, sz(ar))) {
+        int tr = sz(ar);
+        _for(i, min(k, tr)) {
             int x = ar.top();
             ar.pop();
             if (x-tp > 0) s.push_back(x-tp);
