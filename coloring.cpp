@@ -60,6 +60,7 @@ void solve() {
                 }
                 ar.pop();
             }
+            break;
         }
         if (sz(ar) < k) {
             cout << "NO";
