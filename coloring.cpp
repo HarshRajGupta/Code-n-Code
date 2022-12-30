@@ -135,7 +135,7 @@ void solve() {
     sort(all(arr));
     int sum, p = n-1; cin >> sum;
     debug(arr, sum)
-    bw(i, n+m-1) {
+    bw(i, n+m-2) {
         sum += arr[i];
         if (--p == 0) {
             cout << sum;
