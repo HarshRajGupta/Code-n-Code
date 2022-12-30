@@ -55,6 +55,7 @@ void solve() {
             int z = ar.top();
             _for(i, k-1) {
                 if (ar.empty() || ar.top() != z) {
+                    debug(77)
                     N;
                     return;
                 }
