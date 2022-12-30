@@ -52,8 +52,7 @@ public:
         vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
         vector<int> Arr(n);
         for (int i = 0; i < n; ++i) Arr[i] = arr[i];
-        ans(Arr, dp);
-        return MAX;
+        return ans(Arr, dp);
     }
 };
 
