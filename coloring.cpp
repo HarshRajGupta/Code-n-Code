@@ -52,7 +52,7 @@ void solve() {
         int tp = ar.top();
         v<int> s;
         if (sz(ar) <= k-1) {
-            _for(i, k-1) {
+            while(!ar.empty()) {
                 if (ar.top() != 1) {
                     N;
                     return;
