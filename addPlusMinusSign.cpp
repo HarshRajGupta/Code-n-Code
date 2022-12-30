@@ -56,6 +56,7 @@ void solve() {
             }
         }
     }
+    cout << ans;
 }
 
 signed main() {
