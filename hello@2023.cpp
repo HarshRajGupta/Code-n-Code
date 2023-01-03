@@ -48,7 +48,7 @@ void ans(int n) {
 }
 
 void solve(void) {
-    for (int i = 3; i <= 100; i += 2) ans(i);
+    for (int i = 3; i <= 1000; i += 2) ans(i);
 }
 
 signed main(void) {
