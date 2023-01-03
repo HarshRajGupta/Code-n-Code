@@ -52,14 +52,15 @@ void solve(void) {
         auto t = ans(n);
         if (t.ft == 0) {
             cout << "NO";
-            return;
         }
         else {
+            cout << "YES\n";
             _for(i, n) {
                 if (i & 1) cout << t.sd << " ";
                 else cout << t.ft << " ";
             }
         }
+        return;
     }
     cout << "YES\n";
     _for(i, n) {
