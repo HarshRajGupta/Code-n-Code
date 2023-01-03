@@ -50,6 +50,7 @@ void solve() {
         prev += arr[i];
         if (prev < 0) {
             ct++;
+            debug(i)
             prev -= (2 * arr[i]);
         }
     }
@@ -58,6 +59,7 @@ void solve() {
         prev += arr[i + 1];
         if (prev > 0) {
             ct++;
+            debug(i + 1)
             prev -= 2 * arr[i + 1];
         }
     }
