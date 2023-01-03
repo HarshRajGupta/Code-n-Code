@@ -10,10 +10,6 @@ using namespace std;
 #define debug(...) ;
 #endif
 
-#ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
-#endif
-
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -36,52 +32,33 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-pair<int, int> ans(int n) {
-    for (int i = -5000; i < 0; ++i) {
-        for (int j = 1; j <= 5000; ++j) {
+void ans(int n) {
+    for (int i = -100; i < 0; ++i) {
+        for (int j = 1; j <= 100; ++j) {
             if (i + j == (((n + 1) / 2)*i + ((n - 1) / 2)*j)) {
-                return {i, j};
+                cout << n << " " << i << " " << j << ln;
+                return;
             }
             if (i + j == (((n - 1) / 2)*i + ((n + 1) / 2)*j)) {
-                return {j, i};
+                cout << n << " " << j << " " << i << ln;
+                return;
             }
         }
     }
-    return {0, 0};
+    debug(n)
 }
 
 void solve(void) {
-    int n; cin >> n;
-    if (n & 1) {
-        auto t = ans(n);
-        if (t.ft == 0) {
-            cout << "NO";
-        }
-        else {
-            cout << "YES\n";
-            _for(i, n) {
-                if (i & 1) cout << t.sd << " ";
-                else cout << t.ft << " ";
-            }
-        }
-        return;
-    }
-    cout << "YES\n";
-    _for(i, n) {
-        if (i & 1) cout << 1 << " ";
-        else cout << -1 << " ";
-    }
+    for (int i = 3; i <= 1000; i += 2) ans(i);
 }
 
-signed main() {
+signed main(void) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u;
-    cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    solve();
 #ifdef __TAG2
     __TAG2
 #endif
