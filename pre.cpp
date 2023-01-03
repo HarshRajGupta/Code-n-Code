@@ -58,11 +58,11 @@ void solve() {
         }
     }
     prev = 0;
-    bw(i, m - 1) {
-        prev += arr[i];
-        if (prev > 0 && i != m - 1) {
+    bw(i, m - 2) {
+        prev += arr[i+1];
+        if (prev > 0 && i != m - 2) {
             ct++;
-            prev -= 2 * arr[i];
+            prev -= 2 * arr[i+1];
         }
     }
     cout << ct;
