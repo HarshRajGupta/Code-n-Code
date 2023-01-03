@@ -42,6 +42,7 @@ void solve() {
         cout << "NO";
         return;
     }
+    cout << "YES\n";
     _for(i, n) {
         if (i & 1) cout << 1 << " ";
         else cout << -1 << ' ';
