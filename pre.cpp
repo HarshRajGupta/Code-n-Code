@@ -45,7 +45,7 @@ void solve() {
         cout << 0;
         return;
     }
-    if (arr[m - 1] > 0) {
+    if (arr[m - 1] > 0 && m != 1) {
         ct++;
         arr[m - 1] *= -1;
     }
