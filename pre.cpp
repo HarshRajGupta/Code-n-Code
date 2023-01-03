@@ -55,7 +55,7 @@ void solve() {
     }
     prev = 0;
     bw(i, m - 1) {
-        prev += arr[m];
+        prev += arr[i];
         if (prev > 0) {
             ct++;
             prev -= 2 * arr[i];
