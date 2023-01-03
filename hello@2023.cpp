@@ -32,23 +32,40 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void ans(int n) {
+pair<int, int> ans(int n) {
     for (int i = -5000; i < 0; ++i) {
         for (int j = 1; j <= 5000; ++j) {
             if (i + j == (((n + 1) / 2)*i + ((n - 1) / 2)*j)) {
-                cout << n << " " << i << " " << j << ln;
-                return;
+                return {i, j};
             }
             if (i + j == (((n - 1) / 2)*i + ((n + 1) / 2)*j)) {
-                cout << n << " " << j << " " << i << ln;
-                return;
+                return {j, i};
             }
         }
     }
+    return {0, 0};
 }
 
 void solve(void) {
-    for (int i = 3; i <= 1000; i += 2) ans(i);
+    int n; cin >> n;
+    if (n & 1) {
+        auto t = ans(n);
+        if (t.ft == 0) {
+            cout << "NO";
+            return;
+        }
+        else {
+            _for(i, n) {
+                if (i & 1) cout << t.sd << " ";
+                else cout << t.ft << " ";
+            }
+        }
+    }
+    cout << "YES\n";
+    _for(i, n) {
+        if (i & 1) cout << 1 << " ";
+        else cout << -1 << " ";
+    }
 }
 
 signed main(void) {
