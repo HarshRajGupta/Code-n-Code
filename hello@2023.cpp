@@ -36,19 +36,39 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() { 
-    /* Code */
+void solve() {
+    int n; cin >> n;
+    string s; cin >> s;
+    bool l = false, r = false;
+    _for(i, n) {
+        if (s[i] == 'L') l = true;
+        else r = true;
+        if (i < n - 1 && s[i] == 'R' && s[i + 1] == 'L') {
+            cout << 0;
+            return;
+        }
+    }
+    if (!l || !r) {
+        cout << -1;
+        return;
+    }
+    _for(i, n - 1) {
+        if (s[i] == 'L' && s[i + 1] == 'R') {
+            cout << i + 1;
+            return;
+        }
+    }
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false); 
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u; 
+    uint32_t tCs = 1u;
     cin >> tCs;
-    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
