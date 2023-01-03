@@ -10,6 +10,10 @@ using namespace std;
 #define debug(...) ;
 #endif
 
+#ifndef __RUN
+#define __RUN solve(), std::cout << '\n'
+#endif
+
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -66,7 +70,7 @@ void solve(void) {
     }
 }
 
-signed main(void) {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     pre[2][0] = 1, pre[2][1] = -1;
@@ -74,7 +78,9 @@ signed main(void) {
 #ifdef __TAG1
     __TAG1
 #endif
-    solve();
+    uint32_t tCs = 1u;
+    cin >> tCs;
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
