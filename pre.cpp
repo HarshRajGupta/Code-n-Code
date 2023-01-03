@@ -41,10 +41,6 @@ void solve() {
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
     int ct = 0;
-    if (n == 1) {
-        cout << 0;
-        return;
-    }
     if (arr[m - 1] > 0 && m != 1) {
         ct++;
         arr[m - 1] *= -1;
