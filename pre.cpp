@@ -41,10 +41,10 @@ void solve() {
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
     int ct = 0;
-    if (arr[m - 1] > 0 && m != 1) {
-        ct++;
-        arr[m - 1] *= -1;
-    }
+    // if (arr[m - 1] > 0 && m != 1) {
+    //     ct++;
+    //     arr[m - 1] *= -1;
+    // }
     int prev = 0;
     rep(i, m, n) {
         prev += arr[i];
