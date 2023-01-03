@@ -50,7 +50,7 @@ void solve() {
         prev += arr[i];
         if (prev < 0) {
             ct++;
-            prev -= 2 * arr[i];
+            prev -= (2 * arr[i]);
         }
     }
     prev = 0;
