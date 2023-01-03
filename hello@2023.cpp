@@ -38,25 +38,13 @@ const char ln = '\n';
 
 void solve() {
     int n; cin >> n;
-    string s; cin >> s;
-    bool l = false, r = false;
-    _for(i, n) {
-        if (s[i] == 'L') l = true;
-        else r = true;
-        if (i < n - 1 && s[i] == 'R' && s[i + 1] == 'L') {
-            cout << 0;
-            return;
-        }
-    }
-    if (!l || !r) {
-        cout << -1;
+    if (n & 1) {
+        cout << "NO";
         return;
     }
-    _for(i, n - 1) {
-        if (s[i] == 'L' && s[i + 1] == 'R') {
-            cout << i + 1;
-            return;
-        }
+    _for(i, n) {
+        if (i & 1) cout << 1 << " ";
+        else cout << -1 << ' ';
     }
 }
 
