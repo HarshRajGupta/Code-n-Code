@@ -33,14 +33,14 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void ans(int n) {
-    for (int i = -100; i < 0; ++i) {
-        for (int j = 1; j <= 100; ++j) {
+    for (int i = -5000; i < 0; ++i) {
+        for (int j = 1; j <= 5000; ++j) {
             if (i + j == (((n + 1) / 2)*i + ((n - 1) / 2)*j)) {
-                cout << n << " " << i << " " << j << ln;
+                cout << '{' << i << ", " << j << "}, \n";
                 return;
             }
             if (i + j == (((n - 1) / 2)*i + ((n + 1) / 2)*j)) {
-                cout << n << " " << j << " " << i << ln;
+                cout << '{' << j << ", " << i << "}, \n";
                 return;
             }
         }
