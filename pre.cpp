@@ -60,7 +60,7 @@ void solve() {
     prev = 0;
     bw(i, m - 1) {
         prev += arr[i];
-        if (prev > 0) {
+        if (prev > 0 && i != m - 1) {
             ct++;
             prev -= 2 * arr[i];
         }
