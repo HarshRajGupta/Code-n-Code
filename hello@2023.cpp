@@ -33,6 +33,10 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void ans(int n) {
+    if (n % 2 == 0) {
+        cout << "{-1, 1},\n";
+        return;
+    }
     for (int i = -5000; i < 0; ++i) {
         for (int j = 1; j <= 5000; ++j) {
             if (i + j == (((n + 1) / 2)*i + ((n - 1) / 2)*j)) {
@@ -49,7 +53,7 @@ void ans(int n) {
 }
 
 void solve(void) {
-    for (int i = 3; i <= 1000; i += 2) ans(i);
+    for (int i = 3; i <= 1000; ++i) ans(i);
 }
 
 signed main(void) {
