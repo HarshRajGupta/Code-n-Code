@@ -1,82 +1,37 @@
-#ifndef __FAST_IO
-#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
-#endif
-
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef debug
-#define debug(...) ;
-#endif
+int main() {
+    int N, K, S;
+    cin >> N >> K >> N >> K >> S; // read in the input
 
-#ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
-#endif
-
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define int long long
-#define ll long double
-
-#define Y std::cout << "YES";
-#define N std::cout << "NO";
-
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
-
-#define v std::vector
-#define maxHeap std::priority_queue<int>
-#define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
-
-#define ft first
-#define sd second
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-void solve() {
-    int n, m; cin >> n >> m;
-    v<int> arr(n);
-    _for(i, n) cin >> arr[i];
-    int ct = 0;
-    // if (arr[m - 1] > 0 && m != 1) {
-    //     ct++;
-    //     arr[m - 1] *= -1;
-    // }
-    int prev = 0;
-    rep(i, m, n) {
-        prev += arr[i];
-        if (prev < 0) {
-            ct++;
-            debug(i)
-            prev -= (2 * arr[i]);
-        }
+    // check if an SS-good sequence is possible
+    if (S < -N || S > N) {
+        cout << -2 << endl; // if not, print -2 and exit
+        return 0;
     }
-    prev = 0;
-    bw(i, m - 2) {
-        prev += arr[i + 1];
-        if (prev > 0) {
-            ct++;
-            debug(i + 1)
-            prev -= 2 * arr[i + 1];
-        }
-    }
-    cout << ct;
-}
 
-signed main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-#ifdef __TAG1
-    __TAG1
-#endif
-    uint32_t tCs = 1u;
-    cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
-#ifdef __TAG2
-    __TAG2
-#endif
+    // initialize the SS-good sequence
+    vector<int> B(N);
+    int sum = 0;
+    for (int i = N-1; i >= 0; i--) {
+        if (sum + K < S) {
+            B[i] = 1;
+            sum += K;
+        } else if (sum - K > S) {
+            B[i] = -1;
+            sum -= K;
+        } else {
+            B[i] = 0;
+        }
+        K *= 2;
+    }
+
+    // print the SS-good sequence
+    for (int i = 0; i < N; i++) {
+        cout << B[i] << " ";
+    }
+    cout << endl;
+
     return 0;
 }
