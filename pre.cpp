@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
     int N, K, S;
-    cin >> N >> K >> N >> K >> S; // read in the input
+    cin >> N >> K >> S; // read in the input
 
     // check if an SS-good sequence is possible
     if (S < -N || S > N) {
