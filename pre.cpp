@@ -6,10 +6,10 @@ int main() {
     cin >> N >> K >> S; // read in the input
 
     // check if an SS-good sequence is possible
-    if (S < -N || S > N) {
-        cout << -2 << endl; // if not, print -2 and exit
-        return 0;
-    }
+    // if (S < -N || S > N) {
+    //     cout << -2 << endl; // if not, print -2 and exit
+    //     return 0;
+    // }
 
     // initialize the SS-good sequence
     vector<int> B(N);
