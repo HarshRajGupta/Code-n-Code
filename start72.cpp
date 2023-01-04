@@ -52,13 +52,12 @@ bool tp(const int k, int n) {
 bool powerSum(v<int> &arr, const int k, int n, map<int, int> np) {
     debug(n)
     if (np[n]) return false;
-    np[n] = 1;
     if (n == 0) return true;
     int z = log(abs(n)) / log(k);
     if (z >= sz(arr)) {
-        np[n] = 0;
         return false;
     }
+    np[n] = 1;
     if (n > 0) {
         if (tp(k, n)) {
             if (arr[z] <= 0) {
