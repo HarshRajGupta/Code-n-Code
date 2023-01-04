@@ -67,6 +67,7 @@ vector<int> longestGoodSequence(vector<int>& array) {
 }
 
 
+
 void solve() {
     /* Code */
     int n; cin >> n;
