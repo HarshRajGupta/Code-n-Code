@@ -36,12 +36,12 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-vector<int> longestGoodSequence(vector<int>& array) {
-    int n = array.size();
+v<int> longestGoodSequence(vector<int>& array) {
+    int n = sz(array);
     // We will keep track of the current good sequence using a stack.
     // The stack will store the indices of the good sequence.
     vector<int> stack;
-    for (int i = 0; i < n; i++) {
+    _for(i, n) {
         // If the current element is a 1, we can always add it to the good sequence.
         if (array[i] == 1) {
             stack.push_back(i);
@@ -49,7 +49,7 @@ vector<int> longestGoodSequence(vector<int>& array) {
             // If the current element is a 0, we need to check whether it is part of a good sequence.
             // If it is, we will add it to the good sequence. Otherwise, we will discard it.
             int cnt_ones = 0, cnt_zeros = 0;
-            for (int j = i + 1; j < n; j++) {
+            for (int j = i; j < n; j++) {
                 if (array[j] == 1) {
                     cnt_ones++;
                 } else {
@@ -62,11 +62,8 @@ vector<int> longestGoodSequence(vector<int>& array) {
             }
         }
     }
-    // The final good sequence is the one stored in the stack.
     return stack;
 }
-
-
 
 void solve() {
     /* Code */
@@ -75,7 +72,7 @@ void solve() {
     _for(i, n) cin >> arr[i];
     auto ans = longestGoodSequence(arr);
     cout << sz(ans) << ln;
-    _for(i, sz(ans)) cout << ans[i] + 1 << " ";
+    _for(i, sz(ans)) cout << ans[i] << " ";
 }
 
 signed main() {
