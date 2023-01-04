@@ -93,7 +93,7 @@ void solve() {
     _for(i, n) cin >> arr[i];
     auto ans = longestGoodSequence(arr);
     cout << sz(ans) << ln;
-    _for(i, sz(ans)) cout << ans[i] << " ";
+    _for(i, sz(ans)) cout << ans[i] + 1 << " ";
 }
 
 signed main() {
