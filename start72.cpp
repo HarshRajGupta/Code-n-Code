@@ -38,12 +38,9 @@ const char ln = '\n';
 
 void solve() {
     int n; cin >> n;
-    for (int i = 2; i * i <= n; ++i) {
+    for (int i = 2; i * i < n; ++i) {
         if (n % i == 0) {
-            if (n / i == i) {
-                cout << "1 " << i << " " << n;
-                return;
-            } else {
+            {
                 cout << "1 " << i << " " << n / i;
                 return;
             }
