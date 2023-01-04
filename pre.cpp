@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
     int N, K, S;
-    cin >> N >> K >> S; // read in the input
+    cin >> N >> K >> N >> K >> S; // read in the input
 
     // check if an SS-good sequence is possible
     // if (S < -N || S > N) {
@@ -15,10 +15,10 @@ int main() {
     vector<int> B(N);
     int sum = 0;
     for (int i = N-1; i >= 0; i--) {
-        if (sum + K < S) {
+        if (sum + K <= S) {
             B[i] = 1;
             sum += K;
-        } else if (sum - K > S) {
+        } else if (sum - K >= S) {
             B[i] = -1;
             sum -= K;
         } else {
