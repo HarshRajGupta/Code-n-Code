@@ -36,8 +36,8 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-v<int> longestGoodSequence(vector<int>& array) {
-    int n = sz(array);
+vector<int> longestGoodSequence(vector<int>& array) {
+    int n = array.size();
     // We will keep track of the current good sequence using a stack.
     // The stack will store the indices of the good sequence.
     vector<int> stack;
