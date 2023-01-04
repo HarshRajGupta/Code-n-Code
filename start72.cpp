@@ -36,17 +36,28 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    int n; cin >> n;
-    for (int i = 2; i * i < n; ++i) {
-        if (n % i == 0) {
-            {
-                cout << "1 " << i << " " << n / i;
-                return;
-            }
-        }
+bool tp(const int k, int n) {
+    int l = log(n) / log(k), res = 1;
+    _for(i, l) res *= k;
+    if (res == n) return true;
+    return false;
+}
+
+bool powerSum(v<int> &arr, const int k, int n) {
+    if (log(n) / log(k) > sz(arr) - 1) return false;
+    if (n > 0) {
+        auto t1 = arr, t2 = arr;
+
+    } else {
+
     }
-    cout << -1;
+}
+void solve() {
+    // int n, k, s, i = 0; cin >> n >> k >> s;
+    // v<int> arr(n);
+    int n, k; cin >> n >> k;
+    cout << tp(n, k);
+
 }
 
 signed main() {
