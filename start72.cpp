@@ -64,39 +64,48 @@ bool powerSum(v<int> &arr, const int k, int n) {
             return false;
         }
         auto t1 = arr, t2 = arr;
-        t1[z]++;
-        if (powerSum(t1, k, n - pz(k, z))) {
-            arr = t1;
-            return true;
+        if (t1[z] <= 0ll) {
+            t1[z]++;
+            if (powerSum(t1, k, n - pz(k, z))) {
+                arr = t1;
+                return true;
+            }
         }
         if (z + 1 >= sz(arr))
             return false;
-        t2[z + 1]++;
-        if (powerSum(t2, k, n - pz(k, z + 1))) {
-            arr = t2;
-            return true;
+        if (t2[z + 1] <= 0) {
+            t2[z + 1]++;
+            if (powerSum(t2, k, n - pz(k, z + 1))) {
+                arr = t2;
+                return true;
+            }
         }
         return false;
     } else {
         int m = n * -1;
         if (tp(k, m)) {
-            if (arr[z] < 0) {
+            if (arr[z] >= 0) {
                 arr[z]--;
                 return true;
             }
+            return false;
         }
         auto t1 = arr, t2 = arr;
-        --t1[z];
-        if (powerSum(t1, k, n + pz(k, z))) {
-            arr = t1;
-            return true;
+        if (t1[z] >= 0) {
+            --t1[z];
+            if (powerSum(t1, k, n + pz(k, z))) {
+                arr = t1;
+                return true;
+            }
         }
         if (z + 1 >= sz(arr))
             return false;
-        t2[z + 1]--;
-        if (powerSum(t2, k, n + pz(k, z + 1))) {
-            arr = t2;
-            return true;
+        if (t2[z + 1] >= 0) {
+            t2[z + 1]--;
+            if (powerSum(t2, k, n + pz(k, z + 1))) {
+                arr = t2;
+                return true;
+            }
         }
         return false;
     }
