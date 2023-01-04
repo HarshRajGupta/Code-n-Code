@@ -36,33 +36,53 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+// v<int> longestGoodSequence(v<int>& array) {
+//     int n = sz(array);
+//     // We will keep track of the current good sequence using a stack.
+//     // The stack will store the indices of the good sequence.
+//     v<int> stack;
+//     _for(i, n) {
+//         // If the current element is a 1, we can always add it to the good sequence.
+//         if (array[i] == 1) {
+//             stack.push_back(i);
+//         } else {
+//             // If the current element is a 0, we need to check whether it is part of a good sequence.
+//             // If it is, we will add it to the good sequence. Otherwise, we will discard it.
+//             int cnt_ones = 0, cnt_zeros = 0;
+//             for (int j = i; j < n; j++) {
+//                 if (array[j] == 1) {
+//                     cnt_ones++;
+//                 } else {
+//                     cnt_zeros++;
+//                 }
+//                 if (cnt_ones - cnt_zeros == j - i) {
+//                     stack.push_back(i);
+//                     break;
+//                 }
+//             }
+//         }
+//     }
+//     return stack;
+// }
+
 vector<int> longestGoodSequence(vector<int>& array) {
     int n = array.size();
-    // We will keep track of the current good sequence using a stack.
-    // The stack will store the indices of the good sequence.
     vector<int> stack;
+    int cnt_ones = 0, cnt_zeros = 0;
     for (int i = 0; i < n; i++) {
-        // If the current element is a 1, we can always add it to the good sequence.
         if (array[i] == 1) {
             stack.push_back(i);
+            cnt_ones++;
         } else {
-            // If the current element is a 0, we need to check whether it is part of a good sequence.
-            // If it is, we will add it to the good sequence. Otherwise, we will discard it.
-            int cnt_ones = 0, cnt_zeros = 0;
-            for (int j = i; j < n; j++) {
-                if (array[j] == 1) {
-                    cnt_ones++;
-                } else {
-                    cnt_zeros++;
-                }
-                if (cnt_ones - cnt_zeros == j - i) {
-                    stack.push_back(i);
-                    break;
-                }
+            cnt_zeros++;
+            if (cnt_ones - cnt_zeros == i) {
+                stack.push_back(i);
             }
         }
     }
-    // The final good sequence is the one stored in the stack.
+    if (array.back() == 1) {
+        stack.push_back(n);
+    }
     return stack;
 }
 
