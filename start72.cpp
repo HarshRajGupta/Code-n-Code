@@ -49,7 +49,7 @@ bool tp(const int k, int n) {
     return false;
 }
 
-bool powerSum(v<int> &arr, const int k, int n) {
+bool powerSum(v<int> &arr, const int k, int n, map<int, int> np) {
     debug(n)
     if (n == 0) return true;
     int z = log(abs(n)) / log(k);
@@ -66,7 +66,7 @@ bool powerSum(v<int> &arr, const int k, int n) {
         auto t1 = arr, t2 = arr;
         if (t1[z] <= 0ll) {
             t1[z]++;
-            if (powerSum(t1, k, n - pz(k, z))) {
+            if (powerSum(t1, k, n - pz(k, z), np)) {
                 arr = t1;
                 return true;
             }
@@ -75,7 +75,7 @@ bool powerSum(v<int> &arr, const int k, int n) {
             return false;
         if (t2[z + 1] <= 0) {
             t2[z + 1]++;
-            if (powerSum(t2, k, n - pz(k, z + 1))) {
+            if (powerSum(t2, k, n - pz(k, z + 1), np)) {
                 arr = t2;
                 return true;
             }
@@ -93,7 +93,7 @@ bool powerSum(v<int> &arr, const int k, int n) {
         auto t1 = arr, t2 = arr;
         if (t1[z] >= 0) {
             --t1[z];
-            if (powerSum(t1, k, n + pz(k, z))) {
+            if (powerSum(t1, k, n + pz(k, z), np)) {
                 arr = t1;
                 return true;
             }
@@ -102,7 +102,7 @@ bool powerSum(v<int> &arr, const int k, int n) {
             return false;
         if (t2[z + 1] >= 0) {
             t2[z + 1]--;
-            if (powerSum(t2, k, n + pz(k, z + 1))) {
+            if (powerSum(t2, k, n + pz(k, z + 1), np)) {
                 arr = t2;
                 return true;
             }
@@ -115,7 +115,8 @@ bool powerSum(v<int> &arr, const int k, int n) {
 void solve() {
     int n, k, s; cin >> n >> k >> s;
     v<int> arr(n);
-    if (powerSum(arr, k, s)) {
+    map<int, int> np;
+    if (powerSum(arr, k, s, np)) {
         _for(i, n) cout << arr[i] << " ";
     } else {
         cout << -2;
