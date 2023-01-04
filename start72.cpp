@@ -50,6 +50,7 @@ bool tp(const int k, int n) {
 }
 
 bool powerSum(v<int> &arr, const int k, int n) {
+    debug(n)
     if (n == 0) return true;
     int z = log(abs(n)) / log(k);
     if (z >= sz(arr))
