@@ -51,16 +51,22 @@ bool tp(const int k, int n) {
 
 bool powerSum(v<int> &arr, const int k, int n, map<int, int> np) {
     debug(n)
+    if (np[n]) return false;
+    np[n] = 1;
     if (n == 0) return true;
     int z = log(abs(n)) / log(k);
-    if (z >= sz(arr))
+    if (z >= sz(arr)) {
+        np[n] = 0;
         return false;
+    }
     if (n > 0) {
         if (tp(k, n)) {
             if (arr[z] <= 0) {
                 arr[z]++;
+                np[n] = 0;
                 return true;
             }
+            np[n] = 0;
             return false;
         }
         auto t1 = arr, t2 = arr;
@@ -68,26 +74,33 @@ bool powerSum(v<int> &arr, const int k, int n, map<int, int> np) {
             t1[z]++;
             if (powerSum(t1, k, n - pz(k, z), np)) {
                 arr = t1;
+                np[n] = 0;
                 return true;
             }
         }
-        if (z + 1 >= sz(arr))
+        if (z + 1 >= sz(arr)) {
+            np[n] = 0;
             return false;
+        }
         if (t2[z + 1] <= 0) {
             t2[z + 1]++;
             if (powerSum(t2, k, n - pz(k, z + 1), np)) {
                 arr = t2;
+                np[n] = 0;
                 return true;
             }
         }
+        np[n] = 0;
         return false;
     } else {
         int m = n * -1;
         if (tp(k, m)) {
             if (arr[z] >= 0) {
                 arr[z]--;
+                np[n] = 0;
                 return true;
             }
+            np[n] = 0;
             return false;
         }
         auto t1 = arr, t2 = arr;
@@ -95,20 +108,26 @@ bool powerSum(v<int> &arr, const int k, int n, map<int, int> np) {
             --t1[z];
             if (powerSum(t1, k, n + pz(k, z), np)) {
                 arr = t1;
+                np[n] = 0;
                 return true;
             }
         }
-        if (z + 1 >= sz(arr))
+        if (z + 1 >= sz(arr)) {
+            np[n] = 0;
             return false;
+        }
         if (t2[z + 1] >= 0) {
             t2[z + 1]--;
             if (powerSum(t2, k, n + pz(k, z + 1), np)) {
                 arr = t2;
+                np[n] = 0;
                 return true;
             }
         }
+        np[n] = 0;
         return false;
     }
+    np[n] = 0;
     return false;
 }
 
