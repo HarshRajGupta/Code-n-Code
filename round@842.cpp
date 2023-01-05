@@ -116,7 +116,7 @@ void solve() {
             auto t = q.lower_bound(P[i]);
             if (*t > P[i]) {
                 if (c2(arr)) {
-                    debug(arr, q, p);
+                    debug(arr, q, p, i, P, Q);
                 }
                 cout << "NO";
                 return;
