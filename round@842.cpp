@@ -36,6 +36,21 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+bool check(v<int> arr, v<int> p, v<int> q) {
+    set<int> P, Q;
+    _for(i, sz(arr)) {
+        if (arr[i] != max(p[i], q[i])) {
+            return false;
+        }
+        P.insert(p[i]);
+        Q.insert(q[i]);
+        if (sz(P) != i + 1 || sz(Q) != i + 1) {
+            return false;
+        }
+    }
+    return true;
+}
+
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
@@ -90,7 +105,7 @@ void solve() {
         }
     }
     // cout << *p.lower_bound(5);
-    debug(arr)
+    if (!check(arr, P, Q))  debug(arr)
     cout << "YES\n";
     _for(i, n) cout << P[i] << ' ';
     cout << ln;
