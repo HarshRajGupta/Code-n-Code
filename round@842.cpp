@@ -78,6 +78,7 @@ void solve() {
     //         q.erase(t);
     //     }
     // }
+    cout << *p.lower_bound(5);
     cout << "YES\n";
     _for(i, n) cout << P[i] << ' ';
     cout << ln;
