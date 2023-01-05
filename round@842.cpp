@@ -105,7 +105,7 @@ void solve() {
                 cout << "NO";
                 return;
             }
-            if (t == p.begin()) {
+            if (t == p.begin() || *t == Q[i]) {
                 P[i] = *t;
                 p.erase(*t);
             } else {
@@ -121,7 +121,7 @@ void solve() {
                 cout << "NO";
                 return;
             }
-            if (t == q.begin()) {
+            if (t == q.begin() || *t == P[i]) {
                 Q[i] = *t;
                 q.erase(*t);
             } else {
