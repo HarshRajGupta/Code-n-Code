@@ -85,7 +85,7 @@ void solve() {
                 q.erase(*t);
             } else {
                 Q[i] = *(--t);
-                q.erase(P[i]);
+                q.erase(Q[i]);
             }
         }
     }
