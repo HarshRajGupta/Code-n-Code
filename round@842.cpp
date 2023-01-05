@@ -37,8 +37,17 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n; cin >> n;
-    cout << n - 1;
+    int n, k; cin >> n >> k;
+    v<int> arr(n);
+    _for(i, n) cin >> arr[i];
+    int cp = 1, ct = 0;
+    _for(i, n) {
+        if (cp == arr[i]) cp++;
+        else ct++;
+    }
+    int ans = ct / k;
+    if (ct % k != 0) ans++;
+    cout << ans;
 }
 
 signed main() {
