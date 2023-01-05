@@ -60,20 +60,20 @@ void solve() {
     }
     _for(i, n) {
         if (P[i] == 0) {
-            auto t = p.lower_bound(Q[i]);
+            auto t = p.lower_bound(Q[i]-1);
             if (*t > Q[i]) {
                 // cout << *t << " " << Q[i] << " " << ln;
-                for (int j : p) cout << j << " ";
-                cout << ln;
-                cout << "1NO";
+                // for (int j : p) cout << j << " ";
+                // cout << ln;
+                cout << "NO";
                 return;
             }
             P[i] = *t;
             p.erase(*t);
         } else {
-            auto t = q.lower_bound(P[i]);
+            auto t = q.lower_bound(P[i]-1);
             if (*t > P[i]) {
-                cout << "2NO";
+                cout << "NO";
                 return;
             }
             Q[i] = *t;
