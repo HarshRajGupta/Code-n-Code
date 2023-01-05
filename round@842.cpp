@@ -87,7 +87,7 @@ void solve() {
             q.erase(arr[i]);
         } else {
             if (c2(arr)) {
-                debug(arr);
+                debug(arr, 1);
             }
             cout << "NO";
             return;
@@ -100,7 +100,7 @@ void solve() {
             // debug(*t, Q[i] - 1, p)
             if (*t > Q[i]) {
                 if (c2(arr)) {
-                    debug(arr);
+                    debug(arr, 2);
                 }
                 cout << "NO";
                 return;
@@ -116,7 +116,7 @@ void solve() {
             auto t = q.lower_bound(P[i]);
             if (*t > P[i]) {
                 if (c2(arr)) {
-                    debug(arr);
+                    debug(arr, 3);
                 }
                 cout << "NO";
                 return;
