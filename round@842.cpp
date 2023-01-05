@@ -61,13 +61,13 @@ void solve() {
     debug(p, q)
     _for(i, n) {
         if (P[i] == 0) {
-            // auto t = p.lower_bound(Q[i]);
-            // if (*t > Q[i]) {
-            //     cout << "NO";
-            //     return;
-            // }
-            // P[i] = *t;
-            // p.erase(t);
+            auto t = p.lower_bound(Q[i]);
+            if (*t > Q[i]) {
+                cout << "NO";
+                return;
+            }
+            P[i] = *t;
+            p.erase(*t);
         } 
     }
     // cout << *p.lower_bound(5);
