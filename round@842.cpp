@@ -62,7 +62,7 @@ void solve() {
     _for(i, n) {
         if (P[i] == 0) {
             auto t = p.lower_bound(Q[i]);
-            debug(*t, Q[i] - 1, p)
+            // debug(*t, Q[i] - 1, p)
             if (*t > Q[i]) {
                 cout << "NO";
                 return;
