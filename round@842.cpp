@@ -77,7 +77,7 @@ void solve() {
     //         q.erase(t);
     //     }
     // }
-    cout << "YES";
+    cout << "YES\n";
     _for(i, n) cout << P[i] << ' ';
     cout << ln;
     _for(i, n) cout << Q[i] << ' ';
