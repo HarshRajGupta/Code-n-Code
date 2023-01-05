@@ -58,6 +58,7 @@ void solve() {
             return;
         }
     }
+    debug(p, q)
     // _for(i, n) {
     //     if (P[i] == 0) {
     //         auto t = p.lower_bound(Q[i]);
