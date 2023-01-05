@@ -41,7 +41,7 @@ void solve(void) {
                     _for(e, 5) {
                         ct++;
                         cout << 5 << ln;
-                        cout << a << ' ' << b << ' ' << c << ' ' << d << ' ' << e << ln;
+                        cout << a + 1 << ' ' << b + 1 << ' ' << c + 1 << ' ' << d + 1 << ' ' << e + 1 << ln;
                     }
                 }
             }
