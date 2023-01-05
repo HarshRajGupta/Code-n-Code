@@ -37,17 +37,50 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n, k; cin >> n >> k;
+    int n; cin >> n;
     v<int> arr(n);
-    _for(i, n) cin >> arr[i];
-    int cp = 1, ct = 0;
+    set<int> p, q;
+    v<int> P(n), Q(n);
     _for(i, n) {
-        if (cp == arr[i]) cp++;
-        else ct++;
+        cin >> arr[i];
+        p.insert(i + 1);
+        q.insert(i + 1);
     }
-    int ans = ct / k;
-    if (ct % k != 0) ans++;
-    cout << ans;
+    _for(i, n) {
+        if (p.find(arr[i]) != p.end()) {
+            P[i] = arr[i];
+            p.erase(arr[i]);
+        } else if (q.find(arr[i]) != q.end()) {
+            Q[i] = arr[i];
+            q.erase(arr[i]);
+        } else {
+            cout << "NO";
+            return;
+        }
+    }
+    // _for(i, n) {
+    //     if (P[i] == 0) {
+    //         auto t = p.lower_bound(Q[i]);
+    //         if (*t > Q[i]) {
+    //             cout << "NO";
+    //             return;
+    //         }
+    //         P[i] = *t;
+    //         p.erase(t);
+    //     } else {
+    //         auto t = q.lower_bound(P[i]);
+    //         if (*t > P[i]) {
+    //             cout << "NO";
+    //             return;
+    //         }
+    //         Q[i] = *t;
+    //         q.erase(t);
+    //     }
+    // }
+    cout << "YES";
+    _for(i, n) cout << P[i] << ' ';
+    cout << ln;
+    _for(i, n) cout << Q[i] << ' ';
 }
 
 signed main() {
