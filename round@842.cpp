@@ -37,34 +37,34 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 bool check(v<int> arr, v<int> p, v<int> q) {
-    set<int> P, Q;
-    _for(i, sz(arr)) {
-        if (arr[i] != max(p[i], q[i])) {
-            return false;
-        }
-        P.insert(p[i]);
-        Q.insert(q[i]);
-        if (sz(P) != i + 1 || sz(Q) != i + 1) {
-            return false;
-        }
-    }
+    // set<int> P, Q;
+    // _for(i, sz(arr)) {
+    //     if (arr[i] != max(p[i], q[i])) {
+    //         return false;
+    //     }
+    //     P.insert(p[i]);
+    //     Q.insert(q[i]);
+    //     if (sz(P) != i + 1 || sz(Q) != i + 1) {
+    //         return false;
+    //     }
+    // }
     return true;
 }
 
 bool c2(v<int> arr) {
-    v<int> p = {1, 2, 3, 4, 5}, q = {1, 2, 3, 4, 5};
-    do {
-        do {
-            int i = 0;
-            for (; i < 5; ++i) {
-                if (arr[i] != max(p[i], q[i])) break;
-            }
-            if (i == 5) {
-                return true;
-            }
-        } while (next_permutation(all(q)));
-        q = {1, 2, 3, 4, 5};
-    } while (next_permutation(all(p)));
+    // v<int> p = {1, 2, 3, 4, 5}, q = {1, 2, 3, 4, 5};
+    // do {
+    //     do {
+    //         int i = 0;
+    //         for (; i < 5; ++i) {
+    //             if (arr[i] != max(p[i], q[i])) break;
+    //         }
+    //         if (i == 5) {
+    //             return true;
+    //         }
+    //     } while (next_permutation(all(q)));
+    //     q = {1, 2, 3, 4, 5};
+    // } while (next_permutation(all(p)));
     return false;
 }
 
