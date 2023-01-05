@@ -68,7 +68,15 @@ void solve() {
             }
             P[i] = *t;
             p.erase(*t);
-        } 
+        } else {
+            auto t = q.lower_bound(P[i]);
+            if (*t > P[i]) {
+                cout << "NO";
+                return;
+            }
+            Q[i] = *t;
+            q.erase(*t);
+        }
     }
     // cout << *p.lower_bound(5);
     cout << "YES\n";
