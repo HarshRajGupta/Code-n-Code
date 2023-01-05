@@ -59,26 +59,18 @@ void solve() {
         }
     }
     debug(p, q)
-    // _for(i, n) {
-    //     if (P[i] == 0) {
-    //         auto t = p.lower_bound(Q[i]);
-    //         if (*t > Q[i]) {
-    //             cout << "NO";
-    //             return;
-    //         }
-    //         P[i] = *t;
-    //         p.erase(t);
-    //     } else {
-    //         auto t = q.lower_bound(P[i]);
-    //         if (*t > P[i]) {
-    //             cout << "NO";
-    //             return;
-    //         }
-    //         Q[i] = *t;
-    //         q.erase(t);
-    //     }
-    // }
-    cout << *p.lower_bound(5);
+    _for(i, n) {
+        if (P[i] == 0) {
+            // auto t = p.lower_bound(Q[i]);
+            // if (*t > Q[i]) {
+            //     cout << "NO";
+            //     return;
+            // }
+            // P[i] = *t;
+            // p.erase(t);
+        } 
+    }
+    // cout << *p.lower_bound(5);
     cout << "YES\n";
     _for(i, n) cout << P[i] << ' ';
     cout << ln;
