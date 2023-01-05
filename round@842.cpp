@@ -51,6 +51,23 @@ bool check(v<int> arr, v<int> p, v<int> q) {
     return true;
 }
 
+bool c2(v<int> arr) {
+    v<int> p = {1, 2, 3, 4, 5}, q = {1, 2, 3, 4, 5};
+    do {
+        do {
+            int i = 0;
+            for (; i < 5; ++i) {
+                if (arr[i] != max(p[i], q[i])) break;
+            }
+            if (i == 5) {
+                return true;
+            }
+        } while (next_permutation(all(q)));
+        q = {1, 2, 3, 4, 5};
+    } while (next_permutation(all(p)));
+    return false;
+}
+
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
@@ -69,6 +86,9 @@ void solve() {
             Q[i] = arr[i];
             q.erase(arr[i]);
         } else {
+            if (c2(arr)) {
+                debug(arr);
+            }
             cout << "NO";
             return;
         }
@@ -79,6 +99,9 @@ void solve() {
             auto t = p.lower_bound(Q[i]);
             // debug(*t, Q[i] - 1, p)
             if (*t > Q[i]) {
+                if (c2(arr)) {
+                    debug(arr);
+                }
                 cout << "NO";
                 return;
             }
@@ -92,6 +115,9 @@ void solve() {
         } else {
             auto t = q.lower_bound(P[i]);
             if (*t > P[i]) {
+                if (c2(arr)) {
+                    debug(arr);
+                }
                 cout << "NO";
                 return;
             }
@@ -106,7 +132,7 @@ void solve() {
     }
     // cout << *p.lower_bound(5);
     if (!check(arr, P, Q))  debug(arr)
-    cout << "YES\n";
+        cout << "YES\n";
     _for(i, n) cout << P[i] << ' ';
     cout << ln;
     _for(i, n) cout << Q[i] << ' ';
