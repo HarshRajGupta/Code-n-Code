@@ -114,7 +114,7 @@ void solve() {
             }
         } else {
             auto t = q.lower_bound(P[i]);
-            if (*t > P[i]) {
+            if (*t > P[i] && t == q.begin()) {
                 if (c2(arr)) {
                     debug(arr, q, p, i, P, Q, *t);
                 }
