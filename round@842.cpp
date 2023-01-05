@@ -54,24 +54,22 @@ void solve() {
             Q[i] = arr[i];
             q.erase(arr[i]);
         } else {
-            cout << "3NO";
+            cout << "NO";
             return;
         }
     }
+    debug(p, q)
     _for(i, n) {
         if (P[i] == 0) {
-            auto t = p.lower_bound(Q[i]-1);
+            auto t = p.lower_bound(Q[i] - 1);
             if (*t > Q[i]) {
-                // cout << *t << " " << Q[i] << " " << ln;
-                // for (int j : p) cout << j << " ";
-                // cout << ln;
                 cout << "NO";
                 return;
             }
             P[i] = *t;
             p.erase(*t);
         } else {
-            auto t = q.lower_bound(P[i]-1);
+            auto t = q.lower_bound(P[i] - 1);
             if (*t > P[i]) {
                 cout << "NO";
                 return;
@@ -81,7 +79,6 @@ void solve() {
         }
     }
     // cout << *p.lower_bound(5);
-
     cout << "YES\n";
     _for(i, n) cout << P[i] << ' ';
     cout << ln;
