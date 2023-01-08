@@ -50,11 +50,11 @@ std::vector<std::pair<int, int>> divide_into_pairs_with_min_abs_diff(const std::
     }
 
     // If there is an odd number of elements, add the first (n - 1) / 2 pairs
-    if (sorted_arr.size() % 2 != 0) {
-        for (size_t i = 0; i < (sorted_arr.size() - 1) / 2; ++i) {
-            pairs.emplace_back(sorted_arr[i], sorted_arr[sorted_arr.size() - i - 1]);
-        }
-    }
+    // if (sorted_arr.size() % 2 != 0) {
+    //     for (size_t i = 0; i < (sorted_arr.size() - 1) / 2; ++i) {
+    //         pairs.emplace_back(sorted_arr[i], sorted_arr[sorted_arr.size() - i - 1]);
+    //     }
+    // }
 
     return pairs;
 }
