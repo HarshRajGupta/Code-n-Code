@@ -36,34 +36,36 @@ const char ln = '\n';
 #include <cmath>
 #include <vector>
 
-std::vector<std::pair<int, int>> divide_into_pairs_with_min_abs_diff(const std::vector<int>& arr) {
-    // Sort the array in non-descending order
-    std::vector<int> sorted_arr = arr;
-    std::sort(sorted_arr.begin(), sorted_arr.end());
+vector<pair<int, int>> divide(const vector<int>& arr) {
+    vector<int> sorted_arr = arr;
+    sort(sorted_arr.begin(), sorted_arr.end());
+    vector<pair<int, int>> pairs;
 
-    // Initialize the result vector
-    std::vector<std::pair<int, int>> pairs;
-
-    // Iterate through the sorted array and add pairs
     for (size_t i = 0; i < sorted_arr.size() - 1; i += 2) {
         pairs.emplace_back(sorted_arr[i], sorted_arr[i + 1]);
     }
-
-    // If there is an odd number of elements, add the first (n - 1) / 2 pairs
-    // if (sorted_arr.size() % 2 != 0) {
-    //     for (size_t i = 0; i < (sorted_arr.size() - 1) / 2; ++i) {
-    //         pairs.emplace_back(sorted_arr[i], sorted_arr[sorted_arr.size() - i - 1]);
-    //     }
-    // }
 
     return pairs;
 }
 
 
-void solve(void) {
-    v<int> arr = {3, -5, 6, -5, 3};
-    auto t = divide_into_pairs_with_min_abs_diff(arr);
-    debug(t)
+long long Solve(vector<int> &a, int b) {
+    auto t = divide(a);
+    vector<long long> arr(t.size());
+    for (size_t i = 0; i < t.size(); ++i) {
+        arr[i] = abs(t[i].first - t[i].second);
+    }
+    sort(arr.begin(), arr.end());
+    long long ans = 0;
+    for (int i = 0; i < b; ++i) {
+        ans += arr[i];
+    }
+    return ans;
+}
+
+void solve() {
+    v<int> arr = {-5, -5, 3, 3, 3};
+    cout << Solve(arr, 2);
 }
 
 signed main(void) {
