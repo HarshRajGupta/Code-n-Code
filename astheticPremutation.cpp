@@ -54,7 +54,7 @@ std::vector<std::pair<int, int>> divide_into_pairs_with_min_abs_diff(const std::
 }
 
 void solve(void) {
-    v<int> arr = {4, 3, 4, 3, 2, 5};
+    v<int> arr = {3, -5, 3, -5, 3};
     auto t = divide_into_pairs_with_min_abs_diff(arr);
     debug(t)
 }
