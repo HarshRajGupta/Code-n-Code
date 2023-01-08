@@ -57,14 +57,18 @@ long long Solve(vector<int> &a, int b) {
     }
     sort(arr.begin(), arr.end());
     long long ans = 0;
-    for (int i = 0; i < b; ++i) {
+    int z = b;
+    if (a.size() < b * 2) {
+        z = a.size() - b;
+    }
+    for (int i = 0; i < z; ++i) {
         ans += arr[i];
     }
     return ans;
 }
 
 void solve() {
-    v<int> arr = {-5, -5, 3, 3, 3};
+    v<int> arr = { -5, -5, 3, 3, 3};
     cout << Solve(arr, 3);
 }
 
