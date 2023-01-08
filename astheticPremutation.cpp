@@ -65,7 +65,7 @@ long long Solve(vector<int> &a, int b) {
 
 void solve() {
     v<int> arr = {-5, -5, 3, 3, 3};
-    cout << Solve(arr, 2);
+    cout << Solve(arr, 3);
 }
 
 signed main(void) {
