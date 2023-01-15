@@ -1,4 +1,4 @@
-#ifndef __FAST_IO
+#ifndef __FAST_IO 
 #pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
 #pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
 #endif
@@ -33,25 +33,11 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve(void) {
-    int ct = 0;
-    _for(a, 5) {
-        _for(b, 5) {
-            _for(c, 5) {
-                _for(d, 5) {
-                    _for(e, 5) {
-                        ct++;
-                        cout << 5 << ln;
-                        cout << a + 1 << ' ' << b + 1 << ' ' << c + 1 << ' ' << d + 1 << ' ' << e + 1 << ln;
-                    }
-                }
-            }
-        }
-    }
-    debug(ct)
+    debug(' ', ' ',      ' ')
 }
 
 signed main(void) {
-    ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
