@@ -38,7 +38,7 @@ long long countGood(vector<int>& nums, int k) {
     while (l <= r && r <= nums.size()) {
         if ((int)p == k) {
             while (l < r && mp[nums[l]] == 1) {
-                cout << l << ' ';
+                // cout << l << ' ';
                 ++ct;
                 mp[nums[l]]--;
                 ++l;
