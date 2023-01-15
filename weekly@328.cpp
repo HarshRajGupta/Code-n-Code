@@ -44,6 +44,7 @@ long long countGood(vector<int>& nums, int k) {
                 mp[nums[l]]--;
                 ++l;
             }
+            ct++;
             mp[nums[l]]--;
             p--;
         } else if (r < nums.size()) {
