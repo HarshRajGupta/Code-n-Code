@@ -10,6 +10,10 @@ using namespace std;
 #define debug(...) ;
 #endif
 
+#ifndef __RUN
+#define __RUN solve(), std::cout << '\n'
+#endif
+
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -32,18 +36,21 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve(void) {
-    v<int> arr = {0, 1, 2, 3, 4};
-    debug(1, arr)
+void solve() { 
+    int n = 2;
+    v<int> arr = {1, 46, 9ll};
+    debug(n, arr, 1)
 }
 
-signed main(void) {
-    ios_base::sync_with_stdio(false);
+signed main() {
+    ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    solve();
+    uint32_t tCs = 1u; 
+    cin >> tCs;
+    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
