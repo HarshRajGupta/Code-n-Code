@@ -49,7 +49,7 @@ long long countGood(vector<int>& nums, int k) {
             if (mp[nums[r]]) {
                 p += mp[nums[r]];
                 // cout << p << ' ' << l << ' ' << r << '\n';
-                debug(mp, p, l, r)
+                debug(mp, nums[r], p, l, r)
             }
             mp[nums[r]]++;
             r++;
