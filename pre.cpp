@@ -42,7 +42,7 @@ void __DEBU_VAR(const T t, V... a) {
     __DEBUG_VAR(a...);
 }
 
-#define db(x, y...) {string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) wd.push_back(i); __DEBU_VAR(x);}
+#define db(x, y...) {string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) wd.push_back(i);cout << wd; __DEBU_VAR(x);}
 
 void solve(void) {
     db(1, 3, 5, 1)
