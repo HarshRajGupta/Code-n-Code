@@ -33,7 +33,7 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 
-#define db(x, y...) cout << #x <<'-' << x << ln << #y << '-' << y;
+#define db(x, y...) cout << #x <<'-' << x << ln << #y << '-';
 
 void solve(void) {
     db(1, 2, 3, 4)
