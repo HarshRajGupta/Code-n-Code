@@ -37,10 +37,10 @@ long long countGood(vector<int>& nums, int k) {
     size_t ct = 0, l = 0, r = 0, p = 0;
     while (l <= r && r <= nums.size()) {
         debug(p, k, ct)
-        if (p == k) {
+        if (p >= k) {
             while (l < r && mp[nums[l]] == 1) {
                 // cout << l << ' ';
-                ++ct;
+                ct += nums.size() + 1 - r;
                 mp[nums[l]]--;
                 ++l;
             }
@@ -61,7 +61,7 @@ long long countGood(vector<int>& nums, int k) {
 }
 
 void solve(void) {
-    v<int> a = {1,1,1,1,1};
+    v<int> a = {1, 1, 1, 1, 1};
     cout << countGood(a, 2ll);
 }
 
