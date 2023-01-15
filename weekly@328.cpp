@@ -61,8 +61,8 @@ long long countGood(vector<int>& nums, int k) {
 }
 
 void solve(void) {
-    v<int> a = {3, 1, 4, 3, 2, 2, 4};
-    cout << countGood(a, 2ll);
+    v<int> a = {1,1,1,1,1};
+    cout << countGood(a, 10ll);
 }
 
 signed main(void) {
