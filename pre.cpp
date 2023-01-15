@@ -47,7 +47,7 @@ void __DEBU_VAR(vector<string> &s, const T t, V... a) {
 #define db(x...) {vector<string> words; string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) {if (i != ' ' && i != ',') wd.push_back(i); else if (i == ',') {words.push_back(wd); wd = "";}} words.push_back(wd);cout << wd; __DEBU_VAR(words, x);}
 
 void solve(void) {
-    db(1, 3, 5, 1)
+    debug(1, 3, 5, 1)
 }
 
 signed main(void) {
