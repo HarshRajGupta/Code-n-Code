@@ -32,15 +32,17 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+void __DEBU_VAR() { std::cerr << "\n}\n"; }
+
 template <typename T, typename... V>
-void __DEBU_VAR(const T t, V... z) {
+void __DEBU_VAR(const T t, V... a) {
     __PRINT_VARIABLE(t);
-    if (sizeof...(z))
+    if (sizeof...(a))
         std::cerr << ",  \n";
-    __DEBUG_VAR(z...);
+    __DEBUG_VAR(a...);
 }
 
-#define db(x, y...) {string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) wd.push_back(i); cout << wd << "-" << x;}
+#define db(x, y...) {string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) wd.push_back(i); __DEBU_VAR(x);}
 
 void solve(void) {
     db(1, 3, 5, 1)
