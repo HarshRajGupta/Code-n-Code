@@ -36,13 +36,15 @@ void __DEBU_VAR() { std::cerr << "\n}\n"; }
 
 template <typename T, typename... V>
 void __DEBU_VAR(const T t, V... a) {
+    // cout << *(--s.end()) << ' ';
+    // s.erase(--s.end());
     __PRINT_VARIABLE(t);
     if (sizeof...(a))
         std::cerr << ",  \n";
     __DEBUG_VAR(a...);
 }
 
-#define db(x, y...) {string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) wd.push_back(i);cout << wd; __DEBU_VAR(x);}
+#define db(x, y...) {vector<string> words; string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) {if (i != ' ' && i != ',') wd.push_back(i); else if (i == ',') {words.push_back(wd); wd = "";}}cout << wd; __DEBU_VAR(words, x);}
 
 void solve(void) {
     db(1, 3, 5, 1)
