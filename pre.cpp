@@ -41,7 +41,7 @@ void __DEBU_VAR(vector<string> s, const T t, V... a) {
     __PRINT_VARIABLE(t);
     if (sizeof...(a))
         std::cerr << ",  \n";
-    __DEBUG_VAR(s, a...);
+    __DEBU_VAR(s, a...);
 }
 
 #define db(x...) {vector<string> words; string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) {if (i != ' ' && i != ',') wd.push_back(i); else if (i == ',') {words.push_back(wd); wd = "";}} words.push_back(wd);cout << wd; __DEBU_VAR(words, x);}
