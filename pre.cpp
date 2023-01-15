@@ -43,7 +43,7 @@ void __DEBU_VAR(const T t, V... z) {
 #define db(x...) {string t = #x; cout << t;}
 
 void solve(void) {
-    db(1)
+    db(1, 3, 5, 1)
 }
 
 signed main(void) {
