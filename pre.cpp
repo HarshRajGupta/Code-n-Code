@@ -36,7 +36,7 @@ const char ln = '\n';
 #define db(x, ...) cout << #x << '-' << x;
 
 void solve(void) {
-    db(' ', ' ',      ' ')
+    db(1)
 }
 
 signed main(void) {
