@@ -35,7 +35,7 @@ const char ln = '\n';
 void __DEBU_VAR(vector<string> &s) { std::cerr << "\n}\n"; }
 
 template <typename T, typename... V>
-void __DEBU_VAR(vector<string> s, const T t, V... a) {
+void __DEBU_VAR(vector<string> &s, const T t, V... a) {
     cerr << *(--s.end()) << '-';
     s.erase(--s.end());
     __PRINT_VARIABLE(t);
