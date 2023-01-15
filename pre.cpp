@@ -40,7 +40,7 @@ void __DEBU_VAR(const T t, V... z) {
     __DEBUG_VAR(z...);
 }
 
-#define db(x...) {string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) wd.push_back(i); cout << wd;}
+#define db(x...) {string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) wd.push_back(i); cout << wd << "-" << x;}
 
 void solve(void) {
     db(1, 3, 5,   1)
