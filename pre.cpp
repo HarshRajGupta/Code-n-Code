@@ -1,4 +1,4 @@
-#ifndef __FAST_IO 
+#ifndef __FAST_IO
 #pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
 #pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
 #endif
@@ -32,15 +32,22 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+template <typename T, typename... V>
+void __DEBU_VAR(const T t, V... z) {
+    __PRINT_VARIABLE(t);
+    if (sizeof...(z))
+        std::cerr << ",  \n";
+    __DEBUG_VAR(z...);
+}
 
-#define db(x, y...) cout << #x <<'-' << x << ln << #y << '-';
+#define db(x...) {string t = #x; cout << t;}
 
 void solve(void) {
     db(1)
 }
 
 signed main(void) {
-    ios_base::sync_with_stdio(false); 
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
