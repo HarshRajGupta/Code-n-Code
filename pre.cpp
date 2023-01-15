@@ -32,8 +32,11 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+
+#define db(x, ...) cout << #x << '-' << x;
+
 void solve(void) {
-    debug(' ', ' ',      ' ')
+    db(' ', ' ',      ' ')
 }
 
 signed main(void) {
