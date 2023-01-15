@@ -44,7 +44,7 @@ void __DEBU_VAR(const T t, V... a) {
     __DEBUG_VAR(a...);
 }
 
-#define db(x, y...) {vector<string> words; string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) {if (i != ' ' && i != ',') wd.push_back(i); else if (i == ',') {words.push_back(wd); wd = "";}}cout << wd; __DEBU_VAR(words, x);}
+#define db(x...) {vector<string> words; string DEBUG_VAL = #x; string wd = ""; for(auto i : DEBUG_VAL) {if (i != ' ' && i != ',') wd.push_back(i); else if (i == ',') {words.push_back(wd); wd = "";}} words.push_back(wd);cout << wd; __DEBU_VAR(words, x);}
 
 void solve(void) {
     db(1, 3, 5, 1)
