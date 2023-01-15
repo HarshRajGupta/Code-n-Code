@@ -48,7 +48,7 @@ void __DEBU_VAR(vector<string> &s, const T t, V... a) {
 
 void solve(void) {
     v<int> arr = {0, 1, 2, 3, 4};
-    debug(1, arr, 5, 1)
+    debug(1, arr, 5)
 }
 
 signed main(void) {
