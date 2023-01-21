@@ -1,4 +1,4 @@
-#ifndef __FAST_IO
+#ifndef __FAST_IO 
 #pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
 #pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
 #endif
@@ -32,47 +32,12 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-#include <algorithm>
-#include <cmath>
-#include <vector>
-
-vector<pair<int, int>> divide(const vector<int>& arr) {
-    vector<int> sorted_arr = arr;
-    sort(sorted_arr.begin(), sorted_arr.end());
-    vector<pair<int, int>> pairs;
-
-    for (size_t i = 0; i < sorted_arr.size() - 1; i += 2) {
-        pairs.emplace_back(sorted_arr[i], sorted_arr[i + 1]);
-    }
-
-    return pairs;
-}
-
-long long Solve(vector<int> &a, int b) {
-    auto t = divide(a);
-    vector<long long> arr(t.size());
-    for (size_t i = 0; i < t.size(); ++i) {
-        arr[i] = abs(t[i].first - t[i].second);
-    }
-    sort(arr.begin(), arr.end());
-    long long ans = 0;
-    int z = b;
-    if (a.size() < b * 2) {
-        z = a.size() - b;
-    }
-    for (int i = 0; i < z; ++i) {
-        ans += arr[i];
-    }
-    return ans;
-}
-
-void solve() {
-    v<int> arr = { -5, -5, 3, 3, 3};
-    cout << Solve(arr, 3);
+void solve(void) {
+    // Solution ab;
 }
 
 signed main(void) {
-    ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1

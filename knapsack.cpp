@@ -1,59 +1,57 @@
 //{ Driver Code Starts
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+
 
 // } Driver Code Ends
 class Solution {
-    int MAX = 0;
-    int ans(vector<int> &arr, vector<vector<int>> &dp, int prev = 0, int pos = 0, int sum = 0) {
-        if (pos == arr.size()) {
-            MAX = max(MAX, sum);
-            return sum;
-        }
-        if (dp[pos][prev] != -1) {
-            return dp[pos][prev];
-        }
-        if (prev == 0 || arr[pos] > arr[prev - 1]) {
-            return dp[pos][prev] = max(ans(arr, dp, prev, pos + 1, sum), ans(arr, dp, pos + 1, pos + 1, sum + arr[pos]));
-        }
-        return dp[pos][prev] = ans(arr, dp, prev, pos + 1, sum);
+    int func(int w, int pos, vector<vector<int>> &dp, int val[], int wt[]) {
+        if ( w == 0 || pos < 0)
+            return 0;
+
+        if (dp[pos][w] != -1)
+            return dp[pos][w];
+
+        if (w >= wt[pos])
+            return dp[pos][w] = max(func(w, pos - 1, dp, val, wt), func(w - wt[pos], pos - 1, dp, val, wt) + val[pos]);
+
+        return dp[pos][w] = func(w, pos - 1, dp, val, wt);
     }
 public:
-    int maxSumIS(int arr[], int n)
-    {
-        vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
-        vector<int> Arr(n);
-        for (int i = 0; i < n; ++i) Arr[i] = arr[i];
-        ans(Arr, dp);
-        return MAX;
+    int knapSack(int W, int wt[], int val[], int n) {
+        vector<vector<int>> dp(n, vector<int>(1e4 + 7));
+        return func(W, n - 1, dp, val, wt);
     }
 };
 
 //{ Driver Code Starts.
+
 int main()
 {
-
-
+    //taking total testcases
     int t;
     cin >> t;
     while (t--)
     {
-        int n;
-        cin >> n;
+        //reading number of elements and weight
+        int n, w;
+        cin >> n >> w;
 
-        int a[n];
+        int val[n];
+        int wt[n];
 
+        //inserting the values
         for (int i = 0; i < n; i++)
-            cin >> a[i];
+            cin >> val[i];
 
-
-
+        //inserting the weights
+        for (int i = 0; i < n; i++)
+            cin >> wt[i];
         Solution ob;
-        cout << ob.maxSumIS(a, n) << "\n";
+        //calling method knapSack()
+        cout << ob.knapSack(w, wt, val, n) << endl;
 
     }
     return 0;
 }
-
-
 // } Driver Code Ends

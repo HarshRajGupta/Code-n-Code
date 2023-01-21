@@ -20,6 +20,9 @@ const char ln = '\n';
 #define int long long
 #define ll long double
 
+#define Y std::cout << "YES";
+#define N std::cout << "NO";
+
 #define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
 #define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
@@ -34,17 +37,20 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n = 2;
-    v<int> arr = {1, 46, 9ll};
-    debug(n, arr, 1)
+    int a, b, c; cin >> a >> b >> c;
+    if ((a < 0 || b < 0 || c < 0) && (a > 0 || b > 0 || c > 0)) cout << "YES";
+    else cout << "NO";
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false); std::cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u; cin >> tCs; for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    uint32_t tCs = 1u;
+    cin >> tCs;
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif

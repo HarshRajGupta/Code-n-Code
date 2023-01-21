@@ -32,38 +32,44 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int binarySearch(std::vector<int> arr, int target) {
-    int l = 0, r = (arr.size() - 1);
-    if (r == -1)
-        return -1;
+int bS(const std::vector<int> &arr, const int target, int l = -1, int r = -1) {
+    if (l == -1) l = 0;
+    if (r == -1) r = (arr.size() - 1);
+    if (r == -1) return -1;
     while (l < r) {
         int mid = ((l + r) / 2);
-        if (arr[mid] == target)
-            return mid;
-        else if (arr[mid] > target)
-            r = (mid - 1);
-        else
-            l = (mid + 1);
+        if (arr[mid] == target) return mid;
+        else if (arr[mid] > target) r = (mid - 1);
+        else l = (mid + 1);
     }
     return ((arr[l] == target) ? l : ((arr[r] == target) ? r : -1));
 }
 
-std::vector<int32_t> __primes;
-std::vector<bool> seive(int n = 1000007) {
-    std::vector<bool> isPrime(n + 1, true);
-    isPrime[0] = false, isPrime[1] = false;
-    for (int i = 2; (i * i) <= n; ++i) {
-        if (isPrime[i]) {
-            __primes.push_back(i);
-            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
-        }
+int ub(const std::vector<int> &arr, const int target) {
+    int l = 0, r = arr.size() - 1;
+    while (l <= r) {
+        if (arr[l] > target) return l;
+        if (arr[r] < target) return r + 1;
+        int mid = ((l + r) / 2);
+        if (arr[mid] <= target) l = mid + 1;
+        else r = mid - 1;
     }
-    return isPrime;
+    return arr.size();
 }
 
+int lb(const std::vector<int> &arr, const int target) {
+    int l = 0, r = arr.size() - 1;
+    while (l <= r) {
+        if (arr[l] > target) return l - 1;
+        if (arr[r] < target) return r;
+        int mid = ((l + r) / 2);
+        if (arr[mid] < target) l = mid + 1;
+        else r = mid - 1;
+    }
+    return -1;
+}
 
 void solve(void) {
-    auto t = seive();
     // debug(__primes)
 }
 

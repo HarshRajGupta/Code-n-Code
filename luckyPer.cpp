@@ -10,6 +10,10 @@ using namespace std;
 #define debug(...) ;
 #endif
 
+#ifndef __RUN
+#define __RUN solve(), std::cout << '\n'
+#endif
+
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -32,52 +36,22 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-#include <algorithm>
-#include <cmath>
-#include <vector>
-
-vector<pair<int, int>> divide(const vector<int>& arr) {
-    vector<int> sorted_arr = arr;
-    sort(sorted_arr.begin(), sorted_arr.end());
-    vector<pair<int, int>> pairs;
-
-    for (size_t i = 0; i < sorted_arr.size() - 1; i += 2) {
-        pairs.emplace_back(sorted_arr[i], sorted_arr[i + 1]);
-    }
-
-    return pairs;
-}
-
-long long Solve(vector<int> &a, int b) {
-    auto t = divide(a);
-    vector<long long> arr(t.size());
-    for (size_t i = 0; i < t.size(); ++i) {
-        arr[i] = abs(t[i].first - t[i].second);
-    }
-    sort(arr.begin(), arr.end());
-    long long ans = 0;
-    int z = b;
-    if (a.size() < b * 2) {
-        z = a.size() - b;
-    }
-    for (int i = 0; i < z; ++i) {
-        ans += arr[i];
-    }
-    return ans;
-}
-
 void solve() {
-    v<int> arr = { -5, -5, 3, 3, 3};
-    cout << Solve(arr, 3);
+    int n; cin >> n;
+    v<int> arr(n);
+    _for(i, n) cin >> arr[i];
+    
 }
 
-signed main(void) {
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    solve();
+    uint32_t tCs = 1u;
+    cin >> tCs;
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
