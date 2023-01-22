@@ -11,3 +11,5 @@
 /program.out
 /.cpp
 /*.exe
+/.fleet
+/.vscode
