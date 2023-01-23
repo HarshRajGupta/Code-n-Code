@@ -24,7 +24,7 @@ public:
         for(int i = 0; i < n; ++i) {
             nums1[i+m] = nums2[i];
         }
-        for(int i = (n+m)/2 + (n+m)%2; i > 1;) {
+        for(int i = (n+m+1)/2; i > 1;) {
             for (int j = 0; j+i < (n+m); ++j) {
                 if (nums1[j+i] < nums1[j]) {
                     int t = nums1[j];
