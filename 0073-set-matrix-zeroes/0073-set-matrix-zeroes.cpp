@@ -1,18 +1,19 @@
 class Solution {
 public:
-    void setZeroes(vector<vector<int>>& matrix) {
-        vector<pair<int, int>> zeros;
-        for (int i = 0; i < matrix.size(); ++i) {
-            for (int j = 0; j < matrix[0].size(); ++j) {
-                if (matrix[i][j] == 0) zeros.push_back({i, j});
+    void setZeroes(vector<vector<int>>& m) {
+       vector<int> rows(m.size()), cols(m[0].size());
+        for(int i = 0; i < m.size(); ++i) {
+            for (int j = 0; j < m[0].size(); ++j) {
+                if (m[i][j] == 0) {
+                    rows[i] = cols[j] = 1;
+                }
             }
         }
-        for (int i = 0; i < zeros.size(); ++i) {
-            for (int j = 0; j < matrix.size(); ++j) {
-                matrix[j][zeros[i].second] = 0;
-            }
-            for (int j = 0; j < matrix[0].size(); ++j) {
-                matrix[zeros[i].first][j] = 0;
+        for(int i = 0; i < m.size(); ++i) {
+            for (int j = 0; j < m[0].size(); ++j) {
+                if (rows[i] || cols[j]) {
+                    m[i][j] = 0;
+                }
             }
         }
     }
