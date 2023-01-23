@@ -36,7 +36,7 @@ public:
         int l = inv[0][0], r = inv[0][1];
         for(auto i : inv) {
             if (i[0] <= r) {
-                l = min(l, i[0]);
+                // l = min(l, i[0]);
                 r = max(r, i[1]);
             } else {
                 ans.push_back({l, r});
