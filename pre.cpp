@@ -39,14 +39,34 @@ const char ln = '\n';
 void solve() {
     int n; cin >> n;
     string s; cin >> s;
-    int one = 0;
-    _for(i, n) {
-        if (s[i] == '1') ++one;
+    if (s[0] == '0') {
+        int one = 0, MAX = 0;
+        _for(i, n) {
+            if (s[i] == '1') ++one;
+            else {
+                MAX = max(one, MAX);
+                one = 0;
+            }
+        }
+        MAX = max(one, MAX);
+    } else {
+        int one = 0;
+        maxHeap arr;
+        _for(i, n) {
+            if (s[i] == '1') one++;
+            else if (one != 0) {
+                arr.push(one);
+                one = 0;
+            }
+        }
+        arr.push(one);
+        if (sz(arr) >= 2) {
+            int ans = arr.top();
+            arr.pop();
+            ans += arr.top();
+            cout << ans;
+        } else cout << arr.top();
     }
-    if (one > 3) cout << "NO";
-    else if (one == 3) cout << "YES";
-    else if (n >= 2 && (s != "10")) cout << "YES";
-    else cout << "NO";
 }
 
 signed main() {
