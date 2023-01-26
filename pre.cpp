@@ -49,6 +49,7 @@ void solve() {
             }
         }
         MAX = max(one, MAX);
+        cout << MAX;
     } else {
         int one = 0;
         maxHeap arr;
