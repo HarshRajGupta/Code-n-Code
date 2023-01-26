@@ -36,55 +36,46 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+
+v<int> fact(1e5 + 7);
+
+void pre() {
+    fact[0] = 1;
+    _for(i, 1e5 + 2) {
+        fact[i + 1] = (fact[i] * (i + 1)) % MOD;
+    }
+}
+
+int power(int n) {
+    int ans = 1, x = 2;
+    while (n) {
+        if (n & 1) ans = (ans * x) % MOD;
+        x = (x * x) % MOD;
+        n /= 2;
+    }
+    return ans;
+}
+
 void solve() {
     int n; cin >> n;
-    string s; cin >> s;
-    if (s[0] == '0') {
-        int one = 0, MAX = 0;
-        _for(i, n) {
-            if (s[i] == '1') ++one;
-            else {
-                MAX = max(one, MAX);
-                one = 0;
-            }
-        }
-        MAX = max(one, MAX);
-        cout << MAX;
+    string s1, s2; cin >> s1 >> s2;
+    int diff = 0;
+    _for(i, n) {
+        if (s1[i] != s2[i]) ++diff;
+    }
+    if (diff & 1) {
+        cout << 0;
     } else {
-        int one = 0, MAX = 0;
-        // maxHeap arr;
-        int i = 0;
-        while (s[i] == '1' && i < n) ++i;
-        if (i == n) cout << n;
-        rep(j, i, n) {
-            if (s[j] == '1') ++one;
-            else {
-                MAX = max(one, MAX);
-                one = 0;
-            }
-        }
-        MAX = max(one, MAX);
-        cout << MAX + i;
-        // _for(i, n) {
-        //     if (s[i] == '1') one++;
-        //     else if (one != 0) {
-        //         arr.push(one);
-        //         one = 0;
-        //     }
-        // }
-        // arr.push(one);
-        // if (sz(arr) >= 2) {
-        //     int ans = arr.top();
-        //     arr.pop();
-        //     ans += arr.top();
-        //     cout << ans;
-        // } else cout << arr.top();
+        int ans = (fact[diff] / (fact[diff / 2] * fact[diff / 2]));
+        ans = (ans * power(n - diff)) % MOD;
+        cout << ans;
     }
 }
 
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    pre();
 #ifdef __TAG1
     __TAG1
 #endif
