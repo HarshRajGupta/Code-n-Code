@@ -35,11 +35,11 @@ const char ln = '\n';
 #define sd second
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-v<int> fx(1000), gx(1000), dx(1000);
+v<int> fx(100000), gx(100000), dx(100000);
 
 void pre() {
     fx[1] = 0, gx[1] = 1;
-    rep(i, 2, 1000) {
+    rep(i, 2, 100000) {
         if (i & 1) {
             fx[i] = fx[i / 2];
             gx[i] = 2 * gx[i / 2];
