@@ -14,7 +14,7 @@ using namespace std;
 #define __RUN solve(), std::cout << '\n'
 #endif
 
-const uint64_t MOD = 1e9 + 7;
+const uint64_t MOD = 1e5 + 7;
 const char ln = '\n';
 
 #define int long long
@@ -35,11 +35,11 @@ const char ln = '\n';
 #define sd second
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-v<int> fx(100000), gx(100000), dx(100000);
+v<int> fx(MOD), gx(MOD), dx(MOD);
 
 void pre() {
     fx[1] = 0, gx[1] = 1;
-    rep(i, 2, 100000) {
+    rep(i, 2, sz(dx)) {
         if (i & 1) {
             fx[i] = fx[i / 2];
             gx[i] = 2 * gx[i / 2];
