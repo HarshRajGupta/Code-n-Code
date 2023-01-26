@@ -35,7 +35,7 @@ const char ln = '\n';
 #define sd second
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-v<int> fx(1000), gx(1000);
+v<int> fx(1000), gx(1000), dx(1000);
 
 void pre() {
     fx[1] = 0, gx[1] = 1;
@@ -47,14 +47,14 @@ void pre() {
             fx[i] = fx[i / 2] + 1;
             gx[i] = 2 * gx[i / 2] + 1;
         }
+        dx[i] = fx[i] + gx[i];
     }
 }
 
 void solve() {
     /* Code */
     pre();
-    debug(fx)
-    debug(gx)
+    debug(dx)
 }
 
 signed main() {
