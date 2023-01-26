@@ -14,17 +14,17 @@ using namespace std;
 #define __RUN solve(), std::cout << '\n'
 #endif
 
-const uint64_t MOD = 1e8 + 7;
+const uint64_t MOD = 1e4 + 7;
 const char ln = '\n';
 
-// #define int long long
+#define int long long
 #define ll long double
 
 #define Y std::cout << "YES";
 #define N std::cout << "NO";
 
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for(auto i = a; i < n; ++i)
+#define _for(i, n) for(uint64_t i = 0; i < (uint64_t)n; ++i)
+#define rep(i, a, n) for(uint64_t i = a; i < n; ++i)
 #define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
 
 #define v std::vector
@@ -35,11 +35,23 @@ const char ln = '\n';
 #define sd second
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-v<int> fx(MOD), gx(MOD), dx(MOD);
+
+int tree[MOD * 4], fx[MOD], gx[MOD], dx[MOD];
+
+void build(int node, int start, int end) {
+    if (start == end) {
+        tree[node] = dx[start];
+        return;
+    }
+    int mid = (start + end) / 2;
+    build(node * 2, start, mid);
+    build(node * 2 + 1, mid + 1, end);
+    tree[node] = max(tree[node * 2], tree[node * 2 + 1]);
+}
 
 void pre() {
     fx[1] = 0, gx[1] = 1;
-    rep(i, 2, sz(dx)) {
+    rep(i, 2, MOD) {
         if (i & 1) {
             fx[i] = fx[i / 2];
             gx[i] = 2 * gx[i / 2];
@@ -49,11 +61,26 @@ void pre() {
         }
         dx[i] = fx[i] + gx[i];
     }
+    build(1, 1, MOD);
+}
+
+
+int query(int node, int start, int end, int l, int r) {
+    if (l <= start && end <= r) {
+        return tree[node];
+    }
+    int mid = (start + end) / 2, ans = -1e9;
+    if (l <= mid) ans = max(ans, query(node * 2, start, mid, l, r));
+    if (r > mid) ans = max(ans, query(node * 2 + 1, mid + 1, end, l, r));
+    return ans;
 }
 
 void solve() {
     /* Code */
     // debug(dx)
+    int l, r;
+    cin >> l >> r;
+    cout << query(1, 1, MOD, l, r);
 }
 
 signed main() {
