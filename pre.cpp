@@ -36,7 +36,8 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int tree[MOD * 4], fx[MOD], gx[MOD], dx[MOD];
+int tree[MOD * 4], fx[MOD], gx[MOD];
+v<int> dx(MOD);
 
 void build(int node, int start, int end) {
     if (start == end) {
@@ -87,6 +88,7 @@ signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     pre();
+    debug(dx)
 #ifdef __TAG1
     __TAG1
 #endif
