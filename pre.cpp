@@ -63,19 +63,20 @@ int power(int n) {
 }
 
 void solve() {
-    int n; cin >> n;
-    string s1, s2; cin >> s1 >> s2;
-    int diff = 0;
-    _for(i, n) {
-        if (s1[i] != s2[i]) ++diff;
-    }
-    if (diff & 1) {
-        cout << 0;
-    } else {
-        int ans = nCn(diff);
-        ans = (ans * power(n - diff)) % MOD;
-        cout << ans;
-    }
+    // int n; cin >> n;
+    // string s1, s2; cin >> s1 >> s2;
+    // int diff = 0;
+    // _for(i, n) {
+    //     if (s1[i] != s2[i]) ++diff;
+    // }
+    // if (diff & 1) {
+    //     cout << 0;
+    // } else {
+    //     int ans = nCn(diff);
+    //     ans = (ans * power(n - diff)) % MOD;
+    //     cout << ans;
+    // }
+    cout << nCn(100002);
 }
 
 signed main() {
