@@ -51,7 +51,7 @@ void build(int node, int start, int end) {
 }
 
 void pre() {
-    fx[1] = 0, gx[1] = 1;
+    fx[1] = 0, gx[1] = 1, dx[1] = 1;
     rep(i, 2, MOD) {
         if (i & 1) {
             fx[i] = fx[i / 2];
