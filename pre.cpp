@@ -37,13 +37,19 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 
-v<int> fact(1e5 + 7);
-
-void pre() {
-    fact[0] = 1;
-    _for(i, 1e5 + 2) {
-        fact[i + 1] = (fact[i] * (i + 1)) % MOD;
+int nCn(int n) {
+    int k = n / 2;
+    int dp[n + 1][k + 1];
+    for (int i = 0; i <= n; i++) {
+        for (int j = 0; j <= min(i, k); j++) {
+            if (j == 0 || j == i)
+                dp[i][j] = 1;
+            else
+                dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j]) % MOD;
+        }
     }
+
+    return dp[n][k];
 }
 
 int power(int n) {
@@ -66,7 +72,7 @@ void solve() {
     if (diff & 1) {
         cout << 0;
     } else {
-        int ans = (fact[diff] / (fact[diff / 2] * fact[diff / 2]));
+        int ans = nCn(diff);
         ans = (ans * power(n - diff)) % MOD;
         cout << ans;
     }
@@ -75,7 +81,6 @@ void solve() {
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    pre();
 #ifdef __TAG1
     __TAG1
 #endif
