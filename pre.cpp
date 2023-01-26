@@ -53,13 +53,13 @@ void pre() {
 
 void solve() {
     /* Code */
-    pre();
-    debug(dx)
+    // debug(dx)
 }
 
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    pre();
 #ifdef __TAG1
     __TAG1
 #endif
