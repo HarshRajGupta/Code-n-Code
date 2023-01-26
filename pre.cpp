@@ -14,7 +14,7 @@ using namespace std;
 #define __RUN solve(), std::cout << '\n'
 #endif
 
-const uint64_t MOD = 1e7 + 7;
+const uint64_t MOD = 1e8 + 7;
 const char ln = '\n';
 
 #define int long long
