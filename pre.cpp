@@ -64,7 +64,7 @@ void solve() {
             }
         }
         MAX = max(one, MAX);
-        cout << MAX + i - 1;
+        cout << MAX + i;
         // _for(i, n) {
         //     if (s[i] == '1') one++;
         //     else if (one != 0) {
