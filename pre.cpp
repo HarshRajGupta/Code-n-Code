@@ -37,8 +37,15 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int a, b, c; cin >> a >> b >> c;
-    if ((a < 0 || b < 0 || c < 0) && (a > 0 || b > 0 || c > 0)) cout << "YES";
+    int n; cin >> n;
+    string s; cin >> s;
+    int one = 0;
+    _for(i, n) {
+        if (s[i] == '1') ++one;
+    }
+    if (one > 3) cout << "NO";
+    else if (one == 3) cout << "YES";
+    else if (n >= 2 && (s != "10")) cout << "YES";
     else cout << "NO";
 }
 
