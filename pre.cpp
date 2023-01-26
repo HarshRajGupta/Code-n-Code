@@ -51,22 +51,34 @@ void solve() {
         MAX = max(one, MAX);
         cout << MAX;
     } else {
-        int one = 0;
-        maxHeap arr;
-        _for(i, n) {
-            if (s[i] == '1') one++;
-            else if (one != 0) {
-                arr.push(one);
+        int one = 0, MAX = 0;
+        // maxHeap arr;
+        int i = 0;
+        while (s[i] == '1' && i < n) ++i;
+        if (i == n) cout << n;
+        rep(j, i, n) {
+            if (s[j] == '1') ++one;
+            else {
+                MAX = max(one, MAX);
                 one = 0;
             }
         }
-        arr.push(one);
-        if (sz(arr) >= 2) {
-            int ans = arr.top();
-            arr.pop();
-            ans += arr.top();
-            cout << ans;
-        } else cout << arr.top();
+        MAX = max(one, MAX);
+        cout << MAX + i - 1;
+        // _for(i, n) {
+        //     if (s[i] == '1') one++;
+        //     else if (one != 0) {
+        //         arr.push(one);
+        //         one = 0;
+        //     }
+        // }
+        // arr.push(one);
+        // if (sz(arr) >= 2) {
+        //     int ans = arr.top();
+        //     arr.pop();
+        //     ans += arr.top();
+        //     cout << ans;
+        // } else cout << arr.top();
     }
 }
 
