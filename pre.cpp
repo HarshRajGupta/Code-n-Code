@@ -14,7 +14,7 @@ using namespace std;
 #define __RUN solve(), std::cout << '\n'
 #endif
 
-const uint64_t MOD = 1e4 + 7;
+const uint64_t MOD = 1e7 + 7;
 const char ln = '\n';
 
 #define int long long
@@ -88,7 +88,7 @@ signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     pre();
-    debug(dx)
+    // debug(dx)
 #ifdef __TAG1
     __TAG1
 #endif
