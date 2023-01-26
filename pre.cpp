@@ -37,19 +37,23 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 
-int nCn(int n) {
-    int k = n / 2;
-    int dp[n + 1][k + 1];
-    for (int i = 0; i <= n; i++) {
-        for (int j = 0; j <= min(i, k); j++) {
-            if (j == 0 || j == i)
-                dp[i][j] = 1;
-            else
-                dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j]) % MOD;
-        }
+long long powmod(long long base, long long exponent) {
+    long long res = 1;
+    while (exponent > 0) {
+        if (exponent % 2 == 1) res = (res * base) % MOD;
+        base = (base * base) % MOD;
+        exponent /= 2;
     }
-
-    return dp[n][k];
+    return res;
+}
+long long factmod(long long n) {
+    long long res = 1;
+    for (long long i = 2; i <= n; i++)
+        res = (res * i) % MOD;
+    return res;
+}
+long long invmod(long long a) {
+    return powmod(a, MOD - 2);
 }
 
 int power(int n) {
@@ -62,21 +66,25 @@ int power(int n) {
     return ans;
 }
 
+int nCn(int n) {
+    return (((factmod(n) * invmod(factmod(n / 2))) % MOD) * invmod(factmod(n - (n / 2)))) % MOD;
+}
+
 void solve() {
-    // int n; cin >> n;
-    // string s1, s2; cin >> s1 >> s2;
-    // int diff = 0;
-    // _for(i, n) {
-    //     if (s1[i] != s2[i]) ++diff;
-    // }
-    // if (diff & 1) {
-    //     cout << 0;
-    // } else {
-    //     int ans = nCn(diff);
-    //     ans = (ans * power(n - diff)) % MOD;
-    //     cout << ans;
-    // }
-    cout << nCn(100002);
+    int n; cin >> n;
+    string s1, s2; cin >> s1 >> s2;
+    int diff = 0;
+    _for(i, n) {
+        if (s1[i] != s2[i]) ++diff;
+    }
+    if (diff & 1) {
+        cout << 0;
+    } else {
+        int ans = nCn(diff);
+        ans = (ans * power(n - diff)) % MOD;
+        cout << ans;
+    }
+    // cout << nCn(100002);
 }
 
 signed main() {
