@@ -36,30 +36,26 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-const int32_t power(int64_t __BASE, int64_t __POWER) {
-    int32_t __RESULT = 1; __BASE %= MOD;
-    while (__POWER) {
-        if (__POWER & 1) __RESULT = (__RESULT * __BASE * 1ll) % MOD;
-        __BASE = (__BASE * __BASE) % MOD;
-        __POWER >>= 1;
-    }
-    return __RESULT;
+const int64_t ceil (long double __NUM, long double __DEN = 1) {
+    if (__NUM > __DEN * ((int64_t)__NUM / __DEN)) return (__NUM / __DEN) + 1;
+    return (__NUM / __DEN);
+
 }
 
-void solve() { 
+void solve() {
     /* Code */
     cout << ceil(2.1);
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false); 
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u; 
+    uint32_t tCs = 1u;
     cin >> tCs;
-    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
