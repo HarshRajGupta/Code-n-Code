@@ -44,7 +44,7 @@ const int64_t ceil (long double __NUM, long double __DEN = 1) {
 
 void solve() {
     /* Code */
-    cout << ceil(2.1, 1.1);
+    cout << ceil(2.2, 1.1);
 }
 
 signed main() {
