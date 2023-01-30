@@ -48,7 +48,7 @@ int32_t power(int64_t __BASE, int64_t __POWER) {
 
 void solve() {
     /* Code */
-    cout << power(2797079, 10000);
+    cout << power(279707985869, 100868696900);
 }
 
 signed main() {
