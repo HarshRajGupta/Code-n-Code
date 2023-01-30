@@ -41,25 +41,26 @@ const int32_t invMod(int64_t __NUMBER, const int64_t MOD = 1e9 + 7) {
     while (__INVERSE_POWER) {
         if (__INVERSE_POWER & 1) __RESULT  = (__RESULT * __NUMBER * 1ll) % MOD;
         __NUMBER = (__NUMBER * __NUMBER) % MOD;
-        __INVERSE_POWER >>= 2;
+        __INVERSE_POWER /= 2;
     }
     return __RESULT;
 }
 
-void solve() { 
+void solve() {
     /* Code */
-    cout << invMod(2);
+    int a = 16 << 2, b = 16 >> 2;
+    cout << a << " " << b;
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false); 
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u; 
+    uint32_t tCs = 1u;
     cin >> tCs;
-    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
