@@ -48,7 +48,7 @@ const int32_t invMod(int64_t __NUMBER) {
 
 void solve() {
     /* Code */
-    cout << invMod(277969797985869);
+    cout << invMod(2779697985869);
 }
 
 signed main() {
