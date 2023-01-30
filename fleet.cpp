@@ -36,19 +36,19 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int32_t power(int64_t __BASE, int64_t __POWER) {
-    int32_t __RESULT = 1; __BASE %= MOD;
-    while (__POWER) {
-        if (__POWER & 1) __RESULT = (__RESULT * __BASE * 1ll) % MOD;
-        __BASE = (__BASE * __BASE) % MOD;
-        __POWER /= 2;
+int32_t invMod(int64_t __NUMBER) {
+    int32_t __INVERSE_POWER = MOD - 2, __RESULT = 1; __NUMBER %= MOD;
+    while (__INVERSE_POWER) {
+        if (__INVERSE_POWER & 1) __RESULT  = (__RESULT * __NUMBER * 1ll) % MOD;
+        __NUMBER = (__NUMBER * __NUMBER) % MOD;
+        __INVERSE_POWER /= 2;
     }
     return __RESULT;
 }
 
 void solve() {
     /* Code */
-    cout << power(27796979707985869, 100868696996900);
+    cout << invMod(27796979707985869);
 }
 
 signed main() {
