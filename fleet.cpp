@@ -41,7 +41,7 @@ const int32_t invMod(int64_t __NUMBER, const int64_t MOD = 1e9 + 7) {
     while (__INVERSE_POWER) {
         if (__INVERSE_POWER & 1) __RESULT  = (__RESULT * __NUMBER * 1ll) % MOD;
         __NUMBER = (__NUMBER * __NUMBER) % MOD;
-        __INVERSE_POWER /= 2;
+        __INVERSE_POWER <<= 2;
     }
     return __RESULT;
 }
