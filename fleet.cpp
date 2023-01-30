@@ -37,14 +37,14 @@ const char ln = '\n';
 #define all(x) (x).begin(), (x).end()
 
 const int64_t ceil (long double __NUM, long double __DEN = 1) {
-    if (__NUM > __DEN * ((int64_t)(__NUM / __DEN))) return (__NUM / __DEN) + 1;
+    if (__NUM > __DEN * ((int64_t)(__NUM / __DEN))) 
+        return (__NUM / __DEN) + 1;
     return (__NUM / __DEN);
-
 }
 
 void solve() {
     /* Code */
-    cout << ceil(2.3, 1.1);
+    cout << ceil(2.3);
 }
 
 signed main() {
