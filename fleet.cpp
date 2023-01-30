@@ -36,7 +36,7 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int32_t invMod(int64_t __NUMBER) {
+const int32_t invMod(int64_t __NUMBER) {
     int32_t __INVERSE_POWER = MOD - 2, __RESULT = 1; __NUMBER %= MOD;
     while (__INVERSE_POWER) {
         if (__INVERSE_POWER & 1) __RESULT  = (__RESULT * __NUMBER * 1ll) % MOD;
