@@ -48,8 +48,9 @@ const int32_t invMod(int64_t __NUMBER, const int64_t MOD = 1e9 + 7) {
 
 void solve() {
     /* Code */
-    int a = 16 << 2, b = 16 >> 2;
-    cout << a << " " << b;
+    // int a = 16 << 2, b = 16 >> 2;
+    // cout << a << " " << b;
+    cout << invMod(2);
 }
 
 signed main() {
