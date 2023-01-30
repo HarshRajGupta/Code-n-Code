@@ -36,33 +36,30 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-const int32_t invMod(int64_t __NUMBER, const int64_t MOD = 1e9 + 7) {
-    int32_t __INVERSE_POWER = MOD - 2, __RESULT = 1; __NUMBER %= MOD;
-    while (__INVERSE_POWER) {
-        if (__INVERSE_POWER & 1) __RESULT  = (__RESULT * __NUMBER * 1ll) % MOD;
-        __NUMBER = (__NUMBER * __NUMBER) % MOD;
-        __INVERSE_POWER >>= 1;
-
+const int32_t power(int64_t __BASE, int64_t __POWER) {
+    int32_t __RESULT = 1; __BASE %= MOD;
+    while (__POWER) {
+        if (__POWER & 1) __RESULT = (__RESULT * __BASE * 1ll) % MOD;
+        __BASE = (__BASE * __BASE) % MOD;
+        __POWER >>= 1;
     }
     return __RESULT;
 }
 
-void solve() {
+void solve() { 
     /* Code */
-    // int a = 16 << 2, b = 16 >> 2;
-    // cout << a << " " << b;
-    cout << invMod(2);
+    cout << ceil(2.1);
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u;
+    uint32_t tCs = 1u; 
     cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
