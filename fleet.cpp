@@ -36,7 +36,7 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-const int32_t invMod(int64_t __NUMBER) {
+const int32_t invMod(int64_t __NUMBER, const int64_t MOD = 1e9 + 7) {
     int32_t __INVERSE_POWER = MOD - 2, __RESULT = 1; __NUMBER %= MOD;
     while (__INVERSE_POWER) {
         if (__INVERSE_POWER & 1) __RESULT  = (__RESULT * __NUMBER * 1ll) % MOD;
@@ -46,20 +46,20 @@ const int32_t invMod(int64_t __NUMBER) {
     return __RESULT;
 }
 
-void solve() {
+void solve() { 
     /* Code */
-    cout << invMod(2779697985869);
+    cout << invMod(2);
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u;
+    uint32_t tCs = 1u; 
     cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
