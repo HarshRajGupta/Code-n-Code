@@ -1,17 +1,17 @@
 #ifndef __FAST_IO
-    #pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-    #pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
 #endif
 
 #include <bits/stdc++.h>
 using namespace std;
 
 #ifndef debug
-    #define debug(...)
+#define debug(...)
 #endif
 
 #ifndef __RUN
-    #define __RUN solve(), std::cout << '\n'
+#define __RUN solve(), std::cout << '\n'
 #endif
 
 const uint64_t MOD = 1e9 + 7;
@@ -36,22 +36,23 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() { 
+void solve() {
     int n; cin >> n;
     int sum = 0;
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
     int change = -4;
-    _for(i, n-1) {
-        if (arr[i] == -1 && arr[i+1] == -1) {
+    _for(i, n - 1) {
+        if (arr[i] == -1 && arr[i + 1] == -1) {
             change = 4;
             break;
         }
-        if ((arr[i] == 1 && arr[i+1] == -1 && change == -4) || (arr[i] == -1 && arr[i+1] == 1 && change == -4)) {
+        if ((arr[i] == 1 && arr[i + 1] == -1 && change == -4) || (arr[i] == -1 && arr[i + 1] == 1 && change == -4)) {
             change = 0;
         }
         sum += arr[i];
     }
+    sum += arr[n - 1];
     cout << sum + change;
 }
 
@@ -61,7 +62,7 @@ signed main() {
     __TAG1
 #endif
     uint32_t tCs; cin >> tCs;
-    for(uint32_t tC = 0; tC++ < tCs; __RUN);
+    for (uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
