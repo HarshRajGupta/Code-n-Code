@@ -7,10 +7,14 @@
 using namespace std;
 
 #ifndef debug
-#define debug(...) ;
+#define debug(...)
 #endif
 
-const unsigned MOD = 1e9 + 7;
+#ifndef __RUN
+#define __RUN solve(), std::cout << '\n'
+#endif
+
+const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
 #define int long long
@@ -19,9 +23,9 @@ const char ln = '\n';
 #define Y std::cout << "YES";
 #define N std::cout << "NO";
 
-#define _for(i, n) for (int64_t i = 0ll; i < n; ++i)
-#define rep(i, a, n) for (int64_t i = a; i < n; ++i)
-#define bw(i, n) for (int64_t i = n; i >= 0ll; --i)
+#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for(auto i = a; i < n; ++i)
+#define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
 
 #define v std::vector
 #define maxHeap std::priority_queue<int>
@@ -29,28 +33,18 @@ const char ln = '\n';
 
 #define ft first
 #define sd second
-#define sz(x) ((int64_t)(x).size())
+#define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-
-int maximisePoints(int points[], int n, int height[], int m, int checkPoints[], int c, int minHeight[], int h) {
-    if (c >= 1 && checkPoints[0] == 0 && minHeight[0] > 0)
-        return -1;
-    int sum = 0;
-    for (int i = 1; i < n; ++i)
-        sum += points[i];
-    if (m >= 1 && height[0] <= 0)
-        sum += points[0];
-    return sum;
-}
 
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
-    int sum = 0;
-    rep(i, 1, n) sum += arr[i];
-    v<int> height(n);
-    _for(i, n) cin >> height[i];
+    int MAX = 0;
+    _for(i, n) {
+        MAX = max(MAX, min(abs(i + 1 - arr[i]), abs(n - arr[i])));
+    }
+    cout << MAX;
 }
 
 signed main() {
@@ -58,7 +52,8 @@ signed main() {
 #ifdef __TAG1
     __TAG1
 #endif
-    solve();
+    uint32_t tCs; cin >> tCs;
+    for (uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
