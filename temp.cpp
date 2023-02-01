@@ -53,6 +53,7 @@ void solve() {
     int n; cin >> n;
     v<int> arr(n);
     _for(i, n) scan(arr[i]);
+    debug(arr)
 }
 
 signed main() {
