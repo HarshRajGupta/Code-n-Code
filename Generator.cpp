@@ -2,7 +2,7 @@
 using namespace std;
 
 void generate() {
-    int n = 100000; cout << n << '\n';
+    int n = 10; cout << n << '\n';
     for (int i = 0; i < n; ++i) {
         cout << rand() % ((int)1e9 + 7) << ' ';
     }
