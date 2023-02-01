@@ -7,14 +7,14 @@
 using namespace std;
 
 #ifndef debug
-#define debug(...) ;
+#define debug(...)
 #endif
 
 #ifndef __RUN
 #define __RUN solve(), std::cout << '\n'
 #endif
 
-const uint64_t MOD = 1e7 + 7;
+const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
 #define int long long
@@ -23,8 +23,8 @@ const char ln = '\n';
 #define Y std::cout << "YES";
 #define N std::cout << "NO";
 
-#define _for(i, n) for(uint64_t i = 0; i < (uint64_t)n; ++i)
-#define rep(i, a, n) for(uint64_t i = a; i < n; ++i)
+#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for(auto i = a; i < n; ++i)
 #define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
 
 #define v std::vector
@@ -36,65 +36,31 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int tree[MOD * 4], fx[MOD], gx[MOD];
-v<int> dx(MOD);
+vector<int> dp(1e9 + 1, -1);
 
-void build(int node, int start, int end) {
-    if (start == end) {
-        tree[node] = dx[start];
-        return;
-    }
-    int mid = (start + end) / 2;
-    build(node * 2, start, mid);
-    build(node * 2 + 1, mid + 1, end);
-    tree[node] = max(tree[node * 2], tree[node * 2 + 1]);
-}
-
-void pre() {
-    fx[1] = 0, gx[1] = 1, dx[1] = 1;
-    rep(i, 2, MOD) {
-        if (i & 1) {
-            fx[i] = fx[i / 2];
-            gx[i] = 2 * gx[i / 2];
-        } else {
-            fx[i] = fx[i / 2] + 1;
-            gx[i] = 2 * gx[i / 2] + 1;
-        }
-        dx[i] = fx[i] + gx[i];
-    }
-    build(1, 1, MOD);
-}
-
-
-int query(int node, int start, int end, int l, int r) {
-    if (l <= start && end <= r) {
-        return tree[node];
-    }
-    int mid = (start + end) / 2, ans = -1e9;
-    if (l <= mid) ans = max(ans, query(node * 2, start, mid, l, r));
-    if (r > mid) ans = max(ans, query(node * 2 + 1, mid + 1, end, l, r));
-    return ans;
+int ans(int n) {
+    if (n == 1 || n == 0) return 0;
+    if (dp[n] != -1) return dp[n];
+    if (n % 6 == 0) return dp[n] = min(ans(n / 2), ans(n / 3)) + 1;
+    if (n % 3 == 0) return dp[n] = min(ans(n / 3) + 1, ans(n / 2) + 2);
+    if (n % 2 == 0 && (n - 1) % 3 == 0) return dp[n] = min(ans(n / 2) + 1, ans(n / 3) + 2);
+    if (n % 2 == 0 && (n - 2) % 3 == 0) return dp[n] = min(ans(n / 2) + 1, ans(n / 3) + 3);
+    if ((n - 1) % 6 == 0) return dp[n] = min(ans(n / 2), ans(n / 3)) + 2;
+    return dp[n] = ans(n - 1) + 1;
 }
 
 void solve() {
-    /* Code */
-    // debug(dx)
-    int l, r;
-    cin >> l >> r;
-    cout << query(1, 1, MOD, l, r);
+    int n; cin >> n;
+    cout << ans(n);
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    pre();
-    // debug(dx)
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u;
-    cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    uint32_t tCs; cin >> tCs;
+    for (uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
