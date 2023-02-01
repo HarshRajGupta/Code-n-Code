@@ -4,7 +4,7 @@ using namespace std;
 void generate() {
     cout << "100\n";
     for (int i = 0; i < 10; ++i) {
-        cout << rand() << ' ';
+        cout << rand() % 10 << ' ';
     }
     cout << '\n';
 }
