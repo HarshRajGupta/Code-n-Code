@@ -1,73 +1,33 @@
-#ifndef __FAST_IO
-#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
-#endif
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
 
-#include <bits/stdc++.h>
 using namespace std;
 
-#ifndef debug
-#define debug(...)
-#endif
-
-#ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
-#endif
-
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define int long long
-#define ll long double
-
-#define Y std::cout << "YES";
-#define N std::cout << "NO";
-
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
-
-#define v std::vector
-#define maxHeap std::priority_queue<int>
-#define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
-
-#define ft first
-#define sd second
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-void solve() {
-    int n; cin >> n;
-    int sum = 0;
-    v<int> arr(n);
-    _for(i, n) {
-        cin >> arr[i];
-        sum += arr[i];
+int main() {
+    int n, m, d;
+    cin >> n >> m >> d;
+    vector<int> p(n);
+    map<int, int> pos; // maps each element in p to its position
+    for (int i = 0; i < n; i++) {
+        cin >> p[i];
+        pos[p[i]] = i;
     }
-    int change = -4;
-    _for(i, n - 1) {
-        if (arr[i] == -1 && arr[i + 1] == -1) {
-            change = 4;
-            break;
-        }
-        if ((arr[i] == 1 && arr[i + 1] == -1 && change == -4) || (arr[i] == -1 && arr[i + 1] == 1 && change == -4)) {
-            change = 0;
+    vector<int> a(m);
+    for (int i = 0; i < m; i++) {
+        cin >> a[i];
+    }
+    sort(a.begin(), a.end());
+    int moves = 0;
+    for (int i = 0; i < m - 1; i++) {
+        int cur_pos = pos[a[i]];
+        int next_pos = pos[a[i + 1]];
+        int distance = next_pos - cur_pos;
+        if (distance > d) {
+            moves += distance - 1;
         }
     }
-    // sum += arr[n - 1];
-    debug(sum, change)
-    cout << sum + change;
-}
-
-signed main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL);
-#ifdef __TAG1
-    __TAG1
-#endif
-    uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
-#ifdef __TAG2
-    __TAG2
-#endif
+    cout << moves << endl;
     return 0;
 }
