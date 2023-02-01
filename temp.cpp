@@ -27,7 +27,7 @@ const char ln = '\n';
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
 #define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
 
-template<class T> using v = std::vector<T>;
+template <class T> using v = std::vector<T>;
 #define maxHeap std::priority_queue<int>
 #define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
 
@@ -38,7 +38,7 @@ template<class T> using v = std::vector<T>;
 
 void solve() {
     /* Code */
-    v<int> arr= {1, 2};
+    v<int> arr = {1, 2};
     debug(arr);
 }
 
