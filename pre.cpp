@@ -40,7 +40,10 @@ void solve() {
     int n; cin >> n;
     int sum = 0;
     v<int> arr(n);
-    _for(i, n) cin >> arr[i];
+    _for(i, n) {
+        cin >> arr[i];
+        sum += arr[i];
+    }
     int change = -4;
     _for(i, n - 1) {
         if (arr[i] == -1 && arr[i + 1] == -1) {
@@ -50,9 +53,8 @@ void solve() {
         if ((arr[i] == 1 && arr[i + 1] == -1 && change == -4) || (arr[i] == -1 && arr[i + 1] == 1 && change == -4)) {
             change = 0;
         }
-        sum += arr[i];
     }
-    sum += arr[n - 1];
+    // sum += arr[n - 1];
     debug(sum, change)
     cout << sum + change;
 }
