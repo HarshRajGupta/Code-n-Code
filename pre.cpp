@@ -48,7 +48,7 @@ void solve() {
     _for(i, m) {
         int pos = perm[arr[i]];
         if (pos <= pre && pre != -1)
-            ans += ((pre - pos) / d) + 1;
+            ans += ((pre - pos + d) / d);
         pre = pos;
     }
     cout << ans;
