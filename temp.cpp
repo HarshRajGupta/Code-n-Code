@@ -28,8 +28,21 @@ const char ln = '\n';
 #define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
 
 template <class T> using v = std::vector<T>;
-#define maxHeap std::priority_queue<int>
-#define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
+template <class T> using maxHeap = std::priority_queue<T>;
+template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+
+void scan(int &number) {
+    bool negative = false;
+    register int c;
+    number = 0;
+    c = getchar();
+    if (c == '-') {
+        negative = true;
+        c = getchar();
+    }
+    for (; (c > 47 && c < 58); c = getchar()) number = number * 10 + c - 48;
+    if (negative) number *= -1;
+}
 
 #define ft first
 #define sd second
@@ -37,9 +50,9 @@ template <class T> using v = std::vector<T>;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    /* Code */
-    v<int> arr = {1, 2, 5, 7};
-    debug(arr);
+    int n; cin >> n;
+    v<int> arr(n);
+    _for(i, n) cin >> arr[i];
 }
 
 signed main() {
