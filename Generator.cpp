@@ -1,9 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const long long f = 1e5 + 7;
+const long long n = 1e9 + 7;
+const long long e = 1e18 + 1;
+
 void generate() {
-    cout << "100\n";
-    for (int i = 0; i < 10; ++i) {
+    int n = 100; cout << n << '\n';
+    for (int i = 0; i < n; ++i) {
         cout << rand() % 10 << ' ';
     }
     cout << '\n';
