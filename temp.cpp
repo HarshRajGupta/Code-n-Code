@@ -52,7 +52,7 @@ void scan(int &number) {
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
-    _for(i, n) cin >> arr[i];
+    _for(i, n) scan(arr[i]);
 }
 
 signed main() {
@@ -60,7 +60,7 @@ signed main() {
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs; cin >> tCs;
+    int tCs; scan(tCs);
     for (uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
