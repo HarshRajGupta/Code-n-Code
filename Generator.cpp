@@ -3,7 +3,7 @@ using namespace std;
 
 void generate() {
     cout << "100\n";
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 10; ++i) {
         cout << rand() << ' ';
     }
     cout << '\n';
