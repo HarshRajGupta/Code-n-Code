@@ -2,11 +2,7 @@
 using namespace std;
 
 void generate() {
-    int n = 10; cout << n << '\n';
-    for (int i = 0; i < n; ++i) {
-        cout << rand() % ((int)1e9 + 7) << ' ';
-    }
-    cout << '\n';
+    cout << rand();
 }
 
 signed main() {
@@ -15,7 +11,7 @@ signed main() {
 #endif
     srand(time(0));
     int testCase = 10; cout << testCase << endl;
-    while (testCase--) generate();
+    while (testCase--) generate(), cout << '\n';;
 #ifdef __TAG2
     __TAG2
 #endif
