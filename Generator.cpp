@@ -10,6 +10,7 @@ void generate() {
 }
 
 signed main() {
+    srand(time(0));
     int testCase = 10; cout << testCase << endl;
     while (testCase--) generate();
     return 0;
