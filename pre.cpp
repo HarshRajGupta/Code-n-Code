@@ -53,6 +53,7 @@ void solve() {
         sum += arr[i];
     }
     sum += arr[n - 1];
+    debug(sum, change)
     cout << sum + change;
 }
 
