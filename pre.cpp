@@ -36,23 +36,91 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+
+const int MAX_N = 100005;
+const int p = 131;
+const unsigned long long mod = 1e9 + 7;
+
+unsigned long long power[MAX_N];
+unsigned long long h1[MAX_N];
+unsigned long long h2[MAX_N];
+
+int countCommonSubstrings(string &s1, string &s2) {
+    int m = s1.length();
+    int n = s2.length();
+    int count = 0;
+
+    power[0] = 1;
+    for (int i = 1; i <= max(m, n); i++) {
+        power[i] = (power[i - 1] * p) % mod;
+    }
+
+    for (int i = 0; i < m; i++) {
+        h1[i + 1] = (h1[i] * p + s1[i]) % mod;
+    }
+    for (int i = 0; i < n; i++) {
+        h2[i + 1] = (h2[i] * p + s2[i]) % mod;
+    }
+
+    vector<int> lens;
+    for (int len = 1; len <= min(m, n); len++) {
+        unsigned long long h_s1 = (h1[len] - h1[0] * power[len] % mod + mod) % mod;
+        for (int i = 0; i + len <= n; i++) {
+            unsigned long long h_s2 = (h2[i + len] - h2[i] * power[len] % mod + mod) % mod;
+            if (h_s1 == h_s2) {
+                count++;
+                lens.push_back(len);
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < m; i++) {
+        int j = 0, k = i;
+        while (j < n && k < m) {
+            if (s1[k++] != s2[j++]) {
+                break;
+            }
+            count++;
+        }
+    }
+
+    for (int i = 0; i < lens.size(); i++) {
+        int len = lens[i];
+        for (int j = 1; j + len <= m; j++) {
+            int k = 0;
+            while (k < n && j + k < m && s1[j + k] == s2[k]) {
+                count++;
+                k++;
+            }
+            if (k < len) {
+                break;
+            }
+        }
+    }
+    return count;
+}
+
 void solve() {
-    int n, m, d; cin >> n >> m >> d;
-    v<int> perm(n + 1), arr(m);
-    _for(i, n) {
-        int temp; cin >> temp;
-        perm[temp] = i;
+    int n, k; cin >> n >> k;
+    string a, b; cin >> a >> b;
+    priority_queue<pair<int, char>> h;
+    set<char> z;
+    _for(i, n) z.insert(a[i]);
+    for (auto i : z) {
+        int m = 0;
+        _for(j, n) {
+            if (a[j] == i && b[j] != i) ++m;
+        }
+        h.push({m, i});
     }
-    _for(i, m) cin >> arr[i];
-    int ans = 0, pre = -1;
-    _for(i, m) {
-        int pos = perm[arr[i]];
-        if (pos <= pre && pre != -1)
-            ans += ((pre - pos + d) / d);
-        debug(pos, pre)
-        pre = pos;
+    while (k-- && !h.empty()) {
+        auto ele = h.top();
+        _for(i, n) {
+            if (a[i] == ele.sd) a[i] = b[i];
+        }
     }
-    cout << ans;
+    cout << countCommonSubstrings(a, b);
 }
 
 signed main() {
