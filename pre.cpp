@@ -45,60 +45,26 @@ unsigned long long power[MAX_N];
 unsigned long long h1[MAX_N];
 unsigned long long h2[MAX_N];
 
-int countCommonSubstrings(string &s1, string &s2) {
-    int m = s1.length();
-    int n = s2.length();
-    int count = 0;
+int countCommonSubstrings(string s1, string s2) {
+  int m = s1.length();
+  int n = s2.length();
+  int count = 0;
 
-    power[0] = 1;
-    for (int i = 1; i <= max(m, n); i++) {
-        power[i] = (power[i - 1] * p) % mod;
-    }
-
-    for (int i = 0; i < m; i++) {
-        h1[i + 1] = (h1[i] * p + s1[i]) % mod;
-    }
-    for (int i = 0; i < n; i++) {
-        h2[i + 1] = (h2[i] * p + s2[i]) % mod;
-    }
-
-    vector<int> lens;
-    for (int len = 1; len <= min(m, n); len++) {
-        unsigned long long h_s1 = (h1[len] - h1[0] * power[len] % mod + mod) % mod;
-        for (int i = 0; i + len <= n; i++) {
-            unsigned long long h_s2 = (h2[i + len] - h2[i] * power[len] % mod + mod) % mod;
-            if (h_s1 == h_s2) {
-                count++;
-                lens.push_back(len);
-                break;
-            }
-        }
-    }
-
-    for (int i = 0; i < m; i++) {
-        int j = 0, k = i;
-        while (j < n && k < m) {
-            if (s1[k++] != s2[j++]) {
-                break;
-            }
+  // Compare all substrings of s1 with substrings of s2
+  for (int i = 0; i < m; i++) {
+    for (int len = 1; len <= m - i; len++) {
+      string sub_s1 = s1.substr(i, len);
+      for (int j = 0; j < n; j++) {
+        for (int len2 = 1; len2 <= n - j; len2++) {
+          string sub_s2 = s2.substr(j, len2);
+          if (sub_s1 == sub_s2) {
             count++;
+          }
         }
+      }
     }
-
-    for (int i = 0; i < lens.size(); i++) {
-        int len = lens[i];
-        for (int j = 1; j + len <= m; j++) {
-            int k = 0;
-            while (k < n && j + k < m && s1[j + k] == s2[k]) {
-                count++;
-                k++;
-            }
-            if (k < len) {
-                break;
-            }
-        }
-    }
-    return count;
+  }
+  return count;
 }
 
 void solve() {
