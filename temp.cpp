@@ -50,7 +50,7 @@ void scan(int &number) {
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n; cin >> n;
+    int n; scan(n);
     v<int> arr(n);
     _for(i, n) scan(arr[i]);
     debug(arr)
