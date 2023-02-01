@@ -38,7 +38,7 @@ template<class T> using v = std::vector<T>;
 
 void solve() {
     /* Code */
-    v<int> arr= {1, 2, 3};
+    v<int> arr= {1, 2};
     debug(arr);
 }
 
