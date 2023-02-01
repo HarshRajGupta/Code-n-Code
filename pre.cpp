@@ -49,6 +49,7 @@ void solve() {
         int pos = perm[arr[i]];
         if (pos <= pre && pre != -1)
             ans += ((pre - pos + d) / d);
+        debug(pos, pre)
         pre = pos;
     }
     cout << ans;
