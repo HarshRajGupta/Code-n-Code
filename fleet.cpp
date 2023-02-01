@@ -49,6 +49,7 @@ int ans(int n) {
     return dp[n] = ans(n - 1) + 1;
 }
 
+
 void solve() {
     int n; cin >> n;
     cout << ans(n);
