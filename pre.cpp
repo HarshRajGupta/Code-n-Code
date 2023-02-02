@@ -1,6 +1,6 @@
 #ifndef __FAST_IO
-#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#pragma GCC optimize ("Ofast")
+#pragma GCC optimize ("unroll-loops")
 #endif
 
 #include <bits/stdc++.h>
@@ -20,73 +20,24 @@ const char ln = '\n';
 #define int long long
 #define ll long double
 
-#define Y std::cout << "YES";
-#define N std::cout << "NO";
+template <class T> using v = std::vector<T>;
+template <class T> using xHeap = std::priority_queue<T>;
+template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
+#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
-
-#define v std::vector
-#define maxHeap std::priority_queue<int>
-#define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
+#define bw(i, n) for(int64_t i = (int64_t)n; i >= 0; --i)
 
 #define ft first
 #define sd second
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-
-const int MAX_N = 100005;
-const int p = 131;
-const unsigned long long mod = 1e9 + 7;
-
-unsigned long long power[MAX_N];
-unsigned long long h1[MAX_N];
-unsigned long long h2[MAX_N];
-
-int countCommonSubstrings(string s1, string s2) {
-  int m = s1.length();
-  int n = s2.length();
-  int count = 0;
-
-  // Compare all substrings of s1 with substrings of s2
-  for (int i = 0; i < m; i++) {
-    for (int len = 1; len <= m - i; len++) {
-      string sub_s1 = s1.substr(i, len);
-      for (int j = 0; j < n; j++) {
-        for (int len2 = 1; len2 <= n - j; len2++) {
-          string sub_s2 = s2.substr(j, len2);
-          if (sub_s1 == sub_s2) {
-            count++;
-          }
-        }
-      }
-    }
-  }
-  return count;
-}
-
 void solve() {
-    int n, k; cin >> n >> k;
-    string a, b; cin >> a >> b;
-    priority_queue<pair<int, char>> h;
-    set<char> z;
-    _for(i, n) z.insert(a[i]);
-    for (auto i : z) {
-        int m = 0;
-        _for(j, n) {
-            if (a[j] == i && b[j] != i) ++m;
-        }
-        h.push({m, i});
-    }
-    while (k-- && !h.empty()) {
-        auto ele = h.top();
-        _for(i, n) {
-            if (a[i] == ele.sd) a[i] = b[i];
-        }
-    }
-    cout << countCommonSubstrings(a, b);
+    /* Code */
+    int n = 0;
+    v<int> arr = {12, 4, 5, 5};
+    debug(n, arr);
 }
 
 signed main() {
@@ -101,3 +52,6 @@ signed main() {
 #endif
     return 0;
 }
+
+// clojure
+// Scala
