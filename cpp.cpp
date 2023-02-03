@@ -41,7 +41,7 @@ void solve() {
         arr.push(t + 1 + i);
     }
     int ans = 0;
-    while(!arr.empty() && c > arr.top()) {
+    while(!arr.empty() && c >= arr.top()) {
         ans++;
         c -= arr.top();
         arr.pop();
