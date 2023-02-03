@@ -17,7 +17,7 @@ using namespace std;
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-// #define int long long
+#define int long long
 #define ll long double
 
 template <class T> using v = std::vector<T>;
@@ -33,23 +33,36 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    int n, sum = 0, neg = 0; cin >> n;
-    int arr[n];
-    _for(i, n) {
-        cin >> arr[i];
-        if (arr[i] < 0) neg++;
-        sum += abs(arr[i]);
-    }
-    int MIN = abs(arr[0]);
-    if (neg & 1) {
-        _for(i, n) {
-            MIN = min(abs(arr[i]), MIN);
+int ans(int n, int m) {
+    int prev = n, res = 0;
+    while (m--) {
+        res = 0;
+        while (prev) {
+            res += prev % 10;
+            prev /= 10;
         }
-        sum -= 2 * MIN;
+        prev = res;
     }
-    cout << sum;
-
+    return res;
+}
+void solve() {
+    int n, q; cin >> n >> q;
+    int arr[n], val[n + 1];
+    _for(i, n) cin >> arr[i];
+    // while (q--) {
+    //     int qu; cin >> qu;
+    //     if (qu == 1) {
+    //         int l, r; cin >> l >> r;
+    //         val[l - 1]++;
+    //         val[r]--;
+    //     } else {
+    //         int ind, moves = 0; cin >> ind;
+    //         _for(i, ind) {
+    //             moves += val[i];
+    //         }
+    //         cout << ans(arr[ind - 1], moves) << ln;
+    //     }
+    // }
 }
 
 signed main() {
