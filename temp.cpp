@@ -34,22 +34,22 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n, sum = 0, loop = 1; cin >> n;
+    int n, sum = 0, neg = 0; cin >> n;
     int arr[n];
-    _for(i, n) {cin >> arr[i]; sum += arr[i];}
-    while (loop) {
-        loop = 0;
-        _for(i, n - 1) {
-            if ((arr[i] + arr[i + 1]) < 0) {
-                sum -= (arr[i] + arr[i + 1]);
-                arr[i] *= -1;
-                arr[i + 1] *= -1;
-                sum += (arr[i] + arr[i + 1]);
-                loop = 1;
-            }
+    _for(i, n) {
+        cin >> arr[i];
+        if (arr[i] < 0) neg++;
+        sum += abs(arr[i]);
+    }
+    int MIN = abs(arr[0]);
+    if (neg & 1) {
+        _for(i, n) {
+            MIN = min(abs(arr[i]), MIN);
         }
+        sum -= 2 * MIN;
     }
     cout << sum;
+
 }
 
 signed main() {
