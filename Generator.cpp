@@ -2,7 +2,7 @@
 using namespace std;
 
 void generate() {
-    int n = 1e6, m = 1e3; cout << n;
+    int n = 1e6, m = 1e3; cout << n << '\n';
     for (int i = 0; i < n; i++) {
         if (rand() % 2)
             cout << (rand() % m) << ' ';
