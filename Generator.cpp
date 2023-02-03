@@ -15,7 +15,7 @@ signed main() {
     __TAG1
 #endif
     srand(time(0));
-    int testCase = 1; std::cout << testCase << '\n';
+    int testCase = 0; std::cout << testCase << '\n';
     while (testCase--) generate(), std::cout << '\n';
 #ifdef __TAG2
     __TAG2
