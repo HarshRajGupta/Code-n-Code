@@ -2,8 +2,12 @@
 using namespace std;
 
 void generate() {
-    int n = (rand() * rand() * 1ll) % (1000000000); cout << n;
-    // for (int i = 0; i < n; i++) cout << rand() % n << ' ';
+    int n = 1e5, m = 1e3; cout << n;
+    for (int i = 0; i < n; i++) {
+        if (rand() % 2)
+            cout << (rand() % m) << ' ';
+        else cout << (rand() % m) * -1 << ' ';
+    }
 }
 
 signed main() {
