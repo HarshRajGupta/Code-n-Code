@@ -59,7 +59,7 @@ void solve() {
         } else {
             int ind, moves = 0; cin >> ind;
             debug(ind)
-            _for(i, ind) {
+            _for(i, ind - 1) {
                 moves += val[i];
             }
             cout << ans(arr[ind - 1], moves) << ln;
