@@ -33,11 +33,12 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int ans(int n, int m) {
+int ans(const int n, int m) {
     int prev = n, res = 0;
     while (m--) {
         res = 0;
         while (prev) {
+            debug(prev, res)
             res += prev % 10;
             prev /= 10;
         }
