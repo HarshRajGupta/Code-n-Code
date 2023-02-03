@@ -48,7 +48,8 @@ int ans(const int n, int m) {
 }
 void solve() {
     int n, q; cin >> n >> q;
-    int arr[n], val[n + 1];
+    int arr[n];
+    v<int> val(n + 1, 0);
     _for(i, n) cin >> arr[i];
     while (q--) {
         int qu; cin >> qu;
