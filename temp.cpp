@@ -50,7 +50,7 @@ void solve() {
     int n, q; cin >> n >> q;
     int arr[n];
     v<int> val(n + 1, 0), netVal(n + 1);
-    _for(i, n) cin >> arr[i];
+    _for(i, n) {cin >> arr[i];}
     int x = n, y = 0;
     while (q--) {
         int qu; cin >> qu;
