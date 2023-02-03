@@ -68,7 +68,7 @@ void solve() {
                 val[i] = 0;
                 netVal[i] += moves;
             }
-            cout << ans(arr[ind - 1], netVal[ind]) << ln;
+            cout << ans(arr[ind - 1], netVal[ind - 1]) << ln;
             x = n, y = 0;
         }
     }
