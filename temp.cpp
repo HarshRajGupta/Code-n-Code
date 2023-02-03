@@ -49,20 +49,20 @@ void solve() {
     int n, q; cin >> n >> q;
     int arr[n], val[n + 1];
     _for(i, n) cin >> arr[i];
-    // while (q--) {
-    //     int qu; cin >> qu;
-    //     if (qu == 1) {
-    //         int l, r; cin >> l >> r;
-    //         val[l - 1]++;
-    //         val[r]--;
-    //     } else {
-    //         int ind, moves = 0; cin >> ind;
-    //         _for(i, ind) {
-    //             moves += val[i];
-    //         }
-    //         cout << ans(arr[ind - 1], moves) << ln;
-    //     }
-    // }
+    while (q--) {
+        int qu; cin >> qu;
+        if (qu == 1) {
+            int l, r; cin >> l >> r;
+            val[l - 1]++;
+            val[r]--;
+        } else {
+            // int ind, moves = 0; cin >> ind;
+            // _for(i, ind) {
+            //     moves += val[i];
+            // }
+            // cout << ans(arr[ind - 1], moves) << ln;
+        }
+    }
 }
 
 signed main() {
