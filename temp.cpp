@@ -56,7 +56,7 @@ void solve() {
             val[l - 1]++;
             val[r]--;
         } else {
-            // int ind, moves = 0; cin >> ind;
+            int ind, moves = 0; cin >> ind;
             // _for(i, ind) {
             //     moves += val[i];
             // }
