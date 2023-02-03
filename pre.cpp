@@ -26,7 +26,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 #define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int64_t i = (int64_t)n; i >= 0; --i)
+#define bw(i, n) for(int64_t i = n; i >= 0; --i)
 
 #define ft first
 #define sd second
@@ -34,10 +34,15 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    /* Code */
-    int n = 0;
-    v<int> arr = {12, 4, 5, 5};
-    debug(n, arr);
+    string s = "codeforces";
+    char a; cin >> a;
+    _for(i, sz(s)) {
+        if (s[i] == a) {
+            cout << "YES";
+            return;
+        }
+    }
+    cout << "NO";
 }
 
 signed main() {
@@ -52,6 +57,3 @@ signed main() {
 #endif
     return 0;
 }
-
-// clojure
-// Scala
