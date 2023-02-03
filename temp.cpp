@@ -17,7 +17,7 @@ using namespace std;
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-#define int long long
+// #define int long long
 #define ll long double
 
 template <class T> using v = std::vector<T>;
@@ -33,9 +33,12 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+map<int, map<int, int>> dp;
 int ans(const int n, int m) {
+    if (dp[n][m] != 0 || n == 0)
+        return dp[n][m];
     int prev = n;
-    debug(n, m)
+    // debug(n, m)
     _for(i, m) {
         int res = 0;
         while (prev) {
@@ -44,7 +47,7 @@ int ans(const int n, int m) {
         }
         prev = res;
     }
-    return prev;
+    return dp[n][m] = prev;
 }
 void solve() {
     int n, q; cin >> n >> q;
@@ -62,14 +65,19 @@ void solve() {
             y = max(y, r);
         } else {
             int ind, moves = 0; cin >> ind;
-            debug(ind)
-            rep(i, x, y + 1) {
-                moves += val[i];
-                val[i] = 0;
-                netVal[i] += moves;
+            // debug(ind)
+            if (ans(arr[ind - 1], netVal[ind - 1]) <= 9) {
+                cout << ans(arr[ind - 1], netVal[ind - 1]) << ln;
             }
-            cout << ans(arr[ind - 1], netVal[ind - 1]) << ln;
-            x = n, y = 0;
+            else {
+                rep(i, x, y + 1) {
+                    moves += val[i];
+                    val[i] = 0;
+                    netVal[i] += moves;
+                }
+                cout << ans(arr[ind - 1], netVal[ind - 1]) << ln;
+                x = n, y = 0;
+            }
         }
     }
 }
