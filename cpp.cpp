@@ -33,16 +33,29 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+int ans(v<v<int>> &mp, int ind, int n) {
+    int res = 0;
+    _for(i, 26) {
+        if (mp[ind][i] > 0) ++res;
+        if (mp[n - 1][i] - mp[ind][i] > 0) ++res;
+    }
+    return res;
+}
 void solve() {
     int n; cin >> n;
     string s; cin >> s;
-    map<char, int> arr;
-    int ans = 0;
+    v<v<int>> mp(n);
+    int res = 0;
+    v<int> prev(26);
     _for(i, n) {
-        if (arr[s[i]] <= 1) ++ans;
-        ++arr[s[i]];
+        mp[i] = prev;
+        mp[i][s[i] - 'a']++;
+        prev[s[i] - 'a']++;
     }
-    cout << ans;
+    _for(i, n) {
+        res = max(res, ans(mp, i, n));
+    }
+    cout << res;
 }
 
 signed main() {
