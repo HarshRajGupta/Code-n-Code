@@ -36,6 +36,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 void solve() {
     string s = "codeforces";
     string a; cin >> a;
+    debug(a)
     _for(i, sz(s)) {
         if (s[i] == a[0]) {
             cout << "YES";
