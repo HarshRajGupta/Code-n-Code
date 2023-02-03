@@ -17,7 +17,7 @@ using namespace std;
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-// #define int long long
+#define int long long
 #define ll long double
 
 template <class T> using v = std::vector<T>;
@@ -34,40 +34,27 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    const int MAXN = 200005;
-    int sum_of_digits[MAXN];
-    bool vis[MAXN];
-    int n, q;
-    cin >> n >> q;
-    int a[n];
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        int num = a[i];
-        while (num > 9) {
-            int sum = 0;
-            while (num > 0) {
-                sum += num % 10;
-                num /= 10;
-            }
-            num = sum;
-        }
-        sum_of_digits[i] = num;
+    int n, c; cin >> n >> c;
+    nHeap<pair<int, int>> arr, a;
+    _for(i, n) {
+        int t; cin >> t;
+        arr.push({t + 1 + i, i});
+        a.push({t, i});
     }
-    while (q--) {
-        int t, l, r;
-        cin >> t >> l;
-        if (t == 1) {
-            cin >> r;
-            for (int i = l - 1; i < r; i++) {
-                if (!vis[i]) {
-                    vis[i] = true;
-                    a[i] = sum_of_digits[i];
-                }
+    int ans = 0;
+    if (c >= arr.top().ft) {
+        ++ans;
+        c -= arr.top().ft;
+        while(!a.empty() && c >= a.top().ft) {
+            if (a.top().sd == arr.top().sd) a.pop();
+            else {
+                c -= a.top().ft;
+                ++ans;
+                a.pop();
             }
-        } else {
-            cout << a[l - 1] << ln;
         }
     }
+    cout << ans;
 }
 
 signed main() {
