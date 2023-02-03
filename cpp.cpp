@@ -37,8 +37,8 @@ void solve() {
     const int MAXN = 200005;
     int sum_of_digits[MAXN];
     bool vis[MAXN];
-    int t, n, q;
-    cin >> t >> n >> q;
+    int n, q;
+    cin >> n >> q;
     int a[n];
     for (int i = 0; i < n; i++) {
         cin >> a[i];
