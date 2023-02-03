@@ -1,6 +1,6 @@
 #ifndef __FAST_IO
-#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#pragma GCC optimize ("Ofast")
+#pragma GCC optimize ("unroll-loops")
 #endif
 
 #include <bits/stdc++.h>
@@ -20,16 +20,13 @@ const char ln = '\n';
 #define int long long
 #define ll long double
 
-#define Y std::cout << "YES";
-#define N std::cout << "NO";
+template <class T> using v = std::vector<T>;
+template <class T> using xHeap = std::priority_queue<T>;
+template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
+#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
-
-#define v std::vector
-#define maxHeap std::priority_queue<int>
-#define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
+#define bw(i, n) for(int64_t i = n; i >= 0; --i)
 
 #define ft first
 #define sd second
@@ -38,13 +35,14 @@ const char ln = '\n';
 
 void solve() {
     int n; cin >> n;
-    v<int> arr(n);
-    _for(i, n) cin >> arr[i];
-    int MAX = 0;
+    string s; cin >> s;
+    map<char, int> arr;
+    int ans = 0;
     _for(i, n) {
-        MAX = max(MAX, min(abs(i + 1 - arr[i]), abs(n - arr[i])));
+        if (arr[s[i]] <= 1) ++ans;
+        ++arr[s[i]];
     }
-    cout << MAX;
+    cout << ans;
 }
 
 signed main() {
