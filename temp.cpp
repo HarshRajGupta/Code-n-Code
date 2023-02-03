@@ -35,10 +35,9 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 int ans(const int n, int m) {
     int prev = n, res = 0;
-    while (m--) {
+    _for(i, m) {
         res = 0;
         while (prev) {
-            debug(prev, res)
             res += prev % 10;
             prev /= 10;
         }
