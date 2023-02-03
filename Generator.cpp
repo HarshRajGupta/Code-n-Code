@@ -2,11 +2,14 @@
 using namespace std;
 
 void generate() {
-    int n = (1e5) * 5, m = 1e3; cout << n << '\n';
+    int n = (1e5) * 2, m = 1e3; cout << n  << ' ' << n << '\n';
     for (int i = 0; i < n; i++) {
-        if (rand() % 2)
-            cout << (rand() % m) << ' ';
-        else cout << (rand() % m) * -1 << ' ';
+        cout << (rand() % m) << ' ';
+    }
+    for (int i = 0; i < n; ++i) {
+        if (i & 1) {
+            cout << "2 " << rand() % n << '\n';
+        } else cout << "1 1 " << n << '\n';
     }
 }
 
@@ -15,7 +18,7 @@ signed main() {
     __TAG1
 #endif
     srand(time(0));
-    int testCase = 0; std::cout << testCase << '\n';
+    int testCase = 1; std::cout << testCase << '\n';
     while (testCase--) generate(), std::cout << '\n';
 #ifdef __TAG2
     __TAG2
