@@ -34,11 +34,15 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    string s = "codeforces";
-    string a; cin >> a;
-    debug(a)
-    _for(i, sz(s)) {
-        if (s[i] == a[0]) {
+    int n; cin >> n;
+    string s; cin >> s;
+    int x = 0, y = 0;
+    _for(i, n) {
+        if (s[i] == 'L') --x;
+        else if (s[i] == 'R') ++x;
+        else if (s[i] == 'U') ++y;
+        else if (s[i] == 'D') --y;
+        if (x == 1 && y == 1) {
             cout << "YES";
             return;
         }
