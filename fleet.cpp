@@ -1,6 +1,6 @@
 #ifndef __FAST_IO
-#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#pragma GCC optimize ("Ofast")
+#pragma GCC optimize ("unroll-loops")
 #endif
 
 #include <bits/stdc++.h>
@@ -20,44 +20,35 @@ const char ln = '\n';
 #define int long long
 #define ll long double
 
-#define Y std::cout << "YES";
-#define N std::cout << "NO";
+template <class T> using v = std::vector<T>;
+template <class T> using xHeap = std::priority_queue<T>;
+template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
+#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int32_t i = (int32_t)n; i >= 0; --i)
-
-#define v std::vector
-#define maxHeap std::priority_queue<int>
-#define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
+#define bw(i, n) for(int64_t i = n; i >= 0; --i)
 
 #define ft first
 #define sd second
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-vector<int> dp(1e9 + 1, -1);
-
-int ans(int n) {
-    // if (n == 1 || n <= 0) return 0;
-    if (dp[n] != -1) return dp[n];
-    if (n % 6 == 0) return dp[n] = min(ans(n / 2), ans(n / 3)) + 1;
-    if (n % 3 == 0) return dp[n] = min(ans(n / 3) + 1, ans(n / 2) + 2);
-    if (n % 2 == 0 && (n - 1) % 3 == 0) return dp[n] = min(ans(n / 2) + 1, ans(n / 3) + 2);
-    if (n % 2 == 0 && (n - 2) % 3 == 0) return dp[n] = min(ans(n / 2) + 1, ans(n / 3) + 3);
-    if ((n - 1) % 6 == 0) return dp[n] = min(ans(n / 2), ans(n / 3)) + 2;
-    return dp[n] = ans(n - 1) + 1;
-}
-
-
 void solve() {
     int n; cin >> n;
-    cout << ans(n);
+    string s; cin >> s;
+    int l = n;
+    _for(i, n / 2) {
+        if (s[i] == s[n - 1 - i]) {
+            cout << l;
+            return;
+        }
+        l -= 2;
+    }
+    cout << l;
 }
 
 signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
-    dp[1] = 0, dp[0] = 0;
 #ifdef __TAG1
     __TAG1
 #endif
