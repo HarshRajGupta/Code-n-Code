@@ -17,7 +17,7 @@ using namespace std;
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-#define int long long
+// #define int long long
 #define ll long double
 
 template <class T> using v = std::vector<T>;
