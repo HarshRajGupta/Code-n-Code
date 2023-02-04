@@ -69,12 +69,12 @@ ll query(int i,int tl,int tr,int l,int r,vector<ll> &t,vector<ll> &p){
 }
 int main()
 {
-#ifndef ONLINE_JUDGE
-    // For getting input from input.txt file
-    freopen("input.txt", "r", stdin);
-    // Printing the Output to output.txt file
-    freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//     // For getting input from input.txt file
+//     freopen("input.txt", "r", stdin);
+//     // Printing the Output to output.txt file
+//     freopen("output.txt", "w", stdout);
+// #endif
     OM_NAMAH_SHIVAY;
     int cs;
     cin>>cs;
