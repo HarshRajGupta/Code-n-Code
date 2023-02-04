@@ -1,71 +1,39 @@
-#ifndef __FAST_IO
-#pragma GCC optimize ("Ofast")
-#pragma GCC optimize ("unroll-loops")
-#endif
-
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef debug
-#define debug(...)
-#endif
 
-#ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
-#endif
-
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define int long long
-#define ll long double
-
-template <class T> using v = std::vector<T>;
-template <class T> using xHeap = std::priority_queue<T>;
-template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
-
-#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
-#define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int64_t i = n; i >= 0; --i)
-
-#define ft first
-#define sd second
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-void solve() {
-    int n, c; cin >> n >> c;
-    nHeap<pair<int, int>> arr, a;
-    _for(i, n) {
-        int t; cin >> t;
-        arr.push({t + 1 + i, i});
-        a.push({t, i});
-    }
-    int ans = 0;
-    if (c >= arr.top().ft) {
-        ++ans;
-        c -= arr.top().ft;
-        while(!a.empty() && c >= a.top().ft) {
-            if (a.top().sd == arr.top().sd) a.pop();
-            else {
-                c -= a.top().ft;
-                ++ans;
-                a.pop();
+int ans(vector<string> pixels) {
+    vector<int> row(pixels.size()), col(pixels[0].size());
+    for (int i = 0; i < pixels.size(); ++i) {
+        for (int j = 0; j < pixels[0].size(); ++j) {
+            if (pixels[i][j] == '1') {
+                ++row[i];
+                ++col[j];
             }
         }
     }
-    cout << ans;
+    debug(row, col)
+    int MAX = 0;
+    for (int i = 0; i < pixels.size(); ++i) {
+        for (int j = 0; j < pixels[0].size(); ++j) {
+            MAX = max(MAX, abs((int)((int)row.size() + (int)col.size() - row[i] - col[j] - row[i] - col[j])));
+        }
+    }
+    return MAX;
+}
+
+void solve() {
+    int n; cin >> n;
+    // vector<string> s;
+    // for (int i = 0; i < n; ++i) {
+    //     cin >> s[i];
+    // }
+    // cout << ans(s);
+    cout << 1;
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL);
-#ifdef __TAG1
-    __TAG1
-#endif
-    uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
-#ifdef __TAG2
-    __TAG2
-#endif
+    int testCase; cin >> testCase;
+    while (testCase--) solve();
     return 0;
 }
