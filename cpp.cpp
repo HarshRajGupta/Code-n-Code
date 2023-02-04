@@ -24,13 +24,13 @@ using namespace std;
 
 void solve() {
     int n; cin >> n;
-    vector<string> s;
-    // for (int i = 0; i < n; ++i) {
-    //     cin >> s[i];
-    // }
+    vector<string> str(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> str[i];
+    }
     // cout << ans(s);
     // cout << 1;
-    debug(s)
+    debug(str)
 }
 
 signed main() {
