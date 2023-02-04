@@ -2,10 +2,10 @@
 using namespace std;
 
 void generate() {
-    int n = (1e2) * 2, m = 1e3; cout << n  << ' ' << n << '\n';
-    for (int i = 0; i < n; i++) {
-        cout << (rand() % m) << ' ';
-    }
+    int n = (1e5) * 2, m = 99999999;
+    cout << n << ' ' << n << '\n';
+    for (int i = 0; i < n; ++i) cout << m << ' ';
+    cout << '\n';
     for (int i = 0; i < n; ++i) {
         if (i & 1) {
             cout << "2 " << rand() % n << '\n';
