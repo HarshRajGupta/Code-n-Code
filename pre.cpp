@@ -50,6 +50,7 @@ int res(const vector<int>& nums, int k) {
         if (visited[p]) {
             ++p;
         } else {
+            debug(nums[p]);
             MAX = max(MAX, nums[p]);
             p += 2;
         }
@@ -58,7 +59,7 @@ int res(const vector<int>& nums, int k) {
 }
 
 void solve(void) {
-    cout << res({2,7,9,3,1}, 2);
+    cout << res({2, 7, 9, 3, 1}, 2);
 }
 
 signed main(void) {
