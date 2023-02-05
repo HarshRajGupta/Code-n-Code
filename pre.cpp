@@ -44,6 +44,7 @@ int res(const vector<int>& nums, int k) {
         visited[mp.top().second] = 1;
         mp.pop();
     }
+    debug(visited)
     int p = 0, MAX = 0;
     while (p < nums.size()) {
         if (visited[p]) {
