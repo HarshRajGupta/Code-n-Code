@@ -34,26 +34,36 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 int res(const vector<int>& nums, int k) {
-    xHeap<pair<int, int>> mp;
+    // map<int, map<int, int>> zp;
+    if (k == 0 || nums.size() == 0) return 0;
+    if (k == 1 && nums.size() == 1) return nums[0];
+    xHeap<pair<int, int>> mpp;
     for (int i = 0; i < nums.size(); ++i) {
-        mp.push({nums[i], i});
+        mpp.push({nums[i], i});
     }
     int left = nums.size() - (k + k - 1);
     vector<int> visited(nums.size());
     for (int i = 0; i < left; ++i) {
-        visited[mp.top().second] = 1;
-        mp.pop();
+        visited[mpp.top().second] = 1;
+        mpp.pop();
     }
-    debug(visited)
+    // debug(visited)
     int p = 0, MAX = 0;
     while (p < nums.size()) {
-        if (visited[p]) {
-            ++p;
-        } else {
-            debug(nums[p]);
-            MAX = max(MAX, nums[p]);
-            p += 2;
+        // mp.clear();
+        int l = p, r = p;
+        vector<int> z;
+        while (l < nums.size() && visited[l]) {
+            ++l;
+            ++r;
         }
+        while (r < nums.size() && visited[r] == 0) {
+            z.push_back(nums[r]);
+            ++r;
+        }
+        p = r;
+        MAX = max(MAX, res(z, (z.size() + 1) / 2));
+        // MAX = max(MAX, ans(z, (z.size() + 1) / 2, 0, 0));
     }
     return MAX;
 }
