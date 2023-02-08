@@ -33,20 +33,48 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+
+int next(v<int> &arr, int target, int start, int end) {
+    if (target > arr[end - 1]) return end - 1;
+    int ans = start;
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+        if (arr[mid] >= target)
+            end = mid - 1;
+        else {
+            ans = mid;
+            start = mid + 1;
+        }
+    }
+    return ans;
+}
+
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
     sort(all(arr));
     int MAX = INT_MAX;
-    debug(arr)
-    for (auto i = arr.begin(); i != arr.end(); ++i) {
-        for (auto j = arr.begin() + n - 1; j != i; --j) {
-            int mid = (*i + *j) / 2;
-            auto l = lower_bound(i + 1, j, mid - 1), r = upper_bound(i + 1, j, mid + 1);
-            if ( r != j) ++r;
-            for (auto t = l; t != j && t != r; ++t) {
-                MAX = min(MAX, abs(*i + *j - 2 * (*t)));
+    // map<int, int> mp;
+    // _for(i, n) {
+    //     if (mp[arr[i]] == 0) {
+    //         mp[arr[i]] = i + 1;
+    //     }
+    // }
+    // for (auto i = arr.begin(); i != arr.end(); ++i) {
+    //     for (auto j = arr.begin() + n - 1; j != i; --j) {
+    //         int mid = (*i + *j) / 2;
+
+    //     }
+    // }
+
+    _for(i, n - 2) {
+        for (int j = n - 1; j > i + 1; --j) {
+            int mid = (arr[i] + arr[j]) / 2;
+            int l = next(arr, mid, i + 1, j - 1);
+            rep(k, l, min(j, l + 50)) {
+                MAX = min(MAX, abs(arr[i] + arr[j] - 2 * arr[k]));
             }
         }
     }
