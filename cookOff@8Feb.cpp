@@ -48,7 +48,7 @@ void solve() {
             MAX = min(MAX, min(abs(((arr[i] + arr[j] + l) / 3) - l), abs(((arr[i] + arr[j] + r) / 3) - r)));
         }
     }
-    cout << MAX;
+    cout << 3 * MAX;
 }
 
 signed main() {
