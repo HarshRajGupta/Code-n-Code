@@ -41,7 +41,7 @@ void solve() {
     int MAX = INT_MAX;
     debug(arr)
     _for(i, n) {
-        for (int j = n - 1; j > i; --j) {
+        for (int j = n - 1; j > i + 1; --j) {
             int mean = (arr[i] + arr[j]) / 2;
             int l = *lower_bound(arr.begin() + i + 1, arr.begin() + j - 1, mean), r = *upper_bound(arr.begin() + i + 1, arr.begin() + j - 1, mean);
             debug(l, r, mean, arr[i], arr[j])
