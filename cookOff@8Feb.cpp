@@ -39,7 +39,7 @@ void solve() {
     rep(i, 1, n - 1) {
         arr[i] = i + 2;
     }
-    arr[0] = n, arr[n - 1] = 1;
+    arr[0] = 2, arr[n - 1] = 1;
     _for(i, n) cout << arr[i] << ' ';
 }
 
