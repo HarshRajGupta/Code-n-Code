@@ -53,15 +53,16 @@ void solve() {
         }
     }
 
-    _for(i, n) {
-        for (int j = n - 1; j > i + 1; --j) {
-            for (int k = i + 1; k < j; ++k) {
-                MIN = min(MIN, abs(arr[i] + arr[j] - 2 * arr[k]));
-            }
-        }
-    }
+    // _for(i, n) {
+    //     for (int j = n - 1; j > i + 1; --j) {
+    //         for (int k = i + 1; k < j; ++k) {
+    //             MIN = min(MIN, abs(arr[i] + arr[j] - 2 * arr[k]));
+    //         }
+    //     }
+    // }
 
-    if (MIN != MAX) {cout << "NO"; ++miss;}
+    // if (MIN != MAX) {cout << "NO"; ++miss;}
+    cout << MAX;
 }
 
 signed main() {
