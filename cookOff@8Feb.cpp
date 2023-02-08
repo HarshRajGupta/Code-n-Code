@@ -36,11 +36,17 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
-    rep(i, 1, n - 1) {
-        arr[i] = i + 2;
+    _for(i, n) cin >> arr[i];
+    sort(all(arr));
+    int MAX = INT_MAX;
+    _for(i, n) {
+        for (int j = n - 1; j > i; --j) {
+            int mean = (arr[i] + arr[j]) / 2;
+            int l = *lower_bound(arr.begin() + i, arr.begin() + j + 1, mean), r = *upper_bound(arr.begin() + i, arr.begin() + j + 1, mean);
+            MAX = min(MAX, min(abs(((arr[i] + arr[j] + l) / 3) - l), abs(((arr[i] + arr[j] + r) / 3) - r)));
+        }
     }
-    arr[0] = 2, arr[n - 1] = 1;
-    _for(i, n) cout << arr[i] << ' ';
+    cout << MAX;
 }
 
 signed main() {
