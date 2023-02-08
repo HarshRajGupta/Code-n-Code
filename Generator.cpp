@@ -2,15 +2,15 @@
 using namespace std;
 
 void generate() {
-    int n = (1e5) * 2, m = 99999999;
-    cout << n << ' ' << n << '\n';
-    for (int i = 0; i < n; ++i) cout << m << ' ';
+    int n = (1e3) * 5, m = 99999999;
+    cout << n << '\n';
+    for (int i = 0; i < n; ++i) cout << rand() % m << ' ';
     cout << '\n';
-    for (int i = 0; i < n; ++i) {
-        if (i & 1) {
-            cout << "2 " << rand() % n << '\n';
-        } else cout << "1 1 " << n << '\n';
-    }
+    // for (int i = 0; i < n; ++i) {
+    //     if (i & 1) {
+    //         cout << "2 " << rand() % n << '\n';
+    //     } else cout << "1 1 " << n << '\n';
+    // }
 }
 
 signed main() {
