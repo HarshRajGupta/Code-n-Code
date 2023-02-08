@@ -39,7 +39,7 @@ void solve() {
     _for(i, n) cin >> arr[i];
     sort(all(arr));
     int MAX = INT_MAX, MIN = INT_MAX;
-    debug(arr)
+    // debug(arr)
     for (auto i = arr.begin(); i != arr.end(); ++i) {
         for (auto j = arr.begin() + n - 1; j != i; --j) {
             int mid = (*i + *j) / 2;
@@ -58,6 +58,7 @@ void solve() {
             }
         }
     }
+    
     if (MIN != MAX) cout << "NO";
 }
 
