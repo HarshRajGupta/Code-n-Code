@@ -33,6 +33,8 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+int miss = 0;
+
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
@@ -58,8 +60,8 @@ void solve() {
             }
         }
     }
-    
-    if (MIN != MAX) cout << "NO";
+
+    if (MIN != MAX) {cout << "NO"; ++miss;}
 }
 
 signed main() {
@@ -72,5 +74,6 @@ signed main() {
 #ifdef __TAG2
     __TAG2
 #endif
+    debug(miss)
     return 0;
 }
