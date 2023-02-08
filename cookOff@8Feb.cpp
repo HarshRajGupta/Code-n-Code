@@ -33,31 +33,29 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    int n; cin >> n;
+void solve(void) {
+    int n, m; cin >> n >> m;
     v<int> arr(n);
-    _for(i, n) cin >> arr[i];
-    sort(all(arr));
-    int MAX = INT_MAX;
-    debug(arr)
-    _for(i, n) {
-        for (int j = n - 1; j > i + 1; --j) {
-            int mean = (arr[i] + arr[j]) / 2;
-            int l = *lower_bound(arr.begin() + i + 1, arr.begin() + j - 1, mean), r = *upper_bound(arr.begin() + i + 1, arr.begin() + j - 1, mean);
-            debug(l, r, mean, arr[i], arr[j])
-            MAX = min(MAX, min(abs(((arr[i] + arr[j] + l) / 3) - l), abs(((arr[i] + arr[j] + r) / 3) - r)));
+    int prev  = 0;
+    multiset<int, greater<int>> mpp;
+    _for(i, m) {
+        int p, t; cin >> p >> t;
+        if (arr[p] != 0) {
+            mpp.erase(arr[p - 1]);
         }
+        arr[p - 1] += t;
+        mpp.insert(arr[p]);
+        prev += *(mpp.begin());
+        cout << prev << ln;
     }
-    cout << 3 * MAX;
 }
 
-signed main() {
+signed main(void) {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
+    solve();
 #ifdef __TAG2
     __TAG2
 #endif
