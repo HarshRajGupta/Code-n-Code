@@ -43,7 +43,7 @@ void solve() {
     _for(i, n) {
         for (int j = n - 1; j > i; --j) {
             int mean = (arr[i] + arr[j]) / 2;
-            int l = *lower_bound(arr.begin() + i, arr.begin() + j, mean), r = *upper_bound(arr.begin() + i, arr.begin() + j, mean);
+            int l = *lower_bound(arr.begin() + i, arr.begin() + j - 1, mean), r = *upper_bound(arr.begin() + i, arr.begin() + j - 1, mean);
             debug(l, r, mean, arr[i], arr[j])
             MAX = min(MAX, min(abs(((arr[i] + arr[j] + l) / 3) - l), abs(((arr[i] + arr[j] + r) / 3) - r)));
         }
