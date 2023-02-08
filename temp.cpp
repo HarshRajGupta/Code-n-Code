@@ -11,13 +11,13 @@ using namespace std;
 #endif
 
 #ifndef __RUN
-#define __RUN solve()
+#define __RUN solve(), std::cout << '\n'
 #endif
 
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-// #define int long long
+#define int long long
 #define ll long double
 
 template <class T> using v = std::vector<T>;
@@ -33,53 +33,23 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-map<int, map<int, int>> dp;
-int ans(const int n, int m) {
-    if (dp[n][m] != 0 || n == 0)
-        return dp[n][m];
-    int prev = n;
-    // debug(n, m)
-    _for(i, m) {
-        int res = 0;
-        while (prev) {
-            res += prev % 10;
-            prev /= 10;
-        }
-        prev = res;
-    }
-    return dp[n][m] = prev;
-}
 void solve() {
-    int n, q; cin >> n >> q;
-    int arr[n];
-    v<int> val(n + 1, 0), netVal(n + 1);
-    _for(i, n) {cin >> arr[i];}
-    int x = n, y = 0;
-    while (q--) {
-        int qu; cin >> qu;
-        if (qu == 1) {
-            int l, r; cin >> l >> r;
-            val[l - 1]++;
-            val[r]--;
-            x = min(x, l - 1);
-            y = max(y, r);
-        } else {
-            int ind, moves = 0; cin >> ind;
-            // debug(ind)
-            if (ans(arr[ind - 1], netVal[ind - 1]) <= 9) {
-                cout << ans(arr[ind - 1], netVal[ind - 1]) << ln;
-            }
-            else {
-                rep(i, x, y + 1) {
-                    moves += val[i];
-                    val[i] = 0;
-                    netVal[i] += moves;
-                }
-                cout << ans(arr[ind - 1], netVal[ind - 1]) << ln;
-                x = n, y = 0;
-            }
-        }
+    int n; cin >> n;
+    map<int, int> mp;
+    xHeap<int> a;
+    _for(i, n) {
+        int t; cin >> t;
+        ++mp[t];
+        a.push(t);
     }
+    while (!a.empty()) {
+        if (mp[a.top()] & 1) {
+            cout << "Marichka";
+            return;
+        }
+        a.pop();
+    }
+    cout << "Zenyk";
 }
 
 signed main() {
