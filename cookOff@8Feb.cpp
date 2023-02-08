@@ -37,15 +37,15 @@ void solve(void) {
     int n, m; cin >> n >> m;
     v<int> arr(n);
     int prev  = 0;
-    multiset<int, greater<int>> mpp;
+    // multiset<int, greater<int>> mpp;
     _for(i, m) {
         int p, t; cin >> p >> t;
-        if (arr[p - 1] != 0) {
-            mpp.erase(arr[p - 1]);
-        }
+        // if (arr[p - 1] != 0) {
+        //     mpp.erase(arr[p - 1]);
+        // }
         arr[p - 1] += t;
-        mpp.insert(arr[p - 1]);
-        prev += *(mpp.begin());
+        // mpp.insert(arr[p - 1]);
+        prev += arr[p - 1];
         cout << prev << ln;
     }
 }
