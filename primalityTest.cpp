@@ -40,15 +40,28 @@ const bool isPrime(const int &n) {
     return true;
 }
 
+std::vector<int> allPrimes;
+const std::vector<bool> sieve(const int n = 90000007) {
+    std::vector<bool> isPrime(n + 1, true);
+    isPrime[0] = false, isPrime[1] = false;
+    for (int i = 2; (i * i) <= n; ++i) {
+        if (isPrime[i]) {
+            allPrimes.push_back(i);
+            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
+        }
+    }
+    return isPrime;
+}
+
 void solve() {
-    int n; cin >> n;
-    if (isPrime(n)) {
-        cout << "yes";
-    } else cout << "no";
+    int k; cin >> k;
+    // cout << allPrimes[k - 1];
+    cout << sz(allPrimes);
 }
 
 signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
+    sieve();
 #ifdef __TAG1
     __TAG1
 #endif
