@@ -40,16 +40,12 @@ const bool isPrime(const int &n) {
     return true;
 }
 
-std::vector<int> allPrimes;
-const std::vector<bool> sieve(const int n = 100000007) {
+std::vector<int32_t> allPrimes;
+std::vector<bool> sieve(int n = 100000007) {
     std::vector<bool> isPrime(n + 1, true);
     isPrime[0] = false, isPrime[1] = false;
-    for (int i = 2; (i) <= n; ++i) {
-        if (isPrime[i]) {
-            allPrimes.push_back(i);
-            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
-        }
-    }
+    for (int i = 2; (i * i) <= n; ++i) if (isPrime[i]) for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
+    for (int i = 2; i <= n; ++i) if (isPrime[i]) allPrimes.push_back(i);
     return isPrime;
 }
 
