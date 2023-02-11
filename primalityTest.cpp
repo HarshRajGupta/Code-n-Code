@@ -36,7 +36,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 void solve(void) {
 #define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
     int n; cin >> n;
-    vector<int> s(n);
+    vector<char> s(n);
     _for(i, n) cin >> s[i];
     char c; cin >> c;
     int ans = 0, prev = -1;
