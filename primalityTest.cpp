@@ -44,6 +44,7 @@ void solve(void) {
         if (s[i] == c) {
             if (prev == -1) prev = i;
             else {
+                debug(i, prev, ans)
                 ans += (i - prev);
                 prev = i;
             }
