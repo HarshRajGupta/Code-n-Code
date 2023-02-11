@@ -58,7 +58,7 @@ std::vector<bool> sieve(int n = 100000007) {
 void solve() {
     int k; cin >> k;
     cout << k;
-    cout << sz(allPrimes);
+    // cout << sz(allPrimes);
 }
 
 signed main() {
