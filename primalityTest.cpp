@@ -1,4 +1,4 @@
-#ifndef __FAST_IO
+#ifdef ONLINE_JUDGE
 #pragma GCC optimize ("Ofast")
 #pragma GCC optimize ("unroll-loops")
 #endif
@@ -33,41 +33,31 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-const bool isPrime(const int &n) {
-    for (int i = 2; (i * i) <= n; ++i) {
-        if (n % i == 0) return false;
+void solve(void) {
+#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
+    int n; cin >> n;
+    vector<int> s(n);
+    _for(i, n) cin >> s[i];
+    char c; cin >> c;
+    int ans = 0, prev = -1;
+    _for(i, n) {
+        if (s[i] == c) {
+            if (prev == -1) prev = i;
+            else {
+                ans += i - prev;
+                prev = i;
+            }
+        }
     }
-    return true;
+    cout << ans;
 }
 
-std::vector<int32_t> allPrimes;
-std::vector<bool> sieve(int n = 100000007) {
-    std::vector<bool> isPrime(n + 1, true);
-    isPrime[0] = false, isPrime[1] = false;
-    for (int i = 2; (i * i) <= n; ++i) 
-        if (isPrime[i]) 
-            for (int j = (i * i); j <= n; j += i) 
-                isPrime[j] = false;
-    for (int i = 2; i <= n; ++i) 
-        if (isPrime[i]) 
-            allPrimes.push_back(i);
-    return isPrime;
-}
-
-void solve() {
-    int k; cin >> k;
-    cout << allPrimes[k - 1];
-    // cout << sz(allPrimes);
-}
-
-signed main() {
+signed main(void) {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
-    sieve();
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
+    solve();
 #ifdef __TAG2
     __TAG2
 #endif
