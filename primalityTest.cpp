@@ -42,7 +42,7 @@ const bool isPrime(const int &n) {
 
 std::vector<int32_t> allPrimes;
 
-std::vector<bool> sieve(int n = 107) {
+std::vector<bool> sieve(int n = 10000007) {
     std::vector<bool> isPrime(n + 1, true);
     isPrime[0] = false, isPrime[1] = false;
     for (int i = 2; (i * i) <= n; ++i) 
