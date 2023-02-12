@@ -95,7 +95,7 @@ void solve(void) {
     }
     int ans = 0;
     rep(i, 1, m + 1) {
-        ans = max(ans, dp[n - 1][i]);
+        ans = (ans + dp[n - 1][i])%MOD;
     }
     debug(dp)
     cout << ans;
