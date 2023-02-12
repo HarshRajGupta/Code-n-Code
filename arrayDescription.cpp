@@ -63,6 +63,7 @@ void solve(void) {
     rep(i, 1, m + 1) {
         ans = max(ans, dp[i][n-1]);
     }
+    debug(dp)
     cout << ans;
 }
 
