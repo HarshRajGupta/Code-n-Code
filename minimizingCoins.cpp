@@ -52,7 +52,7 @@ void solve(void) {
         dp[i] = MIN;
     }
     debug(dp)
-    cout << dp[m + 1];
+    cout << dp[m];
 }
 
 signed main(void) {
