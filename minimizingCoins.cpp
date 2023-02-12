@@ -51,6 +51,7 @@ void solve(void) {
         if (MIN == LLONG_MAX) MIN = -1;
         dp[i] = MIN;
     }
+    debug(dp)
     cout << dp[m + 1];
 }
 
