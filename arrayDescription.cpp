@@ -33,35 +33,69 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+// void solve(void) {
+//     int n, m; cin >> n >> m;
+//     v<int> arr(n);
+//     _for(i, n) cin >> arr[i];
+//     v<v<int>> dp(m + 1, v<int>(n + 1));
+//     int prev = 0;
+//     if (arr[0] == 0) {
+//         rep(i, 1, m + 1) {
+//             dp[i][0] = 1;
+//         }
+//     } else {
+//         dp[arr[0]][0] = 1;
+//     }
+//     rep(i, 1, n) {
+//         if (arr[i] != 0) {
+//             dp[arr[i]][i] = dp[arr[i]][i - 1];
+//             if (arr[i] != 1) dp[arr[i]][i] = (dp[arr[i]][i] + dp[arr[i] - 1][i - 1]);
+//             if (arr[i] != m) dp[arr[i]][i] = (dp[arr[i]][i] + dp[arr[i] + 1][i - 1]);
+//         } else if (prev == 0) {
+//             dp[1][i] = (dp[1][i] + dp[1][i - 1] + dp[2][i - 1]) % MOD;
+//             dp[m][i] = (dp[m][i] + dp[m - 1][i - 1] + dp[m][i - 1]) % MOD;
+//             rep(j, 2, m) {
+//                 dp[j][i] = (dp[j][i] + dp[j - 1][i - 1] + dp[j][i - 1] + dp[j + 1][i - 1]) % MOD;
+//             }
+//         }
+//     }
+//     int ans = 0;
+//     rep(i, 1, m + 1) {
+//         ans = max(ans, dp[i][n-1]);
+//     }
+//     debug(dp)
+//     cout << ans;
+// }
+
 void solve(void) {
     int n, m; cin >> n >> m;
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
-    v<v<int>> dp(m + 1, v<int>(n + 1));
+    v<v<int>> dp(n + 1, v<int>(m + 1));
     int prev = 0;
     if (arr[0] == 0) {
         rep(i, 1, m + 1) {
-            dp[i][0] = 1;
+            dp[0][i] = 1;
         }
     } else {
-        dp[arr[0]][0] = 1;
+        dp[0][arr[0]] = 1;
     }
     rep(i, 1, n) {
         if (arr[i] != 0) {
-            dp[arr[i]][i] = dp[arr[i]][i - 1];
-            if (arr[i] != 1) dp[arr[i]][i] = (dp[arr[i]][i] + dp[arr[i] - 1][i - 1]);
-            if (arr[i] != m) dp[arr[i]][i] = (dp[arr[i]][i] + dp[arr[i] + 1][i - 1]);
+            dp[i][arr[i]] = dp[i - 1][arr[i]];
+            if (arr[i] != 1) dp[i][arr[i]] = (dp[i][arr[i]] + dp[i - 1][arr[i] - 1]);
+            if (arr[i] != m) dp[i][arr[i]] = (dp[i][arr[i]] + dp[i - 1][arr[i] + 1]);
         } else if (prev == 0) {
-            dp[1][i] = (dp[1][i] + dp[1][i - 1] + dp[2][i - 1]) % MOD;
-            dp[m][i] = (dp[m][i] + dp[m - 1][i - 1] + dp[m][i - 1]) % MOD;
+            dp[i][1] = (dp[i][1] + dp[i - 1][1] + dp[i - 1][2]) % MOD;
+            dp[i][m] = (dp[i][m] + dp[i - 1][m - 1] + dp[i - 1][m]) % MOD;
             rep(j, 2, m) {
-                dp[j][i] = (dp[j][i] + dp[j - 1][i - 1] + dp[j][i - 1] + dp[j + 1][i - 1]) % MOD;
+                dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] + dp[i - 1][j] + dp[i - 1][j + 1]) % MOD;
             }
         }
     }
     int ans = 0;
     rep(i, 1, m + 1) {
-        ans = max(ans, dp[i][n-1]);
+        ans = max(ans, dp[n - 1][i]);
     }
     debug(dp)
     cout << ans;
