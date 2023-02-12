@@ -45,6 +45,7 @@ void solve(void) {
             dp[j + arr[i]] = (dp[j + arr[i]] + dp[j]) % MOD;
         }
     }
+    debug(dp)
     cout << dp[m];
 }
 
