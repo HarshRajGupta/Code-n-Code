@@ -71,7 +71,7 @@ void solve(void) {
     int n, m; cin >> n >> m;
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
-    v<v<int>> dp(n + 1, v<int>(m + 1));
+    v<v<int>> dp(n, v<int>(m + 1));
     int prev = 0;
     if (arr[0] == 0) {
         rep(i, 1, m + 1) {
