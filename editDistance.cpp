@@ -45,6 +45,7 @@ void solve(void) {
             }
         }
     }
+    debug(dp)
     cout << dp[sz(a)][sz(b)];
 }
 
