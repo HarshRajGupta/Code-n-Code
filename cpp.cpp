@@ -33,36 +33,24 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int miss = 0;
+
+std::vector<int32_t> allPrimes;
+v<int> primePrime(1000007);
+std::vector<bool> sieve(int n = 1000007) {
+    std::vector<bool> isPrime(n + 1, true);
+    isPrime[0] = false, isPrime[1] = false;
+    for (int i = 2; (i * i) <= n; ++i) 
+        if (isPrime[i]) 
+            for (int j = (i * i); j <= n; j += i) 
+                isPrime[j] = false;
+    for (int i = 2; i <= n; ++i) 
+        if (isPrime[i]) 
+            allPrimes.push_back(i);
+    return isPrime;
+}
 
 void solve() {
-    int n; cin >> n;
-    v<int> arr(n);
-    _for(i, n) cin >> arr[i];
-    sort(all(arr));
-    int MAX = INT_MAX, MIN = INT_MAX;
-    // debug(arr)
-    for (auto i = arr.begin(); i != arr.end(); ++i) {
-        for (auto j = arr.begin() + n - 1; j != i; --j) {
-            int mid = (*i + *j) / 2;
-            auto l = lower_bound(i + 1, j, mid - 1), r = upper_bound(i + 1, j, mid + 1);
-            if ( r != j) ++r;
-            for (auto t = l; t != j && t != r; ++t) {
-                MAX = min(MAX, abs(*i + *j - 2 * (*t)));
-            }
-        }
-    }
-
-    // _for(i, n) {
-    //     for (int j = n - 1; j > i + 1; --j) {
-    //         for (int k = i + 1; k < j; ++k) {
-    //             MIN = min(MIN, abs(arr[i] + arr[j] - 2 * arr[k]));
-    //         }
-    //     }
-    // }
-
-    // if (MIN != MAX) {cout << "NO"; ++miss;}
-    cout << MAX;
+    /* Code */
 }
 
 signed main() {
@@ -75,6 +63,5 @@ signed main() {
 #ifdef __TAG2
     __TAG2
 #endif
-    debug(miss)
     return 0;
 }

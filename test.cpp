@@ -1,6 +1,6 @@
-#ifndef __FAST_IO
-#pragma GCC optimize ("Ofast")
-#pragma GCC optimize ("unroll-loops")
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer", "inline")
+#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
 #endif
 
 #include <bits/stdc++.h>
@@ -30,24 +30,13 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 #define ft first
 #define sd second
-#define sz(x) ((int)(x).size())
+#define sz(x) ((int64_t)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    int n, k; cin >> n >> k;
-    string s; cin >> s;
-    int ans = 0;
-    _for(i, 26) {
-        char c = 'a' + i;
-        int l = 0, r = 0, match = 0, miss = 0;
-        while (r < n) {
-            if (s[l] == c) match++;
-            else miss++;
-            if ((match - miss) == k) {
-                while(s[++l] != c && s[++r] != )
-            }
-        }
-    }
+void solve() { 
+    int n; cin >> n;
+    v<int> a(n/4);
+    debug(a)
 }
 
 signed main() {
@@ -56,7 +45,7 @@ signed main() {
     __TAG1
 #endif
     uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif

@@ -4,7 +4,7 @@
 #endif
 
 #include <bits/stdc++.h>
-using namespace std;
+// using namespace std;
 
 #ifndef debug
 #define debug(...)
@@ -34,51 +34,59 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 
-int next(v<int> &arr, int target, int start, int end) {
-    if (target > arr[end - 1]) return end - 1;
-    int ans = start;
-    while (start <= end)
-    {
-        int mid = (start + end) / 2;
-        if (arr[mid] >= target)
-            end = mid - 1;
-        else {
-            ans = mid;
-            start = mid + 1;
-        }
+const int bS(const std::vector<int> &arr, const int &t, int l, int r) {
+    while (l <= r) {
+        const int mid = ((l + r) / 2);
+        if (arr[mid] == t) return mid;
+        else if (arr[mid] > t) r = (mid - 1);
+        else l = (mid + 1);
     }
-    return ans;
+    return ((arr[l] == t) ? l : ((arr[r] == t) ? r : -1));
 }
 
-void solve() {
-    int n; cin >> n;
-    v<int> arr(n);
-    _for(i, n) cin >> arr[i];
-    sort(all(arr));
-    int MAX = INT_MAX;
-    // map<int, int> mp;
-    // _for(i, n) {
-    //     if (mp[arr[i]] == 0) {
-    //         mp[arr[i]] = i + 1;
-    //     }
-    // }
-    // for (auto i = arr.begin(); i != arr.end(); ++i) {
-    //     for (auto j = arr.begin() + n - 1; j != i; --j) {
-    //         int mid = (*i + *j) / 2;
-
-    //     }
-    // }
-
-    _for(i, n - 2) {
-        for (int j = n - 1; j > i + 1; --j) {
-            int mid = (arr[i] + arr[j]) / 2;
-            int l = next(arr, mid, i + 1, j - 1);
-            rep(k, l, min(j, l + 50)) {
-                MAX = min(MAX, abs(arr[i] + arr[j] - 2 * arr[k]));
-            }
+std::vector<int32_t> allPrimes;
+std::vector<bool> sieve(int n = 1000007) {
+    std::vector<bool> isPrime(n + 1, true);
+    isPrime[0] = false, isPrime[1] = false;
+    for (int i = 2; (i * i) <= n; ++i) {
+        if (isPrime[i]) {
+            allPrimes.push_back(i);
+            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
         }
     }
-    cout << MAX;
+    return isPrime;
+}
+
+
+void solve() {
+    // int n; cin >> n;
+    // v<int> arr(n);
+    // _for(i, n) cin >> arr[i];
+    // sort(all(arr));
+    // int MAX = INT_MAX;
+    // // map<int, int> mp;
+    // // _for(i, n) {
+    // //     if (mp[arr[i]] == 0) {
+    // //         mp[arr[i]] = i + 1;
+    // //     }
+    // // }
+    // // for (auto i = arr.begin(); i != arr.end(); ++i) {
+    // //     for (auto j = arr.begin() + n - 1; j != i; --j) {
+    // //         int mid = (*i + *j) / 2;
+
+    // //     }
+    // // }
+
+    // _for(i, n - 2) {
+    //     for (int j = n - 1; j > i + 1; --j) {
+    //         int mid = (arr[i] + arr[j]) / 2;
+    //         int l = next(arr, mid, i + 1, j - 1);
+    //         rep(k, l, min(j, l + 50)) {
+    //             MAX = min(MAX, abs(arr[i] + arr[j] - 2 * arr[k]));
+    //         }
+    //     }
+    // }
+    // cout << MAX;
 }
 
 signed main() {
