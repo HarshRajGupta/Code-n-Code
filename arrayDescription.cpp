@@ -41,7 +41,7 @@ void solve(void) {
     int prev = 0;
     if (arr[0] == 0) {
         rep(i, 1, m + 1) {
-            ++dp[i][0];
+            dp[i][0] = 1;
         }
     } else {
         dp[arr[0]][0] = 1;
