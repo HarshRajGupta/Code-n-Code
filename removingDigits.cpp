@@ -40,7 +40,7 @@ void solve(void) {
     rep(i, 10, n + 1) {
         int t = i, MIN = LLONG_MAX;
         while (t) {
-            MIN = min(dp[i - (t % 10)] + 1, MIN);
+            if (t % 10) MIN = min(dp[i - (t % 10)] + 1, MIN);
             t /= 10;
         }
         dp[i] = MIN;
