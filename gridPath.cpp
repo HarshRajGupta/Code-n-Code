@@ -42,7 +42,7 @@ void solve(void) {
     bw(i, n - 1) {
         bw(j, n - 1) {
             if (arr[i][j] == '*') continue;
-            dp[i][j] += dp[i + 1][j] + dp[i][j + 1];
+            dp[i][j] = (dp[i][j] + dp[i + 1][j] + dp[i][j + 1]) % MOD;
         }
     }
     debug(dp)
