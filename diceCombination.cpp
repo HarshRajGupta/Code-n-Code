@@ -35,10 +35,11 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve(void) {
     int n; cin >> n;
-    v<int> dp(n + 1);
+    v<int> dp(max(n + 1, 7ll));
+    dp[1] = dp[2] = dp[3] = dp[4] = dp[5] = dp[6] = 1;
     rep(i, 1, n + 1) {
         rep(j, max(i - 6, 0), i) {
-            dp[i] += (dp[j] + 1);
+            dp[i] += (dp[j]);
         }
     }
     debug(dp)
