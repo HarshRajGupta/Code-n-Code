@@ -38,10 +38,11 @@ void solve(void) {
     v<int> arr(n), dp(m + 1);
     _for(i, n) {
         cin >> arr[i];
-        if (arr[i] <= m) ++dp[arr[i]];
+        // if (arr[i] <= m) ++dp[arr[i]];
     }
     _for(i, n) {
         debug(i, dp)
+        ++dp[arr[i]];
         rep(j, 1, m + 1 - arr[i]) {
             dp[j + arr[i]] = (dp[j + arr[i]] + dp[j]) % MOD;
         }
