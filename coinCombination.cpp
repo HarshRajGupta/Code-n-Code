@@ -44,7 +44,7 @@ void solve(void) {
     rep(i, 1, m + 1) {
         _for(j, n) {
             if (i - arr[j]) break;
-            dp[i] = (dp[i] + dp[j]) % MOD;
+            dp[i] = (dp[i] + dp[i - arr[j]]) % MOD;
         }
     }
     debug(dp)
