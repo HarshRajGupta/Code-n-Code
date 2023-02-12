@@ -37,7 +37,7 @@ void solve(void) {
     int n; cin >> n;
     v<int> dp(n + 1);
     rep(i, 1, n + 1) {
-        rep(j, min(i - 6, 0), i) {
+        rep(j, max(i - 6, 0), i) {
             dp[i] += (dp[j] + 1);
         }
     }
