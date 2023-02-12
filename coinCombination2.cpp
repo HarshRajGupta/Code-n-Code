@@ -38,7 +38,6 @@ void solve(void) {
     v<int> arr(n), dp(m + 1);
     _for(i, n) {
         cin >> arr[i];
-        if (arr[i] <= m) ++dp[arr[i]];
     }
     _for(i, n) {
         rep(j, 1, m + 1 - arr[i]) {
