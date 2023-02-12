@@ -45,6 +45,7 @@ void solve(void) {
             dp[i][j] += dp[i + 1][j];
         }
     }
+    debug(dp)
     cout << dp[0][0];
 }
 
