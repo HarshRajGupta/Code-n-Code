@@ -45,6 +45,7 @@ void solve(void) {
         }
         dp[i] = MIN;
     }
+    debug(dp)
     cout << dp[n];
 }
 
