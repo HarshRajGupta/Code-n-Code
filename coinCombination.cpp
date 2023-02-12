@@ -43,7 +43,7 @@ void solve(void) {
     sort(all(arr));
     rep(i, 1, m + 1) {
         _for(j, n) {
-            if (i - arr[j]) break;
+            if (i - arr[j] < 0) break;
             dp[i] = (dp[i] + dp[i - arr[j]]) % MOD;
         }
     }
