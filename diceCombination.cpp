@@ -41,6 +41,7 @@ void solve(void) {
             dp[i] += (dp[j] + 1);
         }
     }
+    debug(dp)
     cout << dp[n];
 }
 
