@@ -44,8 +44,8 @@ const int power(int n, int expo) {
 }
 
 void solve() {
-    int a, b; cin >> a >> b;
-    cout << power(a, b);
+    int a, b, c; cin >> a >> b >> c;
+    cout << power(a, power(b, c));
 }
 
 signed main() {
