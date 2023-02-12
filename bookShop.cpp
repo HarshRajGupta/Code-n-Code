@@ -48,7 +48,7 @@ void solve(void) {
         }
     }
     int MAX = 0;
-    _for(i, m) {
+    _for(i, m + 1) {
         MAX = max(dp[n - 1][i], MAX);
     }
     cout << MAX;
