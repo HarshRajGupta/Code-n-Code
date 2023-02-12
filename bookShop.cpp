@@ -44,7 +44,7 @@ void solve(void) {
         dp[i] = dp[i - 1];
         _for(j, m + 1 - arr[i - 1].ft) {
             if (dp[i - 1][j] == -1) continue;
-            dp[i][j + arr[i - 1].ft] = dp[i - 1][j] + arr[i - 1].sd;
+            dp[i][j + arr[i - 1].ft] = max(dp[i][j + arr[i - 1].ft], dp[i - 1][j] + arr[i - 1].sd);
         }
     }
     int MAX = 0;
