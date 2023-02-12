@@ -41,6 +41,7 @@ void solve(void) {
         if (arr[i] <= m) ++dp[arr[i]];
     }
     _for(i, n) {
+        debug(i, dp)
         rep(j, 1, m + 1 - arr[i]) {
             dp[j + arr[i]] = (dp[j + arr[i]] + dp[j]) % MOD;
         }
