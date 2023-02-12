@@ -48,6 +48,7 @@ void solve(void) {
         }
     }
     int MAX = 0;
+    debug(dp)
     _for(i, m + 1) {
         MAX = max(dp[n - 1][i], MAX);
     }
