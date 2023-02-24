@@ -61,9 +61,9 @@ void solve() {
         }
     }
     _for(i, n) {
-        if (ans[i][0] > i) cout << "-1 ";
+        if (ans[i][0] > i || arr[ans[i][0]] <= arr[i]) cout << "-1 ";
         else cout << arr[ans[i][0]] << ' ';
-        if (ans[i][1] < i) cout << "-1\n";
+        if (ans[i][1] < i || arr[ans[i][1]] <= arr[i]) cout << "-1\n";
         else cout << arr[ans[i][1]] << ln;
     }
 }
