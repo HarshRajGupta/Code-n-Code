@@ -64,7 +64,7 @@ void solve() {
         if (ans[i][0] > i) cout << "-1 ";
         else cout << arr[ans[i][0]] << ' ';
         if (ans[i][1] < i) cout << "-1\n";
-        else cout << arr[ans[i][0]] << ln;
+        else cout << arr[ans[i][1]] << ln;
     }
 }
 
