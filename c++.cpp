@@ -56,7 +56,7 @@ void solve() {
         if (arr[i] <= MAX) continue;
         MAX = arr[i];
         while (prev < n && mp[prev][0] < MAX) {
-            ans[mp[prev][1]][0] = i;
+            ans[mp[prev][1]][1] = i;
             ++prev;
         }
     }
