@@ -33,19 +33,25 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-const int power(int n, int expo) {
-    int ans = 1; n %= MOD;
-    while (expo) {
-        if (expo & 1) ans = (ans * 1ll * n) % MOD;
-        n = (n * 1ll * n) % MOD;
-        expo >>= 1;
-    }
-    return ans;
-}
-
 void solve() {
-    int a, b, c; cin >> a >> b >> c;
-    cout << power(a, power(b, c));
+    int n; cin >> n;
+    v<int> arr(n);
+    v<v<int>> mp(n, v<int>(2)), ans(n, v<int>(2));
+    _for(i, n) {
+        cin >> arr[i];
+        mp[i] = {arr[i], i};
+    }
+    sort(all(mp));
+    int prev = 0, MAX = 0;
+    _for(i, n) {
+        if (arr[i] <= MAX) continue;
+        MAX = arr[i];
+        while(prev < n && mp[prev][0] < MAX) {
+            ans[mp[prev][1]][0] = i;
+            ++prev;
+        }
+    }
+    debug(ans)
 }
 
 signed main() {
