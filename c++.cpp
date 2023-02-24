@@ -46,12 +46,26 @@ void solve() {
     _for(i, n) {
         if (arr[i] <= MAX) continue;
         MAX = arr[i];
-        while(prev < n && mp[prev][0] < MAX) {
+        while (prev < n && mp[prev][0] < MAX) {
             ans[mp[prev][1]][0] = i;
             ++prev;
         }
     }
-    debug(ans)
+    prev = 0, MAX = 0;
+    bw(i, n - 1) {
+        if (arr[i] <= MAX) continue;
+        MAX = arr[i];
+        while (prev < n && mp[prev][0] < MAX) {
+            ans[mp[prev][1]][0] = i;
+            ++prev;
+        }
+    }
+    _for(i, n) {
+        if (ans[i][0] > i) cout << "-1 ";
+        else cout << ans[i][0] << ' ';
+        if (ans[i][1] < i) cout << "-1\n";
+        else cout << ans[i][0] << ln;
+    }
 }
 
 signed main() {
