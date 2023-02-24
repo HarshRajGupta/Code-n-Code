@@ -11,7 +11,7 @@ using namespace std;
 #endif
 
 #ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
+#define __RUN solve()
 #endif
 
 const uint64_t MOD = 1e9 + 7;
