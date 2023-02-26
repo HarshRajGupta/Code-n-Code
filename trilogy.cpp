@@ -39,6 +39,7 @@ int ans(vector<int> &A) {
     for (int i = 0; i < A.size(); ++i) {
         prefixSum[i + 1] = prefixSum[i] + A[i];
     }
+    debug(suffixSum, A)
     for (int i = A.size() - 1; i >= 0; --i) {
         suffixSum[i] = suffixSum[i + 1] + A[i];
     }
