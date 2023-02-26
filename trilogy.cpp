@@ -42,7 +42,7 @@ int ans(vector<int> &A) {
     // debug(suffixSum, A)
     for (int i = A.size() - 1; i >= 0; --i) {
         suffixSum[i] = suffixSum[i + 1] + A[i];
-        debug(suffixSum[i], suffixSum[i + 1], A[i])
+        // debug(suffixSum[i], suffixSum[i + 1], A[i])
     }
     long long l1 = 1, l3 = A.size() - 1;
     for (int i = 2; i < A.size() - 1; ++i) {
@@ -57,7 +57,7 @@ int ans(vector<int> &A) {
         l2 = max(l2, s);
         if (s < 0) s = 0;
     }
-    debug(l1, l2, l3, prefixSum, suffixSum)
+    // debug(l1, l2, l3, prefixSum, suffixSum)
     return (prefixSum[l1] + l2 + suffixSum[l3]) % MOD;
 }
 
