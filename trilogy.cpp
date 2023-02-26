@@ -51,7 +51,7 @@ int ans(vector<int> &A) {
     for (int i = A.size() - 2; i > l1 - 1; --i) {
         if (suffixSum[l3] < suffixSum[i]) l3 = i;
     }
-    long long l2 = A[l1], s = 0;
+    long long l2 = 0, s = 0;
     for (int i = l1; i < l3; ++i) {
         s += A[i];
         l2 = max(l2, s);
@@ -63,7 +63,7 @@ int ans(vector<int> &A) {
 
 void solve() {
     /* Code */
-    v<int> a = {2, -3, -1, 4};
+    v<int> a = {2, -3, 1, 4};
     cout << ans(a);
 }
 
