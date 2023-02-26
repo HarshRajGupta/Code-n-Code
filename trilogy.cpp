@@ -55,7 +55,7 @@ int ans(vector<int> &A) {
         l2 = max(l2, s);
         if (s < 0) s = 0;
     }
-    debug(l1, l2, l3)
+    debug(l1, l2, l3, prefixSum, suffixSum)
     return (prefixSum[l1] + l2 + suffixSum[l3]) % MOD;
 }
 
