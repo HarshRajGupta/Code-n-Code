@@ -44,6 +44,7 @@ void solve(void) {
     _for(i, m) cin >> b[i];
     _for(i, m) {
         auto l = a.lower_bound(b[i]);
+        debug(*l, a, b[i])
         if (*l <= b[i]) {
             ans[i] = *l;
             a.erase(l);
