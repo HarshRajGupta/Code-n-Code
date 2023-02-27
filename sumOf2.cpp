@@ -46,15 +46,15 @@ void solve(void) {
     sort(all(arr));
     _for(i, n) {
         if (arr[i] > s / 2) break;
+        debug(arr[i])
         if (arr[i] * 2 == s) {
+            debug(mp[arr[i]])
             if (sz(mp[arr[i]]) > 1) {
-                debug(mp[arr[i]])
                 cout << mp[arr[i]][0] << ' ' << mp[arr[i]][1];
                 done = true;
             }
             break;
-        } else if (sz(mp[n - arr[i]]) > 0) {
-            // debug(mp[arr[i]], mp[n-arr[i]], arr[i])
+        } else if (sz(mp[s - arr[i]]) > 0) {
             cout << mp[arr[i]][0] << ' ' << mp[s - arr[i]][0];
             done = true;
             break;
