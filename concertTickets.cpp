@@ -49,6 +49,14 @@ void solve(void) {
             ans[i] = *l;
             a.erase(l);
         }
+        else if (l != a.begin()) {
+            --l;
+            if (*l <= b[i]) {
+                ans[i] = *l;
+                a.erase(l);
+                break;
+            }
+        }
     }
     _for(i, m) cout << ans[i] << ln;
 }
