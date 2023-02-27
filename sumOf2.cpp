@@ -42,6 +42,7 @@ void solve(void) {
         mp[arr[i]].push_back(i + 1);
     }
     bool done = false;
+    sort(all(arr));
     _for(i, n) {
         if (arr[i] > n / 2) break;
         if (arr[i] * 2 == n && sz(mp[arr[i]]) > 1) {
