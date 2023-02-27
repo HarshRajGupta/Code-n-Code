@@ -48,13 +48,11 @@ void solve(void) {
         if (*l <= b[i]) {
             ans[i] = *l;
             a.erase(l);
-        }
-        else if (l != a.begin()) {
+        } else if (l != a.begin()) {
             --l;
             if (*l <= b[i]) {
                 ans[i] = *l;
                 a.erase(l);
-                break;
             }
         }
     }
