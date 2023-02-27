@@ -41,7 +41,7 @@ void solve(void) {
         prefixSum[i + 1] = prefixSum[i] + arr[i];
     }
     sort(all(arr));
-    debug(arr)
+    debug(arr, prefixSum)
     int MAX = INT_MAX;
     _for(i, n) {
         int ans = (arr[i] * i) - prefixSum[i];
