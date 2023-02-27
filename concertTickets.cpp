@@ -46,11 +46,11 @@ void solve(void) {
         if (sz(a) == 0) break;
         auto l = a.lower_bound(b[i]);
         debug(*l, a, b[i])
-        if (*l <= b[i]) {
+        if (l != a.end() && *l <= b[i]) {
             ans[i] = *l;
-            if (sz(a) == 1) break;
+            // if (sz(a) == 1) break;
             a.erase(l);
-        } else if (l != a.begin()) {
+        } else if (l != a.end() && l != a.begin()) {
             --l;
             if (*l <= b[i]) {
                 ans[i] = *l;
