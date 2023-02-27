@@ -38,9 +38,11 @@ void solve(void) {
     v<int> arr(n), prefixSum(n + 1);
     _for(i, n) {
         cin >> arr[i];
-        prefixSum[i + 1] = prefixSum[i] + arr[i];
     }
     sort(all(arr));
+    _for(i, n) {
+        prefixSum[i + 1] = prefixSum[i] + arr[i];
+    }
     debug(arr, prefixSum)
     int MAX = INT_MAX;
     _for(i, n) {
