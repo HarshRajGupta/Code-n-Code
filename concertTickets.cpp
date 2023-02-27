@@ -50,7 +50,7 @@ void solve(void) {
             ans[i] = *l;
             // if (sz(a) == 1) break;
             a.erase(l);
-        } else if (l != a.end() && l != a.begin()) {
+        } else if (l != a.begin()) {
             --l;
             if (*l <= b[i]) {
                 ans[i] = *l;
