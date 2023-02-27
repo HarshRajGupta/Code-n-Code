@@ -47,6 +47,7 @@ void solve(void) {
     _for(i, n) {
         if (arr[i] > n / 2) break;
         if (arr[i] * 2 == n && sz(mp[arr[i]]) > 1) {
+            debug(mp[arr[i]])
             cout << mp[arr[i]][0] << ' ' << mp[arr[i]][1];
             done = true;
             break;
