@@ -43,15 +43,18 @@ void solve(void) {
     v<int> b(m), ans(m, -1);
     _for(i, m) cin >> b[i];
     _for(i, m) {
+        if (sz(a) == 0) break;
         auto l = a.lower_bound(b[i]);
         debug(*l, a, b[i])
         if (*l <= b[i]) {
             ans[i] = *l;
+            if (sz(a) == 1) break;
             a.erase(l);
         } else if (l != a.begin()) {
             --l;
             if (*l <= b[i]) {
                 ans[i] = *l;
+                if (sz(a) == 1) break;
                 a.erase(l);
             }
         }
