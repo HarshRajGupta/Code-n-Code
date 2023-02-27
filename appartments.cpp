@@ -42,10 +42,10 @@ void solve(void) {
     sort(all(b));
     int i = 0, j = 0, ans = 0;
     while (i < n && j < m) {
-        if (abs(a[i] - b[j]) < k) {
+        if (abs(a[i] - b[j]) <= k) {
             ++i; ++j; ++ans;
         }
-        else if (a[i] > b[j] + k) ++j;
+        else if (a[i] > (b[j] + k)) ++j;
         else ++i;
     }
     cout << ans;
