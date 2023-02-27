@@ -45,7 +45,7 @@ void solve(void) {
     _for(i, n) {
         int ans = (arr[i] * i) - prefixSum[i];
         ans += prefixSum[n] - prefixSum[i + 1] - (arr[i] * (n - 1 - i));
-        MAX = max(MAX, ans);
+        MAX = min(MAX, ans);
     }
     cout << MAX;
 }
