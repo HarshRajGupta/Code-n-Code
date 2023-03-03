@@ -39,7 +39,11 @@ void solve() {
     v<set<int>> ans(33);
     _for(i, n) {
         cin >> arr[i];
-        int t = __builtin_popcount(arr[i]);
+        int t = 0, y = arr[i];
+        while (y) {
+            if (y & 1) ++t;
+            y = (y >> 1);
+        }
         ans[t].insert(arr[i]);
     }
     _for(i, 33) {
