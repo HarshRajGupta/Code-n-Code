@@ -36,22 +36,18 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 void solve() {
     int n; cin >> n;
     string s; cin >> s;
-    debug(s)
-    char ans = 'N';
+    int cnt = 26;
+    v<int> mp(26);
     _for(i, n) {
-        if (s[i] == 'L') {
-            if (ans == 'N') {ans = 'W';}
-            else if (ans == 'S') {ans = 'E';}
-            else if (ans == 'W') {ans = 'S';}
-            else if (ans == 'E') {ans = 'N';}
-        } else {
-            if (ans == 'N') {ans = 'E';}
-            else if (ans == 'E') {ans = 'S';}
-            else if (ans == 'S') {ans = 'W';}
-            else if (ans == 'W') {ans = 'N';}
+        if (s[i] >= 'A' && s[i] <= 'Z' && !mp[s[i] - 'A']) {
+            mp[s[i] - 'A'] = 1;
+            --cnt;
+        } else if (s[i] >= 'a' && s[i] <= 'z' && !mp[s[i] - 'a']) {
+            mp[s[i] - 'a'] = 1;
+            --cnt;
         }
     }
-    cout << ans;
+    cout << cnt;
 }
 
 signed main() {
@@ -66,9 +62,3 @@ signed main() {
 #endif
     return 0;
 }
-
-/*
-    N
-W       E
-    S
-*/
