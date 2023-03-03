@@ -17,14 +17,14 @@ using namespace std;
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
-#define int long long
+// #define int long long
 #define ll long double
 
-template <class T> using v = std::vector<T>;
+// template <class T> using v = std::vector<T>;
 template <class T> using xHeap = std::priority_queue<T>;
 template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
-#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
+// #define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
 #define bw(i, n) for(int64_t i = n; i >= 0; --i)
 
@@ -33,11 +33,11 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
+vector<int> solve() {
     int n; cin >> n;
-    v<int> arr(n);
-    v<set<int>> ans(33);
-    _for(i, n) {
+    vector<int> arr(n);
+    vector<set<int>> ans(33);
+    for (int i = 0; i < n; ++i) {
         cin >> arr[i];
         int t = 0, y = arr[i];
         while (y) {
@@ -46,9 +46,11 @@ void solve() {
         }
         ans[t].insert(arr[i]);
     }
-    _for(i, 33) {
-        for (auto j : ans[i]) cout << j << ' ';
+    vector<int> res;
+    for (int i = 0; i < 33; ++i) {
+        for (auto j : ans[i]) res.push_back(j);
     }
+    return res;
 }
 
 signed main() {
