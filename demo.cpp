@@ -50,7 +50,7 @@ void solve() {
             else if (ans == 'W') {ans = 'N';}
         }
     }
-    cout << ans;
+    // cout << ans;
 }
 
 signed main() {
