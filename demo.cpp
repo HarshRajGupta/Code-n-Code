@@ -36,6 +36,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 void solve() {
     int n; cin >> n;
     string s; cin >> s;
+    debug(s)
     char ans = 'N';
     _for(i, n) {
         if (s[i] == 'L') {
@@ -50,7 +51,7 @@ void solve() {
             else if (ans == 'W') {ans = 'N';}
         }
     }
-    // cout << ans;
+    cout << ans;
 }
 
 signed main() {
