@@ -37,7 +37,7 @@ void solve(void) {
     int n = 1, l = LLONG_MAX;
     _for(i, 18) {
         n *= (i+1);
-        debug(n)
+        debug(n, i)
     }
 }
 
