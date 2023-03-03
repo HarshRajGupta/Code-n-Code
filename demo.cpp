@@ -35,19 +35,16 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve() {
     int n; cin >> n;
-    string s; cin >> s;
-    int cnt = 26;
-    v<int> mp(26);
+    v<int> arr(n);
+    v<set<int>> ans(33);
     _for(i, n) {
-        if (s[i] >= 'A' && s[i] <= 'Z' && !mp[s[i] - 'A']) {
-            mp[s[i] - 'A'] = 1;
-            --cnt;
-        } else if (s[i] >= 'a' && s[i] <= 'z' && !mp[s[i] - 'a']) {
-            mp[s[i] - 'a'] = 1;
-            --cnt;
-        }
+        cin >> arr[i];
+        int t = __builtin_popcount(arr[i]);
+        ans[t].insert(arr[i]);
     }
-    cout << cnt;
+    _for(i, 33) {
+        for (auto j : ans[i]) cout << j << ' ';
+    }
 }
 
 signed main() {
