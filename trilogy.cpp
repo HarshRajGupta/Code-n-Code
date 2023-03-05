@@ -105,7 +105,7 @@ int po(v<int> A) {
     while (l1 < A.size() && A[l1] > 0) {
         ++l1;
     }
-    while (l3 > l1 && A[l3] > 0) {--l3;}
+    while (l3 > l1 && A[l3 - 1] > 0) {--l3;}
     debug(l1, l3)
     for (int i = l1; i < l3; ++i) {
         // debug(l3)
