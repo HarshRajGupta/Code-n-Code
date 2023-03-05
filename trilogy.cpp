@@ -92,10 +92,45 @@ int pp(v<int> &A) {
     return (ss + MOD) % MOD;
 }
 
+int po(v<int> A) {
+    vector<long long> pre(A.size() + 1), suf(A.size() + 1);
+    for (int i = 0; i < A.size(); ++i) {
+        pre[i+1] = pre[i] + A[i];
+    }
+    for (int i = A.size()-1; i >= 0; --i)
+        suf[i] = suf[i+1] + A[i];
+    long long l1 = 1, l3 = A.size() - 1, s = 0;
+    long long s2 = 0, l = 0, r = 0, MAX = A[0], lMAX = 0, rMAX = 0;
+    while(l1 < A.size() && A[l1] > 0) {
+        ++l1;
+    }
+    while(l3 > l1 && A[l3] > 0) --l3;
+    
+    for(int i = l1; i < l3; ++i) {
+        s2 += A[i];
+        if (s2 < 0) {s2 = 0; l = i+1;}
+        ++r;
+        if (s2 >= MAX) {
+            lMAX = l;
+            rMAX = r;
+            MAX = s2;
+        }
+    }
+    // if (lMAX == l1 && rMAX - lMAX >= 2) l1 = 0;
+    // if (rMAX == l3 && rMAX - lMAX >= 2) l3 = A.size();
+    for (int i = 0; i <= lMAX; ++i) {
+        if (pre[l1] < pre[i]) l1 = i;
+    }
+    for (int i = A.size(); i >= rMAX; --i) {
+        if (suf[l3] < suf[i]) l3 = i;
+    }
+    return (pre[l1] + suf[l3] + MAX + MOD)%MOD;
+}
+
 void solve() {
     /* Code */
     v<int> a = { 27, 27, -66, -13, 52, -56, -40};
-    cout << pp(a);
+    cout << po(a);
 }
 
 signed main() {
