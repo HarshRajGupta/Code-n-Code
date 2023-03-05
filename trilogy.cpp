@@ -108,6 +108,7 @@ int po(v<int> A) {
     while(l3 > l1 && A[l3] > 0) {--l3; debug(l3)}
     
     for(int i = l1; i < l3; ++i) {
+        debug(l3)
         s2 += A[i];
         if (s2 < 0) {s2 = 0; l = i+1;}
         ++r;
@@ -117,12 +118,15 @@ int po(v<int> A) {
             MAX = s2;
         }
     }
+    debug(l3)
     // if (lMAX == l1 && rMAX - lMAX >= 2) l1 = 0;
     // if (rMAX == l3 && rMAX - lMAX >= 2) l3 = A.size();
     for (int i = 0; i <= lMAX; ++i) {
+        debug(l3)
         if (pre[l1] < pre[i]) l1 = i;
     }
-    for (int i = A.size(); i >= rMAX; --i) {
+    for (int i = l3; i >= rMAX; --i) {
+        debug(l3)
         if (suf[l3] < suf[i]) l3 = i;
     }
     debug(l1, MAX, l3, pre, suf, suf[l3])
