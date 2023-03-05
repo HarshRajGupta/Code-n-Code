@@ -59,12 +59,12 @@ int ans(vector<int> &A) {
         if (s < 0) s = 0;
     }
     debug(l1, l2, l3, prefixSum, suffixSum)
-    return (prefixSum[l1] + l2 + suffixSum[l3]) % MOD;
+    return (prefixSum[l1] + l2 + suffixSum[l3] + MOD) % MOD;
 }
 
 void solve() {
     /* Code */
-    v<int> a = {2, -3, 1, -4};
+    v<int> a = {-3, -1, 2, 2, -1, -1, -1, -1, -1, 1};
     cout << ans(a);
 }
 
