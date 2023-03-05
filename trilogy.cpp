@@ -129,7 +129,7 @@ int po(v<int> A) {
         // debug(l3)
         if (suf[l3] < suf[i]) l3 = i;
     }
-    debug(l1, MAX, l3, pre, suf, suf[l3])
+    debug(l1, MAX, l3, pre, suf, suf[l3], pre[l1])
     return (pre[l1] + suf[l3] + MAX + MOD) % MOD;
 }
 
