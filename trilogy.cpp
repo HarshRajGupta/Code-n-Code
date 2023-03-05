@@ -124,7 +124,7 @@ int po(v<int> A) {
     for (int i = A.size(); i >= rMAX; --i) {
         if (suf[l3] < suf[i]) l3 = i;
     }
-    debug(l1, MAX, l3, pre, suf)
+    debug(l1, MAX, l3, pre, suf, suf[l3])
     return (pre[l1] + suf[l3] + MAX + MOD)%MOD;
 }
 
