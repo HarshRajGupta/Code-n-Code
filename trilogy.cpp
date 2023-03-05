@@ -102,7 +102,7 @@ int po(v<int> A) {
     long long l1 = 1, l3 = A.size() - 1, s = 0;
     debug(l3)
     long long s2 = 0, l = 0, r = 0, MAX = 0, lMAX = 0, rMAX = 0;
-    while (l1 < l3 && A[l1] > 0) {
+    while (l1 < l3 - 1 && A[l1] > 0) {
         ++l1;
     }
     while (l3 > l1 && A[l3 - 1] > 0) {--l3;}
@@ -135,7 +135,7 @@ int po(v<int> A) {
 
 void solve() {
     /* Code */
-    v<int> a = { -1, 5, 5, 5,5 ,5 };
+    v<int> a = { -1, 5, 5, 5, 5 , 5 };
     cout << po(a);
 }
 
