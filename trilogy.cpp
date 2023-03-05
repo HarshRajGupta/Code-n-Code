@@ -108,7 +108,7 @@ int po(v<int> A) {
     while (l3 > l1 && A[l3 - 1] > 0) {--l3;}
     debug(l1, l3)
     for (int i = l1; i < l3; ++i) {
-        debug(A[i])
+        debug(A[i], s)
         s2 += A[i];
         if (s2 < 0) {s2 = 0; l = i + 1;}
         ++r;
