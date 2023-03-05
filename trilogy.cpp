@@ -73,7 +73,7 @@ int pp(v<int> &A) {
     for (int i = 1; i < arr.size() - 1; ++i) {
         s += arr[i];
         m1 = max(s, m1);
-        debug(m1)
+        debug(m1, s)
         if (s < 0) {
             s = 0;
             p.push(m1);
