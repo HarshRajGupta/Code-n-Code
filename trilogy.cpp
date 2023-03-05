@@ -84,7 +84,7 @@ int pp(v<int> &A) {
     long long ss = 0;
     for (int i = 0; i < A.size(); ++i) {
         ss += A[i];
-        ss %= MOD;
+        // ss %= MOD;
     }
     debug(p,ss)
     ss += p.top(); p.pop();
