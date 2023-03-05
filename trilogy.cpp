@@ -64,7 +64,7 @@ int ans(vector<int> &A) {
 
 void solve() {
     /* Code */
-    v<int> a = {2, -3, 1, 4};
+    v<int> a = {2, -3, 1, -4};
     cout << ans(a);
 }
 
