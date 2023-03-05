@@ -81,12 +81,12 @@ int pp(v<int> &A) {
         }
     }
     p.push(m1);
-    long long ss = MOD;
+    long long ss = 0;
     for (int i = 0; i < A.size(); ++i) {
         ss += A[i];
         ss %= MOD;
     }
-    debug(p)
+    debug(p,ss)
     ss += p.top(); p.pop();
     ss += p.top();
     return (ss + MOD) % MOD;
