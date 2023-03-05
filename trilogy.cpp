@@ -101,7 +101,7 @@ int po(v<int> A) {
         suf[i] = suf[i + 1] + A[i];
     long long l1 = 1, l3 = A.size() - 1, s = 0;
     debug(l3)
-    long long s2 = 0, l = l1, r = l1, MAX = 0, lMAX = 0, rMAX = 0;
+    long long s2 = 0, l = l1, r = l1, MAX = 0, lMAX = l1, rMAX = l1;
     while (l1 < l3 - 1 && A[l1] > 0) {
         ++l1;
     }
