@@ -87,8 +87,8 @@ int pp(v<int> &A) {
         ss %= MOD;
     }
     debug(p)
-    ss -= p.top(); p.pop();
-    ss -= p.top();
+    ss += p.top(); p.pop();
+    ss += p.top();
     return (ss + MOD) % MOD;
 }
 
