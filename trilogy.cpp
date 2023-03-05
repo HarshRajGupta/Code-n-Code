@@ -135,7 +135,7 @@ int po(v<int> A) {
 
 void solve() {
     /* Code */
-    v<int> a = { 99, -6, 1, -4, -84, -39, 12};
+    v<int> a = { -1, 5, 5, 5,5 ,5 };
     cout << po(a);
 }
 
