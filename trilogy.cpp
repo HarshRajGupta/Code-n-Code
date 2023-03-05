@@ -106,7 +106,7 @@ int po(v<int> A) {
         ++l1;
     }
     while (l3 > l1 && A[l3] > 0) {--l3;}
-
+    debug(l1, l3)
     for (int i = l1; i < l3; ++i) {
         // debug(l3)
         s2 += A[i];
