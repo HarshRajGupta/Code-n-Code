@@ -83,6 +83,7 @@ int pp(v<int> &A) {
         ss += A[i];
         ss %= MOD;
     }
+    debug(p)
     ss -= p.top(); p.pop();
     ss -= p.top();
     return (ss + MOD) % MOD;
