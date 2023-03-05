@@ -52,7 +52,7 @@ int ans(vector<int> &A) {
         if (suffixSum[l3] < suffixSum[i]) l3 = i;
     }
     long long l2 = A[l1], s = 0;
-    if (l2 > 1 || l3 < A.size() - 1) l2 = 0;
+    if (l1 > 1 || l3 < A.size() - 1) l2 = 0;
     for (int i = l1; i < l3; ++i) {
         s += A[i];
         l2 = max(l2, s);
