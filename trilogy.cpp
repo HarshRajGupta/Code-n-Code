@@ -32,9 +32,9 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sd second
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
-
+// const long long MOD = 1e9 + 7;
 int ans(vector<int> &A) {
-    const long long MOD = 1e9 + 7;
+    
     vector<long long> prefixSum(A.size() + 1), suffixSum(A.size() + 1);
     for (int i = 0; i < A.size(); ++i) {
         prefixSum[i + 1] = prefixSum[i] + A[i];
@@ -62,10 +62,36 @@ int ans(vector<int> &A) {
     return (prefixSum[l1] + l2 + suffixSum[l3] + MOD) % MOD;
 }
 
+int pp(v<int> &A) {
+    auto arr = A;
+    for (int i = 0; i < arr.size(); ++i) arr[i] *= -1;
+    long long s = 0, l = -1, m1 = 0, m2 = 0;
+    priority_queue<int> p;
+    p.push(0); p.push(0);
+
+    for (int i = 1; i < arr.size() - 1; ++i) {
+        s += arr[i];
+        m1 = max(s, m1);
+        if (s < 0) {
+            s = 0;
+            p.push(m1);
+            m1 = 0;
+        }
+    }
+    long long ss = MOD;
+    for (int i = 0; i < A.size(); ++i) {
+        ss += A[i];
+        ss %= MOD;
+    }
+    ss -= p.top(); p.pop();
+    ss -= p.top();
+    return (ss + MOD) % MOD;
+}
+
 void solve() {
     /* Code */
-    v<int> a = {-3, -1, 2, 2, -1, -1, -1, -1, -1, 1};
-    cout << ans(a);
+    v<int> a = { -3, -1, 2, 2, -1, -1, -1, -1, -1, 1};
+    cout << pp(a);
 }
 
 signed main() {
