@@ -65,6 +65,7 @@ int ans(vector<int> &A) {
 int pp(v<int> &A) {
     auto arr = A;
     for (int i = 0; i < arr.size(); ++i) arr[i] *= -1;
+        debug(arr)
     long long s = 0, l = -1, m1 = 0, m2 = 0;
     priority_queue<int> p;
     p.push(0); p.push(0);
