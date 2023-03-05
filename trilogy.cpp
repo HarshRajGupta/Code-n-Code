@@ -80,6 +80,7 @@ int pp(v<int> &A) {
             m1 = 0;
         }
     }
+    p.push(m1);
     long long ss = MOD;
     for (int i = 0; i < A.size(); ++i) {
         ss += A[i];
