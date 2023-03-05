@@ -104,7 +104,7 @@ int po(v<int> A) {
     while(l1 < A.size() && A[l1] > 0) {
         ++l1;
     }
-    while(l3 > l1 && A[l3] > 0) --l3;
+    while(l3 > l1 && A[l3] > 0) {--l3; debug(l3)}
     
     for(int i = l1; i < l3; ++i) {
         s2 += A[i];
