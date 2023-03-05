@@ -121,7 +121,7 @@ int po(v<int> A) {
     debug(l3)
     // if (lMAX == l1 && rMAX - lMAX >= 2) l1 = 0;
     // if (rMAX == l3 && rMAX - lMAX >= 2) l3 = A.size();
-    for (int i = 0; i <= lMAX; ++i) {
+    for (int i = l1; i <= lMAX; ++i) {
         debug(l3)
         if (pre[l1] < pre[i]) l1 = i;
     }
