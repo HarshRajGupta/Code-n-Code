@@ -100,6 +100,7 @@ int po(v<int> A) {
     for (int i = A.size()-1; i >= 0; --i)
         suf[i] = suf[i+1] + A[i];
     long long l1 = 1, l3 = A.size() - 2, s = 0;
+    debug(l3)
     long long s2 = 0, l = 0, r = 0, MAX = A[0], lMAX = 0, rMAX = 0;
     while(l1 < A.size() && A[l1] > 0) {
         ++l1;
