@@ -126,7 +126,7 @@ int po(v<int> A) {
         // debug(l3)
         if (pre[l1] < pre[i]) l1 = i;
     }
-    for (int i = l3; i >= rMAX; --i) {
+    for (int i = l3; i >= rMAX && i > l1; --i) {
         // debug(l3)
         if (suf[l3] < suf[i]) l3 = i;
     }
