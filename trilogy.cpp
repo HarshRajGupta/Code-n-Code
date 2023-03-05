@@ -34,7 +34,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 // const long long MOD = 1e9 + 7;
 int ans(vector<int> &A) {
-    
+
     vector<long long> prefixSum(A.size() + 1), suffixSum(A.size() + 1);
     for (int i = 0; i < A.size(); ++i) {
         prefixSum[i + 1] = prefixSum[i] + A[i];
@@ -65,7 +65,7 @@ int ans(vector<int> &A) {
 int pp(v<int> &A) {
     auto arr = A;
     for (int i = 0; i < arr.size(); ++i) arr[i] *= -1;
-        debug(arr)
+    debug(arr)
     long long s = 0, l = -1, m1 = 0, m2 = 0;
     priority_queue<int> p;
     p.push(0); p.push(0);
@@ -86,7 +86,7 @@ int pp(v<int> &A) {
         ss += A[i];
         // ss %= MOD;
     }
-    debug(p,ss)
+    debug(p, ss)
     ss += p.top(); p.pop();
     ss += p.top();
     return (ss + MOD) % MOD;
@@ -95,22 +95,22 @@ int pp(v<int> &A) {
 int po(v<int> A) {
     vector<long long> pre(A.size() + 1), suf(A.size() + 1);
     for (int i = 0; i < A.size(); ++i) {
-        pre[i+1] = pre[i] + A[i];
+        pre[i + 1] = pre[i] + A[i];
     }
-    for (int i = A.size()-1; i >= 0; --i)
-        suf[i] = suf[i+1] + A[i];
+    for (int i = A.size() - 1; i >= 0; --i)
+        suf[i] = suf[i + 1] + A[i];
     long long l1 = 1, l3 = A.size() - 2, s = 0;
     debug(l3)
     long long s2 = 0, l = 0, r = 0, MAX = A[0], lMAX = 0, rMAX = 0;
-    while(l1 < A.size() && A[l1] > 0) {
+    while (l1 < A.size() && A[l1] > 0) {
         ++l1;
     }
-    while(l3 > l1 && A[l3] > 0) {--l3;}
-    
-    for(int i = l1; i < l3; ++i) {
+    while (l3 > l1 && A[l3] > 0) {--l3;}
+
+    for (int i = l1; i < l3; ++i) {
         // debug(l3)
         s2 += A[i];
-        if (s2 < 0) {s2 = 0; l = i+1;}
+        if (s2 < 0) {s2 = 0; l = i + 1;}
         ++r;
         if (s2 >= MAX) {
             lMAX = l;
@@ -125,12 +125,12 @@ int po(v<int> A) {
         // debug(l3)
         if (pre[l1] < pre[i]) l1 = i;
     }
-    for (int i = l3; i >= rMAX; --i) {
+    for (int i = l3 + 1; i >= rMAX; --i) {
         // debug(l3)
         if (suf[l3] < suf[i]) l3 = i;
     }
     debug(l1, MAX, l3, pre, suf, suf[l3])
-    return (pre[l1] + suf[l3] + MAX + MOD)%MOD;
+    return (pre[l1] + suf[l3] + MAX + MOD) % MOD;
 }
 
 void solve() {
