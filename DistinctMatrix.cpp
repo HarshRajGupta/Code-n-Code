@@ -38,7 +38,7 @@ void solve() {
     _for(i, n) {
         cout << 1;
         _for(j, n - 1) {
-            cout << (i == j);
+            cout << (i == n - 1 - j);
         }
         cout << ln;
     }
