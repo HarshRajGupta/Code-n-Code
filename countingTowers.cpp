@@ -33,12 +33,12 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int ans(const int n, int joint, int x) {
+int ans(const int n, int x, int joint) {
     if (x == n) return 1;
     if (joint) {
-        return ans(n, 1, x+1) + ans(n, 0, x+1);
+        return ans(n, x + 1, 1) + 2 * ans(n, x + 1, 0);
     }
-    return ans(n, 1, x+1) + 3*ans(n, 0, x+1);
+    return ans(n, x + 1, 1) + 3 * ans(n, x + 1, 0);
 }
 
 void solve(void) {
