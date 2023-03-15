@@ -1,4 +1,4 @@
-#ifndef __FAST_IO
+#ifdef ONLINE_JUDGE
 #pragma GCC optimize ("Ofast")
 #pragma GCC optimize ("unroll-loops")
 #endif
@@ -34,22 +34,14 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n; cin >> n;
-    map<int, int> mp;
-    xHeap<int> a;
+    int n, t, sum = 0; cin >> n;
     _for(i, n) {
-        int t; cin >> t;
-        ++mp[t];
-        a.push(t);
+        cin >> t;
+        sum += t;
+        sum %= 2;
     }
-    while (!a.empty()) {
-        if (mp[a.top()] & 1) {
-            cout << "Marichka";
-            return;
-        }
-        a.pop();
-    }
-    cout << "Zenyk";
+    if (sum & 1 || n < 2) cout << "NO";
+    else cout << "YES";
 }
 
 signed main() {
