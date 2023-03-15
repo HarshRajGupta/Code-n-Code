@@ -43,7 +43,7 @@ int ans(const int n, int x, int joint) {
 
 void solve(void) {
     int n; cin >> n;
-    cout << ans(n, 0, 0);
+    cout << ans(n, 0, 1);
 }
 
 signed main(void) {
