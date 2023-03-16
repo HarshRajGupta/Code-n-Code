@@ -36,43 +36,19 @@ const char ln = '\n';
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int rev(int n) {
-    int res = 0;
-    int p = log10(n);
-    while (n) {
-        res += (n % 10) * (pow(10, p--));
-        n /= 10;
-    }
-    return res;
-}
-
-void solve() {
-    // int N = nums.size();
-    // int mi = N + 1, ma = N + 1, ng = N;
-    // ll ret = 0;
-    // int i;
-    // for (i = N - 1; i >= 0; i--) {
-    //     if (nums[i] < minK) ng = i;
-    //     if (nums[i] > maxK) ng = i;
-    //     if (nums[i] == minK) mi = i;
-    //     if (nums[i] == maxK) ma = i;
-
-    //     if (ng < max(mi, ma)) continue;
-    //     ret += ng - max(mi, ma);
-
-    // }
-    // return ret;
+void solve() { 
+    cout << 1;
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs = 1u;
+    uint32_t tCs = 1u; 
     cin >> tCs;
-    for (uint32_t tC = 0u; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0u; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif

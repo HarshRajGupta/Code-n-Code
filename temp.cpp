@@ -33,17 +33,17 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() { 
-    cout << 1;
+void solve(void) {
+    int n; cin >> n;
+    cout << n+10;
 }
 
-signed main() {
+signed main(void) {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
 #ifdef __TAG1
     __TAG1
 #endif
-    uint32_t tCs; cin >> tCs;
-    for(uint32_t tC = 0; tC++ < tCs; __RUN);
+    solve();
 #ifdef __TAG2
     __TAG2
 #endif
