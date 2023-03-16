@@ -4,7 +4,6 @@
 #endif
 
 #include <bits/stdc++.h>
-#include "debug.h"
 using namespace std;
 
 #ifndef debug
@@ -34,26 +33,8 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-struct cpp {
-    int n;
-    int m;
-    cpp(int a, int b) {
-        n = a;
-        m = b;
-    }
-    cpp() {
-        n = m = 0;
-    }
-};
-
-void tyy(cpp x) {
-    cout << x.n << ' ' << x.m;
-}
-
-void solve() {
-    int arr[] = {1, 9, 5, 6};
-    __ARRAY<int> log(arr, 4);
-    debug(log);
+void solve() { 
+    cout << 2;
 }
 
 signed main() {
@@ -62,7 +43,7 @@ signed main() {
     __TAG1
 #endif
     uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
