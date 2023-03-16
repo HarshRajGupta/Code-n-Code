@@ -1,4 +1,4 @@
-#ifndef __FAST_IO
+#ifdef ONLINE_JUDGE
 #pragma GCC optimize ("Ofast")
 #pragma GCC optimize ("unroll-loops")
 #endif
@@ -33,24 +33,8 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-
-std::vector<int32_t> allPrimes;
-v<int> primePrime(1000007);
-std::vector<bool> sieve(int n = 1000007) {
-    std::vector<bool> isPrime(n + 1, true);
-    isPrime[0] = false, isPrime[1] = false;
-    for (int i = 2; (i * i) <= n; ++i) 
-        if (isPrime[i]) 
-            for (int j = (i * i); j <= n; j += i) 
-                isPrime[j] = false;
-    for (int i = 2; i <= n; ++i) 
-        if (isPrime[i]) 
-            allPrimes.push_back(i);
-    return isPrime;
-}
-
-void solve() {
-    /* Code */
+void solve() { 
+    cout << 1;
 }
 
 signed main() {
@@ -59,7 +43,7 @@ signed main() {
     __TAG1
 #endif
     uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
