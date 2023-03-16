@@ -3,6 +3,7 @@
 #pragma GCC optimize ("unroll-loops")
 #endif
 
+#include "debug.h"
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -49,10 +50,7 @@ void tyy(cpp x) {
     cout << x.n << ' ' << x.m;
 }
 void solve() {
-    cpp y;
-    y.n = 1;
-    y.m = 4;
-    tyy({2, 4});
+
 }
 
 signed main() {
