@@ -51,7 +51,9 @@ void tyy(cpp x) {
 }
 
 void solve() {
-    tyy({1, 1});
+    int arr[] = {1, 4, 5, 6};
+    __ARRAY<int> log(arr, 4);
+    debug(log);
 }
 
 signed main() {
