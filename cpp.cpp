@@ -34,7 +34,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(), (x).end()
 
 void solve() { 
-    cout << 1;
+    cout << 2;
 }
 
 signed main() {
