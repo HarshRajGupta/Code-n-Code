@@ -33,24 +33,8 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() {
-    int n, zero = 0, one = 0, t; cin >> n;
-    _for(i, n) {
-        cin >> t;
-        if (t) ++one;
-        else ++zero;
-    }
-    if (n & 1 || one == 0 || (n == 2 && one == 2)) {
-        cout << -1;
-        return;
-    }
-    t = 0;
-    if (one < zero) {
-        cout << (n / 2 - one);
-        return;
-    }
-    t = (n / 2 - zero);
-    cout << (t / 2) + (t & 1);
+void solve() { 
+    cout << 1;
 }
 
 signed main() {
@@ -59,7 +43,7 @@ signed main() {
     __TAG1
 #endif
     uint32_t tCs; cin >> tCs;
-    for (uint32_t tC = 0; tC++ < tCs; __RUN);
+    for(uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
