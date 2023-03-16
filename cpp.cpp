@@ -52,7 +52,7 @@ void solve() {
     cpp y;
     y.n = 1;
     y.m = 4;
-    tyy(y);
+    tyy({2, 4});
 }
 
 signed main() {
