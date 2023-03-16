@@ -50,7 +50,7 @@ void tyy(cpp x) {
     cout << x.n << ' ' << x.m;
 }
 void solve() {
-
+    tyy({1, 1});
 }
 
 signed main() {
