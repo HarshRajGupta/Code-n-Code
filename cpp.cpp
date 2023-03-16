@@ -3,8 +3,8 @@
 #pragma GCC optimize ("unroll-loops")
 #endif
 
-#include "debug.h"
 #include <bits/stdc++.h>
+#include "debug.h"
 using namespace std;
 
 #ifndef debug
@@ -49,6 +49,7 @@ struct cpp {
 void tyy(cpp x) {
     cout << x.n << ' ' << x.m;
 }
+
 void solve() {
     tyy({1, 1});
 }
