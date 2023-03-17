@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> dist(1005);
+int dist[100005], pushed[100005];
+queue<int> visitMe;
+map<int, vector<int>> mp;
+map<int, bool> visited;
 
 class Solution {
-    int dist[100005], pushed[100005];
-    queue<int> visitMe;
-    map<int, vector<int>> mp;
-    map<int, bool> visited;
     void bfs(vector<int>& arr, int pos) {
         if (pos == arr.size() - 1) {
             while (!visitMe.empty()) visitMe.pop();
@@ -33,7 +32,6 @@ class Solution {
             dist[pos - 1] = min(dist[pos - 1], dist[pos] + 1);
             visitMe.push(pos - 1);
         }
-        // debug(pos)
     }
 public:
     int minJumps(vector<int> arr) {
