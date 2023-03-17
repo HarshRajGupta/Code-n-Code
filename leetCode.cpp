@@ -33,7 +33,7 @@ class Solution {
     }
 public:
     int minJumps(vector<int> arr) {
-        for (int i = 0; i < arr.size(); ++i) {
+        for (int i = arr.size() - 1; i > 0; --i) {
             dist[i] = 1e5;
             mp[arr[i]].push_back(i);
         }
