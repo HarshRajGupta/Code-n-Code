@@ -7,17 +7,20 @@ class Solution {
     int dist[100005], pushed[100005];
     queue<int> visitMe;
     map<int, vector<int>> mp;
-
+    map<int, bool> visited;
     void bfs(vector<int>& arr, int pos) {
         if (pos == arr.size() - 1) {
             while (!visitMe.empty()) visitMe.pop();
             return;
         }
-        for (auto i : mp[arr[pos]]) {
-            if (!pushed[i]) {
-                pushed[i] = 1;
-                dist[i] = min(dist[i], dist[pos] + 1);
-                visitMe.push(i);
+        if (!visited[arr[pos]]) {
+            visited[arr[pos]] = 1;
+            for (auto i : mp[arr[pos]]) {
+                if (!pushed[i]) {
+                    pushed[i] = 1;
+                    dist[i] = min(dist[i], dist[pos] + 1);
+                    visitMe.push(i);
+                }
             }
         }
         if (pos < arr.size() && !pushed[pos + 1]) {
