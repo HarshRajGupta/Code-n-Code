@@ -13,22 +13,22 @@ class Solution {
             while (!visitMe.empty()) visitMe.pop();
             return;
         }
-        if (pos > 0 && !pushed[pos - 1]) {
-            pushed[pos - 1] = 1;
-            dist[pos - 1] = min(dist[pos - 1], dist[pos] + 1);
-            visitMe.push(pos - 1);
-        }
-        if (pos < arr.size() && !pushed[pos + 1]) {
-            pushed[pos + 1] = 1;
-            dist[pos + 1] = min(dist[pos + 1], dist[pos] + 1);
-            visitMe.push(pos + 1);
-        }
         for (auto i : mp[arr[pos]]) {
             if (!pushed[i]) {
                 pushed[i] = 1;
                 dist[i] = min(dist[i], dist[pos] + 1);
                 visitMe.push(i);
             }
+        }
+        if (pos < arr.size() && !pushed[pos + 1]) {
+            pushed[pos + 1] = 1;
+            dist[pos + 1] = min(dist[pos + 1], dist[pos] + 1);
+            visitMe.push(pos + 1);
+        }
+        if (pos > 0 && !pushed[pos - 1]) {
+            pushed[pos - 1] = 1;
+            dist[pos - 1] = min(dist[pos - 1], dist[pos] + 1);
+            visitMe.push(pos - 1);
         }
     }
 public:
