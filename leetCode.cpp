@@ -33,7 +33,7 @@ class Solution {
             dist[pos - 1] = min(dist[pos - 1], dist[pos] + 1);
             visitMe.push(pos - 1);
         }
-        debug(pos)
+        // debug(pos)
     }
 public:
     int minJumps(vector<int> arr) {
