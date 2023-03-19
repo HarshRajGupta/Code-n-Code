@@ -1,13 +1,13 @@
+#ifndef ONLINE_JUDGE
 #include <bits/stdc++.h>
 using namespace std;
+#endif
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-
+#define ll long long
 #define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
 #define bw(i, n) for(int64_t i = n; i >= 0; --i)
@@ -19,18 +19,14 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve(void) {
-    int n; cin >> n; cout << n;
-}
+class Solution {
+public:
+    /* function */
+    void test() {
+        /* test */
+    }
+};
 
-signed main(void) {
-    ios_base::sync_with_stdio(false); cin.tie(NULL);
-#ifdef __START
-    __START
+#ifndef ONLINE_JUDGE
+#include "leetcode.h"
 #endif
-    solve();
-#ifdef __END
-    __END
-#endif
-    return 0;
-}
