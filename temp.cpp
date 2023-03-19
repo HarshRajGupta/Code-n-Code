@@ -36,12 +36,12 @@ void solve(void) {
 
 signed main(void) {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
-#ifdef __TAG1
-    __TAG1
+#ifdef __START
+    __START
 #endif
     solve();
-#ifdef __TAG2
-    __TAG2
+#ifdef __END
+    __END
 #endif
     return 0;
 }
