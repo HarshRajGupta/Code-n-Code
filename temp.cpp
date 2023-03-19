@@ -10,7 +10,7 @@ public:
     /* function */
     void test() {
         int n; cin >> n;
-        cout << n;
+        cout << n*7;
     }
 };
 
