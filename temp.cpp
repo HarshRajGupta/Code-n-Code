@@ -40,13 +40,13 @@ void solve() {
 
 signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
-#ifdef __TAG1
-    __TAG1
+#ifdef __START
+    __START
 #endif
     uint32_t tCs; cin >> tCs;
     for(uint32_t tC = 0; tC++ < tCs; __RUN);
-#ifdef __TAG2
-    __TAG2
+#ifdef __END
+    __END
 #endif
     return 0;
 }
