@@ -10,8 +10,8 @@ using namespace std;
 #define debug(...)
 #endif
 
-#ifndef __RUN
-#define __RUN uint32_t tCs; cin >> tCs; for(uint32_t tC = 0; tC++ < tCs; solve(), std::cout << '\n');
+#ifndef __RUN1
+#define __RUN1 ios_base::sync_with_stdio(false);cin.tie(NULL);int t;cin>>t;while(t--)solve(),cout<<'\n';
 #endif
 
 const uint64_t MOD = 1e9 + 7;
@@ -38,11 +38,10 @@ void solve() {
 }
 
 signed main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL);
 #ifdef __START
     __START
 #endif
-    __RUN
+    __RUN1
 #ifdef __END
     __END
 #endif
