@@ -24,6 +24,7 @@ void solve(void) {
     cout << n*m;
 }
 
+
 signed main(void) {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
 #ifdef __START
