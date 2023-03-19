@@ -5,13 +5,8 @@ using namespace std;
 #define debug(...)
 #endif
 
-#ifndef __RUN
-#define __RUN ios_base::sync_with_stdio(0);cin.tie(NULL);int t;cin>>t;while(t--)solve(),cout<<'\n';
-#endif
-
 #define int long long
 const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
 
 #define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
 #define rep(i, a, n) for(auto i = a; i < n; ++i)
@@ -24,17 +19,16 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() { 
-    int n; cin >> n;
-    // debug(n)
-    cout << n;
+void solve(void) {
+    int n; cin >> n; cout << n;
 }
 
-signed main() {
+signed main(void) {
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
 #ifdef __START
     __START
 #endif
-    __RUN
+    solve();
 #ifdef __END
     __END
 #endif
