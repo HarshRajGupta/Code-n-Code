@@ -10,6 +10,10 @@ using namespace std;
 #define debug(...)
 #endif
 
+#ifndef __RUN
+#define __RUN solve(), std::cout << '\n'
+#endif
+
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -29,18 +33,18 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve(void) {
-    int n, m; cin >> n >> m;
-    debug(n, m)
-    cout << n + m;
+void solve() { 
+    int n; cin >> n;
+    cout << n;
 }
 
-signed main(void) {
+signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL);
 #ifdef __START
     __START
 #endif
-    solve();
+    uint32_t tCs; cin >> tCs;
+    for(uint32_t tC = 0; tC++ < tCs; __RUN);
 #ifdef __END
     __END
 #endif
