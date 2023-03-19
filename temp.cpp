@@ -31,6 +31,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve(void) {
     int n, m; cin >> n >> m;
+    debug(n, m)
     cout << n + m;
 }
 
