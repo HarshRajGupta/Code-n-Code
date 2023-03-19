@@ -11,7 +11,7 @@ using namespace std;
 #endif
 
 #ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
+#define __RUN uint32_t tCs; cin >> tCs; for(uint32_t tC = 0; tC++ < tCs; solve(), std::cout << '\n');
 #endif
 
 const uint64_t MOD = 1e9 + 7;
@@ -33,10 +33,8 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() { 
-    int n; cin >> n;
-    // debug(n)
-    cout << n;
+void solve() {
+    /* Code */
 }
 
 signed main() {
@@ -44,8 +42,7 @@ signed main() {
 #ifdef __START
     __START
 #endif
-    uint32_t tCs; cin >> tCs;
-    for(uint32_t tC = 0; tC++ < tCs; __RUN);
+    __RUN
 #ifdef __END
     __END
 #endif
