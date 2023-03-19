@@ -1,13 +1,12 @@
 #ifndef ONLINE_JUDGE
 #include <bits/stdc++.h>
-using namespace std;
+// using namespace std;
 #endif
 
 #ifndef debug
 #define debug(...)
 #endif
 
-const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
 #define ll long long
