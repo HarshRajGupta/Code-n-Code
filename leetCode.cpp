@@ -25,7 +25,7 @@ public:
 };
 
 void check() {
-    cout << 1;
+    cout << 90;
 }
 
 #ifndef ONLINE_JUDGE
