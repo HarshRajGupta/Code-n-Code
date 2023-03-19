@@ -26,6 +26,7 @@ template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve() { 
     int n; cin >> n;
+    debug(n)
     cout << n;
 }
 
