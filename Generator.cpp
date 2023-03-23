@@ -1,27 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void generate() {
-    int n = (1e2), m = 200;
-    cout << n << '\n';
-    for (int i = 0; i < n; ++i) cout << rand() % m << ' ';
-    cout << '\n';
-    // for (int i = 0; i < n; ++i) {
-    //     if (i & 1) {
-    //         cout << "2 " << rand() % n << '\n';
-    //     } else cout << "1 1 " << n << '\n';
-    // }
-}
+#define int long long
+#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
 
-signed main() {
-#ifdef __TAG1
-    __TAG1
+class Solution {
+public:
+    void test() {
+        int n = 1e6;
+        vector<int> arr(n);
+        _for(i, n) arr[i] = rand();
+        _for(i, n) cout << arr[i];
+    }
+};
+
+#ifdef __TEST__
+__TEST__
 #endif
-    srand(time(0));
-    int testCase = 10000; std::cout << testCase << '\n';
-    while (testCase--) generate(), std::cout << '\n';
-#ifdef __TAG2
-    __TAG2
-#endif
-    return 0;
-}
