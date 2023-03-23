@@ -7,6 +7,7 @@ using namespace std;
 class Solution {
 public:
     void test() {
+        srand(time(0));
         int n = 1e6;
         vector<int> arr(n);
         _for(i, n) arr[i] = rand();
