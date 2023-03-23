@@ -10,8 +10,8 @@ public:
     void test(void) {
         srand(time(0));
         int n = 1e8;
-        vector<int> arr(n);
-        _for(i, n) arr[i] = rand();
+        // vector<int> arr(n);
+        _for(i, n) n = rand();
         // _for(i, n) cout << arr[i] << ' ' ;
     }
 };
