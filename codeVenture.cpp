@@ -44,7 +44,7 @@ void solve(void) {
 	debug(a, b)
 	while (k--) {
 		int l, r; cin >> l >> r;
-		debug(l, r)
+		// debug(l, r)
 		if (!a[l] || !b[r]) continue;
 		if ((l ^ r) & 1) {
 			b[r] = 0;
