@@ -9,7 +9,7 @@ class Solution {
 public:
     void test(void) {
         /* test */
-        int t = (rand() * rand() % rand() * ((rand() & 1) ? 1 : -1));
+        int t = (rand() * ((rand() & 1) ? 1ll : -1ll));
         _for(i, 10) cout << r << ' ';
     }
 };
