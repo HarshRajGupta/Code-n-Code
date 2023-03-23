@@ -13,7 +13,6 @@ long long _r() {
         return (((((((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / (rand()) + (rand() * (-1 * (rand() & 1))))) * ((rand() % rand()) + rand() % rand() + (rand() * (-1 * (rand() & 1))))))) * (-1 * (rand() & 1));
     return rand() * (-1 * (rand() & 1));
 }
-#define _r
 
 class Solution {
 public:
@@ -21,8 +20,8 @@ public:
         srand(time(0));
         int n = 10;
         std::vector<int> arr(n);
-        srand(time(new long(_r)));
-        // _for(i, n) arr[i] = _r;
+        srand(time(new long(_r())));
+        _for(i, n) arr[i] = _r();
         debug(arr)
     }
 };
