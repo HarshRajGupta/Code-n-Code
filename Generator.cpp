@@ -8,7 +8,10 @@ const uint64_t MOD = 1e9 + 7;
 class Solution {
 public:
     void test(void) {
-        srand(time(NULL));
+        int n = 1e6;
+        std::vector<int> arr(n);
+        _for(i, n) arr[i] = rand();
+        debug(arr)
     }
 };
 
