@@ -20,7 +20,7 @@ public:
         }
         int n = 10;
         std::vector<int> arr(n);
-        _for(i, n) arr[i] = rand()*rand();
+        _for(i, n) arr[i] = (rand()*rand()/rand())*rand();
         debug(arr)
     }
 };
