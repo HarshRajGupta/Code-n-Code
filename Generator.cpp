@@ -11,8 +11,9 @@ public:
         srand(time(0));
         int n = 10;
         std::vector<int> arr(n);
-        const int _rand = ((((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / (rand()) + (rand() * (-1 * (rand() & 1))))) * ((rand() % rand()) + rand() % rand());
+        int _rand = ((((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / (rand()) + (rand() * (-1 * (rand() & 1))))) * ((rand() % rand()) + rand() % rand());
         srand(time(new long(_rand)));
+        _rand = ((((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / (rand()) + (rand() * (-1 * (rand() & 1))))) * ((rand() % rand()) + rand() % rand());
         _for(i, n) arr[i] = _rand;
         debug(arr)
     }
