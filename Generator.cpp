@@ -11,7 +11,7 @@ public:
         srand(time(0));
         int n = 1e9;
         // vector<int> arr(n);
-        _for(i, n) n = rand();
+        _for(i, n) n = (rand()*rand())%MOD;
         // _for(i, n) cout << arr[i] << ' ' ;
     }
 };
