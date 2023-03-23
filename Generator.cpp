@@ -12,7 +12,7 @@ public:
         int n = 1e6;
         vector<int> arr(n);
         _for(i, n) arr[i] = rand();
-        _for(i, n) cout << arr[i] << ' ' ;
+        // _for(i, n) cout << arr[i] << ' ' ;
     }
 };
 
