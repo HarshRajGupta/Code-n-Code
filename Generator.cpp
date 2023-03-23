@@ -11,7 +11,8 @@ public:
         srand(time(0));
         int n = 10;
         std::vector<int> arr(n);
-        _for(i, n) arr[i] = (rand()*rand()/rand())*rand();
+        const int _rand = (((rand() * rand()) % MOD) + (rand() * (-1 * (rand() & 1)))) * rand();
+        _for(i, n) arr[i] = _rand;
         debug(arr)
     }
 };
