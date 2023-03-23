@@ -9,8 +9,8 @@ class Solution {
 public:
     void test(void) {
         srand(time(0));
-        int r = ((rand() % mod)*(rand() % MOD)%rand())*rand();
-        srand(time(new long(r)));
+        // int r = ((rand() % mod)*(rand() % MOD)%rand())*rand();
+        // srand(time(new long(r)));
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
