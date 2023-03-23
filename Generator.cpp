@@ -9,7 +9,7 @@ class Solution {
 public:
     void test(void) {
         time_t *t = new time_t;
-        cout << (time(t)%MOD)*(time(t)%MOD) << endl;
+        cout << (time(0)%MOD)*(time(0)%MOD) << endl;
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
