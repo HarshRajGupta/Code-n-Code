@@ -13,7 +13,7 @@ public:
         std::vector<int> arr(n);
         int _rand = (((((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / (rand()) + (rand() * (-1 * (rand() & 1))))) * ((rand() % rand()) + rand() % rand() + (rand() * (-1 * (rand() & 1))))) / (rand() % rand());
         srand(time(new long(_rand)));
-        _rand = ((((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / (rand()) + (rand() * (-1 * (rand() & 1))))) * ((rand() % rand()) + rand() % rand() + (rand() * (-1 * (rand() & 1))));
+        _rand = ((((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / (rand()) + (rand() * (-1 * (rand() & 1))))) * ((rand() % rand()) + rand() % rand() + (rand() * (-1 * (rand() & 1)))) / (rand() % rand());
         _for(i, n) arr[i] = _rand;
         debug(arr)
     }
