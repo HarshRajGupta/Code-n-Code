@@ -11,7 +11,7 @@ public:
         srand(time(0));
         int n = 10;
         std::vector<int> arr(n);
-        const int _rand = ((((rand() * rand()) % MOD) + (rand() * (-1 * (rand() & 1)))) % MOD) / rand();
+        const int _rand = ((((rand() * rand()) % 998244353) + (rand() * (-1 * (rand() & 1)))) % 1000000007) / rand();
         _for(i, n) arr[i] = _rand;
         debug(arr)
     }
