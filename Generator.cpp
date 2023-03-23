@@ -10,6 +10,7 @@ public:
     void test(void) {
         srand(0);
         int r = ((rand() % mod)*(rand() % MOD)%rand())*rand();
+        srand(r);
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
