@@ -8,7 +8,7 @@ const uint64_t MOD = 1e9 + 7;
 class Solution {
 public:
     void test(void) {
-        srand(time(new long(LONG_MIN))+time(0)+time(new long(LONG_MAX)));
+        // srand(time(new long(LONG_MIN))+time(0)+time(new long(LONG_MAX)));
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
