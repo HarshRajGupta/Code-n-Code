@@ -1,18 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define int long long
+#define _int long long
 #define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
 const uint64_t MOD = 1e9 + 7;
 
 class Solution {
 public:
     void test(void) {
-        srand(time(0));
-        int n = 1e9;
-        // vector<int> arr(n);
-        _for(i, n) n = (rand() * rand()) % MOD;
-        // _for(i, n) cout << arr[i] << ' ' ;
+        srand(time(NULL));
     }
 };
 
