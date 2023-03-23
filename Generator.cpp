@@ -9,6 +9,7 @@ class Solution {
 public:
     void test(void) {
         /* test */
+        _for(i, 10) cout << r << ' ';
     }
 };
 
