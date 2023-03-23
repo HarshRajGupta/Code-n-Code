@@ -8,9 +8,9 @@ const uint64_t MOD = 1e9 + 7, mod = 998244353;
 class Solution {
 public:
     void test(void) {
-        srand(0);
+        srand(time(0));
         int r = ((rand() % mod)*(rand() % MOD)%rand())*rand();
-        srand(r);
+        srand(time(new long(r)));
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
