@@ -8,8 +8,9 @@ const uint64_t MOD = 1e9 + 7;
 class Solution {
 public:
     void test(void) {
-        time_t *t = new time_t;
-        cout << (time(t)%MOD)*(time(0)%MOD) << endl;
+        long int *z = new long(100007);
+        // time_t *t = time_t(z);
+        cout << (time(z)%MOD)*(time(0)%MOD) << endl;
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
