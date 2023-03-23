@@ -8,7 +8,7 @@ class Solution {
 public:
     void test() {
         srand(time(0));
-        int n = 1e6;
+        int n = 1e1;
         vector<int> arr(n);
         _for(i, n) arr[i] = rand();
         _for(i, n) cout << arr[i] << ' ' ;
