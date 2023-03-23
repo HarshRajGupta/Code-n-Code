@@ -10,7 +10,7 @@ public:
     void test(void) {
         srand(0);
         int r = (((rand()*rand())%rand())*rand())%rand();
-        srand(time(new long((((rand()*rand())%rand())*rand())%rand())));
+        srand(time(new long((((rand()*rand())%rand())*rand()))));
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
