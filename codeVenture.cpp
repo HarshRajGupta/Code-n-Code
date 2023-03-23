@@ -30,28 +30,27 @@ template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::g
 
 void solve(void) {
 	int n; cin >> n;
-	v<int> a(n), A(n);
+	map<int, int> a, b;
 	_for(i, n) {
 		int t; cin >> t;
-		a[t - 1] = i;
+		a[t] = 1;
 	}
 	int m = 0; cin >> m;
-	v<int> b(m), B(m);
 	_for(i, m) {
 		int t; cin >> t;
-		b[t - 1] = i;
+		b[t] = 1;
 	}
 	int k; cin >> k;
 	debug(a, b)
 	while (k--) {
 		int l, r; cin >> l >> r;
 		debug(l, r)
-		if (A[l - 1] || B[r - 1]) continue;
+		if (!a[l] || !b[r]) continue;
 		if ((l ^ r) & 1) {
-			A[r - 1] = 1;
+			b[r] = 0;
 			--m;
 		} else {
-			B[l - 1] = 1;
+			a[l] = 0;
 			--n;
 		}
 	}
