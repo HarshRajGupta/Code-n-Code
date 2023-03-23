@@ -48,7 +48,7 @@ void solve(void) {
     int n = 1e6;
     std::vector<int> arr(n);
     _for(i, n) arr[i] = rand();
-    quickSort(arr);
+    sort(all(arr));
 }
 
 signed main(void) {__SOLVE__}
