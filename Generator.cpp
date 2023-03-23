@@ -10,7 +10,7 @@ public:
     void test(void) {
         long int *z = new long(INT_MAX);
         // time_t *t = time_t(z);
-        cout << (time(new long(INT_MAX))%MOD)*(time(new long(INT_MIN))%MOD)%MOD << endl;
+        srand(time(0)+time(z));
         int n = 10;
         std::vector<int> arr(n);
         _for(i, n) arr[i] = rand();
