@@ -3,7 +3,7 @@ using namespace std;
 
 #define int long long
 #define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
-#define r ((rand() + ((rand() % rand()) * ((rand() & 1) ? 1ll : -1ll))) * ((rand() & 1) ? 1ll : -1ll))
+#define r (rand() * ((rand() & 1) ? 1ll : -1ll))
 
 class Solution {
 public:
