@@ -9,7 +9,7 @@ class Solution {
 public:
     void test(void) {
         srand(time(0));
-        int n = 1e8;
+        int n = 1e10;
         // vector<int> arr(n);
         _for(i, n) n = rand();
         // _for(i, n) cout << arr[i] << ' ' ;
