@@ -28,27 +28,30 @@ template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::g
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void quickSort(const std::vector<int> &v) {
-    if (v.size() <= 1) return;
-    std::vector<int> left, right;
-    int pivot = v[rand() % v.size()];
-    for (int i = 1; i < v.size(); i++) {
-        if (v[i] < pivot) left.push_back(v[i]);
-        else right.push_back(v[i]);
+void mergeSort(v<int> &arr, int i , int j) {
+    if (i >= j) return;
+    int mid = (i + j) / 2;
+    mergeSort(arr, i, mid);
+    mergeSort(arr, mid + 1, j);
+    int p1 = i, p2 = mid + 1;
+    v<int> tmp;
+    while (p1 <= mid && p2 <= j) {
+        if (arr[p1] < arr[p2]) {
+            tmp.push_back(arr[p1++]);
+        } else {
+            tmp.push_back(arr[p2++]);
+        }
     }
-    quickSort(left);
-    quickSort(right);
-    std::vector<int> sorted;
-    sorted.insert(sorted.end(), left.begin(), left.end());
-    sorted.push_back(pivot);
-    sorted.insert(sorted.end(), right.begin(), right.end());
+    while (p1 <= mid) tmp.push_back(arr[p1++]);
+    while (p2 <= j) tmp.push_back(arr[p2++]);
+    _for(i, tmp.size()) arr[i + p1] = tmp[i];
 }
 
 void solve(void) {
     int n = 1e6;
     std::vector<int> arr(n);
     _for(i, n) arr[i] = rand();
-    quickSort(arr);
+    // mergeSort(arr, 0, n-1);
 }
 
 signed main(void) {__SOLVE__}
