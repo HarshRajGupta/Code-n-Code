@@ -8,7 +8,7 @@ const uint64_t MOD = 1e9 + 7;
 class Solution {
 public:
     void test(void) {
-        long int *z = new long(100007);
+        long int *z = new long(INT_MAX);
         // time_t *t = time_t(z);
         cout << (time(z)%MOD)*(time(0)%MOD) << endl;
         int n = 10;
