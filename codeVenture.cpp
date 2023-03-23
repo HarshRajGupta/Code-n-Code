@@ -45,12 +45,13 @@ void solve(void) {
 	debug(a, b)
 	while (k--) {
 		int l, r; cin >> l >> r;
-		if (a[l - 1] || b[r - 1]) continue;
+		debug(l, r)
+		if (A[l - 1] || B[r - 1]) continue;
 		if ((l ^ r) & 1) {
-			b[r - 1] = 1;
+			A[r - 1] = 1;
 			--m;
 		} else {
-			a[l - 1] = 1;
+			B[l - 1] = 1;
 			--n;
 		}
 	}
