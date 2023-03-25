@@ -16,7 +16,7 @@ class Solution {
 public:
     /* function */
     void test(void) {
-        cout << "H World!";
+        cout << "Hello World!";
     }
 };
 
