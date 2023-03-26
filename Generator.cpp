@@ -37,6 +37,7 @@ void solve(void) {
     _for(i, n) cin >> b[i];
     _for(i, n - 1) {
         if (min(a[i], b[i]) < min(a[n - 1], b[n - 1]) || max(a[i], b[i]) > max(a[n - 1], b[n - 1])) {
+            debug(i, a[i], b[i], a[n - 1], b[n - 1])
             cout << "NO";
             return;
         }
