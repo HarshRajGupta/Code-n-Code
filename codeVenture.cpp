@@ -45,7 +45,7 @@ class Solution {
 public:
 	bool primeSubOperation(vector<int>& nums) {
 		int32_t n = nums.size();
-		std::vector<bool> isPrime = sieve(1007);
+		std::vector<bool> isPrime = sieve();
 		int ind = lB(allPrimes, nums[0]);
 		if (ind != -1) {
 			nums[0] -= allPrimes[ind];
