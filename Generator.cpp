@@ -42,7 +42,7 @@ void solve(void) {
         if (x < minCost || x % minCost != 0 || a[i] % (x / b[i]) != 0) {
             ++ans;
             hcf = a[i] * b[i];
-            minCost = b[0];
+            minCost = b[i];
             debug(i, hcf, x, minCost, ans)
         } else {
             hcf = x;
