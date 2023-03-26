@@ -32,7 +32,7 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve(void) {
     int n; cin >> n;
-    // v<int> a(n), b(n);
+    v<int> a(n), b(n);
     // _for(i, n) cin >> a[i];
     // _for(i, n) cin >> b[i];
     // _for(i, n - 1) {
