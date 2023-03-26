@@ -23,7 +23,7 @@ public:
 		return ans;
 	}
 	void test(void) {
-		cout << kItemsWithMaximumSum(1, 2, 3, 4);
+		cout << kItemsWithMaximumSum(1, 2, 3, 3);
 		/* test */
 	}
 };
