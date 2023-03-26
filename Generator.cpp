@@ -44,9 +44,9 @@ void solve(void) {
         } else {
             hcf = __gcd(a[i] * b[i], hcf);
         }
-        debug(hcf)
+        // debug(hcf)
     }
-    debug(hcf)
+    // debug(hcf)
     cout << ans;
 }
 
