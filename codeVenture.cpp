@@ -13,7 +13,7 @@ using namespace std;
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
 std::vector<int32_t> allPrimes;
-std::vector<bool> sieve(int32_t n = 100000007) {
+std::vector<bool> sieve(int32_t n = 1000007) {
 	std::vector<bool> isPrime(n + 1, true);
 	isPrime[0] = false, isPrime[1] = false;
 	for (int32_t i = 2; (i * i) <= n; ++i) {
@@ -50,6 +50,7 @@ public:
 		if (ind != -1) {
 			nums[0] -= allPrimes[ind];
 		}
+		debug(nums)
 		for (int i = 1; i < n; ++i) {
 			int diff = nums[i] - nums[i - 1];
 			if (diff <= 1) return false;
