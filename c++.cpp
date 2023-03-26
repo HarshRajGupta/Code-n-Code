@@ -27,7 +27,7 @@ public:
     }
     void test(void) {
         /* test */
-        int n = 100000;
+        int n = 100005;
         while (n++) {
             if (isPrime(n)) {
                 cout << n << endl;
