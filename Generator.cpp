@@ -35,6 +35,7 @@ void solve(void) {
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
     sort(all(arr));
+    debug(arr)
     int MAX = arr[n - 1] - arr[0], ans = 0;
     _for(i, n) {
         ans += arr[i];
