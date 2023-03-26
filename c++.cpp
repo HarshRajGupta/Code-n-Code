@@ -12,6 +12,14 @@ using namespace std;
 
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
+bool isPrime(int& n) {
+    if (n % 2 == 0) return false;
+    for (int i = 3; i * i <= n; i += 2) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
 class Solution {
 public:
     int longestCycle(vector<int>& edges) {
@@ -19,6 +27,13 @@ public:
     }
     void test(void) {
         /* test */
+        int n = 100000;
+        while (n++) {
+            if (isPrime(n)) {
+                cout << n << endl;
+                break;
+            }
+        }
     }
 };
 
