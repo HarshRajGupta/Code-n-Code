@@ -64,7 +64,7 @@ void solve(void) {
     //         if (sm < 0) sm = 0;
     //     }
     // }
-    // cout << "YES\n";
+    cout << "YES\n";
     _for(i, ans.size()) cout << ans[i] << ' ';
 }
 
