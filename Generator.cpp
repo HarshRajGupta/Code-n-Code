@@ -42,10 +42,10 @@ void solve(void) {
             debug(i, hcf, x, ans)
             ++ans;
             hcf = a[i] * b[i];
-            minCost = b[i];
+            minCost = b[0];
         } else {
             hcf = x;
-            minCost = x;
+            minCost = max(b[i], minCost);
         }
         // debug(hcf)
     }
