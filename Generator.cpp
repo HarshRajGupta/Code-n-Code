@@ -38,8 +38,8 @@ void solve(void) {
     _for(i, n) {
         int x = __gcd(a[i] * b[i], hcf);
         debug(i, hcf, x)
-        minCost = max(b[i], minCost);
-        if (x < minCost || x % b[i] != 0 || a[i] % (x / b[i]) != 0) {
+        minCost = minCost * b[i] / __gcd(minCost, b[i]);
+        if (x < minCost || x % minCost != 0 || a[i] % (x / b[i]) != 0) {
             debug(i, hcf, x, minCost, ans)
             ++ans;
             hcf = a[i] * b[i];
