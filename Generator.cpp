@@ -41,7 +41,8 @@ void solve(void) {
     sort(all(pos));
     sort(all(neg));
     debug(pos, neg)
-    int MAX = pos[pos.size() - 1] - neg[0];
+    int MAX = 0;
+    if (pos.size() > 0) MAX = pos.back() + neg[0];
     int i = 0, j = 0, sum = 0, sm = 0;
     debug(i < sz(pos) && j < sz(neg))
     // while ((i < sz(pos) && j < sz(neg))) {
