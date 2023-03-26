@@ -40,10 +40,10 @@ void solve(void) {
         minCost = minCost * b[i] / __gcd(minCost, b[i]);
         debug(i, hcf, x, minCost)
         if (x < minCost || x % minCost != 0 || a[i] % (x / b[i]) != 0) {
-            debug(i, hcf, x, minCost, ans)
             ++ans;
             hcf = a[i] * b[i];
             minCost = b[0];
+            debug(i, hcf, x, minCost, ans)
         } else {
             hcf = x;
         }
