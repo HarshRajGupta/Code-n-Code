@@ -34,16 +34,18 @@ void solve(void) {
     int n; cin >> n;
     v<int> a(n), b(n);
     _for(i, n) cin >> a[i] >> b[i];
-    int hcf = a[0] * b[0], ans = 1;
+    int hcf = a[0] * b[0], ans = 1, minCost = b[0];
     _for(i, n) {
         int x = __gcd(a[i] * b[i], hcf);
         debug(i, hcf, x)
-        if (x % b[i] != 0 || a[i] % (x / b[i]) != 0) {
+        if (x < minCost || x % b[i] != 0 || a[i] % (x / b[i]) != 0) {
             debug(i, hcf, x, ans)
             ++ans;
             hcf = a[i] * b[i];
+            minCost = b[i];
         } else {
-            hcf = __gcd(a[i] * b[i], hcf);
+            hcf = x;
+            minCost = x;
         }
         // debug(hcf)
     }
