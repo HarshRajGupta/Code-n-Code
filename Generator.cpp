@@ -36,7 +36,7 @@ void solve(void) {
     _for(i, n) cin >> a[i] >> b[i];
     int hcf = a[0] * b[0], ans = 1;
     _for(i, n) {
-        if (__gcd(a[i]*b[i], hcf) == 1) {
+        if (__gcd(a[i]*b[i], hcf) < b[i]) {
             debug(hcf)
             ++ans;
             hcf = a[i] * b[i];
