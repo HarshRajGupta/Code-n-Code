@@ -13,10 +13,32 @@ using namespace std;
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
 class Solution {
+    int MAX = -1;
+    void dfs(vector<vector<int>>& graph, int node, int depth, vector<bool>& visited) {
+        if (visited[node]) {
+            MAX = max(MAX, depth);
+            return;
+        }
+        visited[node] = true;
+        for (auto& next : graph[node]) {
+            dfs(graph, next, depth + 1, visited);
+        }
+        visited[node] = false;
+    }
 public:
-    /* function */
+    int longestCycle(vector<int>& edges) {
+        vector<vector<int>> graph(edges.size());
+        for (int i = 0; i < edges.size(); ++i) {
+            graph[i].push_back(edges[i]);
+        }
+        vector<bool> visited(edges.size(), false);
+        for (int i = 0; i < edges.size(); ++i) {
+            dfs(graph, i, 0, visited);
+        }
+        return MAX;
+    }
     void test(void) {
-        cout << "Hello World!";
+        /* test */
     }
 };
 
