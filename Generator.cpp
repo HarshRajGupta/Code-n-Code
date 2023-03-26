@@ -37,12 +37,14 @@ void solve(void) {
     int hcf = a[0] * b[0], ans = 1;
     _for(i, n) {
         if (__gcd(a[i]*b[i], hcf) == 1) {
+            debug(hcf)
             ++ans;
             hcf = a[i] * b[i];
         } else {
             hcf = __gcd(a[i] * b[i], hcf);
         }
     }
+    debug(hcf)
     cout << ans;
 }
 
