@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #ifndef OFFLINE_JUDGE
-// #define n 10
-// #endif
-#define n 10
+#ifndef OFFLINE_JUDGE
+#pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse","sse2","sse3","ssse3","sse4","popcnt","abm","mmx","avx","avx2")
+#endif
 
 #ifndef debug
 #define debug(...)
@@ -13,16 +13,11 @@ using namespace std;
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
 class Solution {
-    map<int, map<int, int>> memo;
-    void dfs(vector<vector<int>> &graph, vector<int>& coins, int src = -1, int pos = 0) {
-
-    }
 public:
-    int collectTheCoins(vector<int>& coins, vector<vector<int>>& edges) {
-        return 0;
+    int longestCycle(vector<int>& edges) {
+        
     }
     void test(void) {
-        cout << n;
         /* test */
     }
 };
