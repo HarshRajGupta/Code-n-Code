@@ -35,12 +35,14 @@ void solve(void) {
     v<int> arr(n);
     _for(i, n) cin >> arr[i];
     sort(all(arr));
-    int MAX = arr[n - 1] - arr[0];
+    int MAX = arr[n - 1] - arr[0], ans = 0;
     _for(i, n) {
-        if (abs(arr[i]) >= MAX ) {
+        ans += arr[i];
+        if (abs(ans) >= MAX) {
             cout << "NO";
             return;
         }
+        if (ans < 0) ans = 0;
     }
     cout << "YES\n";
     _for(i, n) cout << arr[i] << ' ';
