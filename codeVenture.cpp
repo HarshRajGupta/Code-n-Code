@@ -64,8 +64,10 @@ public:
 		return true;
 	}
 	void test(void) {
-		vector<int> a = {998,2};
-		cout << primeSubOperation(a) << endl;
+		// vector<int> a = {998,2};
+		// cout << primeSubOperation(a) << endl;
+		sieve();
+		debug(allPrimes)
 	}
 };
 
