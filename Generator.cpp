@@ -43,6 +43,10 @@ void solve(void) {
     debug(pos, neg)
     int MAX = 0;
     if (pos.size() > 0) MAX = pos.back() + neg[0];
+    else {
+        cout << "NO";
+        return;
+    }
     int i = 0, j = 0, sum = 0, sm = 0;
     debug(i < sz(pos) && j < sz(neg))
     while ((i < sz(pos) && j < sz(neg))) {
