@@ -15,7 +15,7 @@ using namespace std;
 class Solution {
 public:
     int longestCycle(vector<int>& edges) {
-        
+        return 0;
     }
     void test(void) {
         /* test */
