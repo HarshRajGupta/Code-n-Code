@@ -43,31 +43,31 @@ void solve(void) {
     debug(pos, neg)
     int MAX = pos[pos.size() - 1] - neg[0];
     int i = 0, j = 0, sum = 0, sm = 0;
-    while (i < sz(pos) && j < sz(neg)) {
-        debug(sum, ans)
-        if (sum <= 0) {
-            sum += pos[i];
-            sm += pos[i];
-            if (abs(sm) >= MAX) {
-                cout << "NO";
-                return;
-            }
-            ans.push_back(pos[i]);
-            ++i;
-            debug(ans, sum, i, sm)
-        } else {
-            sum += neg[j];
-            ans.push_back(neg[j]);
-            sm += neg[j];
-            if (abs(sm) >= MAX) {
-                cout << "NO";
-                return;
-            }
-            if (sm < 0) sm = 0;
-            debug(ans, sum, j, sm)
-            ++j;
-        }
-    }
+    // while (i < sz(pos) && j < sz(neg)) {
+    //     debug(sum, ans)
+    //     if (sum <= 0) {
+    //         sum += pos[i];
+    //         sm += pos[i];
+    //         if (abs(sm) >= MAX) {
+    //             cout << "NO";
+    //             return;
+    //         }
+    //         ans.push_back(pos[i]);
+    //         ++i;
+    //         debug(ans, sum, i, sm)
+    //     } else {
+    //         sum += neg[j];
+    //         ans.push_back(neg[j]);
+    //         sm += neg[j];
+    //         if (abs(sm) >= MAX) {
+    //             cout << "NO";
+    //             return;
+    //         }
+    //         if (sm < 0) sm = 0;
+    //         debug(ans, sum, j, sm)
+    //         ++j;
+    //     }
+    // }
     cout << "YES\n";
     debug(ans)
     _for(i, ans.size()) cout << ans[i] << ' ';
@@ -79,7 +79,6 @@ void solve(void) {
         cout << neg[j] << ' ';
         ++j;
     }
-
 }
 
 signed main(void) {__MAIN__}
