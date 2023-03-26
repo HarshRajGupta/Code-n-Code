@@ -65,7 +65,7 @@ void solve(void) {
     //     }
     // }
     // cout << "YES\n";
-    // _for(i, n) cout << ans[i] << ' ';
+    _for(i, ans.size()) cout << ans[i] << ' ';
 }
 
 signed main(void) {__MAIN__}
