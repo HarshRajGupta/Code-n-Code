@@ -31,15 +31,15 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    // int n; cin >> n;
-    // v<int> pos, neg, ans;
-    // _for(i, n) {
-    //     int t; cin >> t;
-    //     if (t > 0) pos.push_back(t);
-    //     else neg.push_back(t);
-    // }
-    // sort(all(pos));
-    // sort(all(neg));
+    int n; cin >> n;
+    v<int> pos, neg, ans;
+    _for(i, n) {
+        int t; cin >> t;
+        if (t > 0) pos.push_back(t);
+        else neg.push_back(t);
+    }
+    sort(all(pos));
+    sort(all(neg));
     // int MAX = pos[pos.size() - 1] - neg[0];
     // int i = 0, j = 0, sum = 0, sm = 0;
     // while (i < sz(pos) && j < sz(neg)) {
