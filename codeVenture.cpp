@@ -53,7 +53,7 @@ public:
 		debug(nums)
 		for (int i = 1; i < n; ++i) {
 			int diff = nums[i] - nums[i - 1];
-			if (diff <= 1) return false;
+			if (diff < 1) return false;
 			ind = lB(allPrimes, diff);
 			if (ind != -1) {
 				debug(allPrimes[ind], diff)
