@@ -71,6 +71,15 @@ void solve(void) {
     cout << "YES\n";
     debug(ans)
     _for(i, ans.size()) cout << ans[i] << ' ';
+    while (i < sz(pos)) {
+        cout << pos[i] << ' ';
+        ++i;
+    }
+    while (j < sz(neg)) {
+        cout << neg[j] << ' ';
+        ++j;
+    }
+
 }
 
 signed main(void) {__MAIN__}
