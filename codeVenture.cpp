@@ -55,6 +55,7 @@ public:
 			if (diff <= 1) return false;
 			ind = lB(allPrimes, diff);
 			if (ind != -1) {
+				debug(allPrimes[ind], diff)
 				nums[i] -= allPrimes[ind];
 			}
 		}
