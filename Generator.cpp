@@ -43,7 +43,7 @@ void solve(void) {
     debug(pos, neg)
     int MAX = 0;
     if (pos.size() > 0)
-        MAX = pos[pos.size() - 1] - neg[0];
+        MAX = pos.back() - neg[0];
     else {
         cout << "NO";
         return;
