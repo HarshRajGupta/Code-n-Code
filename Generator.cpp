@@ -39,6 +39,7 @@ void solve(void) {
     _for(i, n) {
         ans += arr[i];
         if (abs(ans) >= MAX) {
+            debug(ans, MAX)
             cout << "NO";
             return;
         }
