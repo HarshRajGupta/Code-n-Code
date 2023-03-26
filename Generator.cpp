@@ -67,6 +67,7 @@ void solve(void) {
         }
     }
     cout << "YES\n";
+    debug(ans)
     _for(i, ans.size()) cout << ans[i] << ' ';
 }
 
