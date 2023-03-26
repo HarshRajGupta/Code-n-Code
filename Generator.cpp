@@ -65,6 +65,7 @@ void solve(void) {
             }
             if (sm < 0) sm = 0;
         }
+        debug(ans)
     }
     cout << "YES\n";
     debug(ans)
