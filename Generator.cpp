@@ -56,7 +56,6 @@ void solve(void) {
             ans.push_back(pos[i]);
         } else {
             sum += neg[j];
-            ++j;
             ans.push_back(neg[j]);
             sm += neg[j];
             if (abs(sm) >= MAX) {
@@ -64,8 +63,8 @@ void solve(void) {
                 return;
             }
             if (sm < 0) sm = 0;
+            ++j;
         }
-        debug(ans)
     }
     cout << "YES\n";
     debug(ans)
