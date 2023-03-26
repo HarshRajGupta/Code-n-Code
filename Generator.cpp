@@ -31,36 +31,19 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    int m; cin >> m;
-    v<v<int>> arr(m);
-    map<int, int> mp;
-    _for(i, m) {
-        int n; cin >> n;
-        v<int> a(n);
-        _for(j, n) {
-            cin >> a[j];
-            mp[a[j]] = i;
-        }
-        arr[i] = a;
-    }
-    v<int> ans(m);
-    _for(i, m) {
-        int n = sz(arr[i]);
-        bool found = false;
-        _for(j, n) {
-            if (mp[arr[i][j]] == i) {
-                // cout << arr[i][j] << ' ';
-                ans[i] = arr[i][j];
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            cout << -1 << ' ';
-            return;
+    int n; cin >> n;
+    v<int> a(n), b(n);
+    _for(i, n) cin >> a[i] >> b[i];
+    int hcf = a[0] * b[0], ans = 1;
+    _for(i, n) {
+        if (__gcd(a[i]*b[i], hcf) == 1) {
+            ++ans;
+            hcf = a[i] * b[i];
+        } else {
+            hcf = __gcd(a[i] * b[i], hcf);
         }
     }
-    _for(i, m) cout << ans[i] << ' ';
+    cout << ans;
 }
 
 signed main(void) {__MAIN__}
