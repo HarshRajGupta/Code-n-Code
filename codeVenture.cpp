@@ -63,7 +63,7 @@ public:
 		return true;
 	}
 	void test(void) {
-		vector<int> a = {4,9,6,10};
+		vector<int> a = {998,2};
 		cout << primeSubOperation(a) << endl;
 	}
 };
