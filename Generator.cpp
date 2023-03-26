@@ -31,23 +31,41 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    int n; cin >> n;
-    v<int> arr(n);
-    _for(i, n) cin >> arr[i];
-    sort(all(arr));
-    debug(arr)
-    int MAX = arr[n - 1] - arr[0], ans = 0;
-    _for(i, n) {
-        ans += arr[i];
-        if (abs(ans) >= MAX) {
-            debug(i, ans)
-            cout << "NO";
-            return;
-        }
-        if (ans < 0) ans = 0;
-    }
-    cout << "YES\n";
-    _for(i, n) cout << arr[i] << ' ';
+    // int n; cin >> n;
+    // v<int> pos, neg, ans;
+    // _for(i, n) {
+    //     int t; cin >> t;
+    //     if (t > 0) pos.push_back(t);
+    //     else neg.push_back(t);
+    // }
+    // sort(all(pos));
+    // sort(all(neg));
+    // int MAX = pos[pos.size() - 1] - neg[0];
+    // int i = 0, j = 0, sum = 0, sm = 0;
+    // while (i < sz(pos) && j < sz(neg)) {
+    //     if (sum <= 0) {
+    //         sum += pos[i];
+    //         sm += pos[i];
+    //         if (abs(sm) >= MAX) {
+    //             cout << "NO";
+    //             return;
+    //         }
+    //         ++i;
+    //         ans.push_back(i);
+    //     } else {
+    //         sum += neg[j];
+    //         ++j;
+    //         ans.push_back(j);
+    //         sm += neg[j];
+    //         if (abs(sm) >= MAX) {
+    //             cout << "NO";
+    //             return;
+    //         }
+    //         if (sm < 0) sm = 0;
+    //     }
+    // }
+    // cout << "YES\n";
+    // _for(i, n) cout << ans[i] << ' ';
 }
 
 signed main(void) {__MAIN__}
