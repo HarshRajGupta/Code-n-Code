@@ -43,12 +43,14 @@ void solve(void) {
         }
         arr[i] = a;
     }
+    v<int> ans(m);
     _for(i, m) {
         int n = sz(arr[i]);
         bool found = false;
         _for(j, n) {
             if (mp[arr[i][j]] == i) {
-                cout << arr[i][j] << ' ';
+                // cout << arr[i][j] << ' ';
+                ans[i] = arr[i][j];
                 found = true;
                 break;
             }
@@ -58,6 +60,7 @@ void solve(void) {
             return;
         }
     }
+    _for(i, m) cout << ans[i] << ' ';
 }
 
 signed main(void) {__MAIN__}
