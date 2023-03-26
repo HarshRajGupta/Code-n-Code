@@ -52,8 +52,9 @@ void solve(void) {
                 cout << "NO";
                 return;
             }
-            ++i;
             ans.push_back(pos[i]);
+            ++i;
+            debug(ans, sum, i, sm)
         } else {
             sum += neg[j];
             ans.push_back(neg[j]);
@@ -63,9 +64,9 @@ void solve(void) {
                 return;
             }
             if (sm < 0) sm = 0;
+            debug(ans, sum, j, sm)
             ++j;
         }
-        debug(ans, sum, sm)
     }
     cout << "YES\n";
     debug(ans)
