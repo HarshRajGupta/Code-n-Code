@@ -32,25 +32,17 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve(void) {
     int n; cin >> n;
-    v<int> a(n), b(n);
-    _for(i, n) cin >> a[i] >> b[i];
-    int hcf = a[0] * b[0], ans = 1, minCost = b[0];
+    v<int> arr(n);
+    _for(i, n) cin >> arr[i];
+    sort(all(arr));
     _for(i, n) {
-        int x = __gcd(a[i] * b[i], hcf);
-        minCost = minCost * b[i] / __gcd(minCost, b[i]);
-        debug(i, hcf, x, minCost)
-        if (x < minCost || x % minCost != 0 || a[i] % (x / b[i]) != 0) {
-            ++ans;
-            hcf = a[i] * b[i];
-            minCost = b[i];
-            debug(i, hcf, x, minCost, ans)
-        } else {
-            hcf = x;
+        if (arr[i] >= arr[n - 1] - arr[0] ) {
+            cout << "NO";
+            return;
         }
-        // debug(hcf)
     }
-    // debug(hcf)
-    cout << ans;
+    cout << "YES\n";
+    _for(i, n) cout << arr[i] << ' ';
 }
 
 signed main(void) {__MAIN__}
