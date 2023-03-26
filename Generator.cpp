@@ -44,7 +44,7 @@ void solve(void) {
     int MAX = pos[pos.size() - 1] - neg[0];
     int i = 0, j = 0, sum = 0, sm = 0;
     debug(i < sz(pos) && j < sz(neg))
-    // while (i < sz(pos) && j < sz(neg)) {
+    // while ((i < sz(pos) && j < sz(neg))) {
     //     debug(sum, ans)
     //     if (sum <= 0) {
     //         sum += pos[i];
