@@ -39,7 +39,7 @@ void solve(void) {
         int x = __gcd(a[i] * b[i], hcf);
         debug(i, hcf, x)
         if (x % b[i] != 0 || (x / b[i]) % a[i] != 0) {
-            // debug(i, hcf, x)
+            debug(i, hcf, x, ans)
             ++ans;
             hcf = a[i] * b[i];
         } else {
