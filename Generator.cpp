@@ -37,7 +37,7 @@ void solve(void) {
     int hcf = a[0] * b[0], ans = 1;
     _for(i, n) {
         int x = __gcd(a[i] * b[i], hcf);
-        if (x < b[i]) {
+        if (x % b[i] != 0) {
             debug(i, hcf, x)
             ++ans;
             hcf = a[i] * b[i];
