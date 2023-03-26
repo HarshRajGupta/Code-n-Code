@@ -32,15 +32,16 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve(void) {
     int n; cin >> n;
-    v<int> a(n), b(n);
-    // _for(i, n) cin >> a[i];
-    // _for(i, n) cin >> b[i];
-    // _for(i, n - 1) {
-    //     if (min(a[i], b[i]) < min(a[n - 1], b[n - 1]) || max(a[i], b[i]) > max(a[n - 1], b[n - 1])) {
-    //         cout << "NO";
-    //         return;
-    //     }
-    // }
+    v<int> a(n + 1), b(n + 1);
+    _for(i, n) cin >> a[i];
+    _for(i, n) cin >> b[i];
+    _for(i, n - 1) {
+        if (min(a[i], b[i]) < min(a[n - 1], b[n - 1]) || max(a[i], b[i]) > max(a[n - 1], b[n - 1])) {
+            cout << "NO";
+            return;
+        }
+    }
+    cout << "YES";
 }
 
 signed main(void) {__MAIN__}
