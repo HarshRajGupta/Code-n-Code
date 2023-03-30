@@ -37,7 +37,9 @@ public:
         return {};
     }
     void test(void) {
-        cout << 1;
+        vector<int> t = {3, 2, 4};
+        auto ans = twoSum(t, 6);
+        debug(ans);
         /* test */
     }
 };
