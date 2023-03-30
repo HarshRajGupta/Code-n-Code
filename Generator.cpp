@@ -1,91 +1,47 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifdef ONLINE_JUDGE
+#ifndef OFFLINE_JUDGE
 #pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#pragma GCC target("sse","sse2","sse3","ssse3","sse4","popcnt","abm","mmx","avx","avx2")
 #endif
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#ifndef __MAIN__
-#define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
-#endif
+#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-#define bw(i, n) for (int32_t i = n; i >= 0; --i)
-
-template<class T>using v = std::vector<T>;
-template<class T>using maxHeap = std::priority_queue<T>;
-template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(),(x).end()
-
-void solve(void) {
-    int n; cin >> n;
-    v<int> pos, neg, ans;
-    _for(i, n) {
-        int t; cin >> t;
-        if (t > 0) pos.push_back(t);
-        else neg.push_back(t);
-    }
-    sort(all(pos));
-    sort(all(neg));
-    debug(pos, neg)
-    int MAX = 0;
-    if (pos.size() > 0)
-        MAX = pos.back() - neg[0];
-    else {
-        cout << "NO";
-        return;
-    }
-    int i = 0, j = 0, sum = 0, sm = 0;
-    debug(i < sz(pos) && j < sz(neg))
-    while ((i < sz(pos) && j < sz(neg))) {
-        debug(sum, ans)
-        if (sum <= 0) {
-            sum += pos[i];
-            sm += pos[i];
-            if (abs(sm) >= MAX) {
-                cout << "NO";
-                return;
-            }
-            ans.push_back(pos[i]);
-            ++i;
-            debug(ans, sum, i, sm)
-        } else {
-            sum += neg[j];
-            ans.push_back(neg[j]);
-            sm += neg[j];
-            if (abs(sm) >= MAX) {
-                cout << "NO";
-                return;
-            }
-            if (sm < 0) sm = 0;
-            debug(ans, sum, j, sm)
-            ++j;
+class Solution {
+    const int bS(const std::vector<int> &arr, const int &t, int l, int r) {
+        while (l <= r) {
+            const int mid = ((l + r) / 2);
+            if (arr[mid] == t)
+                return mid;
+            else if (arr[mid] > t)
+                r = (mid - 1);
+            else
+                l = (mid + 1);
         }
+        return ((arr[l] == t) ? l : ((arr[r] == t) ? r : -1));
     }
-    cout << "YES\n";
-    debug(ans)
-    _for(i, ans.size()) cout << ans[i] << ' ';
-    while (i < sz(pos)) {
-        cout << pos[i] << ' ';
-        ++i;
+public:
+    vector<int> twoSum(vector<int> nums, int target) {
+        int n = nums.size() - 1;
+        sort(nums.begin(), nums.end());
+        rep(i, 0, n) {
+            int idx = bS(nums, target - nums[i], i + 1, n);
+            if (idx != -1)
+                return {i, idx};
+        }
+        return {};
     }
-    while (j < sz(neg)) {
-        cout << neg[j] << ' ';
-        ++j;
+    void test(void) {
+        cout << 1;
+        /* test */
     }
-}
+};
 
-signed main(void) {__MAIN__}
+#ifdef __TEST__
+__TEST__
+#endif
