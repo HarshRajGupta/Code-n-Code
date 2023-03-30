@@ -31,8 +31,9 @@ public:
         sort(nums.begin(), nums.end());
         rep(i, 0, n) {
             int idx = bS(nums, target - nums[i], i + 1, n);
-            if (idx != -1)
-                return {i, idx};
+            if (idx != -1 ) {
+                debug(nums[i], nums[idx], target - nums[i]) return {i, idx};
+            }
         }
         return {};
     }
