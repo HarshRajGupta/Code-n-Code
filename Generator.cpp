@@ -12,37 +12,23 @@ using namespace std;
 
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
 class Solution {
-    const int bS(const std::vector<int> &arr, const int &t, int l, int r) {
-        while (l <= r) {
-            const int mid = ((l + r) / 2);
-            if (arr[mid] == t)
-                return mid;
-            else if (arr[mid] > t)
-                r = (mid - 1);
-            else
-                l = (mid + 1);
-        }
-        return ((arr[l] == t) ? l : ((arr[r] == t) ? r : -1));
-    }
 public:
-    vector<int> twoSum(vector<int> nums, int target) {
-        int n = nums.size() - 1;
-        sort(nums.begin(), nums.end());
-        rep(i, 0, n) {
-            int idx = bS(nums, target - nums[i], i + 1, n);
-            if (idx != -1 ) {
-                debug(i, idx, nums[i], nums[idx], target - nums[i]) 
-                return {i, idx};
-            }
-        }
-        return {};
+    ListNode* reverseList(ListNode* head) {
+        cout << "hello world" << endl;
+        return nullptr;
     }
     void test(void) {
-        vector<int> t = {3, 2, 4};
-        auto ans = twoSum(t, 6);
-        debug(ans);
         /* test */
+        reverseList(nullptr);
     }
 };
 
