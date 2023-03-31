@@ -45,7 +45,7 @@ const int power(int n, int expo, int m) {
 
 int NthRoot(int n, int m) {
     int l = 1, r = m, ans = m;
-    while (l < r) {
+    while (l <= r) {
         int mid = (l + r) >> 1;
         if (power(mid, n, m) < m) l = mid + 1;
         else {
