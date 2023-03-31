@@ -53,7 +53,7 @@ int NthRoot(int n, int m) {
 
 void solve(void) {
     /* Code */
-    cout << NthRoot(2, 1e9);
+    cout << NthRoot(2, 1e8);
 }
 
 signed main(void) {__MAIN__}
