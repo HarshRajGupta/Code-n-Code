@@ -35,9 +35,9 @@ const long long power(long long n, long long expo, long long m) {
     long long ans = 1;
     while (expo) {
         if (expo & 1) ans = (ans * 1ll * n);
-        if (ans > m || n > m) return ans;
         n = (n * 1ll * n);
         expo >>= 1;
+        if (ans > m || (expo && n > m)) return ans;
     }
     debug(ans)
     return ans;
