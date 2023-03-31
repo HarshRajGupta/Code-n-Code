@@ -48,7 +48,10 @@ int NthRoot(int n, int m) {
     while (l < r) {
         int mid = (l + r) >> 1;
         if (power(mid, n, m) < m) l = mid + 1;
-        else r = mid - 1, ans = mid;
+        else {
+            r = mid - 1;
+            ans = mid;
+        }
     }
     return (power(ans, n, m) == m ? ans : -1);
 }
