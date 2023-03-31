@@ -38,6 +38,7 @@ const int power(int n, int expo, int m) {
         n = (n * 1ll * n);
         expo >>= 1;
     }
+    debug(ans)
     return ans;
 }
 
