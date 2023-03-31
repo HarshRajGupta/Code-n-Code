@@ -31,6 +31,7 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(),(x).end()
 
 const int power(int n, int expo, int m) {
+    debug(n, expo, m)
     int ans = 1;
     while (expo) {
         if (expo & 1) ans = (ans * 1ll * n);
