@@ -44,7 +44,8 @@ const int power(int n, int expo, int m) {
 }
 
 int NthRoot(int n, int m) {
-    int l = 1, r = m, ans = m;
+    if (n == 1) return m;
+    int l = 1, r = 31623, ans = 31623;
     while (l <= r) {
         int mid = (l + r) >> 1;
         if (power(mid, n, m) < m) l = mid + 1;
@@ -58,7 +59,7 @@ int NthRoot(int n, int m) {
 
 void solve(void) {
     /* Code */
-    cout << NthRoot(2, 1000000007);
+    cout << NthRoot(9, 1953125);
 }
 
 signed main(void) {__MAIN__}
