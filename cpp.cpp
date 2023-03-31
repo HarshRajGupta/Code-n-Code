@@ -37,7 +37,7 @@ const long long power(long long n, long long expo, long long m) {
         if (expo & 1) ans = (ans * 1ll * n);
         n = (n * 1ll * n);
         expo >>= 1;
-        if (ans > m || (expo && n > m)) return ans;
+        if (ans > m || (expo && n > m)) return max(ans, n);
     }
     debug(ans)
     return ans;
