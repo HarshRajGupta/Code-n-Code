@@ -53,12 +53,12 @@ int NthRoot(int n, int m) {
             ans = mid;
         }
     }
-    return (power(ans, n, m) == m ? ans : -1);
+    return ans;
 }
 
 void solve(void) {
     /* Code */
-    cout << NthRoot(2, 100000000);
+    cout << NthRoot(2, 1000000007);
 }
 
 signed main(void) {__MAIN__}
