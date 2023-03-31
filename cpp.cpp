@@ -50,7 +50,7 @@ int NthRoot(int n, int m) {
         if (power(mid, n, m) < m) l = mid + 1;
         else r = mid - 1, ans = mid;
     }
-    return (power(ans, l, m) == m ? ans : -1);
+    return (power(ans, n, m) == m ? ans : -1);
 }
 
 void solve(void) {
