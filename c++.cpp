@@ -29,6 +29,7 @@ class Solution {
         return ans;
     }
     long long minMoves(vector<int>& nums) {
+        if (!nums.size()) return 0;
         sort(nums.begin(), nums.end());
         vector<long long> prefixSum(nums.size() + 1);
         for (int i = 0; i < nums.size(); ++i) {
