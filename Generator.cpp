@@ -12,10 +12,8 @@ class Solution {
     }
 public:
     void test(void) {
-        int t = 20; std::cout << t << '\n';
-        while (t--) {
-            generateTestCase(), std::cout << '\n';
-        }
+        int t = rand() % 200009; std::cout << t << '\n';
+        while (t--) generateTestCase(), std::cout << '\n';
     }
 };
 
