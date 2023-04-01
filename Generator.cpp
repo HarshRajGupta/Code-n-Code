@@ -15,7 +15,7 @@ class Solution {
         printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
     }
     void static generatePrimeArray(size_t n = rand() % L + 1, size_t z = rand() % L + 1) {
-        int m = 1e9 + 7;
+        int m = 10000019;
         std::vector<bool> isPrime(m + 1, true);
         isPrime[0] = isPrime[1] = false;
         for (int i = 2; (i * i) <= m; ++i) if (isPrime[i]) for (int j = (i * i); j <= m; j += i) isPrime[j] = false;
@@ -47,7 +47,7 @@ class Solution {
         // generateArray();
         // generatePArray();
         // generateBArray();
-        // generatePrimeArray();
+        generatePrimeArray();
         // generateString();
         // generateUString();
         // generateBString();
