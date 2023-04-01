@@ -2,7 +2,7 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 #define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
 #define r (pr * (rand() & 1 ? -1 : 1))
-std::bitset<10000019> isPrime((1ll << 32) - 1); std::vector<int> primes;
+std::bitset<10000019> isPrime((1ll << 62) - 1); std::vector<int> primes;
 class Solution {
     void buildPrimeArray(void) {
         isPrime[0] = isPrime[1] = false;
