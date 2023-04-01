@@ -31,7 +31,7 @@ public:
     void test(void) {
         /* test */
         auto t = sieve();
-        for (int i = 200000; i < 1000007; ++i) if (t[i]) cout << i << ' ';
+        for (int i = 100; i < 1000007; ++i) if (t[i]) cout << i << ' ';
     }
 };
 
