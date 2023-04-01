@@ -2,8 +2,13 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 #define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
 #define r (pr * (rand() & 1 ? -1 : 1))
-
+std::bitset<10000019> isPrime((1ll << 32) - 1); std::vector<int> primes;
 class Solution {
+    void buildPrimeArray(void) {
+        isPrime[0] = isPrime[1] = false;
+        for (int i = 2; (i * i) <= 10000019; ++i) if (isPrime[i]) for (int j = (i * i); j <= 10000019; j += i) isPrime[j] = false;
+        for (int i = 2; i <= 10000019; ++i) if (isPrime[i]) primes.push_back(i);
+    }
     const static long long MOD = 1e9 + 7, L = 211;
     void static generateArray(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%lld ", r); printf("\n");
@@ -15,12 +20,7 @@ class Solution {
         printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
     }
     void static generatePrimeArray(size_t n = rand() % L + 1, size_t z = rand() % L + 1) {
-        std::bitset<10000019> isPrime((1ll << 32) - 1);
-        isPrime[0] = isPrime[1] = false;
-        for (int i = 2; (i * i) <= 10000019; ++i) if (isPrime[i]) for (int j = (i * i); j <= 10000019; j += i) isPrime[j] = false;
-        std::vector<int> primes;
-        for (int i = 2; i <= 10000019 && (primes.size() < z); ++i) if (isPrime[i]) primes.push_back(i);
-        printf("%d\n", n); while (n--) printf("%d ", primes[rand() % primes.size()]); printf("\n");
+        printf("%d\n", n); while (n--) printf("%d ", primes[rand() % std::min(primes.size(), z)]); printf("\n");
     }
     void static generateString(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
@@ -56,6 +56,7 @@ class Solution {
     }
 public:
     void test(void) {
+        buildPrimeArray();
         int t = rand() % 7 + 1; printf("%d\n", t);
         while (t--) generateTestCase();
     }
