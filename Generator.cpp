@@ -8,6 +8,12 @@ class Solution {
     void generateArray(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%d ", r); printf("\n");
     }
+    void generatePArray(int n = rand() % L) {
+        printf("%d\n", n); while (n--) printf("%d ", pr); printf("\n");
+    }
+    void generateBArray(int n = rand() % L) {
+        printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
+    }
     void generateString(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
     }
@@ -17,7 +23,9 @@ class Solution {
     void generateTestCase(void) {
         /* generate test case */
         // generateArray();
-        generateUString();
+        // generatePArray();
+        // generateString();
+        // generateUString();
     }
 public:
     void test(void) {
