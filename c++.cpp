@@ -12,28 +12,26 @@ using namespace std;
 
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
-bool isPrime(int& n) {
-    if (n % 2 == 0) return false;
-    for (int i = 3; i * i <= n; i += 2) {
-        if (n % i == 0) return false;
+std::vector<int32_t> allPrimes;
+std::vector<bool> sieve(int32_t n = 1000007) {
+    std::vector<bool> isPrime(n + 1, true);
+    isPrime[0] = false, isPrime[1] = false;
+    for (int32_t i = 2; (i * i) <= n; ++i) {
+        if (isPrime[i]) {
+            allPrimes.push_back(i);
+            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
+        }
     }
-    return true;
+    return isPrime;
 }
 
 class Solution {
 public:
-    int longestCycle(vector<int>& edges) {
-        return 0;
-    }
+    /* function */
     void test(void) {
         /* test */
-        int n = 10000;
-        while (n++) {
-            if (isPrime(n)) {
-                cout << n << endl;
-                break;
-            }
-        }
+        sieve();
+        debug(allPrimes);
     }
 };
 
