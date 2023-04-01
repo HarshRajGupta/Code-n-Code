@@ -12,7 +12,7 @@ class Solution {
     }
 public:
     void test(void) {
-        int t = rand() % 209; std::cout << t << '\n';
+        int t = rand() % 29; std::cout << t << '\n';
         while (t--) generateTestCase(), std::cout << '\n';
     }
 };
