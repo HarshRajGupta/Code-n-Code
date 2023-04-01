@@ -46,8 +46,8 @@ class Solution {
         /* generate test case */
         // generateArray();
         // generatePArray();
-        // generateBArray();
-        generatePrimeArray();
+        generateBArray();
+        // generatePrimeArray();
         // generateString();
         // generateUString();
         // generateBString();
