@@ -17,7 +17,7 @@ class Solution {
     }
 public:
     void test(void) {
-        int t = rand() % 7; printf("%d\n", t);
+        int t = rand() % 7 + 1; printf("%d\n", t);
         while (t--) generateTestCase();
     }
 };
