@@ -12,26 +12,31 @@ using namespace std;
 
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
-std::vector<int32_t> allPrimes;
-std::vector<bool> sieve(int32_t n = 1000007) {
-    std::vector<bool> isPrime(n + 1, true);
-    isPrime[0] = false, isPrime[1] = false;
-    for (int32_t i = 2; (i * i) <= n; ++i) {
-        if (isPrime[i]) {
-            allPrimes.push_back(i);
-            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
-        }
-    }
-    return isPrime;
-}
-
 class Solution {
+    long long minMoves(vector<int>& arr) {
+        sort(arr.begin(), arr.end());
+        long long sum = 0;
+        for (auto& x : arr) sum += (x - arr[0]);
+        return sum;
+    }
 public:
-    /* function */
+    long long makeSubKSumEqual(vector<int>& arr, int k) {
+        long long ans = 0;
+        map<int, int> mp;
+        for (int i = 0; i < k; ++i) {
+            vector<int> tmp;
+            for (int j = i; j < arr.size() && !mp[j]; j += k, j %= arr.size()) {
+                mp[j] = 1;
+                tmp.push_back(arr[j]);
+            }
+            ans += minMoves(tmp);
+        }
+        return ans;
+    }
     void test(void) {
+        vector<int> arr = {2,5,5,7};
+        cout << makeSubKSumEqual(arr, 3);
         /* test */
-        auto t = sieve();
-        for (int i = 2; i < 1000007; ++i) if (t[i]) cout << i << ' ';
     }
 };
 
