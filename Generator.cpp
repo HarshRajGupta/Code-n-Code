@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 
-const long long MOD = 1e9 + 7, L = 211;
-#define pr ((int)(rand()*(rand()%7+1)*(rand()%7+1)*1ll%MOD)/(rand()%7+1))
-#define r ((pr * (rand() & 1 ? -1 : 1)))
+#define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
+#define r (pr * (rand() & 1 ? -1 : 1))
 
 class Solution {
+    const static long long MOD = 1e9 + 7, L = 211;
     void generateArray(int n = rand() % L) {
-        printf("%d\n", n); while (n--) printf("%d ", r); printf("\n");
+        printf("%d\n", n); while (n--) printf("%lld ", r); printf("\n");
     }
     void generatePArray(int n = rand() % L) {
-        printf("%d\n", n); while (n--) printf("%d ", pr); printf("\n");
+        printf("%d\n", n); while (n--) printf("%lld ", pr); printf("\n");
     }
     void generateBArray(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
@@ -23,14 +23,27 @@ class Solution {
     void generateBString(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%d", rand() & 1); printf("\n");
     }
+    void generateMatrix(int n = rand() % L, int m = rand() % L) {
+        printf("%d %d\n", n, m); while (n--) generateArray(m);
+    }
+    void generatePMatrix(int n = rand() % L, int m = rand() % L) {
+        printf("%d %d\n", n, m); while (n--) generatePArray(m);
+    }
+    void generateBMatrix(int n = rand() % L, int m = rand() % L) {
+        printf("%d %d\n", n, m); while (n--) generateBString(m);
+    }
+
     void generateTestCase(void) {
         /* generate test case */
-        // generateArray();
+        generateArray();
         // generatePArray();
         // generateBArray();
         // generateString();
         // generateUString();
-        generateBString();
+        // generateBString();
+        // generateMatrix();
+        // generatePMatrix();
+        // generateBMatrix();
     }
 public:
     void test(void) {
