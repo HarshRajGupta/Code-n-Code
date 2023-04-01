@@ -13,53 +13,60 @@ class Solution {
     void static generateArray(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%lld ", r); printf("\n");
     }
-    void static generatePArray(size_t n = rand() % L + 1) {
+    void static generatePositiveArray(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%lld ", pr); printf("\n");
     }
-    void static generateBArray(size_t n = rand() % L + 1) {
+    void static generateBinaryArray(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
     }
     void static generatePrimeArray(size_t n = rand() % L + 1, size_t z = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%d ", primes[rand() % std::min(primes.size(), z)]); printf("\n");
     }
-    void static generateString(size_t n = rand() % L + 1) {
+    void static generateLowerString(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
     }
-    void static generateUString(size_t n = rand() % L + 1) {
+    void static generateUpperString(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%c", 'A' + rand() % 26); printf("\n");
     }
-    void static generateBString(size_t n = rand() % L + 1) {
+    void static generateBinaryString(size_t n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%d", rand() & 1); printf("\n");
     }
     void static generateMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
         printf("%d %d\n", n, m); while (n--) generateArray(m);
     }
-    void static generatePMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
-        printf("%d %d\n", n, m); while (n--) generatePArray(m);
+    void static generatePositiveMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
+        printf("%d %d\n", n, m); while (n--) generatePositiveArray(m);
     }
-    void static generateBMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
-        printf("%d %d\n", n, m); while (n--) generateBString(m);
+    void static generateBinaryMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
+        printf("%d %d\n", n, m); while (n--) generateBinaryString(m);
     }
 
     void generateTestCase(void) {
         /* generate test case */
         // generateArray();
-        generatePArray();
-        // generateBArray();
+        // generatePositiveArray();
+        // generateBinaryArray();
         // generatePrimeArray();
-        // generateString();
-        // generateUString();
-        // generateBString();
+        // generateLowerString();
+        // generateUpperString();
+        // generateBinaryString();
         // generateMatrix();
-        // generatePMatrix();
-        // generateBMatrix();
+        // generatePositiveMatrix();
+        generateBinaryMatrix();
     }
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
         preCompute();
-        int t = rand() % 7 + 1; printf("%d\n", t);
-        while (t--) generateTestCase();
+        if (1) {
+            int t = rand() % 7 + 1; printf("%d\n", t);
+            while (t--) generateTestCase();
+        } else if (1) {
+            printf("1\n");
+            generateTestCase();
+        } else {
+            generateTestCase();
+        }
     }
 };
 
