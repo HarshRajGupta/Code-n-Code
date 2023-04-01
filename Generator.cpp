@@ -11,10 +11,13 @@ class Solution {
     void generateString(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
     }
+    void generateUString(int n = rand() % L) {
+        printf("%d\n", n); while (n--) printf("%c", 'A' + rand() % 26); printf("\n");
+    }
     void generateTestCase(void) {
         /* generate test case */
         // generateArray();
-        generateString();
+        generateUString();
     }
 public:
     void test(void) {
