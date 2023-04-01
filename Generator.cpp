@@ -13,7 +13,8 @@ class Solution {
     }
     void generateTestCase(void) {
         /* generate test case */
-        generateArray();
+        // generateArray();
+        generateString();
     }
 public:
     void test(void) {
