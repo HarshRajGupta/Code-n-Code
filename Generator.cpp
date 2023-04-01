@@ -9,7 +9,7 @@ const int MOD = 1e9 + 7;
 class Solution {
     void generateTestCase(void) {
         /* generate test case */
-        int pr = rand() * (rand() % 7 + 1) * (rand() % 7 + 1);
+        int pr = rand() * (rand() % 7 + 1) * (rand() % 7 + 1) / (rand() % 7 + 1);
         cout << pr << ' ';
     }
 public:
