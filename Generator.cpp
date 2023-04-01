@@ -2,13 +2,13 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 #define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
 #define r (pr * (rand() & 1 ? -1 : 1))
-std::bitset<2750219> isPrime; std::vector<int> primes;
+std::bitset<2750197> isPrime; std::vector<int> primes;
 class Solution {
     void buildPrimeArray(void) {
         isPrime[0] = isPrime[1] = 1;
-        for (int i = 2; (i * i) <= 2750219; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750219; j += i) isPrime[j] = true;
-        for (int i = 2; i <= 2750219; ++i) if (!isPrime[i]) primes.push_back(i);
-        debug(primes.size(), primes[200003]);
+        for (int i = 2; (i * i) <= 2750197; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750197; j += i) isPrime[j] = true;
+        for (int i = 2; i <= 2750197; ++i) if (!isPrime[i]) primes.push_back(i);
+        debug(primes.size(), primes[200002]);
     }
     const static long long MOD = 1e9 + 7, L = 211;
     void static generateArray(size_t n = rand() % L + 1) {
