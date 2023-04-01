@@ -31,6 +31,7 @@ public:
                 tmp.push_back(arr[j]);
             }
             ans += minMoves(tmp);
+            debug(k, ans)
         }
         return ans;
     }
