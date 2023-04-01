@@ -1,35 +1,35 @@
 #include <bits/stdc++.h>
-
+// 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 #define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
 #define r (pr * (rand() & 1 ? -1 : 1))
 
 class Solution {
     const static long long MOD = 1e9 + 7, L = 211;
-    void generateArray(int n = rand() % L) {
+    void generateArray(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%lld ", r); printf("\n");
     }
-    void generatePArray(int n = rand() % L) {
+    void generatePArray(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%lld ", pr); printf("\n");
     }
-    void generateBArray(int n = rand() % L) {
+    void generateBArray(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
     }
-    void generateString(int n = rand() % L) {
+    void generateString(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
     }
-    void generateUString(int n = rand() % L) {
+    void generateUString(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%c", 'A' + rand() % 26); printf("\n");
     }
-    void generateBString(int n = rand() % L) {
+    void generateBString(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%d", rand() & 1); printf("\n");
     }
-    void generateMatrix(int n = rand() % L, int m = rand() % L) {
+    void generateMatrix(int n = rand() % L + 1, int m = rand() % L + 1) {
         printf("%d %d\n", n, m); while (n--) generateArray(m);
     }
-    void generatePMatrix(int n = rand() % L, int m = rand() % L) {
+    void generatePMatrix(int n = rand() % L + 1, int m = rand() % L + 1) {
         printf("%d %d\n", n, m); while (n--) generatePArray(m);
     }
-    void generateBMatrix(int n = rand() % L, int m = rand() % L) {
+    void generateBMatrix(int n = rand() % L + 1, int m = rand() % L + 1) {
         printf("%d %d\n", n, m); while (n--) generateBString(m);
     }
 
