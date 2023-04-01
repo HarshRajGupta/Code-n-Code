@@ -14,6 +14,7 @@ using namespace std;
 
 class Solution {
     long long minMoves(vector<int>& arr) {
+        debug(arr);
         sort(arr.begin(), arr.end());
         long long sum = 0;
         for (auto& x : arr) sum += (x - arr[0]);
