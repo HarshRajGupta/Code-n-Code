@@ -17,7 +17,9 @@ class Solution {
         debug(arr);
         sort(arr.begin(), arr.end());
         long long sum = 0;
-        for (auto& x : arr) sum += (x - arr[0]);
+        rep(i, 1, arr.size()) {
+            sum += (arr[i] - arr[i - 1]);
+        }
         return sum;
     }
 public:
@@ -36,7 +38,7 @@ public:
         return ans;
     }
     void test(void) {
-        vector<int> arr = {2,5,5,7};
+        vector<int> arr = {2, 5, 5, 7};
         cout << makeSubKSumEqual(arr, 3);
         /* test */
     }
