@@ -4,7 +4,7 @@
 #define r (pr * (rand() & 1 ? -1 : 1))
 std::bitset<2750177> isPrime; std::vector<int> primes;
 class Solution {
-    void static buildPrimeArray(void) {
+    void static preCompute(void) {
         isPrime[0] = isPrime[1] = 1;
         for (int i = 2; (i * i) <= 2750177; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750177; j += i) isPrime[j] = true;
         for (int i = 2; i <= 2750177; ++i) if (!isPrime[i]) primes.push_back(i);
@@ -44,9 +44,9 @@ class Solution {
     void generateTestCase(void) {
         /* generate test case */
         // generateArray();
-        // generatePArray();
+        generatePArray();
         // generateBArray();
-        generatePrimeArray();
+        // generatePrimeArray();
         // generateString();
         // generateUString();
         // generateBString();
@@ -56,7 +56,7 @@ class Solution {
     }
 public:
     void test(void) {
-        buildPrimeArray();
+        preCompute();
         int t = rand() % 7 + 1; printf("%d\n", t);
         while (t--) generateTestCase();
     }
