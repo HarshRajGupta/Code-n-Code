@@ -9,7 +9,7 @@ const long long MOD = 1e9 + 7;
 class Solution {
     void generateTestCase(void) {
         /* generate test case */
-        cout << r << ' ';
+        cout << pr << ' ';
     }
 public:
     void test(void) {
