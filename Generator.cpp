@@ -8,6 +8,7 @@ const long long MOD = 1e9 + 7;
 class Solution {
     void generateTestCase(void) {
         /* generate test case */
+        std::cout << pr;
     }
 public:
     void test(void) {
