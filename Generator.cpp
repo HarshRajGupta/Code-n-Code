@@ -2,7 +2,7 @@
 using namespace std;
 
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
-#define r (rand() * (rand() & 1 ? -1 : 1) * 1ll * (rand() % 69))
+#define r (rand() * (rand() % 107 + 1) * (rand() & 1 ? -1ll : 1ll))
 
 class Solution {
     void generateTestCase(void) {
