@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 
 const long long MOD = 1e9 + 7;
-#define pr ((rand() * (rand() % 7 + 1) * (rand() % 7 + 1) * 1ll % MOD) / (rand() % 7 + 1))
-#define r ((pr * (rand() & 1 ? -1ll : 1ll)))
+#define pr ((int)(rand()*(rand()%7+1)*(rand()%7+1)*1ll%MOD)/(rand()%7+1))
+#define r ((pr * (rand() & 1 ? -1 : 1)))
 
 class Solution {
     void generateArray(int n = rand()) {
@@ -13,6 +13,7 @@ class Solution {
     }
     void generateTestCase(void) {
         /* generate test case */
+        generateArray();
     }
 public:
     void test(void) {
