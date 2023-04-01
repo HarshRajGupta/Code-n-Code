@@ -8,7 +8,7 @@ class Solution {
         isPrime[0] = isPrime[1] = false;
         for (int i = 2; i <= 100; ++i) {
             int z = isPrime[i];
-            if (z) debug(i);
+            if (z) debug(i, z);
         }
         for (int i = 2; (i * i) <= 10000019; ++i) if (isPrime[i]) for (int j = (i * i); j <= 10000019; j += i) isPrime[j] = false;
         for (int i = 2; i <= 10000019; ++i) if (isPrime[i]) primes.push_back(i);
