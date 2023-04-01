@@ -6,7 +6,7 @@ std::bitset<1000003> isPrime; std::vector<int> primes;
 class Solution {
     void buildPrimeArray(void) {
         isPrime[0] = isPrime[1] = 1;
-        for (int i = 2; (i * i) <= 1000003; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 1000003; j += i) isPrime[j] = true;
+        for (int i = 2; (i * i) <= 2000003; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 1000003; j += i) isPrime[j] = true;
         for (int i = 2; i <= 1000003; ++i) if (!isPrime[i]) primes.push_back(i);
         debug(primes.size());
     }
