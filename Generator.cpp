@@ -56,6 +56,7 @@ class Solution {
     }
 public:
     void test(void) {
+        freopen("input.txt", "w", stdout);
         preCompute();
         int t = rand() % 7 + 1; printf("%d\n", t);
         while (t--) generateTestCase();
