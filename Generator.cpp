@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 
-const long long MOD = 1e9 + 7;
+const long long MOD = 1e9 + 7, L = 200;
 #define pr ((int)(rand()*(rand()%7+1)*(rand()%7+1)*1ll%MOD)/(rand()%7+1))
 #define r ((pr * (rand() & 1 ? -1 : 1)))
 
 class Solution {
-    void generateArray(int n = rand()) {
+    void generateArray(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%d ", r); printf("\n");
     }
-    void generateString(int n = rand()) {
+    void generateString(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
     }
     void generateTestCase(void) {
