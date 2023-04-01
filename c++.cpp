@@ -30,8 +30,8 @@ public:
     /* function */
     void test(void) {
         /* test */
-        sieve();
-        debug(allPrimes);
+        auto t = sieve();
+        for (int i = 0; i < 1000007; ++i) if (t[i]) cout << i << ' ';
     }
 };
 
