@@ -8,11 +8,13 @@ const long long MOD = 1e9 + 7;
 class Solution {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout << pr;
+        int t = rand() % 200009; std::cout << t << '\n';
+        while (t--) std::cout << pr << ' ';
+
     }
 public:
     void test(void) {
-        int t = rand() % 29; std::cout << t << '\n';
+        int t = rand() % 7; std::cout << t << '\n';
         while (t--) generateTestCase(), std::cout << '\n';
     }
 };
