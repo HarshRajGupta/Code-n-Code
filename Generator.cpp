@@ -9,7 +9,7 @@ class Solution {
         printf("%d\n", n); while (n--) printf("%d ", r); printf("\n");
     }
     void generateString(int n = rand()) {
-        printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); std::cout << '\n';
+        printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
     }
     void generateTestCase(void) {
         /* generate test case */
