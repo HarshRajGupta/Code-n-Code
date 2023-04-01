@@ -39,6 +39,7 @@ class Solution {
             int idx = lB(nums, nums[i]);
             MIN = min(MIN, ((nums[i] * 1ll * (idx + 1) - prefixSum[idx + 1]) + (prefixSum[nums.size()] - prefixSum[idx + 1] - (nums[i] * 1ll * (nums.size() - idx - 1)))));
         }
+        debug(MIN, nums)
         return MIN;
     }
 public:
