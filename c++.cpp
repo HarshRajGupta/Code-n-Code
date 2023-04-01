@@ -13,14 +13,32 @@ using namespace std;
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
 class Solution {
-    long long minMoves(vector<int>& arr) {
-        debug(arr);
-        sort(arr.begin(), arr.end());
-        long long sum = 0;
-        rep(i, 1, arr.size()) {
-            sum += (arr[i] - arr[i - 1]);
+    const int lB(const std::vector<int> &arr, const int &t) {
+        if (t > arr[arr.size() - 1])
+            return (arr.size() - 1);
+        else if (t <= arr[0])
+            return -1;
+        int l = 0, r = (arr.size() - 1), ans = - 1;
+        while (l <= r) {
+            int mid = ((l + r) / 2);
+            if (arr[mid] >= t)
+                r = (mid - 1);
+            else
+                ans = mid, l = (mid + 1);
         }
-        return sum;
+        return ans;
+    }
+    long long minMoves(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        vector<long long> prefixSum(nums.size() + 1);
+        for (int i = 0; i < nums.size(); ++i) {
+            prefixSum[i + 1] = prefixSum[i] + nums[i];
+        }
+        long long MIN = LLONG_MAX;
+        for (int i = 0; i < nums.size(); ++i) {
+            int idx = lB(nums, nums[i]);
+            MIN = min(MIN, ((nums[i] * 1ll * (idx + 1) - prefixSum[idx + 1]) + (prefixSum[nums.size()] - prefixSum[idx + 1] - (nums[i] * 1ll * (nums.size() - idx - 1)))));
+        }
     }
 public:
     long long makeSubKSumEqual(vector<int>& arr, int k) {
