@@ -14,6 +14,15 @@ class Solution {
     void generateBArray(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
     }
+    void generatePrimeArray(int n = rand() % L + 1) {
+        int m = 10000019;
+        std::vector<bool> isPrime(m + 1, true);
+        isPrime[0] = isPrime[1] = false;
+        for (int i = 2; (i * i) <= m; ++i) if (isPrime[i]) for (int j = (i * i); j <= m; j += i) isPrime[j] = false;
+        std::vector<int> primes;
+        for (int i = 2; i <= m; ++i) if (isPrime[i]) primes.push_back(i);
+        printf("%d\n", n); while (n--) printf("%d ", primes[rand() % primes.size()]); printf("\n");
+    }
     void generateString(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%c", 'a' + rand() % 26); printf("\n");
     }
@@ -35,9 +44,10 @@ class Solution {
 
     void generateTestCase(void) {
         /* generate test case */
-        generateArray();
+        // generateArray();
         // generatePArray();
         // generateBArray();
+        generatePrimeArray();
         // generateString();
         // generateUString();
         // generateBString();
