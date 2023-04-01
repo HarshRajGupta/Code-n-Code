@@ -17,7 +17,7 @@ class Solution {
     }
 public:
     void test(void) {
-        int t = rand() % 7; std::cout << t << '\n';
+        int t = rand() % 7; printf("%d\n", t);
         while (t--) generateTestCase();
     }
 };
