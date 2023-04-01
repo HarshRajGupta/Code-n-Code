@@ -14,7 +14,7 @@ class Solution {
     void generateBArray(int n = rand() % L + 1) {
         printf("%d\n", n); while (n--) printf("%d ", rand() & 1); printf("\n");
     }
-    void generatePrimeArray(int n = rand() % L + 1, int z = rand()) {
+    void generatePrimeArray(int n = rand() % L + 1, int z = rand() % L + 1) {
         int m = 10000019;
         std::vector<bool> isPrime(m + 1, true);
         isPrime[0] = isPrime[1] = false;
