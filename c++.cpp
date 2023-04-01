@@ -57,7 +57,7 @@ public:
         return ans;
     }
     void test(void) {
-        vector<int> arr = {1, 7, 9, 6};
+        vector<int> arr = {2, 5, 5, 7};
         cout << makeSubKSumEqual(arr, 1);
         /* test */
     }
