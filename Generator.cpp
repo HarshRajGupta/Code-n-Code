@@ -24,6 +24,7 @@ class Solution {
         /* generate test case */
         // generateArray();
         // generatePArray();
+        generateBArray();
         // generateString();
         // generateUString();
     }
