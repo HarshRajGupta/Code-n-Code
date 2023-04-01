@@ -20,13 +20,17 @@ class Solution {
     void generateUString(int n = rand() % L) {
         printf("%d\n", n); while (n--) printf("%c", 'A' + rand() % 26); printf("\n");
     }
+    void generateBString(int n = rand() % L) {
+        printf("%d\n", n); while (n--) printf("%d", rand() & 1); printf("\n");
+    }
     void generateTestCase(void) {
         /* generate test case */
         // generateArray();
         // generatePArray();
-        generateBArray();
+        // generateBArray();
         // generateString();
         // generateUString();
+        generateBString();
     }
 public:
     void test(void) {
