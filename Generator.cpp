@@ -8,7 +8,7 @@ class Solution {
         isPrime[0] = isPrime[1] = 1;
         for (int i = 2; (i * i) <= 2750219; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750219; j += i) isPrime[j] = true;
         for (int i = 2; i <= 2750219; ++i) if (!isPrime[i]) primes.push_back(i);
-        debug(primes);
+        debug(primes.size(), primes[200003]);
     }
     const static long long MOD = 1e9 + 7, L = 211;
     void static generateArray(size_t n = rand() % L + 1) {
