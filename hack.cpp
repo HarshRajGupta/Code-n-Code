@@ -52,7 +52,7 @@ public:
                     nums.erase(j);
                 }
             }
-            debug(nums)
+            debug(nums, pos)
             if ((*nums.begin() >= pos - k + 1 && pos - k + 1 >= 0)) {
                 int j = *nums.begin();
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
