@@ -21,6 +21,7 @@ public:
             bool oneFound = false;
             int one = 0, zero = 0;
             rep(j, i + 1, s.size()) {
+                debug(i, j)
                 if (oneFound && s[j] == '0') break;
                 if (s[j] == '1') {
                     oneFound = true;
