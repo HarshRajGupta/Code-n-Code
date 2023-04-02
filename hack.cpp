@@ -29,14 +29,14 @@ public:
         while (!q.empty()) {
             int pos = q.front()[0], cnt = q.front()[1];
             q.pop();
-            for (int j = max(pos + 1, f); j <= pos + k - 1 && j < arr.size(); ++j) {
+            for (int j = min(pos + 1, f); j <= pos + k - 1 && j < arr.size(); ++j) {
                 if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
                     debug(pos, j, cnt)
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
                 }
             }
-            for (int j = min(pos - 1, b); j >= pos - k + 1 && j >= 0; --j) {
+            for (int j = max(pos - 1, b); j >= pos - k + 1 && j >= 0; --j) {
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
                     debug(pos, cnt, j)
                     arr[j] = cnt;
