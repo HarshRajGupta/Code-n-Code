@@ -40,9 +40,21 @@ public:
                     nums.erase(j);
                 }
             }
-            for (auto it = nums.upper_bound(pos + 1); it != nums.begin() && *it >= pos - k + 1; --it) {
+            if (pos > *nums.rbegin()) {
+                for (auto it = nums.rbegin(); it != nums.rend() && *it >= pos - k + 1; ++it) {
+                    auto j = *it;
+                    if (j < 0 || j >= n) break;
+                    if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
+                        debug(pos, j)
+                        arr[j] = cnt;
+                        q.push({j, cnt + 1});
+                        --it;
+                        nums.erase(j);
+                    }
+                }
+            }
+            else for (auto it = nums.lower_bound(pos); it != nums.begin() && *it >= pos - k + 1; --it) {
                 auto j = *it;
-                debug(pos, j, cnt)
                 if (j < 0 || j >= n) break;
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
                     debug(pos, j)
