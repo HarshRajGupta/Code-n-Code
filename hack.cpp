@@ -51,7 +51,7 @@ public:
     }
     void test(void) {
         vector<int> a = {};
-        auto ans = minReverseOperations(5, 0, a, 4);
+        auto ans = minReverseOperations(5, 1, a, 4);
         debug(ans);
     }
 };
