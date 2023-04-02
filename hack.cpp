@@ -25,23 +25,18 @@ public:
         for (auto& i : banned) arr[i] = -1;
         queue<vector<int>> q;
         q.push({p, 1});
-        int f = INT_MIN, b = INT_MAX;
         while (!q.empty()) {
             int pos = q.front()[0], cnt = q.front()[1];
             q.pop();
-            for (int j = max(pos + 1, f); j <= pos + k - 1 && j < arr.size(); ++j) {
+            for (int j = pos + 1; j <= pos + k - 1 && j < arr.size(); ++j) {
                 if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
-                    debug(pos, j, cnt)
                     arr[j] = cnt;
-                    f = j;
                     q.push({j, cnt + 1});
                 }
             }
-            for (int j = min(pos - 1, b); j >= pos - k + 1 && j >= 0; --j) {
+            for (int j = pos - 1; j >= pos - k + 1 && j >= 0; --j) {
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
-                    debug(pos, cnt, j)
                     arr[j] = cnt;
-                    b = j;
                     q.push({j, cnt + 1});
                 }
             }
@@ -51,7 +46,7 @@ public:
     }
     void test(void) {
         vector<int> a = {};
-        auto ans = minReverseOperations(5, 1, a, 4);
+        auto ans = minReverseOperations(5, 0, a, 3);
         debug(ans);
     }
 };
