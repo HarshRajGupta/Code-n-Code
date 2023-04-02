@@ -30,12 +30,14 @@ public:
             q.pop();
             for (int j = pos + 1; j <= pos + k - 1 && j < arr.size(); ++j) {
                 if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
+                    debug(pos, j, cnt)
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
                 }
             }
             for (int j = pos - 1; j >= pos - k + 1 && j >= 0; --j) {
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
+                    debug(pos, j, cnt)
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
                 }
@@ -46,7 +48,7 @@ public:
     }
     void test(void) {
         vector<int> a = {};
-        auto ans = minReverseOperations(4, 1, a, 3);
+        auto ans = minReverseOperations(5, 0, a, 4);
         debug(ans);
     }
 };
