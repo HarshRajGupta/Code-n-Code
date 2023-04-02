@@ -53,7 +53,8 @@ public:
     }
     void test(void) {
         vector<int> a = {};
-        debug(minReverseOperations(3, 1, a, 3));
+        auto ans = minReverseOperations(3, 1, a, 3);
+        debug(ans);
     }
 };
 
