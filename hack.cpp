@@ -39,15 +39,18 @@ public:
                     nums.erase(j);
                 }
             }
-            // for (auto it = nums.lower_bound(pos); it != nums.begin() && *it >= pos - k + 1; --it) {
-            //     auto j = *it;
-            //     if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
-            //         arr[j] = cnt;
-            //         q.push({j, cnt + 1});
-            //         ++it;
-            //         nums.erase(j);
-            //     }
-            // }
+            for (auto it = nums.lower_bound(pos); it != nums.begin() && *it >= pos - k + 1; --it) {
+                auto j = *it;
+                debug(pos, j, cnt)
+                if (j < 0 || j >= n) break;
+                if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
+                    debug(pos, j)
+                    arr[j] = cnt;
+                    q.push({j, cnt + 1});
+                    ++it;
+                    nums.erase(j);
+                }
+            }
             if ((*nums.begin() >= pos - k + 1 && pos - k + 1 >= 0)) {
                 int j = *nums.begin();
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
