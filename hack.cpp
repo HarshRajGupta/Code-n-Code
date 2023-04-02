@@ -36,7 +36,17 @@ public:
                 }
             }
         }
-        
+        q.push(p);
+        while (!q.empty()) {
+            int pos = q.front();
+            q.pop();
+            for (; j >= pos - k + 1 && j >= 0; --j) {
+                if (arr[j] != -1 && (pos - j + 1 + 2 * min(j, n - pos)) >= k) {
+                    arr[j] = cnt;
+                    q.push(j);
+                }
+            }
+        }
         return arr;
     }
     void test(void) {
