@@ -23,23 +23,29 @@ public:
         vector<int> arr(n, -2);
         arr[p] = 0;
         for (auto& i : banned) arr[i] = -1;
+        set<int> nums;
+        rep(i, 0, n) if (arr[i] == -2) nums.insert(i);
         queue<vector<int>> q;
         q.push({p, 1});
         while (!q.empty()) {
             int pos = q.front()[0], cnt = q.front()[1];
             q.pop();
-            for (int j = pos + 1; j <= pos + k - 1 && j < arr.size(); ++j) {
+            for (auto it = nums.lower_bound(pos); it != nums.end() && *it <= pos + k - 1; ++it) {
+                int j = *it;
                 if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
-                    debug(pos, j, cnt)
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
+                    --it;
+                    nums.erase(j);
                 }
             }
-            for (int j = pos - 1; j >= pos - k + 1 && j >= 0; --j) {
+            for (auto it = nums.lower_bound(pos); it != nums.begin() && *it >= pos - k + 1; --it) {
+                auto j = *it;
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
-                    debug(pos, j, cnt)
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
+                    ++it;
+                    nums.erase(j);
                 }
             }
         }
