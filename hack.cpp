@@ -21,7 +21,7 @@ public:
             bool oneFound = false;
             int one = 0, zero = 0;
             rep(j, i + 1, s.size()) {
-                debug(i, j, one, zero, ans)
+                debug(i, j, one, zero, ans, s[i], s[j])
                 if (oneFound && s[j] == '0') break;
                 if (s[j] == '1') {
                     oneFound = true;
