@@ -23,29 +23,19 @@ public:
         vector<int> arr(n, -2);
         arr[p] = 0;
         for (auto& i : banned) arr[i] = -1;
-        int cnt = 1, j = p + 1;
         queue<vector<int>> q;
         q.push({p, 1});
         while (!q.empty()) {
             int pos = q.front()[0], cnt = q.front()[1];
             q.pop();
-            for (; j <= pos + k - 1 && j < arr.size(); ++j) {
-                if (arr[j] != -1 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
-                    int z = 2 * min(pos, n - j - 1);
-                    debug(pos, j, j - pos + 1, z)
+            for (int j = pos + 1; j <= pos + k - 1 && j < arr.size(); ++j) {
+                if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
                 }
             }
-        }
-        debug(arr)
-        q.push({p, 1});
-        j = p - 1;
-        while (!q.empty()) {
-            int pos = q.front()[0], cnt = q.front()[1];
-            q.pop();
-            for (; j >= pos - k + 1 && j >= 0; --j) {
-                if (arr[j] != -1 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
+            for (int j = pos - 1; j >= pos - k + 1 && j >= 0; --j) {
+                if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
                 }
