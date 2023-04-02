@@ -48,14 +48,14 @@ public:
             //         nums.erase(j);
             //     }
             // }
-            // if ((*nums.begin() >= pos - k + 1 && pos - k + 1 >= 0)) {
-            //     int j = *nums.begin();
-            //     if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
-            //         arr[j] = cnt;
-            //         q.push({j, cnt + 1});
-            //         nums.erase(j);
-            //     }
-            // }
+            if ((*nums.begin() >= pos - k + 1 && pos - k + 1 >= 0)) {
+                int j = *nums.begin();
+                if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
+                    arr[j] = cnt;
+                    q.push({j, cnt + 1});
+                    nums.erase(j);
+                }
+            }
         }
         for (auto& i : arr) if (i == -2) i = -1;
         return arr;
