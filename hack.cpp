@@ -47,6 +47,7 @@ public:
                 }
             }
         }
+        for (auto& i : arr) if (i == -2) i = -1;
         return arr;
     }
     void test(void) {
