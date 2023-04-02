@@ -36,11 +36,12 @@ public:
                 }
             }
         }
+        
         return arr;
     }
     void test(void) {
         /* test */
-        auto ans = minReverseOperations(4, 1, {}, 4);
+        auto ans = minReverseOperations(5, 1, {}, 4);
         debug(ans);
     }
 };
