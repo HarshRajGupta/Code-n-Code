@@ -28,9 +28,9 @@ public:
         q.push({p, 1});
         while (!q.empty()) {
             int pos = q.front()[0], cnt = q.front()[1];
-            debug(pos)
             q.pop();
             for (; j <= pos + k - 1 && j < arr.size(); ++j) {
+                debug(pos, j)
                 if (arr[j] != -1 && (j - pos + 1 + 2 * min(pos, n - j)) >= k) {
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
