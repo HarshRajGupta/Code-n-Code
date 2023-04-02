@@ -61,8 +61,8 @@ public:
         return arr;
     }
     void test(void) {
-        vector<int> a = {};
-        auto ans = minReverseOperations(5, 0, a, 4);
+        vector<int> a = {2, 1};
+        auto ans = minReverseOperations(4, 0, a, 2);
         debug(ans);
     }
 };
