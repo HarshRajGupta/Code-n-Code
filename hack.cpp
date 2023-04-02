@@ -32,6 +32,7 @@ public:
             q.pop();
             for (auto it = nums.lower_bound(pos); it != nums.end() && *it <= pos + k - 1; ++it) {
                 int j = *it;
+                if (j < 0 || j >= n) break;
                 if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
