@@ -53,7 +53,7 @@ public:
                 }
             }
             debug(nums, pos)
-            if ((*nums.begin() >= pos - k + 1 && pos - k + 1 >= 0)) {
+            if ((*nums.begin() >= pos - k + 1 && *nums.begin() < pos)) {
                 int j = *nums.begin();
                 if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
                     arr[j] = cnt;
