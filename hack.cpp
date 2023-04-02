@@ -30,7 +30,7 @@ public:
             int pos = q.front();
             q.pop();
             for (; j < pos + k - 1 && j < arr.size(); ++j) {
-                if (arr[j] != -1 && (j - pos + 1 + min(pos, n - j)) >= k) {
+                if (arr[j] != -1) {
                     arr[j] = cnt;
                     q.push(j);
                 }
