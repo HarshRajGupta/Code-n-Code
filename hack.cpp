@@ -51,7 +51,7 @@ public:
     }
     void test(void) {
         /* test */
-        auto ans = minReverseOperations(5, 1, {2, 3}, 4);
+        auto ans = minReverseOperations(5, 2, {2, 3}, 4);
         debug(ans);
     }
 };
