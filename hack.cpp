@@ -14,29 +14,36 @@ using namespace std;
 
 class Solution {
 public:
-    int findTheLongestBalancedSubstring(string s) {
-        int ans = 0;
-        rep(i, 0, s.size() - 1) {
-            if (s[i] != '0') continue;
-            bool oneFound = false;
-            int one = 0, zero = 1;
-            rep(j, i + 1, s.size()) {
-                debug(i, j, one, zero, ans, s[i], s[j])
-                if (oneFound && s[j] == '0') break;
-                if (s[j] == '1') {
-                    oneFound = true;
-                    ++one;
-                    if (one == zero) {
-                        ans = max(ans, one + zero);
-                        break;
-                    }
-                } else ++zero;
-            }
+    vector<int> minReverseOperations(int n, int p, vector<int> banned, int k) {
+        if (k == 1) {
+            vector<int> arr(n, -1);
+            arr[p] = 0;
+            return arr;
         }
-        return ans;
+        vector<int> arr(n, -2);
+        arr[p] = 0;
+        for (auto& i : banned) arr[i] = -1;
+        int cnt = 1;
+        for (int i = p + k - 1; i < n; i += (k - 1)) {
+            if (arr[i] == -1) {
+                break;
+            }
+            arr[i] = cnt++;
+        }
+        cnt = 1;
+        for (int i = p - k + 1; i >= 0; i -= (k - 1)) {
+            if (arr[i] == -1) {
+                break;
+            }
+            arr[i] = cnt++;
+        }
+        for (int i = 0; i < n; ++i) if (arr[i] == -2) arr[i] = -1;
+        return arr;
     }
     void test(void) {
-        cout << findTheLongestBalancedSubstring("01000111") << endl;
+        /* test */
+        auto ans = minReverseOperations(4, 2, {}, 4);
+        debug(ans);
     }
 };
 
