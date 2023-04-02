@@ -36,6 +36,7 @@ public:
                 }
             }
         }
+        debug(arr)
         q.push({p, 1});
         j = p - 1;
         while (!q.empty()) {
