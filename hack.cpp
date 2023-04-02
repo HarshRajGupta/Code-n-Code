@@ -40,7 +40,7 @@ public:
                     nums.erase(j);
                 }
             }
-            for (auto it = nums.upper_bound(pos); it != nums.begin() && *it >= pos - k + 1; --it) {
+            for (auto it = nums.upper_bound(pos + 1); it != nums.begin() && *it >= pos - k + 1; --it) {
                 auto j = *it;
                 debug(pos, j, cnt)
                 if (j < 0 || j >= n) break;
