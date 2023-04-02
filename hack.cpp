@@ -23,21 +23,19 @@ public:
         vector<int> arr(n, -2);
         arr[p] = 0;
         for (auto& i : banned) arr[i] = -1;
-        int cnt = 1;
-        for (int i = p + k - 1; i < n; i += (k - 1)) {
-            if (arr[i] == -1) {
-                break;
+        int cnt = 1, j = p + 1;
+        queue<int> q;
+        q.push(p);
+        while (!q.empty()) {
+            int pos = q.front();
+            q.pop();
+            for (; j < pos + k - 1 && j < arr.size(); ++j) {
+                if (arr[j] != -1 && (j - pos + 1 + min(pos, n - j)) >= k) {
+                    arr[j] = cnt;
+                    q.push(j);
+                }
             }
-            arr[i] = cnt++;
         }
-        cnt = 1;
-        for (int i = p - k + 1; i >= 0; i -= (k - 1)) {
-            if (arr[i] == -1) {
-                break;
-            }
-            arr[i] = cnt++;
-        }
-        for (int i = 0; i < n; ++i) if (arr[i] == -2) arr[i] = -1;
         return arr;
     }
     void test(void) {
