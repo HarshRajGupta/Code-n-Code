@@ -25,10 +25,11 @@ public:
         for (auto& i : banned) arr[i] = -1;
         queue<vector<int>> q;
         q.push({p, 1});
+        int f = p + 1, b = p - 1;
         while (!q.empty()) {
             int pos = q.front()[0], cnt = q.front()[1];
             q.pop();
-            for (int j = pos + 1; j <= pos + k - 1 && j < arr.size(); ++j) {
+            for (int j = max(pos + 1, f); j <= pos + k - 1 && j < arr.size(); ++j) {
                 if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
                     debug(pos, j, cnt)
                     arr[j] = cnt;
