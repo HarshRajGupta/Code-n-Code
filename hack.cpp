@@ -31,7 +31,7 @@ public:
             q.pop();
             for (; j <= pos + k - 1 && j < arr.size(); ++j) {
                 if (arr[j] != -1 && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
-                    debug(pos, j)
+                    debug(pos, j, j - pos + 1, 2 * min(pos, n - j - 1))
                     arr[j] = cnt;
                     q.push({j, cnt + 1});
                 }
