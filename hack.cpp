@@ -19,7 +19,7 @@ public:
         rep(i, 0, s.size() - 1) {
             if (s[i] != '0') continue;
             bool oneFound = false;
-            int one = 0, zero = 0;
+            int one = 0, zero = 1;
             rep(j, i + 1, s.size()) {
                 debug(i, j, one, zero, ans, s[i], s[j])
                 if (oneFound && s[j] == '0') break;
