@@ -14,7 +14,7 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> minReverseOperations(int n, int p, vector<int> banned, int k) {
+    vector<int> minReverseOperations(int n, int p, vector<int> &banned, int k) {
         if (k == 1) {
             vector<int> arr(n, -1);
             arr[p] = 0;
@@ -24,26 +24,27 @@ public:
         arr[p] = 0;
         for (auto& i : banned) arr[i] = -1;
         int cnt = 1, j = p + 1;
-        queue<int> q;
-        q.push(p);
+        queue<vector<int>> q;
+        q.push({p, 1});
         while (!q.empty()) {
-            int pos = q.front();
+            int pos = q.front()[0], cnt = q.front()[1];
             q.pop();
             for (; j <= pos + k - 1 && j < arr.size(); ++j) {
                 if (arr[j] != -1 && (j - pos + 1 + 2 * min(pos, n - j)) >= k) {
                     arr[j] = cnt;
-                    q.push(j);
+                    q.push({j, cnt + 1});
                 }
             }
         }
-        q.push(p);
+        q.push({p, 1});
+        j = p - 1;
         while (!q.empty()) {
-            int pos = q.front();
+            int pos = q.front()[0], cnt = q.front()[1];
             q.pop();
             for (; j >= pos - k + 1 && j >= 0; --j) {
                 if (arr[j] != -1 && (pos - j + 1 + 2 * min(j, n - pos)) >= k) {
                     arr[j] = cnt;
-                    q.push(j);
+                    q.push({j, cnt + 1});
                 }
             }
         }
@@ -51,9 +52,8 @@ public:
         return arr;
     }
     void test(void) {
-        /* test */
-        auto ans = minReverseOperations(5, 2, {2, 3}, 4);
-        debug(ans);
+        vector<int> a = {};
+        debug(minReverseOperations(3, 1, a, 3));
     }
 };
 
