@@ -34,7 +34,7 @@ void solve(void) {
     int n, d; cin >> n >> d;
     string s, ans; cin >> s;
     _for(i, n) {
-        if (s[i] - '0' > d) {
+        if (s[i] - '0' >= d) {
             ans.push_back(s[i]);
         } else {
             ans.push_back(d + '0');
