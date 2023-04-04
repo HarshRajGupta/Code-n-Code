@@ -36,7 +36,7 @@ void solve(void) {
     _for(i, n - 1) cin >> arr[i];
     int i = 0, j = 0;
     while (i < n - 1 && j < n - 1) {
-        debug(i, j)
+        debug(i, j, b)
         if (max(b[i], b[i + 1]) == arr[j]) {
             ++i; ++j;
             continue;
