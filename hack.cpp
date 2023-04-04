@@ -41,7 +41,7 @@ void solve(void) {
             ++i; ++j;
             continue;
         }
-        if (max(b[i], b[i - 1]) > arr[j]) {
+        else if (max(b[i], b[i - 1]) > arr[j]) {
             debug(b)
             b[++i] = arr[j];
         } else {
