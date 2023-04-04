@@ -32,25 +32,39 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve(void) {
     int n; cin >> n;
-    v<int> arr(n - 1), b;
+    v<int> arr(n - 1), b(n);
     _for(i, n - 1) cin >> arr[i];
-    int done = 0;
-    b.push_back(arr[0]);
-    rep(i, 1, n - 1) {
-        debug(i, b, arr[i])
-        if (!done && max(b.back(), arr[i]) > arr[i - 1]) {
-            b.push_back(0);
-            done = 1;
+    int i = 1, j = 0;
+    while (i < n && j < n - 1) {
+        debug(i, j)
+        if (max(b[i], b[i - 1]) == arr[j]) {
+            ++i; ++j;
+            continue;
         }
-        b.push_back(arr[i]);
-    }
-    if (!done) b.push_back(0);
-    debug(b)
-    bw(i, n - 1) {
-        if (max(b[i], b[i - 1]) > arr[i - 1]) {
-            b[i - 1] = 0;
+        if (max(b[i], b[i - 1]) > arr[j]) {
+            b[++i] = arr[j];
+        } else {
+            b[i] = arr[j];
         }
+        ++i; ++j;
     }
+    // int done = 0;
+    // b.push_back(arr[0]);
+    // rep(i, 1, n - 1) {
+    //     debug(i, b, arr[i])
+    //     if (!done && max(b.back(), arr[i]) > arr[i - 1]) {
+    //         b.push_back(0);
+    //         done = 1;
+    //     }
+    //     b.push_back(arr[i]);
+    // }
+    // if (!done) b.push_back(0);
+    // debug(b)
+    // bw(i, n - 1) {
+    //     if (max(b[i], b[i - 1]) > arr[i - 1]) {
+    //         b[i - 1] = 0;
+    //     }
+    // }
     _for(i, sz(b)) cout << b[i] << ' ';
 }
 
