@@ -34,11 +34,13 @@ void solve(void) {
     int n; cin >> n;
     v<int> arr(n - 1), b;
     _for(i, n - 1) cin >> arr[i];
+    int done = 0;
     b.push_back(arr[0]);
     rep(i, 1, n - 1) {
         debug(i, b, arr[i])
-        if (max(b.back(), arr[i]) > arr[i - 1]) {
+        if (!done && max(b.back(), arr[i]) > arr[i - 1]) {
             b.push_back(0);
+            done = 1;
         }
         b.push_back(arr[i]);
     }
