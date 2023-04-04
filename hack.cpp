@@ -41,7 +41,7 @@ void solve(void) {
         }
         b.push_back(arr[i]);
     }
-    _for(i, sz(b)) cout << b[i];
+    _for(i, sz(b)) cout << b[i] << ' ';
 }
 
 signed main(void) {__MAIN__}
