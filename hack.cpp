@@ -35,7 +35,7 @@ void solve(void) {
     v<int> arr(n - 1), b;
     _for(i, n - 1) cin >> arr[i];
     b.push_back(arr[0]);
-    rep(i, 1, n) {
+    rep(i, 1, n - 1) {
         if (max(b[i - 1], arr[i]) > arr[i - 1]) {
             b.push_back(0);
         }
