@@ -44,7 +44,7 @@ void solve(void) {
         }
         b.push_back(arr[i]);
     }
-    if (sz(b) == n - 1) b.push_back(0);
+    if (!done) b.push_back(0);
     debug(b)
     bw(i, n - 1) {
         if (max(b[i], b[i - 1]) > arr[i - 1]) {
