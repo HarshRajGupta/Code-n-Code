@@ -1,89 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef OFFLINE_JUDGE
+#ifdef ONLINE_JUDGE
 #pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
-#pragma GCC target("sse","sse2","sse3","ssse3","sse4","popcnt","abm","mmx","avx","avx2")
+#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
 #endif
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
-
-class Solution {
-public:
-    vector<int> minReverseOperations(int n, int p, vector<int> &banned, int k) {
-        if (k == 1) {
-            vector<int> arr(n, -1);
-            arr[p] = 0;
-            return arr;
-        }
-        vector<int> arr(n, -2);
-        arr[p] = 0;
-        for (auto& i : banned) arr[i] = -1;
-        set<int> nums;
-        rep(i, 0, n) if (arr[i] == -2) nums.insert(i);
-        queue<vector<int>> q;
-        q.push({p, 1});
-        while (!q.empty()) {
-            int pos = q.front()[0], cnt = q.front()[1];
-            q.pop();
-            // for (auto it = nums.lower_bound(pos); it != nums.end() && *it <= pos + k - 1; ++it) {
-            //     int j = *it;
-            //     if (j < 0 || j >= n) break;
-            //     if (arr[j] == -2 && (((j - pos + 1) & 1) == (k & 1)) && (j - pos + 1 + 2 * min(pos, n - j - 1)) >= k) {
-            //         arr[j] = cnt;
-            //         q.push({j, cnt + 1});
-            //         --it;
-            //         nums.erase(j);
-            //     }
-            // }
-            // if (pos > *nums.rbegin()) {
-            //     for (auto it = nums.lower_bound(*nums.rbegin()); it != nums.begin() && *it >= pos - k + 1; --it) {
-            //         auto j = *it;
-            //         if (j < 0 || j >= n) break;
-            //         if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
-            //             debug(pos, j)
-            //             arr[j] = cnt;
-            //             q.push({j, cnt + 1});
-            //             ++it;
-            //             nums.erase(j);
-            //         }
-            //     }
-            // }
-            // else
-                // for (auto it = nums.lower_bound(pos); it != nums.begin() && *it >= pos - k + 1; --it) {
-                //     auto j = *it;
-                //     if (j < 0 || j >= n) break;
-                //     if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
-                //         debug(pos, j)
-                //         arr[j] = cnt;
-                //         q.push({j, cnt + 1});
-                //         ++it;
-                //         nums.erase(j);
-                //     }
-                // }
-            // if ((*nums.begin() >= pos - k + 1 && *nums.begin() < pos)) {
-            //     int j = *nums.begin();
-            //     if (arr[j] == -2 && (((pos - j + 1) & 1) == (k & 1)) && (pos - j + 1 + 2 * min(j, n - pos - 1)) >= k) {
-            //         arr[j] = cnt;
-            //         q.push({j, cnt + 1});
-            //         nums.erase(j);
-            //     }
-            // }
-        }
-        for (auto& i : arr) if (i == -2) i = -1;
-        return arr;
-    }
-    void test(void) {
-        vector<int> a = {1, 2};
-        auto ans = minReverseOperations(4, 0, a, 4);
-        debug(ans);
-    }
-};
-
-#ifdef __TEST__
-__TEST__
+#ifndef __MAIN__
+#define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
 #endif
+
+#define int long long
+const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
+
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+#define bw(i, n) for (int32_t i = n; i >= 0; --i)
+
+template<class T>using v = std::vector<T>;
+template<class T>using maxHeap = std::priority_queue<T>;
+template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(),(x).end()
+
+void solve(void) {
+    int n, d; cin >> n >> d;
+    string s, ans; cin >> s;
+    _for(i, n) {
+        if (s[i] - '0' > d) {
+            ans.push_back(s[i]);
+        } else {
+            ans.push_back(d + '0');
+            ans.push_back(s[i]);
+            rep(j, i + 1, n) {
+                ans.push_back(s[j]);
+            }
+            cout << ans;
+            return;
+        }
+    }
+    ans.push_back(d + '0');
+    cout << ans;
+}
+
+signed main(void) {__MAIN__}
