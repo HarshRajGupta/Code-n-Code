@@ -34,15 +34,15 @@ void solve(void) {
     int n; cin >> n;
     v<int> arr(n - 1), b(n);
     _for(i, n - 1) cin >> arr[i];
-    int i = 0, j = 0;
-    while (i < n - 1 && j < n - 1) {
-        debug(i, j, b)
-        if (max(b[i], b[i + 1]) == arr[j]) {
+    int i = 1, j = 0;
+    // b[0] = arr[0];
+    while (i < n && j < n - 1) {
+        debug(i, j)
+        if (max(b[i], b[i - 1]) == arr[j]) {
             ++i; ++j;
             continue;
         }
-        else if (max(b[i], b[i + 1]) > arr[j]) {
-            debug(b)
+        if (max(b[i], b[i - 1]) > arr[j]) {
             b[++i] = arr[j];
         } else {
             b[i] = arr[j];
