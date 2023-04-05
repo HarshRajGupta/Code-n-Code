@@ -10,13 +10,13 @@ const long long invMod(long long n) {
         n = (n * 1ll * n) % MOD;
         expo >>= 1;
     }
-    return ans % MOD;
+    return ans;
 }
 
 int main() {
     long long a = 532634674575485LL;
     long long b = 143232634734LL;
     cout << a / b << ' ';
-    cout << a*invMod(b) % MOD;
+    cout << (a*invMod(b)) % MOD;
     return 0;
 }
