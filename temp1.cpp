@@ -49,7 +49,7 @@ void solve(void) {
     rep(i, 3, 100) {
         int ans = ((fact[i] * invMod((fact[i - 3] * fact[3]))) * 6) % MOD;
         if (ans != (((fact[i] / (fact[i - 3] * fact[3]))) * 6) % MOD)
-            cout << ans << ", ";
+            cout << i << ", ";
     }
 }
 
