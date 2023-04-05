@@ -1,60 +1,44 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
-#endif
+const int MOD = 1000000007;
 
-#ifndef debug
-#define debug(...)
-#endif
-
-#ifndef __MAIN__
-#define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
-#endif
-
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-#define bw(i, n) for (int32_t i = n; i >= 0; --i)
-
-template<class T>using v = std::vector<T>;
-template<class T>using maxHeap = std::priority_queue<T>;
-template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(),(x).end()
-
-void solve(void) {
-    int n, k, ans = 0; cin >> n >> k;
-    v<string> a(n), b(n);
-    foreach(i, a) cin >> i;
-    foreach(i, b) cin >> i;
-    v<int> A(10), B(10);
-    _for(i, n) {
-        if (sz(a[i]) != sz(b[i])) {
-            cout << "NO";
-            return;
-        }
-        _for(j, sz(a[i])) {
-            ++A[a[i][j] - '0'];
-            ++B[b[i][j] - '0'];
-        }
+long long gcd(long long a, long long b, long long &x, long long &y) {
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
     }
-    _for(i, 10) {
-        ans += abs(A[i] - B[i]);
-    }
-    ans /= 2;
-    if (ans > k) {
-        cout << "NO";
-        return;
-    }
-    cout << "YES";
+    long long x1, y1;
+    long long g = gcd(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - (a / b) * y1;
+    return g;
 }
 
-signed main(void) {__MAIN__}
+long long mod_inv(long long a, long long m) {
+    long long x, y;
+    long long g = gcd(a, m, x, y);
+    if (g != 1) {
+        return -1;
+    } else {
+        return (x % m + m) % m;
+    }
+}
+
+int main() {
+    long long a = 143232634734LL;
+    long long b = 532634674575485LL;
+
+    long long inv_b = mod_inv(b, MOD);
+    if (inv_b == -1) {
+        cout << "Error: b is not invertible modulo MOD" << endl;
+        return 0;
+    }
+
+    long long ans = (a * inv_b) % MOD;
+
+    cout << ans << endl;
+
+    return 0;
+}
