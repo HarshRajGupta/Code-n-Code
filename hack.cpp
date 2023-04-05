@@ -28,16 +28,30 @@ template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::g
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-const void solve(void) {
-    int n, d; cin >> n >> d;
-    v<int> a(n);
-    _for(i, n) cin >> a[i];
-    if (n < d) {
-        cout << -1;
-        return;
+const int lB(const std::vector<int> &arr, const int t, int l = 0, int r = -1) {
+    if (r == -1) r = (arr.size() - 1);
+    if (arr[l] >= t) return l - 1;
+    if (arr[r] < t) return r;
+    int ans = l - 1, mid;
+    while (l <= r) {
+        mid = (l + r) >> 1;
+        if (arr[mid] >= t) r = (mid - 1);
+        else ans = mid, l = (mid + 1);
     }
+    return ans;
+}
+
+void solve(void) {
+    int n, m; cin >> n >> m;
+    v<int> a(n), prefixSum(n + 1);
+    _for(i, n) cin >> a[i];
     sort(all(a));
-    cout << a[n - d];
+    _for(i, n) prefixSum[i + 1] = prefixSum[i] + a[i];
+    while (m--) {
+        int x; cin >> x;
+        int ans = lB(a, x);
+        cout << (ans + 1)*x  - prefixSum[ans + 1] + prefixSum[n] - (n - ans - 1)*x << ' ';
+    }
 }
 
 signed main(void) {__SOLVE__}
