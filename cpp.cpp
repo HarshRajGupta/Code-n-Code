@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int MOD = 1000000007;
+const int MOD = 1e9 + 7;
 
 const long long invMod(long long n) {
     long long ans = 1, expo = MOD - 2; n %= MOD;
