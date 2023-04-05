@@ -74,7 +74,7 @@ const int invMod(int n) {
 
 void solve(void) {
     int i = 143232634734, j = 532634674575485;
-    cout << modDivide(i, j);
+    cout << modDivide(i, j) << '\n';
     cout << modDivide(i % MOD, j % MOD);
 }
 
