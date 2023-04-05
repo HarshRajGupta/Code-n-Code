@@ -16,7 +16,7 @@ const long long invMod(long long n) {
 int main() {
     long long a = 532634674575485LL;
     long long b = 143232634734LL;
-    cout << a / b;
+    cout << a / b << ' ';
     cout << a*invMod(b);
     return 0;
 }
