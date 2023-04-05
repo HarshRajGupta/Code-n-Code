@@ -36,7 +36,7 @@ int main() {
         return 0;
     }
 
-    long long ans = ((a * inv_b) + MOD) % MOD;
+    long long ans = (a * inv_b) % MOD;
 
     cout << ans << endl;
 
