@@ -10,7 +10,7 @@ const long long invMod(long long n) {
         n = (n * 1ll * n) % MOD;
         expo >>= 1;
     }
-    return ans;
+    return ans % MOD;
 }
 
 int main() {
