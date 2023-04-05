@@ -28,6 +28,34 @@ template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::g
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+int gcdExtended(int a, int b, int *x, int *y) {
+    if (a == 0) {
+        *x = 0, *y = 1;
+        return b;
+    }
+    int x1, y1;
+    int gcd = gcdExtended(b % a, a, &x1, &y1);
+    *x = y1 - (b / a) * x1;
+    *y = x1;
+    return gcd;
+}
+
+int modInverse(int b, int m = MOD) {
+    int x, y;
+    int g = gcdExtended(b, m, &x, &y);
+    if (g != 1)
+        return -1;
+    return (x % m + m) % m;
+}
+
+int  modDivide(int a, int b, int m = MOD) {
+    a = a % m;
+    int inv = modInverse(b, m);
+    if (inv == -1)
+        return -1;
+    return (inv * a) % m;
+}
+
 vector<int> fact(100);
 void factorial() {
     fact[0] = 1;
@@ -45,12 +73,8 @@ const int invMod(int n) {
 }
 
 void solve(void) {
-    factorial();
-    rep(i, 3, 100) {
-        int ans = ((fact[i] * invMod((fact[i - 3] * fact[3]))) * 6) % MOD;
-        if (ans != (((fact[i] / (fact[i - 3] * fact[3]))) * 6) % MOD)
-            cout << i << ", ";
-    }
+    int i = 143232634734, j = 532634674575485;
+    cout << modDivide(i, j);
 }
 
 signed main(void) {__SOLVE__}
