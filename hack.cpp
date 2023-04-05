@@ -30,21 +30,36 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-void solve(void) {
-    int n, prev = 0, ans = 0; cin >> n;
-    string s; cin >> s;
-    _for(i, n - 1) {
-        prev ^= s[i] - '0';
-        if (prev) ++ans;
-    }
-    int MAX = 1;
-    prev = 1;
-    _for(i, n - 1) {
-        prev ^= s[i] - '0';
-        if (prev) ++MAX;
-    }
-    debug(MAX, ans)
-    cout << max(MAX, ans);
+vector<int> fact(100);
+void factorial() {
+    fact[0] = 1;
+    rep(i, 1, 100) fact[i] = (i * fact[i - 1]) % MOD;
 }
 
-signed main(void) {__MAIN__}
+const int invMod(int n) {
+    int ans = 1, expo = MOD - 2; n %= MOD;
+    while (expo) {
+        if (expo & 1) ans = (ans * 1ll * n) % MOD;
+        n = (n * 1ll * n) % MOD;
+        expo >>= 1;
+    }
+    return ans;
+}
+
+void solve(void) {
+    int n, cnt = 0; cin >> n;
+    while (n) {
+        if (n & 1) ++cnt;
+        n /= 2;
+    }
+    if (cnt < 3) {
+        cout << 0;
+        return;
+    }
+    cout << ((fact[cnt]* invMod((fact[cnt - 3]*fact[3]))) * 6)%MOD;
+}
+
+signed main(void) {
+    factorial();
+    __MAIN__
+}
