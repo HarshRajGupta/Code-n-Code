@@ -43,6 +43,7 @@ void solve(void) {
         prev ^= s[i] - '0';
         if (prev) ++MAX;
     }
+    debug(MAX, ans)
     cout << max(MAX, ans);
 }
 
