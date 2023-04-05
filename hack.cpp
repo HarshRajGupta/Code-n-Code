@@ -50,7 +50,7 @@ void solve(void) {
     while (m--) {
         int x; cin >> x;
         int ans = lB(a, x);
-        cout << (ans + 1)*x  - prefixSum[ans + 1] + prefixSum[n] - (n - ans - 1)*x << ' ';
+        cout << (ans + 1)*x  - 2 * prefixSum[ans + 1] + prefixSum[n] - (n - ans - 1)*x << ' ';
     }
 }
 
