@@ -37,7 +37,7 @@ void solve(void) {
         prev ^= s[i] - '0';
         if (prev) ++ans;
     }
-    int MAX = 0;
+    int MAX = 1;
     prev = 1;
     _for(i, n - 1) {
         prev ^= s[i] - '0';
