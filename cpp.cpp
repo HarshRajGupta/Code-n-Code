@@ -30,36 +30,31 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-const long long power(long long n, long long expo, long long m) {
-    debug(n, expo, m)
-    long long ans = 1;
-    while (expo) {
-        if (expo & 1) ans = (ans * 1ll * n);
-        n = (n * 1ll * n);
-        expo >>= 1;
-        if (ans > m || (expo && n > m)) return max(ans, n);
-    }
-    debug(ans)
-    return ans;
-}
-
-int NthRoot(int n, int m) {
-    if (n == 1) return m;
-    int l = 1, r = 31623, ans = 31623;
-    while (l <= r) {
-        int mid = (l + r) >> 1;
-        if (power(mid, n, m) < m) l = mid + 1;
-        else {
-            r = mid - 1;
-            ans = mid;
+void solve(void) {
+    int n, k, ans = 0; cin >> n >> k;
+    v<string> a(n), b(n);
+    foreach(i, a) cin >> i;
+    foreach(i, b) cin >> i;
+    v<int> A(10), B(10);
+    _for(i, n) {
+        if (sz(a[i]) != sz(b[i])) {
+            cout << "NO";
+            return;
+        }
+        _for(j, sz(a[i])) {
+            ++A[a[i][j] - '0'];
+            ++B[b[i][j] - '0'];
         }
     }
-    return ans;
-}
-
-void solve(void) {
-    /* Code */
-    cout << NthRoot(9, 1953125);
+    _for(i, 10) {
+        ans += abs(A[i] - B[i]);
+    }
+    ans /= 2;
+    if (ans > k) {
+        cout << "NO";
+        return;
+    }
+    cout << "YES";
 }
 
 signed main(void) {__MAIN__}
