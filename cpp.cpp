@@ -27,8 +27,8 @@ long long mod_inv(long long a, long long m) {
 }
 
 int main() {
-    long long a = 143232634734LL;
-    long long b = 532634674575485LL;
+    long long b = 143232634734LL;
+    long long a = 532634674575485LL;
 
     long long inv_b = mod_inv(b, MOD);
     if (inv_b == -1) {
