@@ -10,63 +10,34 @@ using namespace std;
 #define debug(...)
 #endif
 
-#ifndef __MAIN__
-#define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
+#ifndef __SOLVE__
+#define __SOLVE__ ios_base::sync_with_stdio(0);cin.tie(NULL);solve();return 0;
 #endif
 
 #define int long long
 const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
 
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-#define bw(i, n) for (int32_t i = n; i >= 0; --i)
+#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
+#define bw(i, n) for(int32_t i = n; i >= 0; --i)
 
-template<class T>using v = std::vector<T>;
-template<class T>using maxHeap = std::priority_queue<T>;
-template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+template <class T> using v = std::vector<T>;
+template <class T> using maxHeap = std::priority_queue<T>;
+template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
 #define sz(x) ((int)(x).size())
-#define all(x) (x).begin(),(x).end()
+#define all(x) (x).begin(), (x).end()
 
-void solve(void) {
-    int n; cin >> n;
-    v<int> arr(n - 1), b(n);
-    _for(i, n - 1) cin >> arr[i];
-    int i = 1, j = 0;
-    b[0] = arr[0];
-    while (i < n && j < n - 1) {
-        debug(i, j)
-        if (max(b[i], b[i - 1]) == arr[j]) {
-            ++i; ++j;
-            continue;
-        }
-        if (max(b[i], b[i - 1]) > arr[j]) {
-            b[++i] = arr[j];
-        } else {
-            b[i] = arr[j];
-        }
-        ++i; ++j;
+const void solve(void) {
+    int n, d; cin >> n >> d;
+    v<int> a(n);
+    _for(i, n) cin >> a[i];
+    if (n < d) {
+        cout << -1;
+        return;
     }
-    // int done = 0;
-    // b.push_back(arr[0]);
-    // rep(i, 1, n - 1) {
-    //     debug(i, b, arr[i])
-    //     if (!done && max(b.back(), arr[i]) > arr[i - 1]) {
-    //         b.push_back(0);
-    //         done = 1;
-    //     }
-    //     b.push_back(arr[i]);
-    // }
-    // if (!done) b.push_back(0);
-    // debug(b)
-    // bw(i, n - 1) {
-    //     if (max(b[i], b[i - 1]) > arr[i - 1]) {
-    //         b[i - 1] = 0;
-    //     }
-    // }
-    _for(i, sz(b)) cout << b[i] << ' ';
+    sort(all(a));
+    cout << a[n - d];
 }
 
-signed main(void) {__MAIN__}
+signed main(void) {__SOLVE__}
