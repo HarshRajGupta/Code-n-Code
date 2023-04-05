@@ -88,7 +88,7 @@ void solve(void) {
     cout << modDivide(j, i) % MOD << '\n';
     cout << modDivide(j % MOD, i % MOD) << '\n';
     cout << t(j % MOD, i % MOD) % MOD << '\n';
-    cout << (j / i);
+    cout << (j / i) % MOD;
 }
 
 signed main(void) {__SOLVE__}
