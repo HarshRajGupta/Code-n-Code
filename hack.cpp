@@ -36,6 +36,34 @@ void factorial() {
     rep(i, 1, 100) fact[i] = (i * fact[i - 1]) % MOD;
 }
 
+int gcdExtended(int a, int b, int *x, int *y) {
+    if (a == 0) {
+        *x = 0, *y = 1;
+        return b;
+    }
+    int x1, y1;
+    int gcd = gcdExtended(b % a, a, &x1, &y1);
+    *x = y1 - (b / a) * x1;
+    *y = x1;
+    return gcd;
+}
+
+int modInverse(int b, int m = MOD) {
+    int x, y;
+    int g = gcdExtended(b, m, &x, &y);
+    if (g != 1)
+        return -1;
+    return (x % m + m) % m;
+}
+
+int  modDivide(int a, int b, int m = MOD) {
+    a = a % m;
+    int inv = modInverse(b, m);
+    if (inv == -1)
+        return -1;
+    return (inv * a) % m;
+}
+
 const int invMod(int n) {
     int ans = 1, expo = MOD - 2; n %= MOD;
     while (expo) {
@@ -56,7 +84,7 @@ void solve(void) {
         cout << 0;
         return;
     }
-    cout << ((fact[cnt]* invMod((fact[cnt - 3]*fact[3]))) * 6)%MOD;
+    cout << (modDivide(fact[cnt], (fact[3] * fact[cnt - 3])) * 6ll) % MOD;
 }
 
 signed main(void) {
