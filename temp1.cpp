@@ -73,6 +73,7 @@ const int invMod(int n) {
 }
 
 int t(int a, int b) {
+    debug(a, b)
     int inv_b = 1, p = MOD - 2;
     while (p) {
         if (p % 2) inv_b = (long long) inv_b * b % MOD;
@@ -86,7 +87,7 @@ void solve(void) {
     int i = 143232634734, j = 532634674575485;
     cout << modDivide(j, i) % MOD << '\n';
     cout << modDivide(j % MOD, i % MOD) << '\n';
-    cout << t(i, j) % MOD << '\n';
+    cout << t(j, i) % MOD << '\n';
     cout << (j / i);
 }
 
