@@ -14,7 +14,7 @@ using namespace std;
 #define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
 #endif
 
-// #define int long long
+#define int long long
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -30,40 +30,32 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-const int ceil (const long double &n, const long double d = 1) {
-    if (n > (d * ((int)(n / d))))
-        return (n / d) + 1;
-    return (n / d);
-}
-
-int ans(int &a, int &b, int &k) {
-    return (k - 1 + ceil(a, k) + ceil(b, k));
-}
-
-int check(int a, int b) {
-    int res = INT_MAX;
-    rep(k, 1, max(a, b) + 1) {
-        int t = ans(a, b, k);
-        if (res > t) res = t;
-    }
-    return res;
-}
-
 void solve(void) {
-    int a, b; cin >> a >> b;
-    int res = INT_MAX, K = 1;
-    rep(k, 1, max(a, b) + 1) {
-        int t = ans(a, b, k);
-        if (res < t) break;
-        if (t > 0) res = t;
-        K = k;
+    int n, s1, s2; cin >> n >> s1 >> s2;
+    v<v<int>> tp(2 * n), arr(n, v<int>(2));
+    v<int> s[2];
+    s[0].resize(n);
+    s[1].resize(n);
+    _for(i, n) {
+        cin >> arr[i][0];
+        arr[i][1] = i;
+        tp[i] = {(i + 1)*s1, 0, i};
+        tp[n + i] = {(i + 1)*s2, 1, i};
     }
-    rep(k, K, K + 2 * sqrt(max(a, b))) {
-        int t = ans(a, b, k);
-        if (res > t) res = t;
+    sort(all(tp));
+    sort(all(arr));
+    _for(i, n) {
+        s[tp[i][1]][tp[i][2]] = arr[i][1] + 1;
     }
-    cout << res;
-    // cout << (check(a, b) == res);
+    _for(i, n) {
+        if (!s[0][i]) break;
+        cout << s[0][i] << ' ';
+    }
+    cout << ln;
+    _for(i, n) {
+        if (!s[1][i]) break;
+        cout << s[1][i] << ' ';
+    }
 }
 
 signed main(void) {__MAIN__}
