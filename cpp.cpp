@@ -19,7 +19,7 @@ const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
 #define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int i = a; i < (int32_t)n; ++i)
 #define foreach(i, x) for (auto &i : x)
 #define bw(i, n) for (int32_t i = n; i >= 0; --i)
 
@@ -36,17 +36,19 @@ const int ceil (const long double &n, const long double d = 1) {
     return (n / d);
 }
 
+int ans(int &a, int &b, int &k) {
+    return (k - 1 + ceil(a, k) + ceil(b, k));
+}
+
 void solve(void) {
     int a, b; cin >> a >> b;
-    int ans = 0, k = sqrt(max(a, b));
-    debug(k)
-    ans += (k - 1);
-    ans += ceil(a, k) + ceil(b, k);
-    cout << ans;
+    int res = 1e18;
+    rep(k, sqrt(max(a, b)), max(a, b) + 1) {
+        int t = ans(a, b, k);
+        if (res < t) break;
+        res = t;
+    }
+    cout << res;
 }
 
 signed main(void) {__MAIN__}
-
-/*
-
-*/
