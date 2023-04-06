@@ -43,6 +43,7 @@ void solve(void) {
         tp.push_back({(i + 1)*s2, 1, i});
     }
     sort(all(tp));
+    debug(tp)
     reverse(all(tp));
     sort(all(arr));
     _for(i, n) {
