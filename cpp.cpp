@@ -43,7 +43,7 @@ int ans(int &a, int &b, int &k) {
 void solve(void) {
     int a, b; cin >> a >> b;
     int res = 1e18;
-    rep(k, sqrt(max(a, b)), max(a, b) + 1) {
+    rep(k, sqrt(min(a, b)), max(a, b) + 1) {
         int t = ans(a, b, k);
         if (res < t) break;
         res = t;
