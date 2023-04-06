@@ -58,7 +58,7 @@ void solve(void) {
         if (t > 0) res = t;
         K = k;
     }
-    rep(k, K, K + sqrt(max(a, b)) + 100) {
+    rep(k, K, K + 2 * sqrt(max(a, b))) {
         int t = ans(a, b, k);
         if (res > t) res = t;
     }
