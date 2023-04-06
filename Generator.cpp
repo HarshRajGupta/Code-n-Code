@@ -42,7 +42,7 @@ class Solution {
     }
 
     void generateTestCase(void) {
-        printf("%d %d", pr, pr);
+        printf("%d %d\n", pr, pr);
         /* generate test case */
         // generateArray();
         // generatePositiveArray();
