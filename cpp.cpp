@@ -40,13 +40,13 @@ int ans(int &a, int &b, int &k) {
     return (k - 1 + ceil(a, k) + ceil(b, k));
 }
 
-bool check(int a, int b, int t) {
+int check(int a, int b) {
     int res = INT_MAX;
     rep(k, 1, max(a, b) + 1) {
         int t = ans(a, b, k);
         if (res > t) res = t;
     }
-    return res == t;
+    return res;
 }
 
 void solve(void) {
@@ -58,7 +58,7 @@ void solve(void) {
         if (t > 0) res = t;
     }
     // cout << res;
-    cout << check(a, b, res);
+    cout << check(a, b) << ' ' << res;
 }
 
 signed main(void) {__MAIN__}
