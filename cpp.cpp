@@ -51,13 +51,14 @@ int check(int a, int b) {
 
 void solve(void) {
     int a, b; cin >> a >> b;
-    int res = INT_MAX;
+    int res = INT_MAX, K = 1;
     rep(k, 1, max(a, b) + 1) {
         int t = ans(a, b, k);
         if (res < t) break;
         if (t > 0) res = t;
+        K = k;
     }
-    rep(k, res, res + sqrt(max(a, b)) + 100) {
+    rep(k, K, K + sqrt(max(a, b)) + 100) {
         int t = ans(a, b, k);
         if (res > t) res = t;
     }
