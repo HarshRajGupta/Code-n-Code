@@ -42,6 +42,7 @@ class Solution {
     }
 
     void generateTestCase(void) {
+        printf("%d %d", pr, pr);
         /* generate test case */
         // generateArray();
         // generatePositiveArray();
@@ -52,7 +53,7 @@ class Solution {
         // generateBinaryString();
         // generateMatrix();
         // generatePositiveMatrix();
-        generateBinaryMatrix();
+        // generateBinaryMatrix();
     }
 public:
     void test(void) {
