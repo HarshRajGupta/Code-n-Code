@@ -42,7 +42,7 @@ int ans(int &a, int &b, int &k) {
 
 void solve(void) {
     int a, b; cin >> a >> b;
-    int res = 1e18;
+    int res = LLONG_MAX;
     rep(k, 1, max(a, b) + 1) {
         int t = ans(a, b, k);
         if (res < t) break;
