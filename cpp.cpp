@@ -38,7 +38,7 @@ const int ceil (const long double &n, const long double d = 1) {
 
 void solve(void) {
     int a, b; cin >> a >> b;
-    int ans = 0, k = sqrt(min(a, b));
+    int ans = 0, k = sqrt(max(a, b));
     debug(k)
     ans += (k - 1);
     ans += ceil(a, k) + ceil(b, k);
