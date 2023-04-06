@@ -63,7 +63,7 @@ void solve(void) {
         if (res > t) res = t;
     }
     // cout << res;
-    cout << check(a, b) << ' ' << res;
+    cout << (check(a, b) == res);
 }
 
 signed main(void) {__MAIN__}
