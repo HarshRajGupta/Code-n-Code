@@ -42,7 +42,7 @@ class Solution {
     }
 
     void generateTestCase(void) {
-        std::cout << pr*pr << ' ' << pr*pr << '\n';
+        std::cout << pr*pr % MOD << ' ' << pr*pr % MOD << '\n';
         /* generate test case */
         // generateArray();
         // generatePositiveArray();
