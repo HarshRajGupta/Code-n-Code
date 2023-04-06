@@ -57,6 +57,10 @@ void solve(void) {
         if (res < t) break;
         if (t > 0) res = t;
     }
+    rep(k, res, res + sqrt(max(a, b)) + 100) {
+        int t = ans(a, b, k);
+        if (res > t) res = t;
+    }
     // cout << res;
     cout << check(a, b) << ' ' << res;
 }
