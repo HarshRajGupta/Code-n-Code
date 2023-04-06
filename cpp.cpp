@@ -45,7 +45,7 @@ void solve(void) {
     int res = LLONG_MAX;
     rep(k, 1, max(a, b) + 1) {
         int t = ans(a, b, k);
-        if (res < t) break;
+        if (res < t && t > 0) break;
         res = t;
     }
     cout << res;
