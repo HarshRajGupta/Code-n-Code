@@ -48,15 +48,21 @@ void solve(void) {
     _for(i, n) {
         s[tp[i][1]][tp[i][2]] = arr[i][1] + 1;
     }
+    v<int> a1, a2;
     _for(i, n) {
         if (!s[0][i]) break;
-        cout << s[0][i] << ' ';
+        a1.push_back(s[0][i]);
     }
+    // cout << ln;
+    cout << sz(a1) << ' ';
+    _for(i, sz(a1)) cout << a1[i] << " ";
     cout << ln;
     _for(i, n) {
         if (!s[1][i]) break;
-        cout << s[1][i] << ' ';
+        a2.push_back(s[1][i]);
     }
+    cout << sz(a2) << ' ';
+    _for(i, sz(a2)) cout << a2[i] << " ";
 }
 
 signed main(void) {__MAIN__}
