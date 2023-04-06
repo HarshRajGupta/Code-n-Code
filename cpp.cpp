@@ -32,15 +32,15 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 
 void solve(void) {
     int n, s1, s2; cin >> n >> s1 >> s2;
-    v<v<int>> tp(2 * n), arr(n, v<int>(2));
+    v<v<int>> tp, arr(n, v<int>(2));
     v<int> s[2];
     s[0].resize(n);
     s[1].resize(n);
     _for(i, n) {
         cin >> arr[i][0];
         arr[i][1] = i;
-        tp[i] = {(i + 1)*s1, 0, i};
-        tp[n + i] = {(i + 1)*s2, 1, i};
+        tp.push_back({(i + 1)*s1, 0, i});
+        tp.push_back({(i + 1)*s2, 1, i});
     }
     sort(all(tp));
     reverse(all(tp));
