@@ -62,8 +62,8 @@ void solve(void) {
         int t = ans(a, b, k);
         if (res > t) res = t;
     }
-    // cout << res;
-    cout << (check(a, b) == res);
+    cout << res;
+    // cout << (check(a, b) == res);
 }
 
 signed main(void) {__MAIN__}
