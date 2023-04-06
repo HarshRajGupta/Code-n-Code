@@ -43,6 +43,7 @@ void solve(void) {
         tp[n + i] = {(i + 1)*s2, 1, i};
     }
     sort(all(tp));
+    reverse(all(tp));
     sort(all(arr));
     _for(i, n) {
         s[tp[i][1]][tp[i][2]] = arr[i][1] + 1;
