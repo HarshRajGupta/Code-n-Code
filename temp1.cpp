@@ -57,7 +57,7 @@ const int invMod(int n) {
 
 void solve(void) {
     int i = 143232634734, j = 532634674575485;
-    cout << (i / j) % MOD << '\n' << (i % MOD)*invMod(j) % MOD;
+    cout << (j / i) % MOD << '\n' << (j % MOD)*invMod(i) % MOD;
 }
 
 signed main(void) {__SOLVE__}
