@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 
-const long long MOD = 1e9 + 7, L = 211; std::bitset<2750177> isPrime; std::vector<int> primes;
-
 struct testCase {
 #define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
 #define r (pr * (rand() & 1 ? -1 : 1))
+    static const long long MOD = 1e9 + 7, L = 211;
+    std::bitset<2750177> isPrime; std::vector<int> primes;
     testCase() {
         std::cout << std::fixed << std::setprecision(16);
         isPrime[0] = isPrime[1] = 1;
@@ -64,11 +64,11 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        // std::cout << pr << '\n';
+        std::cout << pr  << ' '  << rand() << '\n';
         // std::cout << (pr * pr) % MOD << '\n';
         // std::cout << (pr * pr) % MOD << ' ' << (pr * pr) % MOD << '\n';
         // std::cout << (pr) % MOD << ' ' << (pr) % MOD << '\n';
-        generateArray();
+        // generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
         // generatePrimeArray();
