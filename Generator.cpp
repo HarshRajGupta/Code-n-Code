@@ -2,9 +2,18 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 
 struct testCase {
-#define r (1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
+    const int invMod(int n, int MOD = MOD) {
+        int ans = 1, expo = MOD - 2; n %= MOD;
+        while (expo) {
+            if (expo & 1) ans = (ans * 1ll * n) % MOD;
+            n = (n * 1ll * n) % MOD;
+            expo >>= 1;
+        }
+        return ans;
+    }
+#define r (1ll * (rand() % rand()) * (rand() % rand()) * (invMod(rand(), rand())) % MOD)
 #define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) % MOD)
-#define lr ((1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) / (rand() % rand())) % MOD)
+#define lr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) * (invMod(rand(), rand())) % MOD)
 #define ar ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
     static const long long MOD = 1e9 + 7, L = 211;
     std::bitset<2750177> isPrime; std::vector<int> primes;
@@ -66,7 +75,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout <<  ar << ' '  << rand() << '\n';
+        std::cout <<  r << ' '  << rand() << '\n';
         // std::cout << (pr * pr) % MOD << '\n';
         // std::cout << (pr * pr) % MOD << ' ' << (pr * pr) % MOD << '\n';
         // std::cout << (pr) % MOD << ' ' << (pr) % MOD << '\n';
