@@ -8,7 +8,7 @@ const long long MOD = 1e9 + 7, L = 211;
 
 class testCase {
 public:
-    static void preCompute(void) {
+    testCase() {
         isPrime[0] = isPrime[1] = 1;
         for (int i = 2; (i * i) <= 2750177; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750177; j += i) isPrime[j] = true;
         for (int i = 2; i <= 2750177; ++i) if (!isPrime[i]) primes.push_back(i);
@@ -83,7 +83,6 @@ class Solution : private testCase {
 public:
     void test(void) {
         // freopen("input.txt", "w", stdout);
-        preCompute();
         if (1) {
             int t = rand() % L; std::cout << t << '\n';
             while (t--) generateTestCase();
