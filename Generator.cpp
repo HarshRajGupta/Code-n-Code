@@ -58,7 +58,7 @@ class Solution {
     }
 public:
     void test(void) {
-        freopen("input.txt", "w", stdout);
+        // freopen("input.txt", "w", stdout);
         preCompute();
         if (1) {
             int t = rand(); std::cout << t << '\n';
