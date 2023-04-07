@@ -67,7 +67,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout <<  lr << ' '  << rand() << '\n';
+        std::cout <<  Lr << ' '  << rand() << '\n';
         // std::cout << (pr * pr) % MOD << '\n';
         // std::cout << (pr * pr) % MOD << ' ' << (pr * pr) % MOD << '\n';
         // std::cout << (pr) % MOD << ' ' << (pr) % MOD << '\n';
