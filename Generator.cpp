@@ -11,7 +11,7 @@ struct testCase {
         }
         return ans;
     }
-#define r (1ll * (rand() % rand()) * (rand() % rand()) % 1000003)
+#define r (1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
 #define lr (1ll * (rand() % rand()) * (rand() % rand()) % MOD)
 #define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) % MOD)
 #define ar ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
