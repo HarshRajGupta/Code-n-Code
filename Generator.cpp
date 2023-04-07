@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
-#define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
-#define r (pr * (rand() & 1 ? -1 : 1))
 
-std::bitset<2750177> isPrime; std::vector<int> primes;
-const long long MOD = 1e9 + 7, L = 211;
+const long long MOD = 1e9 + 7, L = 211; std::bitset<2750177> isPrime; std::vector<int> primes;
 
 struct testCase {
-// public:
+#define pr ((rand() * (rand()%7+1) * (rand()%7+1) * 1ll % MOD)/ (rand()%7+1))
+#define r (pr * (rand() & 1 ? -1 : 1))
     testCase() {
+        std::cout << std::fixed << std::setprecision(16);
         isPrime[0] = isPrime[1] = 1;
         for (int i = 2; (i * i) <= 2750177; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750177; j += i) isPrime[j] = true;
         for (int i = 2; i <= 2750177; ++i) if (!isPrime[i]) primes.push_back(i);
@@ -82,16 +81,9 @@ class Solution : private testCase {
     }
 public:
     void test(void) {
-        // freopen("input.txt", "w", stdout);
-        if (1) {
-            int t = rand() % L; std::cout << t << '\n';
-            while (t--) generateTestCase();
-        } else if (1) {
-            printf("1\n");
-            generateTestCase();
-        } else {
-            generateTestCase();
-        }
+        freopen("input.txt", "w", stdout);
+        int t = rand() % L; std::cout << t << '\n';
+        while (t--) generateTestCase();
     }
 };
 
