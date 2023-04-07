@@ -3,7 +3,7 @@
 
 struct testCase {
 #define pr ((rand() % rand()) * (rand() % rand()) / (rand() % rand()))
-#define lr (rand() * pr % MOD)
+#define lr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) % MOD)
 #define r (pr * (rand() & 1 ? -1 : 1))
     static const long long MOD = 1e9 + 7, L = 211;
     std::bitset<2750177> isPrime; std::vector<int> primes;
@@ -65,7 +65,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout <<  1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) % MOD << ' '  << rand() << '\n';
+        std::cout <<  lr << ' '  << rand() << '\n';
         // std::cout << (pr * pr) % MOD << '\n';
         // std::cout << (pr * pr) % MOD << ' ' << (pr * pr) % MOD << '\n';
         // std::cout << (pr) % MOD << ' ' << (pr) % MOD << '\n';
