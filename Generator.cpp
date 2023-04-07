@@ -2,10 +2,10 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 
 struct testCase {
-#define pr (1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
-#define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))%MOD
+#define r (1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
+#define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) % MOD)
 #define lr ((1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) / (rand() % rand())) % MOD)
-#define r (pr * (rand() & 1 ? -1 : 1))
+#define ar ((1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand())) * (rand() & 1 ? -1 : 1))
     static const long long MOD = 1e9 + 7, L = 211;
     std::bitset<2750177> isPrime; std::vector<int> primes;
     testCase() {
@@ -16,12 +16,12 @@ struct testCase {
     }
     void generateArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
-        while (n--) std::cout << r << ' ';
+        while (n--) std::cout << ar << ' ';
         std::cout << std::endl;
     }
     void generatePositiveArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
-        while (n--) std::cout << pr << ' ';
+        while (n--) std::cout << r << ' ';
         std::cout << std::endl;
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
@@ -66,7 +66,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout <<  llr << ' '  << rand() << '\n';
+        std::cout <<  ar << ' '  << rand() << '\n';
         // std::cout << (pr * pr) % MOD << '\n';
         // std::cout << (pr * pr) % MOD << ' ' << (pr * pr) % MOD << '\n';
         // std::cout << (pr) % MOD << ' ' << (pr) % MOD << '\n';
