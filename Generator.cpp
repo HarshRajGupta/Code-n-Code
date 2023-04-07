@@ -61,7 +61,7 @@ public:
         // freopen("input.txt", "w", stdout);
         preCompute();
         if (1) {
-            int t = rand(); std::cout << t << '\n';
+            int t = rand() % L; std::cout << t << '\n';
             while (t--) generateTestCase();
         } else if (1) {
             printf("1\n");
