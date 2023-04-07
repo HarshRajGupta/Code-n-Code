@@ -11,7 +11,7 @@ struct testCase {
         }
         return ans;
     }
-#define r (1ll * (rand() % rand()) * (rand() % rand()) * (invMod(rand(), rand())) % MOD)
+#define r (1ll * (rand() % rand()) * (rand() % rand()) * (invMod(rand(), rand())) % rand())
 #define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) % MOD)
 #define lr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) * (invMod(rand(), rand())) % MOD)
 #define ar ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
