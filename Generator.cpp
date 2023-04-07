@@ -2,17 +2,9 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 
 struct testCase {
-    const int invMod(int n, int MOD = MOD) {
-        int ans = 1, expo = MOD - 2; n %= MOD;
-        while (expo) {
-            if (expo & 1) ans = (ans * 1ll * n) % MOD;
-            n = (n * 1ll * n) % MOD;
-            expo >>= 1;
-        }
-        return ans;
-    }
 #define r (1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
-#define lr (1ll * rand() * (rand() % rand()) * (rand() % rand()) % MOD)
+#define lr (1ll * (rand() % rand()) * (rand() % rand()) % MOD)
+#define Lr (1ll * rand() * (rand() % rand()) * (rand() % rand()) % MOD)
 #define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
 #define ar ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
     static const long long MOD = 1e9 + 7, L = 211;
