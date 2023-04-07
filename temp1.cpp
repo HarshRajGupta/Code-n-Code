@@ -28,48 +28,10 @@ template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::g
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int gcdExtended(int a, int b, int *x, int *y) {
-    if (a == 0) {
-        *x = 0, *y = 1;
-        return b;
-    }
-    int x1, y1;
-    int gcd = gcdExtended(b % a, a, &x1, &y1);
-    *x = y1 - (b / a) * x1;
-    *y = x1;
-    return gcd;
-}
-
-int modInverse(int b, int m = MOD) {
-    int x, y;
-    int g = gcdExtended(b, m, &x, &y);
-    if (g != 1)
-        return -1;
-    return (x % m + m) % m;
-}
-
-int  modDivide(int a, int b, int m = MOD) {
-    a = a % m;
-    int inv = modInverse(b, m);
-    if (inv == -1)
-        return -1;
-    return (inv * a) % m;
-}
-
 vector<int> fact(100);
 void factorial() {
     fact[0] = 1;
     rep(i, 1, 100) fact[i] = (i * fact[i - 1]) % MOD;
-}
-
-const int invMod(int n) {
-    int ans = 1, expo = MOD - 2; n %= MOD;
-    while (expo) {
-        if (expo & 1) ans = (ans * 1ll * n) % MOD;
-        n = (n * 1ll * n) % MOD;
-        expo >>= 1;
-    }
-    return ans;
 }
 
 int t(int a, int b) {
@@ -83,13 +45,19 @@ int t(int a, int b) {
     return (long long) a * inv_b % MOD;
 }
 
+const int invMod(int n) {
+    int ans = 1, expo = MOD - 2; n %= MOD;
+    while (expo) {
+        if (expo & 1) ans = (ans * 1ll * n) % MOD;
+        n = (n * 1ll * n) % MOD;
+        expo >>= 1;
+    }
+    return ans;
+}
+
 void solve(void) {
     int i = 143232634734, j = 532634674575485;
-    cout << modDivide(j, i) % MOD << '\n';
-    cout << modDivide(j % MOD, i % MOD) << '\n';
-    cout << t(j % MOD, i % MOD) % MOD << '\n';
-    cout << (j % MOD * invMod(i % MOD)) % MOD << '\n';
-    cout << (j / i);
+    cout << (i / j) % MOD << '\n' << (i % MOD)*invMod(j) % MOD;
 }
 
 signed main(void) {__SOLVE__}
