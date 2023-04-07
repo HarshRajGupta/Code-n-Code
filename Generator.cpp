@@ -3,7 +3,7 @@
 
 struct testCase {
 #define pr (1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
-#define llr (1ll * (rand() % rand()) * (rand() % rand()))
+#define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))%MOD
 #define lr ((1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()) / (rand() % rand())) % MOD)
 #define r (pr * (rand() & 1 ? -1 : 1))
     static const long long MOD = 1e9 + 7, L = 211;
