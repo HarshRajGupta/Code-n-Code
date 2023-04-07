@@ -2,7 +2,8 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 
 struct testCase {
-#define pr ((rand() % rand()) * (rand() % rand()) / (rand() % rand()))
+// #define pr ((rand() % rand()) * (rand() % rand()) / (rand() % rand()))
+#define pr (1ll * (rand() % primes[rand() % primes.size()]) * (rand() % primes[rand() % primes.size()])) % primes[rand() % primes.size()]
 #define lr (rand() * pr % MOD)
 #define r (pr * (rand() & 1 ? -1 : 1))
     static const long long MOD = 1e9 + 7, L = 211;
