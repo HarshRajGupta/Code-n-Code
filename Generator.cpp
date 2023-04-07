@@ -6,8 +6,8 @@
 std::bitset<2750177> isPrime; std::vector<int> primes;
 const long long MOD = 1e9 + 7, L = 211;
 
-class testCase {
-public:
+struct testCase {
+// public:
     testCase() {
         isPrime[0] = isPrime[1] = 1;
         for (int i = 2; (i * i) <= 2750177; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750177; j += i) isPrime[j] = true;
