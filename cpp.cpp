@@ -16,7 +16,7 @@ class Solution {
 public:
     int minimumVisitedCells(vector<vector<int>>& grid) {
         int n = grid.size(), m = grid[0].size();
-        vector<vector<long long>> dp(n, vector<long long>(m, INT_MAX));
+        vector<vector<int>> dp(n, vector<int>(m, INT_MAX));
         vector<long long> row(n, INT_MAX), col(m, INT_MAX);
         dp[n - 1][m - 1] = 1;
         row[n - 1] = 1;
@@ -25,19 +25,19 @@ public:
             for (int j = m - 1; j >= 0; --j) {
                 int x = grid[i][j];
                 for (int k = j + 1; k <= j + x && k < m; ++k) {
-                    dp[i][j] = min(dp[i][j], 1ll + dp[i][k]);
+                    dp[i][j] = min(1ll * dp[i][j], 1ll + dp[i][k]);
                     if (dp[i][j] <= row[i] + 1ll) {
                         break;
                     }
                 }
                 for (int k = i + 1; k <= i + x && k < n; ++k) {
-                    dp[i][j] = min(dp[i][j], 1ll + dp[k][j]);
+                    dp[i][j] = min(1ll * dp[i][j], 1ll + dp[k][j]);
                     if (dp[i][j] <= col[j] + 1ll) {
                         break;
                     }
                 }
-                row[i] = min(row[i], dp[i][j]);
-                col[j] = min(col[j], dp[i][j]);
+                row[i] = min(row[i], 1ll * dp[i][j]);
+                col[j] = min(col[j], 1ll * dp[i][j]);
                 // debug(dp, row, col)
             }
         }
