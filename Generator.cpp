@@ -83,8 +83,8 @@ class Solution : private testCase {
         // generatePair();
         // generateArray();
         // generatePositiveArray();
-        generateBinaryArray();
-        // generatePrimeArray();
+        // generateBinaryArray();
+        generatePrimeArray();
         // generateLowerString();
         // generateUpperString();
         // generateBinaryString();
