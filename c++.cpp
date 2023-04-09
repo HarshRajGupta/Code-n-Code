@@ -33,19 +33,23 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 void solve(void) {
     int n; cin >> n;
     v<v<int>> arr(2, v<int>(n));
-    int p = 2 * n, q = 1;
+    int p = 2 * n, q = n;
     _for(i, n / 2) {
         if (i & 1) {
             arr[0][n - 1 - i] = p--;
             arr[1][i] = p--;
+            arr[0][i] = q--;
+            arr[1][n - 1 - i] = q--;
         } else {
             arr[0][i] = p--;
             arr[1][n - 1 - i] = p--;
+            arr[1][i] = q--;
+            arr[0][n - 1 - i] = q--;
         }
     }
-    _for(i, n) {
-        arr[!(i & 1)][i] = q++;
-    }
+    // _for(i, n) {
+    //     arr[!(i & 1)][i] = q++;
+    // }
     _for(i, n) cout << arr[0][i] << ' ';
     cout << ln;
     _for(i, n) cout << arr[1][i] << ' ';
