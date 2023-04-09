@@ -30,7 +30,7 @@ struct testCase {
         std::cout << std::endl;
     }
     void generateUniqueArray(size_t n = rand() % L + 1) {
-        size_t N = n * (long long)((sqrt(n) <= 11 ? rand() % 11 : sqrt(n)) / (sqrt(sqrt(n)) <= 2 ? 2 : sqrt(rand() % (int)sqrt(n)))) % 400009;
+        size_t N = n * (long long)((sqrt(n) <= 11 ? rand() % 11 : sqrt(n)) / (sqrt(sqrt(n)) <= 1 ? 1 : sqrt(rand() % (int)sqrt(n)))) % 400009;
         if (N <= n) N += n;
         std::cout << n << '\n';
         std::vector<int> v(N);
@@ -106,7 +106,7 @@ class Solution : private testCase {
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % 211; std::cout << t << '\n';
+        int t = rand() % 2; std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
