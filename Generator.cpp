@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
-
 struct testCase {
 #define r ((1ll * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()))
 #define lr (1ll * (rand() % rand()) * (rand() % rand()) % MOD)
@@ -14,6 +13,9 @@ struct testCase {
         isPrime[0] = isPrime[1] = 1;
         for (int i = 2; (i * i) <= 2750177; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750177; j += i) isPrime[j] = true;
         for (int i = 2; i <= 2750177; ++i) if (!isPrime[i]) primes.push_back(i);
+    }
+    void generatePair(int MOD = MOD) {
+        std::cout << lr % MOD << ' ' << lr % MOD << std::endl;
     }
     void generateArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
@@ -67,7 +69,8 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout <<  r << ' '  << rand() << '\n';
+        // std::cout << r << ' ' << r << '\n';
+        generatePair();
         // generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
