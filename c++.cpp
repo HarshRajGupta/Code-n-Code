@@ -36,20 +36,16 @@ void solve(void) {
     int p = 2 * n, q = 1;
     _for(i, n / 2) {
         if (i & 1) {
-            arr[1][i] = p--;
             arr[0][n - 1 - i] = p--;
-            arr[0][i] = q++;
-            arr[1][n - 1 - i] = q++;
+            arr[1][i] = p--;
         } else {
             arr[0][i] = p--;
             arr[1][n - 1 - i] = p--;
-            arr[1][i] = q++;
-            arr[0][n - 1 - i] = q++;
         }
     }
-    // _for(i, n) {
-    //     arr[!(i & 1)][i] = q++;
-    // }
+    _for(i, n) {
+        arr[!(i & 1)][i] = q++;
+    }
     _for(i, n) cout << arr[0][i] << ' ';
     cout << ln;
     _for(i, n) cout << arr[1][i] << ' ';
