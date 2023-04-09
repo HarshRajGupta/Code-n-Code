@@ -67,7 +67,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout <<  Lr << ' '  << rand() << '\n';
+        std::cout <<  lr << ' '  << rand() << '\n';
         // generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
