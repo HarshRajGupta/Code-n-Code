@@ -80,9 +80,9 @@ class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
         // std::cout << r() << '\n';
-        generatePair();
+        // generatePair();
         // generateArray();
-        // generatePositiveArray();
+        generatePositiveArray();
         // generateBinaryArray();
         // generatePrimeArray();
         // generateLowerString();
