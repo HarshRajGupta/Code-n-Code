@@ -30,11 +30,30 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-void solve(void) {
-    int n; cin >> n;
-    v<int> a(n);
-    _for(i, n) cin >> a[i];
-    int prev = INT_MAX;
+bool forward(v<int> &a) {
+    int prev = INT_MIN, n = sz(a);
+    _for(i, n - 1) {
+        if (prev > a[i]) {
+            int t = prev - a[i];
+            a[i] += t;
+            a[i + 1] += t;
+        } else {
+            int t = a[i] - prev;
+            a[i] -= t;
+            a[i + 1] -= t;
+        }
+        prev = a[i];
+    }
+    _for(i, n - 1) {
+        if (a[i] > a[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool backward(v<int> a) {
+    int prev = INT_MAX, n = sz(a);
     bw(i, n - 2) {
         if (a[i + 1] > prev) {
             int t = a[i + 1] - prev;
@@ -49,11 +68,21 @@ void solve(void) {
     }
     _for(i, n - 1) {
         if (a[i] > a[i + 1]) {
-            cout << "NO";
-            return;
+            return false;
         }
     }
-    cout << "YES";
+    return true;
+}
+
+void solve(void) {
+    int n; cin >> n;
+    v<int> a(n);
+    _for(i, n) cin >> a[i];
+    if (forward(a) || backward(a)) {
+        cout << "YES";
+    } else {
+        cout << "NO";
+    }
 }
 
 signed main(void) {__MAIN__}
