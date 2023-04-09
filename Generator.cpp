@@ -94,7 +94,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(100);
+        generateUniqueArray();
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
