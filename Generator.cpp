@@ -3,6 +3,8 @@
 struct testCase {
     static const long long MOD = 1e9 + 7, L = 200003;
     std::bitset<2750177> isPrime; std::vector<int> primes;
+// #define r ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()))
+#define r (1ull * (rand() % rand()) * (rand() % rand()) % MOD)
     // const unsigned long long static r(unsigned long long MOD = 1e9 + 7) {
     //     return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
     // }
@@ -88,7 +90,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        // std::cout << r() << '\n';
+        std::cout << MOD << '\n';
         // generatePair();
         // generateArray();
         // generatePositiveArray();
