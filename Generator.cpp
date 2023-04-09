@@ -29,12 +29,12 @@ struct testCase {
         for (size_t i = 0; i < n; ++i) std::cout << v[i] << ' ';
         std::cout << std::endl;
     }
-    void generateUniqueArray(size_t n = rand() % L + 1) {
+    void generateUniqueArray(size_t n = rand() % L + 1, const int MOD = 400009) {
         std::cout << n << '\n';
         std::set<int> s;
         while (n--) {
-            int x = (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007);
-            while (s.count(x)) x = (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007);
+            int x = (1ll * (rand() % rand()) * (rand() % rand()) % MOD);
+            while (s.count(x)) x = (1ll * (rand() % rand()) * (rand() % rand()) % MOD);
             s.insert(x);
             std::cout << x << ' ';
         }
