@@ -19,6 +19,8 @@ public:
         vector<vector<long long>> dp(n, vector<long long>(m, INT_MAX));
         vector<long long> row(n, INT_MAX), col(m, INT_MAX);
         dp[n - 1][m - 1] = 1;
+        row[n - 1] = 1;
+        col[m - 1] = 1;
         for (int i = n - 1; i >= 0; --i) {
             for (int j = m - 1; j >= 0; --j) {
                 if (i == n - 1 && j == m - 1) {
