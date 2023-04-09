@@ -48,7 +48,7 @@ public:
         return (dp[0][0] == INT_MAX ? -1 : dp[0][0]);
     }
     void test(void) {
-        vector<vector<int>> t = {{3, 4, 2, 1}, {4, 2, 3, 1}, {2, 1, 0, 0}, {2, 4, 0, 0}};
+        vector<vector<int>> t = {{7, 12, 11, 11, 4}, {10, 5, 16, 15, 7}, {7, 9, 6, 16, 7}, {1, 13, 3, 16, 0}};
         cout << minimumVisitedCells(t);
         /* test */
     }
