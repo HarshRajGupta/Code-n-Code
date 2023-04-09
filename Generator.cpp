@@ -14,7 +14,7 @@ struct testCase {
         for (int i = 2; (i * i) <= 2750177; ++i) if (!isPrime[i]) for (int j = (i * i); j <= 2750177; j += i) isPrime[j] = true;
         for (int i = 2; i <= 2750177; ++i) if (!isPrime[i]) primes.push_back(i);
     }
-    void generatePair(long long MOD = LLONG_MAX) {
+    void generatePair(unsigned long long MOD = LLONG_MAX) {
         std::cout << llr % MOD << ' ' << llr % MOD << std::endl;
     }
     void generateArray(size_t n = rand() % L + 1) {
