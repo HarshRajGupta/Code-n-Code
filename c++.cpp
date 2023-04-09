@@ -44,6 +44,7 @@ bool forward(v<int> &a) {
         }
         prev = a[i];
     }
+    debug(a)
     _for(i, n - 1) {
         if (a[i] > a[i + 1]) {
             return false;
@@ -66,6 +67,7 @@ bool backward(v<int> a) {
         }
         prev = a[i + 1];
     }
+    debug(a)
     _for(i, n - 1) {
         if (a[i] > a[i + 1]) {
             return false;
@@ -78,7 +80,7 @@ void solve(void) {
     int n; cin >> n;
     v<int> a(n);
     _for(i, n) cin >> a[i];
-    if (forward(a) || backward(a)) {
+    if (forward(a) && backward(a)) {
         cout << "YES";
     } else {
         cout << "NO";
