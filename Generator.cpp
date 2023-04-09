@@ -32,18 +32,15 @@ struct testCase {
     void generateUniqueArray(size_t n = rand() % L + 1) {
         size_t N = n * (long long)((sqrt(n) <= 11 ? rand() % 11 : sqrt(n)) / (sqrt(sqrt(n)) <= 2 ? 2 : sqrt(rand() % (int)sqrt(n)))) % 400009;
         if (N <= n) N += n;
-        debug(N)
         std::cout << n << '\n';
-        std::vector<int> v(N), arr;
+        std::vector<int> v(N);
         for (size_t i = 0; i < N; ++i) v[i] = i + 1;
         std::random_shuffle(v.begin(), v.end());
         for (size_t i = 0; i < n; ++i) {
             auto it = v.begin() + rand() % v.size();
-            arr.push_back(*it);
+            std::cout << *it << ' ';
             v.erase(it);
         }
-        std::random_shuffle(arr.begin(), arr.end());
-        for (size_t i = 0; i < n; ++i) std::cout << arr[i] << ' ';
         std::cout << std::endl;
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
