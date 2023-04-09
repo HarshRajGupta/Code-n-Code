@@ -3,21 +3,21 @@
 struct testCase {
     static const long long MOD = 1e9 + 7, L = 211;
     std::bitset<2750177> isPrime; std::vector<int> primes;
-    const unsigned long long static r(unsigned long long MOD = 1e9 + 7) {
-        return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
-    }
-    const long long static ar() {
-        return ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()));
-    }
-    const unsigned long long static lr(unsigned long long MOD = 1e9 + 7) {
-        return (1ull * (rand() % rand()) * (rand() % rand()) % MOD);
-    }
-    const unsigned long long static Lr(unsigned long long MOD = 1e9 + 7) {
-        return (1ull * rand() * (rand() % rand()) * (rand() % rand()) % MOD);
-    }
-    const unsigned long long static llr(unsigned long long MOD = 18446744073709551615ull) {
-        return (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand())) % MOD;
-    }
+    // const unsigned long long static r(unsigned long long MOD = 1e9 + 7) {
+    //     return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
+    // }
+    // const long long static ar() {
+    //     return ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()));
+    // }
+    // const unsigned long long static lr(unsigned long long MOD = 1e9 + 7) {
+    //     return (1ull * (rand() % rand()) * (rand() % rand()) % MOD);
+    // }
+    // const unsigned long long static Lr(unsigned long long MOD = 1e9 + 7) {
+    //     return (1ull * rand() * (rand() % rand()) * (rand() % rand()) % MOD);
+    // }
+    // const unsigned long long static llr(unsigned long long MOD = 18446744073709551615ull) {
+    //     return (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand())) % MOD;
+    // }
     testCase() {
         std::cout << std::fixed << std::setprecision(16);
         isPrime[0] = isPrime[1] = 1;
@@ -25,16 +25,16 @@ struct testCase {
         for (int i = 2; i <= 2750177; ++i) if (!isPrime[i]) primes.push_back(i);
     }
     void generatePair(unsigned long long MOD = 18446744073709551615ull) {
-        std::cout << lr() << ' ' << lr() << std::endl;
+        std::cout << rand() << ' ' << rand() << std::endl;
     }
     void generateArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
-        while (n--) std::cout << ar() << ' ';
+        while (n--) std::cout << rand() << ' ';
         std::cout << std::endl;
     }
     void generatePositiveArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
-        while (n--) std::cout << r() << ' ';
+        while (n--) std::cout << rand() << ' ';
         std::cout << std::endl;
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
@@ -81,7 +81,7 @@ class Solution : private testCase {
         /* generate test case */
         // std::cout << r() << '\n';
         // generatePair();
-        // generateArray();
+        generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
         // generatePrimeArray();
