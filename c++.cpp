@@ -38,14 +38,18 @@ void solve(void) {
         if (i & 1) {
             arr[1][i] = p--;
             arr[0][n - 1 - i] = p--;
+            arr[0][i] = q++;
+            arr[1][n - 1 - i] = q++;
         } else {
             arr[0][i] = p--;
             arr[1][n - 1 - i] = p--;
+            arr[1][i] = q++;
+            arr[0][n - 1 - i] = q++;
         }
     }
-    _for(i, n) {
-        arr[!(i & 1)][i] = q++;
-    }
+    // _for(i, n) {
+    //     arr[!(i & 1)][i] = q++;
+    // }
     _for(i, n) cout << arr[0][i] << ' ';
     cout << ln;
     _for(i, n) cout << arr[1][i] << ' ';
