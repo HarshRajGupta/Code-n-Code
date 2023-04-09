@@ -29,7 +29,7 @@ struct testCase {
     }
     void generateArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
-        while (n--) std::cout << rand() << ' ';
+        while (n--) std::cout << (rand() & 1 ? -1 : 1) * rand() << ' ';
         std::cout << std::endl;
     }
     void generatePositiveArray(size_t n = rand() % L + 1) {
