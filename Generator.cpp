@@ -34,11 +34,16 @@ struct testCase {
         if (N <= n) N += n;
         debug(N)
         std::cout << n << '\n';
-        std::vector<int> v(N);
+        std::vector<int> v(N), arr;
         for (size_t i = 0; i < N; ++i) v[i] = i + 1;
         std::random_shuffle(v.begin(), v.end());
-        while (v.size() > n) v.erase(v.begin() + rand() % v.size());
-        for (size_t i = 0; i < n; ++i) std::cout << v[i] << ' ';
+        for (size_t i = 0; i < n; ++i) {
+            auto it = v.begin() + rand() % v.size();
+            arr.push_back(*it);
+            v.erase(it);
+        }
+        std::random_shuffle(arr.begin(), arr.end());
+        for (size_t i = 0; i < n; ++i) std::cout << arr[i] << ' ';
         std::cout << std::endl;
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
