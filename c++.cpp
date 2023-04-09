@@ -80,7 +80,7 @@ void solve(void) {
     int n; cin >> n;
     v<int> a(n);
     _for(i, n) cin >> a[i];
-    if (forward(a) && backward(a)) {
+    if (forward(a) || backward(a)) {
         cout << "YES";
     } else {
         cout << "NO";
