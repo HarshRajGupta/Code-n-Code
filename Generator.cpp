@@ -70,7 +70,8 @@ class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
         // std::cout << r << ' ' << r << '\n';
-        generatePair(MOD);
+        // generatePair();
+        std::cout << (unsigned long long) -1;
         // generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
