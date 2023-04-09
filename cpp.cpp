@@ -33,7 +33,7 @@ public:
             }
         }
         debug(dp)
-        return (dp[0][0] == INT_MAX ? -1 : dp[0][0]);
+        return (dp[0][0] == INT_MAX ? -1 : dp[0][0] + 1);
     }
     void test(void) {
         vector<vector<int>> t = {{3, 4, 2, 1}, {4, 2, 3, 1}, {2, 1, 0, 0}, {2, 4, 0, 0}};
