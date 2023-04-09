@@ -3,13 +3,10 @@
 struct testCase {
     static const long long MOD = 1e9 + 7, L = 200003;
     std::bitset<2750177> isPrime; std::vector<int> primes;
-// #define r ((1ull * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
-// #define r (1ull * (rand() % rand()) * (rand() % rand()) % 1000000007)
-// #define r (1ull * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
-#define r (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
-    // const unsigned long long static llr(unsigned long long MOD = 18446744073709551615ull) {
-    //     return (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand())) % MOD;
-    // }
+#define r ((1ll * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
+// #define r (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007)
+// #define r (1ll * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
+// #define r (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
     testCase() {
         std::cout << std::fixed << std::setprecision(16);
         isPrime[0] = isPrime[1] = 1;
@@ -81,7 +78,7 @@ class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
         // std::cout << r << '\n';
-        generatePair();
+        // generatePair();
         // generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
@@ -96,7 +93,7 @@ class Solution : private testCase {
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % 211; std::cout << t << '\n';
+        int t = 1; std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
