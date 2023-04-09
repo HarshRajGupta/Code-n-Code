@@ -2,7 +2,7 @@
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 
 struct testCase {
-#define r (1ll * (rand() % rand()) * (rand() % rand()) / (rand() % rand()))
+#define r ((1ll * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()))
 #define lr (1ll * (rand() % rand()) * (rand() % rand()) % MOD)
 #define Lr (1ll * rand() * (rand() % rand()) * (rand() % rand()) % MOD)
 #define llr (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
@@ -67,7 +67,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout <<  lr << ' '  << rand() << '\n';
+        std::cout <<  r << ' '  << rand() << '\n';
         // generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
