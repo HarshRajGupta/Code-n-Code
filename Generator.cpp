@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
 struct testCase {
-    static const long long MOD = 1e9 + 7, L = 211;
+    static const long long MOD = 1e9 + 7, L = 200003;
     std::bitset<2750177> isPrime; std::vector<int> primes;
     // const unsigned long long static r(unsigned long long MOD = 1e9 + 7) {
     //     return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
@@ -97,14 +97,14 @@ class Solution : private testCase {
         // generateLowerString();
         // generateUpperString();
         // generateBinaryString();
-        generateMatrix();
+        // generateMatrix();
         // generatePositiveMatrix();
         // generateBinaryMatrix();
     }
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % L; std::cout << t << '\n';
+        int t = rand() % 211; std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
