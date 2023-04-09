@@ -23,9 +23,6 @@ public:
         col[m - 1] = 1;
         for (int i = n - 1; i >= 0; --i) {
             for (int j = m - 1; j >= 0; --j) {
-                if (i == n - 1 && j == m - 1) {
-                    continue;
-                }
                 int x = grid[i][j];
                 for (int k = j + 1; k <= j + x && k < m; ++k) {
                     dp[i][j] = min(dp[i][j], 1ll + dp[i][k]);
