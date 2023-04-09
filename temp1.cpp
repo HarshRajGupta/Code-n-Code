@@ -34,17 +34,6 @@ void factorial() {
     rep(i, 1, 100) fact[i] = (i * fact[i - 1]) % MOD;
 }
 
-int t(int a, int b) {
-    debug(a, b)
-    int inv_b = 1, p = MOD - 2;
-    while (p) {
-        if (p % 2) inv_b = (long long) inv_b * b % MOD;
-        b = (long long) b * b % MOD;
-        p /= 2;
-    }
-    return (long long) a * inv_b % MOD;
-}
-
 const int invMod(int n) {
     int ans = 1, expo = MOD - 2; n %= MOD;
     while (expo) {
@@ -56,8 +45,8 @@ const int invMod(int n) {
 }
 
 void solve(void) {
-    int i = 143232634734, j = 532634674575485;
-    cout << (((j / i)) + (j % i)) % MOD << '\n' << (j % MOD) * invMod(i) % MOD;
+    int t = 2;
+    cout << (t >> 1);
 }
 
 signed main(void) {__SOLVE__}
