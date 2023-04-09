@@ -45,7 +45,7 @@ public:
                 }
             }
         }
-        debug(dp)
+        debug(dp, row, col)
         return (dp[0][0] == INT_MAX ? -1 : dp[0][0]);
     }
     void test(void) {
