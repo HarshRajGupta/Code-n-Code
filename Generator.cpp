@@ -82,8 +82,8 @@ class Solution : private testCase {
         // std::cout << r() << '\n';
         // generatePair();
         // generateArray();
-        generatePositiveArray();
-        // generateBinaryArray();
+        // generatePositiveArray();
+        generateBinaryArray();
         // generatePrimeArray();
         // generateLowerString();
         // generateUpperString();
