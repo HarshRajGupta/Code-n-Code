@@ -30,19 +30,17 @@ public:
                 for (int k = j + 1; k <= j + x && k < m; ++k) {
                     dp[i][j] = min(dp[i][j], 1ll + dp[i][k]);
                     if (dp[i][j] <= row[i] + 1ll && row[i] != INT_MAX) {
-                        row[i] = min(row[i], 1ll + dp[i][k]);
                         break;
                     }
-                    row[i] = min(row[i], 1ll + dp[i][k]);
                 }
+                row[i] = min(row[i], dp[i][j]);
                 for (int k = i + 1; k <= i + x && k < n; ++k) {
                     dp[i][j] = min(dp[i][j], 1ll + dp[k][j]);
                     if (dp[i][j] <= col[j] + 1ll && col[j] != INT_MAX) {
-                        col[j] = min(col[j], dp[i][j] + 1ll);
                         break;
                     }
-                    col[j] = min(col[j], dp[i][j] + 1ll);
                 }
+                col[j] = min(col[j], dp[i][j]);
                 debug(dp, row, col)
             }
         }
