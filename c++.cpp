@@ -44,7 +44,7 @@ void solve(void) {
         }
     }
     _for(i, n) {
-        arr[i & 1][i] = q++;
+        arr[(i & 1)][i] = q++;
     }
     _for(i, n) cout << arr[0][i] << ' ';
     cout << ln;
