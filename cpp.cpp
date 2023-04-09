@@ -49,6 +49,7 @@ public:
     }
     void test(void) {
         vector<vector<int>> t = {{7, 12, 11, 11, 4}, {10, 5, 16, 15, 7}, {7, 9, 6, 16, 7}, {1, 13, 3, 16, 0}};
+        debug(t)
         cout << minimumVisitedCells(t);
         /* test */
     }
