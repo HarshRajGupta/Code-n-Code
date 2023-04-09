@@ -34,7 +34,7 @@ void solve(void) {
     int n; cin >> n;
     v<int> a(n);
     _for(i, n) cin >> a[i];
-    int prev = 1e9;
+    int prev = INT_MAX;
     bw(i, n - 2) {
         if (a[i + 1] > prev) {
             int t = a[i + 1] - prev;
