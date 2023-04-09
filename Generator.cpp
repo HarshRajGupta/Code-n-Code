@@ -30,7 +30,7 @@ struct testCase {
         std::cout << std::endl;
     }
     void generateUniqueArray(size_t n = rand() % L + 1) {
-        const size_t MOD = n * sqrt(n);
+        const size_t MOD = n * (int)sqrt(n) % 400009;
         std::cout << n << '\n';
         std::set<int> s;
         while (n--) {
