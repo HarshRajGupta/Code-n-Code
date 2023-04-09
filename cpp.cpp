@@ -17,7 +17,7 @@ public:
     int minimumVisitedCells(vector<vector<int>>& grid) {
         int n = grid.size(), m = grid[0].size();
         vector<vector<int>> dp(n, vector<int>(m, 1e9));
-        vector<int> row(n, 1e9), col(m, 1e9);
+        // vector<int> row(n, 1e9), col(m, 1e9);
         dp[n - 1][m - 1] = 1;
         // row[n - 1] = 1;
         // col[m - 1] = 1;
