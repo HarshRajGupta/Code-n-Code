@@ -36,6 +36,7 @@ struct testCase {
         for (size_t i = 0; i < N; ++i) v[i] = i + 1;
         std::random_shuffle(v.begin(), v.end());
         while (v.size() > n) v.erase(v.begin() + rand() % v.size());
+        for (size_t i = 0; i < n; ++i) std::cout << v[i] << ' ';
         std::cout << std::endl;
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
