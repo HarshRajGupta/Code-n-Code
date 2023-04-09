@@ -26,18 +26,18 @@ public:
                 int x = grid[i][j];
                 for (int k = j + 1; k <= j + x && k < m; ++k) {
                     dp[i][j] = min(dp[i][j], 1 + dp[i][k]);
-                    if (dp[i][j] <= row[i] + 1) {
-                        break;
-                    }
+                    // if (dp[i][j] <= row[i] + 1) {
+                    //     break;
+                    // }
                 }
                 for (int k = i + 1; k <= i + x && k < n; ++k) {
                     dp[i][j] = min(dp[i][j], 1 + dp[k][j]);
-                    if (dp[i][j] <= col[j] + 1ll) {
-                        break;
-                    }
+                    // if (dp[i][j] <= col[j] + 1ll) {
+                    //     break;
+                    // }
                 }
-                row[i] = min(row[i], dp[i][j]);
-                col[j] = min(col[j], dp[i][j]);
+                // row[i] = min(row[i], dp[i][j]);
+                // col[j] = min(col[j], dp[i][j]);
                 // debug(dp, row, col)
             }
         }
