@@ -29,7 +29,8 @@ struct testCase {
         for (size_t i = 0; i < n; ++i) std::cout << v[i] << ' ';
         std::cout << std::endl;
     }
-    void generateUniqueArray(size_t n = rand() % L + 1, const int MOD = 400009) {
+    void generateUniqueArray(size_t n = rand() % L + 1) {
+        const int MOD = n * sqrt(n);
         std::cout << n << '\n';
         std::set<int> s;
         while (n--) {
