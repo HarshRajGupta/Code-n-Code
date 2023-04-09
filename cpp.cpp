@@ -1,68 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifdef ONLINE_JUDGE
+#ifndef OFFLINE_JUDGE
 #pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#pragma GCC target("sse","sse2","sse3","ssse3","sse4","popcnt","abm","mmx","avx","avx2")
 #endif
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#ifndef __MAIN__
-#define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
+#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
+
+class Solution {
+public:
+    int minimumVisitedCells(vector<vector<int>>& grid) {
+        int n = grid.size(), m = grid[0].size();
+        vector<vector<long long>> dp(n, vector<long long>(m, INT_MAX));
+        dp[n - 1][m - 1] = 0;
+        for (int i = n - 1; i >= 0; --i) {
+            for (int j = m - 1; j >= 0; --j) {
+                if (i == n - 1 && j == m - 1) {
+                    continue;
+                }
+                int x = grid[i][j];
+                for (int k = j + 1; k <= j + x && k < m; ++k) {
+                    dp[i][j] = min(dp[i][j], 1ll + dp[i][k]);
+                }
+                for (int k = i + 1; k <= i + x && k < n; ++k) {
+                    dp[i][j] = min(dp[i][j], 1ll + dp[k][j]);
+                }
+            }
+        }
+        return (dp[0][0] == INT_MAX ? -1 : dp[0][0]);
+    }
+    void test(void) {
+        vector<vector<int>> t = {{3, 4, 2, 1}, {4, 2, 3, 1}, {2, 1, 0, 0}, {2, 4, 0, 0}};
+        cout << minimumVisitedCells(t);
+        /* test */
+    }
+};
+
+#ifdef __TEST__
+__TEST__
 #endif
-
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-#define bw(i, n) for (int32_t i = n; i >= 0; --i)
-
-template<class T>using v = std::vector<T>;
-template<class T>using maxHeap = std::priority_queue<T>;
-template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(),(x).end()
-
-void solve(void) {
-    int n, s1, s2; cin >> n >> s1 >> s2;
-    v<v<int>> tp, arr(n, v<int>(2));
-    v<int> s[2];
-    s[0].resize(n);
-    s[1].resize(n);
-    _for(i, n) {
-        cin >> arr[i][0];
-        arr[i][1] = i;
-        tp.push_back({(i + 1)*s1, 0, i});
-        tp.push_back({(i + 1)*s2, 1, i});
-    }
-    sort(all(tp));
-    sort(all(arr));
-    reverse(all(arr));
-    _for(i, n) {
-        s[tp[i][1]][tp[i][2]] = arr[i][1] + 1;
-    }
-    v<int> a1, a2;
-    _for(i, n) {
-        if (!s[0][i]) break;
-        a1.push_back(s[0][i]);
-    }
-    // cout << ln;
-    cout << sz(a1) << ' ';
-    _for(i, sz(a1)) cout << a1[i] << " ";
-    cout << ln;
-    _for(i, n) {
-        if (!s[1][i]) break;
-        a2.push_back(s[1][i]);
-    }
-    cout << sz(a2) << ' ';
-    _for(i, sz(a2)) cout << a2[i] << " ";
-}
-
-signed main(void) {__MAIN__}
