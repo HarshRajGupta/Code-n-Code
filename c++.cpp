@@ -34,15 +34,15 @@ void solve(void) {
     int n; cin >> n;
     v<v<int>> arr(2, v<int>(n));
     int p = 2 * n, q = 1;
-    _for(i, n / 2) {
-        if (i & 1) {
-            arr[1][i] = p--;
-            arr[0][n - 1 - i] = p--;
-        } else {
-            arr[0][i] = p--;
-            arr[1][n - 1 - i] = p--;
-        }
-    }
+    // _for(i, n / 2) {
+    //     if (i & 1) {
+    //         arr[1][i] = p--;
+    //         arr[0][n - 1 - i] = p--;
+    //     } else {
+    //         arr[0][i] = p--;
+    //         arr[1][n - 1 - i] = p--;
+    //     }
+    // }
     _for(i, n) {
         arr[(i & 1)][i] = q++;
     }
