@@ -3,20 +3,20 @@
 struct testCase {
     static const long long MOD = 1e9 + 7, L = 211;
     std::bitset<2750177> isPrime; std::vector<int> primes;
+    const unsigned long long static r(unsigned long long MOD = 1e9 + 7) {
+        return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
+    }
     const long long static ar() {
         return ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()));
     }
-    const unsigned long long static r() {
-        return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
-    }
-    const unsigned long long static lr() {
+    const unsigned long long static lr(unsigned long long MOD = 1e9 + 7) {
         return (1ull * (rand() % rand()) * (rand() % rand()) % MOD);
     }
-    const unsigned long long static Lr() {
+    const unsigned long long static Lr(unsigned long long MOD = 1e9 + 7) {
         return (1ull * rand() * (rand() % rand()) * (rand() % rand()) % MOD);
     }
-    const unsigned long long static llr() {
-        return (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand()));
+    const unsigned long long static llr(unsigned long long MOD = 18446744073709551615ull) {
+        return (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand())) % MOD;
     }
     testCase() {
         std::cout << std::fixed << std::setprecision(16);
@@ -79,7 +79,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout << r() << ' ' << r() << '\n';
+        std::cout << r() << '\n';
         // generatePair();
         // generateArray();
         // generatePositiveArray();
