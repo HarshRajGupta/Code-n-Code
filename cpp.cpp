@@ -17,7 +17,7 @@ public:
     int minimumVisitedCells(vector<vector<int>>& grid) {
         int n = grid.size(), m = grid[0].size();
         vector<vector<long long>> dp(n, vector<long long>(m, INT_MAX));
-        dp[n - 1][m - 1] = 0;
+        dp[n - 1][m - 1] = 1;
         for (int i = n - 1; i >= 0; --i) {
             for (int j = m - 1; j >= 0; --j) {
                 if (i == n - 1 && j == m - 1) {
@@ -33,7 +33,7 @@ public:
             }
         }
         debug(dp)
-        return (dp[0][0] == INT_MAX ? -1 : dp[0][0] + 1);
+        return (dp[0][0] == INT_MAX ? -1 : dp[0][0]);
     }
     void test(void) {
         vector<vector<int>> t = {{3, 4, 2, 1}, {4, 2, 3, 1}, {2, 1, 0, 0}, {2, 4, 0, 0}};
