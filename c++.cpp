@@ -31,12 +31,25 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    int a, b; cin >> a >> b;
-    if (__gcd(a, b) == 1) {
-        cout << "1\n" << a << ' ' << b;
-        return;
+    int n; cin >> n;
+    v<v<int>> arr(2, v<int>(n));
+    int p = 2 * n, q = 1;
+    _for(i, n / 2) {
+        if (i & 1) {
+            arr[1][i] = p--;
+            arr[0][n - 1 - i] = p--;
+            arr[1][n - 1 - i] = q++;
+            arr[0][i] = q++;
+        } else {
+            arr[0][i] = p--;
+            arr[1][n - 1 - i] = p--;
+            arr[0][n - 1 - i] = q++;
+            arr[1][i] = q++;
+        }
     }
-    cout << "2\n" << a - 1 << " 1\n" << a << " " << b;
+    _for(i, n) cout << arr[0][i] << ' ';
+    cout << ln;
+    _for(i, n) cout << arr[1][i] << ' ';
 }
 
 signed main(void) {__MAIN__}
