@@ -71,7 +71,7 @@ class Solution : private testCase {
         /* generate test case */
         // std::cout << r << ' ' << r << '\n';
         // generatePair();
-        std::cout << (unsigned long long) -1;
+        std::cout << (unsigned long long) -1 << '\n';
         // generateArray();
         // generatePositiveArray();
         // generateBinaryArray();
