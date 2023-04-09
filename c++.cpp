@@ -47,7 +47,13 @@ void solve(void) {
         }
         prev = a[i + 1];
     }
-    debug(a);
+    _for(i, n - 1) {
+        if (a[i] > a[i + 1]) {
+            cout << "NO";
+            return;
+        }
+    }
+    cout << "YES";
 }
 
 signed main(void) {__MAIN__}
