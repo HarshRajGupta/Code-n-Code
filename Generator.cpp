@@ -22,16 +22,27 @@ struct testCase {
         while (n--) std::cout << r << ' ';
         std::cout << std::endl;
     }
-    void generateBinaryArray(size_t n = rand() % L + 1) {
-        std::cout << n << '\n';
-        while (n--) std::cout << (rand() & 1) << ' ';
-        std::cout << std::endl;
-    }
     void generatePermutation(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
         std::vector<int> v(n); for (size_t i = 0; i < n; ++i) v[i] = i + 1;
         std::random_shuffle(v.begin(), v.end());
         for (size_t i = 0; i < n; ++i) std::cout << v[i] << ' ';
+        std::cout << std::endl;
+    }
+    void generateUniqueArray(size_t n = rand() % L + 1) {
+        std::cout << n << '\n';
+        std::set<int> s;
+        while (n--) {
+            int x = (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007);
+            while (s.count(x)) x = (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007);
+            s.insert(x);
+            std::cout << x << ' ';
+        }
+        std::cout << std::endl;
+    }
+    void generateBinaryArray(size_t n = rand() % L + 1) {
+        std::cout << n << '\n';
+        while (n--) std::cout << (rand() & 1) << ' ';
         std::cout << std::endl;
     }
     void generatePrimeArray(size_t n = rand() % L + 1, size_t z = rand() % L + 1) {
@@ -88,8 +99,9 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
+        generateUniqueArray(10);
         // generateBinaryArray();
-        generatePrimeArray();
+        // generatePrimeArray();
         // generateLowerString();
         // generateUpperString();
         // generateBinaryString();
