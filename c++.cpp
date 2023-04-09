@@ -45,7 +45,7 @@ std::vector<bool> sieve(int32_t n = 4000007) {
 
 void solve(void) {
     sieve();
-    debug(allPrimes)
+    debug(allPrimes, sz(allPrimes))
 }
 
 signed main(void) {__SOLVE__}
