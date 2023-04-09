@@ -34,9 +34,11 @@ std::vector<bool> sieve(int32_t n = 1000007) {
     isPrime[0] = false, isPrime[1] = false;
     for (int32_t i = 2; (i * i) <= n; ++i) {
         if (isPrime[i]) {
-            allPrimes.push_back(i);
             for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
         }
+    }
+    for (int i = 0; i <= n; ++i) {
+        if (isPrime[i]) allPrimes.push_back(i);
     }
     return isPrime;
 }
