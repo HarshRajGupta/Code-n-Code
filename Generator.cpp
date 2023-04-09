@@ -30,15 +30,12 @@ struct testCase {
         std::cout << std::endl;
     }
     void generateUniqueArray(size_t n = rand() % L + 1) {
-        const size_t MOD = n * (int)sqrt(n) % 400009;
+        const size_t N = (n * (int)sqrt(n)) % 400009;
         std::cout << n << '\n';
-        std::set<int> s;
-        while (n--) {
-            int x = (1ll * (rand() % rand()) * (rand() % rand()) % MOD);
-            while (s.count(x)) x = (1ll * (rand() % rand()) * (rand() % rand()) % MOD);
-            s.insert(x);
-            std::cout << x << ' ';
-        }
+        std::vector<int> v(N);
+        for (size_t i = 0; i < N; ++i) v[i] = i + 1;
+        std::random_shuffle(v.begin(), v.end());
+        while (v.size() > n) v.erase(v.begin() + rand() % v.size());
         std::cout << std::endl;
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
