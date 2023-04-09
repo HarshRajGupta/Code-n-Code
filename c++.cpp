@@ -38,13 +38,13 @@ void solve(void) {
         if (i & 1) {
             arr[0][n - 1 - i] = p--;
             arr[1][i] = p--;
-            arr[1][n - 1 - i] = q--;
             arr[0][i] = q--;
+            arr[1][n - 1 - i] = q--;
         } else {
             arr[0][i] = p--;
             arr[1][n - 1 - i] = p--;
-            arr[1][i] = q--;
             arr[0][n - 1 - i] = q--;
+            arr[1][i] = q--;
         }
     }
     // _for(i, n) {
