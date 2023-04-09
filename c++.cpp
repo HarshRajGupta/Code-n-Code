@@ -10,42 +10,33 @@ using namespace std;
 #define debug(...)
 #endif
 
-#ifndef __SOLVE__
-#define __SOLVE__ ios_base::sync_with_stdio(0);cin.tie(NULL);solve();return 0;
+#ifndef __MAIN__
+#define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
 #endif
 
 #define int long long
 const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
 
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
-#define bw(i, n) for(int32_t i = n; i >= 0; --i)
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+#define bw(i, n) for (int32_t i = n; i >= 0; --i)
 
-template <class T> using v = std::vector<T>;
-template <class T> using maxHeap = std::priority_queue<T>;
-template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+template<class T>using v = std::vector<T>;
+template<class T>using maxHeap = std::priority_queue<T>;
+template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
 #define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-std::vector<int32_t> allPrimes;
-std::vector<bool> sieve(int32_t n = 4000007) {
-    std::vector<bool> isPrime(n + 1, true);
-    isPrime[0] = false, isPrime[1] = false;
-    for (int32_t i = 2; (i * i) <= n; ++i) {
-        if (isPrime[i]) {
-            for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
-        }
-    }
-    for (int i = 0; i <= n; ++i) {
-        if (isPrime[i]) allPrimes.push_back(i);
-    }
-    return isPrime;
-}
+#define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    sieve();
-    debug(allPrimes)
+    int a, b; cin >> a >> b;
+    if (__gcd(a, b) == 1) {
+        cout << "1\n" << a << ' ' << b;
+        return;
+    }
+    cout << "2\n" << a - 1 << " 1\n" << a << " " << b;
 }
 
-signed main(void) {__SOLVE__}
+signed main(void) {__MAIN__}
