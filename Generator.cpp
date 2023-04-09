@@ -86,8 +86,8 @@ class Solution : private testCase {
         // generateBinaryArray();
         // generatePrimeArray();
         // generateLowerString();
-        generateUpperString();
-        // generateBinaryString();
+        // generateUpperString();
+        generateBinaryString();
         // generateMatrix();
         // generatePositiveMatrix();
         // generateBinaryMatrix();
