@@ -87,9 +87,9 @@ class Solution : private testCase {
         // generatePair();
         // generateArray();
         // generatePositiveArray();
-        generatePermutation();
+        // generatePermutation();
         // generateBinaryArray();
-        // generatePrimeArray();
+        generatePrimeArray();
         // generateLowerString();
         // generateUpperString();
         // generateBinaryString();
