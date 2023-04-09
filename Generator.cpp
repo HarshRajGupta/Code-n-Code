@@ -3,20 +3,10 @@
 struct testCase {
     static const long long MOD = 1e9 + 7, L = 200003;
     std::bitset<2750177> isPrime; std::vector<int> primes;
-// #define r ((1ull * (rand() % rand()) * (rand() % rand())) %  / (rand() % rand()))
-#define r (1ull * (rand() % rand()) * (rand() % rand()) % 1000000007)
-    // const unsigned long long static r(unsigned long long MOD = 1e9 + 7) {
-    //     return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
-    // }
-    // const long long static ar() {
-    //     return ((rand() & 1 ? -1ll : 1ll) * (rand() % rand()) * (rand() % rand()) / (rand() % rand()));
-    // }
-    // const unsigned long long static lr(unsigned long long MOD = 1e9 + 7) {
-    //     return (1ull * (rand() % rand()) * (rand() % rand()) % MOD);
-    // }
-    // const unsigned long long static Lr(unsigned long long MOD = 1e9 + 7) {
-    //     return (1ull * rand() * (rand() % rand()) * (rand() % rand()) % MOD);
-    // }
+// #define r ((1ull * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
+// #define r (1ull * (rand() % rand()) * (rand() % rand()) % 1000000007)
+// #define r (1ull * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
+#define r (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
     // const unsigned long long static llr(unsigned long long MOD = 18446744073709551615ull) {
     //     return (1ull * (rand() % rand()) * (rand() % rand()) * (rand() % rand())) % MOD;
     // }
@@ -27,16 +17,16 @@ struct testCase {
         for (int i = 2; i <= 2750177; ++i) if (!isPrime[i]) primes.push_back(i);
     }
     void generatePair(unsigned long long MOD = 18446744073709551615ull) {
-        std::cout << rand() << ' ' << rand() << std::endl;
+        std::cout << r << ' ' << r << std::endl;
     }
     void generateArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
-        while (n--) std::cout << (rand() & 1 ? -1 : 1) * rand() << ' ';
+        while (n--) std::cout << (rand() & 1 ? -1ll : 1ll) * r << ' ';
         std::cout << std::endl;
     }
     void generatePositiveArray(size_t n = rand() % L + 1) {
         std::cout << n << '\n';
-        while (n--) std::cout << rand() << ' ';
+        while (n--) std::cout << r << ' ';
         std::cout << std::endl;
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
@@ -67,14 +57,14 @@ struct testCase {
     void generateMatrix(size_t n = rand() % L + 1, const int m = rand() % L + 1) {
         std::cout << n << ' ' << m << '\n';
         while (n--) {
-            for (int i = 0; i < m; ++i) std::cout << (rand() & 1 ? -1 : 1) * rand() << ' ';
+            for (int i = 0; i < m; ++i) std::cout << (rand() & 1 ? -1 : 1) * r << ' ';
             std::cout << std::endl;
         }
     }
     void generatePositiveMatrix(size_t n = rand() % L + 1, const int m = rand() % L + 1) {
         std::cout << n << ' ' << m << '\n';
         while (n--) {
-            for (int i = 0; i < m; ++i) std::cout << rand() << ' ';
+            for (int i = 0; i < m; ++i) std::cout << r << ' ';
             std::cout << std::endl;
         }
     }
