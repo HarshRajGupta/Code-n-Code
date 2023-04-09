@@ -99,7 +99,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(4);
+        generateUniqueArray(5);
         // generateBinaryArray();
         // generatePrimeArray();
         // generateLowerString();
