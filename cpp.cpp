@@ -43,6 +43,7 @@ public:
                     }
                     col[j] = min(col[j], dp[i][j] + 1ll);
                 }
+                debug(dp, row, col)
             }
         }
         debug(dp, row, col)
