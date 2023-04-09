@@ -29,7 +29,7 @@ template <class T> using minHeap = std::priority_queue<T, std::vector<T>, std::g
 #define all(x) (x).begin(), (x).end()
 
 std::vector<int32_t> allPrimes;
-std::vector<bool> sieve(int32_t n = 1000007) {
+std::vector<bool> sieve(int32_t n = 4000007) {
     std::vector<bool> isPrime(n + 1, true);
     isPrime[0] = false, isPrime[1] = false;
     for (int32_t i = 2; (i * i) <= n; ++i) {
