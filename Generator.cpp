@@ -92,8 +92,8 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(100000);
-        // generateBinaryArray();
+        // generateUniqueArray(100000);
+        generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
         // generateBinaryString();
