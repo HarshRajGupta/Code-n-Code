@@ -62,17 +62,26 @@ struct testCase {
         while (n--) std::cout << (rand() & 1);
         std::cout << std::endl;
     }
-    void generateMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
+    void generateMatrix(size_t n = rand() % L + 1, const int m = rand() % L + 1) {
         std::cout << n << ' ' << m << '\n';
-        while (n--) generateArray(m);
+        while (n--) {
+            for (int i = 0; i < m; ++i) std::cout << (rand() & 1 ? -1 : 1) * rand() << ' ';
+            std::cout << std::endl;
+        }
     }
-    void generatePositiveMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
+    void generatePositiveMatrix(size_t n = rand() % L + 1, const int m = rand() % L + 1) {
         std::cout << n << ' ' << m << '\n';
-        while (n--) generatePositiveArray(m);
+        while (n--) {
+            for (int i = 0; i < m; ++i) std::cout << rand() << ' ';
+            std::cout << std::endl;
+        }
     }
-    void generateBinaryMatrix(size_t n = rand() % L + 1, size_t m = rand() % L + 1) {
+    void generateBinaryMatrix(size_t n = rand() % L + 1, const int m = rand() % L + 1) {
         std::cout << n << ' ' << m << '\n';
-        while (n--) generateBinaryArray(m);
+        while (n--) {
+            for (int i = 0; i < m; ++i) std::cout << (rand() & 1);
+            std::cout << std::endl;
+        }
     }
 };
 
