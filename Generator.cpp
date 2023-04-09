@@ -80,7 +80,7 @@ struct testCase {
 class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
-        std::cout << MOD << '\n';
+        std::cout << r << '\n';
         // generatePair();
         // generateArray();
         // generatePositiveArray();
