@@ -31,6 +31,13 @@ struct testCase {
         while (n--) std::cout << (rand() & 1) << ' ';
         std::cout << std::endl;
     }
+    void generatePermutation(size_t n = rand() % L + 1) {
+        std::cout << n << '\n';
+        std::vector<int> v(n); for (size_t i = 0; i < n; ++i) v[i] = i + 1;
+        std::random_shuffle(v.begin(), v.end());
+        for (size_t i = 0; i < n; ++i) std::cout << v[i] << ' ';
+        std::cout << std::endl;
+    }
     void generatePrimeArray(size_t n = rand() % L + 1, size_t z = rand() % L + 1) {
         std::cout << n << '\n';
         while (n--) std::cout << primes[rand() % std::min(primes.size(), z)] << ' ';
@@ -81,6 +88,7 @@ class Solution : private testCase {
         // generatePair();
         // generateArray();
         // generatePositiveArray();
+        generatePermutation();
         // generateBinaryArray();
         // generatePrimeArray();
         // generateLowerString();
