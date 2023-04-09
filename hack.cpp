@@ -42,6 +42,8 @@ public:
         return (dp[0][0] == 1e9 ? -1 : dp[0][0]);
     }
     void test(void) {
+        int t; cin >> t;
+        cout << t*t;
         // cout << minimumVisitedCells(grid);
     }
 };
