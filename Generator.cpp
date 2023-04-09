@@ -3,8 +3,8 @@
 struct testCase {
     static const long long MOD = 1e9 + 7, L = 200003;
     std::bitset<2750177> isPrime; std::vector<int> primes;
-// #define r ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()))
-#define r (1ull * (rand() % rand()) * (rand() % rand()) % MOD)
+// #define r ((1ull * (rand() % rand()) * (rand() % rand())) %  / (rand() % rand()))
+#define r (1ull * (rand() % rand()) * (rand() % rand()) % 1000000007)
     // const unsigned long long static r(unsigned long long MOD = 1e9 + 7) {
     //     return ((1ull * (rand() % rand()) * (rand() % rand())) % MOD / (rand() % rand()));
     // }
