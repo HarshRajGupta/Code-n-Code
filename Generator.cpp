@@ -100,7 +100,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(100000);
+        generateUniqueArray(10000);
         // int t = r;
         // std::cout << t << ' ' << ceil(log10(t)) << '\n';
         // generateBinaryArray();
