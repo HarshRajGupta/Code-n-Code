@@ -31,7 +31,7 @@ struct testCase {
         fflush(stdout);
     }
     void generateUniqueArray(size_t n = rand() % L + 1) {
-        size_t N = n * (n < 121 ? rand() % 10 : sqrt((rand() % n) + sqrt(n))) / (sqrt(sqrt(rand() % n) + sqrt(n)));
+        size_t N = n * (n < 121 ? rand() % 10 : sqrt((rand() % n) + sqrt(n))) / (sqrt(sqrt(rand() % n) + sqrt(sqrt(n))));
         debug(N)
         while (N <= 2 * n) N = (N + rand() % n) % 400009;
         std::cout << n << '\n';
