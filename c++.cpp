@@ -35,7 +35,7 @@ void solve(void) {
 }
 
 void preCompute(void) {
-    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); 
 }
 
 signed main() {preCompute(); signed t; cin >> t; while (t--)solve(); return 0;}
