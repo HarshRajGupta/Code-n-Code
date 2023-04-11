@@ -1,10 +1,14 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
-#define r ((1ll * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
+#define r rand()
+// #define r ((1ll * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
 struct testCase {
+    testCase() {
+        srand(time(0));
+    }
     static const long long MOD = 1e9 + 7, L = 200003;
     void generatePair(unsigned long long MOD = 18446744073709551615ull) {
         std::cout << r << ' ' << r << std::endl;
@@ -92,7 +96,7 @@ struct testCase {
     }
 };
 
-class Solution : private testCase {
+class Solution  {
     void generateTestCase(void) {
         /* generate test case */
         // std::cout << r << '\n';
@@ -100,7 +104,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(10);
+        testCase().generateUniqueArray(10);
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
