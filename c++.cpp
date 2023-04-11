@@ -38,4 +38,4 @@ void preCompute(void) {
     ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
 }
 
-signed main() {preCompute(); signed t; cin >> t; while (t--)solve(), cout << '\n'; return 0;}
+signed main() {preCompute(); signed t; cin >> t; while (t--)solve(); return 0;}
