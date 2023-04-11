@@ -35,9 +35,9 @@ struct testCase {
         debug(N)
         while (N <= (n << 1)) N = (N + (rand() % n)) % 400009;
         std::cout << n << '\n';
-        int arr[400009] = {0};
+        std::vector<int> arr(N);
         for (size_t i = 0; i < N; ++i) arr[i] = i + 1;
-        std::random_shuffle(arr, arr + N - 1);
+        std::random_shuffle(arr.begin(), arr.end());
         // for (const int &i : v) std::cout << i << ' ';
         // std::cout << std::endl;
         fflush(stdout);
@@ -114,7 +114,7 @@ class Solution : private testCase {
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % 2; std::cout << t << '\n';
+        int t = rand() % 211; std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
