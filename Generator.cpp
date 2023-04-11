@@ -7,7 +7,7 @@
 struct testCase {
     static const long long MOD = 1e9 + 7, L = 200003;
     void generatePair(unsigned long long MOD = 18446744073709551615ull) {
-        std::cout << r << ' ' << r << std::endl;
+        std::cout << r % MOD << ' ' << r % MOD << std::endl;
         fflush(stdout);
     }
     void generateArray(size_t n = rand() % L + 1) {
