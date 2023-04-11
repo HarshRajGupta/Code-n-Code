@@ -33,7 +33,7 @@ struct testCase {
     void generateUniqueArray(size_t n = rand() % L + 1) {
         size_t N = n * (sqrt(n) + sqrt(rand() % n)) / (sqrt(sqrt(rand() % n)));
         debug(N)
-        if (N <= n) N += n;
+        while (N <= 2 * n) N += rand() % n;
         std::cout << n << '\n';
         std::vector<int> v(N);
         for (size_t i = 0; i < N; ++i) v[i] = i + 1;
