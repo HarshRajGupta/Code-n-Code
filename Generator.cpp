@@ -34,11 +34,11 @@ struct testCase {
         size_t N = (long long)(n * (n < 100 ? rand() % 7 + 3 : sqrt(rand() % n + (n >> (int)log10(n)))) / (sqrt(sqrt(rand() % n + n)))) % 400009;
         while (N <= (n << 1)) N = (N + (rand() % n)) % 400009;
         std::cout << n << '\n';
-        std::vector<int> arr(N);
-        for (size_t i = 0; i < N; ++i) arr[i] = i + 1;
-        std::random_shuffle(arr.begin(), arr.end());
-        // for (const int &i : v) std::cout << i << ' ';
-        // std::cout << std::endl;
+        std::vector<int> v(N);
+        for (size_t i = 0; i < N; ++i) v[i] = i + 1;
+        std::random_shuffle(v.begin(), v.end());
+        for (const int &i : v) std::cout << i << ' ';
+        std::cout << std::endl;
         fflush(stdout);
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
