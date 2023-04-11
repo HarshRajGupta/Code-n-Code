@@ -37,9 +37,9 @@ struct testCase {
         std::cout << n << '\n';
         int arr[400009];
         for (size_t i = 0; i < N; ++i) arr[i] = i + 1;
-        std::random_shuffle(arr, arr + N);
+        // std::random_shuffle(arr, arr + N - 1);
         // for (const int &i : v) std::cout << i << ' ';
-        std::cout << std::endl;
+        // std::cout << std::endl;
         fflush(stdout);
     }
     void generateBinaryArray(size_t n = rand() % L + 1) {
@@ -100,7 +100,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(10);
+        generateUniqueArray(100000);
         // int t = r;
         // std::cout << t << ' ' << ceil(log10(t)) << '\n';
         // generateBinaryArray();
