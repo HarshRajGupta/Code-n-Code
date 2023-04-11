@@ -1,14 +1,10 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
-#define r rand()
-// #define r ((1ll * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
+#define r ((1ll * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
 struct testCase {
-    // testCase() {
-    //     srand(time(0));
-    // }
     static const long long MOD = 1e9 + 7, L = 200003;
     void generatePair(unsigned long long MOD = 18446744073709551615ull) {
         std::cout << r << ' ' << r << std::endl;
@@ -35,7 +31,7 @@ struct testCase {
         fflush(stdout);
     }
     void generateUniqueArray(size_t n = rand() % L + 1) {
-        size_t N = (long long)(n * (sqrt(n) <= 11 ? (rand() % 10) + 1 : sqrt(n)) / (sqrt(sqrt(n)) <= 1 ? 1 : sqrt(rand() % (int)sqrt(sqrt(n))) + 1)) % 400009;
+        size_t N = 100;
         if (N <= n) N += n;
         std::cout << n << '\n';
         std::vector<int> v(N);
@@ -96,7 +92,7 @@ struct testCase {
     }
 };
 
-class Solution  {
+class Solution : private testCase {
     void generateTestCase(void) {
         /* generate test case */
         // std::cout << r << '\n';
@@ -104,7 +100,7 @@ class Solution  {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        testCase().generateUniqueArray(10);
+        generateUniqueArray(10);
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
