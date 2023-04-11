@@ -102,7 +102,7 @@ class Solution : private testCase {
         // generatePermutation();
         // generateUniqueArray(10);
         int t = r;
-        std::cout << t << ' ' << ceil(log10(t)) << '\n';
+        std::cout << t << ' ' << ceil(log(t)) << '\n';
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
