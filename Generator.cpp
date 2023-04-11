@@ -114,7 +114,7 @@ class Solution : private testCase {
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % 1; std::cout << t << '\n';
+        int t = rand() % 2; std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
