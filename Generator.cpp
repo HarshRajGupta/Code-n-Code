@@ -101,7 +101,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(10);
+        generateUniqueArray(1000);
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
@@ -113,7 +113,7 @@ class Solution : private testCase {
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % 211; std::cout << t << '\n';
+        int t = rand() % 2; std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
