@@ -37,6 +37,7 @@ struct testCase {
         std::vector<int> v(N);
         for (size_t i = 0; i < N; ++i) v[i] = i + 1;
         std::random_shuffle(v.begin(), v.end());
+        v.resize(n);
         for (const int &i : v) std::cout << i << ' ';
         std::cout << std::endl;
         fflush(stdout);
