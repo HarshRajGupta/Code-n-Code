@@ -31,11 +31,11 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    // cout << 1;
+    int n; cin >> n; cout << n*n;
 }
 
 void preCompute(void) {
-    // ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); 
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
 }
 
-signed main() {preCompute(); signed t; cin >> t; while (t--)solve(); return 0;}
+__MAIN__
