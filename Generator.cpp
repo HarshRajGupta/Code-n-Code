@@ -6,9 +6,9 @@
 // #define r (1ll * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
 struct testCase {
-    testCase() {
-        srand(time(0));
-    }
+    // testCase() {
+    //     srand(time(0));
+    // }
     static const long long MOD = 1e9 + 7, L = 200003;
     void generatePair(unsigned long long MOD = 18446744073709551615ull) {
         std::cout << r << ' ' << r << std::endl;
