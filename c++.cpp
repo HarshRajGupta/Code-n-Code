@@ -23,19 +23,19 @@ const char ln = '\n';
 #define foreach(i, x) for (auto &i : x)
 #define bw(i, n) for (int32_t i = n; i >= 0; --i)
 
-template<class T>using v = std::vector<T>;
-template<class T>using maxHeap = std::priority_queue<T>;
-template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+template<class T>using v = vector<T>;
+template<class T>using maxHeap = priority_queue<T>;
+template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    /* Code */
+    cout << 1;
 }
 
 void preCompute(void) {
-    ios::sync_with_stdio(false); cin.tie(NULL); cerr.tie(NULL); cout.flush(); cerr.flush();
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
 }
 
 __MAIN__
