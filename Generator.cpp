@@ -39,7 +39,7 @@ struct testCase {
         for (size_t i = 0; i < N; ++i) v[i] = i + 1;
         std::random_shuffle(v.begin(), v.end());
         v.resize(n);
-        for (const int &i : v) std::cout << i << ' ';
+        // for (const int &i : v) std::cout << i << ' ';
         std::cout << std::endl;
         fflush(stdout);
     }
@@ -113,7 +113,7 @@ class Solution : private testCase {
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % 2; std::cout << t << '\n';
+        int t = rand() % 200; std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
