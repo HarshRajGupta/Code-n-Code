@@ -11,7 +11,7 @@ using namespace std;
 #endif
 
 #ifndef __MAIN__
-#define __MAIN__ ios_base::sync_with_stdio(0);cin.tie(0);signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;
+#define __MAIN__ signed main() {preCompute(); signed t; cin >> t; while (t--)solve(), cout << '\n'; return 0;}
 #endif
 
 #define int long long
@@ -30,61 +30,12 @@ template<class T>using minHeap = std::priority_queue<T, std::vector<T>, std::gre
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-bool forward(v<int> &a) {
-    int prev = INT_MIN, n = sz(a);
-    _for(i, n - 1) {
-        if (prev > a[i]) {
-            int t = prev - a[i];
-            a[i] += t;
-            a[i + 1] += t;
-        } else {
-            int t = a[i] - prev;
-            a[i] -= t;
-            a[i + 1] -= t;
-        }
-        prev = a[i];
-    }
-    debug(a)
-    _for(i, n - 1) {
-        if (a[i] > a[i + 1]) {
-            return false;
-        }
-    }
-    return true;
-}
-
-bool backward(v<int> a) {
-    int prev = INT_MAX, n = sz(a);
-    bw(i, n - 2) {
-        if (a[i + 1] > prev) {
-            int t = a[i + 1] - prev;
-            a[i] -= t;
-            a[i + 1] -= t;
-        } else {
-            int t = prev - a[i + 1];
-            a[i] += t;
-            a[i + 1] += t;
-        }
-        prev = a[i + 1];
-    }
-    debug(a)
-    _for(i, n - 1) {
-        if (a[i] > a[i + 1]) {
-            return false;
-        }
-    }
-    return true;
-}
-
 void solve(void) {
-    int n; cin >> n;
-    v<int> a(n);
-    _for(i, n) cin >> a[i];
-    if (forward(a) || backward(a)) {
-        cout << "YES";
-    } else {
-        cout << "NO";
-    }
+    /* Code */
 }
 
-signed main(void) {__MAIN__}
+void preCompute(void) {
+    ios::sync_with_stdio(false); cin.tie(NULL); cerr.tie(NULL); cout.flush(); cerr.flush();
+}
+
+__MAIN__
