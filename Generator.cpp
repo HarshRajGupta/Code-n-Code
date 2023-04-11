@@ -32,7 +32,6 @@ struct testCase {
     }
     void generateUniqueArray(size_t n = rand() % L + 1) {
         size_t N = (long long)(n * (n < 100 ? rand() % 7 + 3 : sqrt(rand() % n + (n >> (int)log10(n)))) / (sqrt(sqrt(rand() % n + n)))) % 400009;
-        debug(N)
         while (N <= (n << 1)) N = (N + (rand() % n)) % 400009;
         std::cout << n << '\n';
         std::vector<int> arr(N);
@@ -100,9 +99,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(100);
-        // int t = r;
-        // std::cout << t << ' ' << ceil(log10(t)) << '\n';
+        generateUniqueArray(2);
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
