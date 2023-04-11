@@ -35,7 +35,7 @@ struct testCase {
         debug(N)
         while (N <= (n << 1)) N = (N + (rand() % n)) % 400009;
         std::cout << n << '\n';
-        int arr[400009];
+        int arr[400009] = {0};
         for (size_t i = 0; i < N; ++i) arr[i] = i + 1;
         // std::random_shuffle(arr, arr + N - 1);
         // for (const int &i : v) std::cout << i << ' ';
