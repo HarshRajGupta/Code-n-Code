@@ -100,7 +100,7 @@ class Solution : private testCase {
         // generateArray();
         // generatePositiveArray();
         // generatePermutation();
-        generateUniqueArray(10);
+        generateUniqueArray(100);
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();
