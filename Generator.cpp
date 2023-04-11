@@ -35,10 +35,9 @@ struct testCase {
         debug(N)
         while (N <= 2 * n) N += rand() % n;
         std::cout << n << '\n';
-        std::vector<int> v(N);
-        for (size_t i = 0; i < N; ++i) v[i] = i + 1;
-        std::random_shuffle(v.begin(), v.end());
-        v.resize(n);
+        int arr[400009];
+        for (size_t i = 0; i < N; ++i) arr[i] = i + 1;
+        std::random_shuffle(arr, arr + N);
         // for (const int &i : v) std::cout << i << ' ';
         std::cout << std::endl;
         fflush(stdout);
