@@ -45,7 +45,7 @@ std::vector<bool> sieve(const int32_t n = 1000007) {
 }
 
 void solve(void) {
-    debug("Solve", 2, 3)
+    // debug("Solve", 2, 3)
 }
 
 static void preCompute(void) {
