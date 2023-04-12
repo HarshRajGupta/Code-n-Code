@@ -52,6 +52,8 @@ void solve(void) {
     t.push(40);
     t.push(50);
     cout << t.front() << ln;
+    t.pop();
+    
 }
 
 static void preCompute(void) {
