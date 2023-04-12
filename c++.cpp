@@ -45,7 +45,13 @@ std::vector<bool> sieve(const int32_t n = 1000007) {
 }
 
 void solve(void) {
-    cout << sz(allPrimes);
+    queue<int> t;
+    t.push(10);
+    t.push(20);
+    t.push(30);
+    t.push(40);
+    t.push(50);
+    cout << t.front() << ln;
 }
 
 static void preCompute(void) {
