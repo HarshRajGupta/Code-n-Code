@@ -10,26 +10,32 @@ using namespace std;
 #define debug(...)
 #endif
 
-#ifndef __SOLVE__
-#define __SOLVE__ signed main() {solve(); return 0;}
+#ifndef __MAIN__
+#define __MAIN__ signed main() {preCompute(); signed t; cin >> t; while (t--)solve(), cout << '\n'; return 0;}
 #endif
 
 #define int long long
 const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
 
-#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
-#define bw(i, n) for(int32_t i = n; i >= 0; --i)
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+#define bw(i, n) for (int32_t i = n; i >= 0; --i)
 
 template<class T>using v = vector<T>;
 template<class T>using maxHeap = priority_queue<T>;
 template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 #define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
+#define all(x) (x).begin(),(x).end()
 
 void solve(void) {
     /* Code */
 }
 
-__SOLVE__
+static void preCompute(void) {
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
+}
+
+__MAIN__
