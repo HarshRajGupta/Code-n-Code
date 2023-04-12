@@ -32,6 +32,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 void solve(void) {
     /* Code */
+    int t = 1;
 }
 
 static void preCompute(void) {
