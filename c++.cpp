@@ -30,28 +30,12 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-std::vector<int32_t> allPrimes;
-std::vector<bool> sieve(const int32_t n = 1000007) {
-    std::vector<bool> isPrime(n + 1, true);
-    isPrime[0] = false, isPrime[1] = false;
-    for (int32_t i = 2; (i * i) <= n; ++i)
-        if (isPrime[i])
-            for (int j = (i * i); j <= n; j += i)
-                isPrime[j] = false;
-    for (int32_t i = 2; i <= n; ++i)
-        if (isPrime[i])
-            allPrimes.push_back(i);
-    return isPrime;
-}
-
 void solve(void) {
-    // debug("Solve", 2, 3)
+    /* Code */
 }
 
 static void preCompute(void) {
     ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
-    sieve();
-    // debug(allPrimes[0])
 }
 
 __MAIN__
