@@ -51,7 +51,7 @@ void solve(void) {
 static void preCompute(void) {
     ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
     sieve();
-    // debug(allPrimes[0])
+    debug(allPrimes[0])
 }
 
 __MAIN__
