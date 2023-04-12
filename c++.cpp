@@ -35,7 +35,7 @@ void solve(void) {
     cout << n / 2;
 }
 
-void preCompute(void) {
+void static preCompute(void) {
     ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
 }
 
