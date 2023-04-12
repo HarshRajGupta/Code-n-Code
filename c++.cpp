@@ -30,13 +30,13 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
+void static preCompute(void) {
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
+}
+
 void solve(void) {
     int n; cin >> n;
     cout << n / 2;
-}
-
-void static preCompute(void) {
-    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
 }
 
 __MAIN__
