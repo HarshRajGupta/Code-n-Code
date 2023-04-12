@@ -36,6 +36,7 @@ void solve(void) {
 
 static void preCompute(void) {
     ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
+    debug(1)
 }
 
 __MAIN__
