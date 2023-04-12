@@ -48,7 +48,7 @@ void solve(void) {
     cout << sz(allPrimes);
 }
 
-static void preCompute(void) {
+void preCompute(void) {
     ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); cout.flush();
     sieve();
     // debug(allPrimes[0])
