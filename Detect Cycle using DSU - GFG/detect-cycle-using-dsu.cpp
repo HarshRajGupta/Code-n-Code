@@ -23,6 +23,13 @@ class Solution {
         if (parent[x] == x || parent[x] == -1) return x;
         return parent[x] = find(parent, parent[x]);
     }
+    bool unionSet(vector<int> &parent, int x, int y) {
+        int u = find(parent, x);
+        int v = find(parent, y);
+        if (u == v) return false;
+        parent[v] = u;
+        return true;
+    }
 public:
     int detectCycle(int V, vector<int>adj[]) {
         vector<int> parent(V, -1);
@@ -31,12 +38,9 @@ public:
                 parent[i] = i;
             }
             int u = find(parent, i);
-            sort(adj[i].begin(), adj[i].end());
             for (auto j : adj[i]) {
                 if (j <= i) continue;
-                int v = find(parent, j);
-                if (v == u) return 1;
-                parent[v] = u;
+                if (!unionSet(parent, u, j)) return 1;
             }
         }
         return 0;
