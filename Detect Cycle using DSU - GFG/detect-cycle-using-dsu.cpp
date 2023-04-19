@@ -18,26 +18,36 @@ using namespace std;
 
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
-class Solution {
-    int find(vector<int> &parent, int x) {
-        if (parent[x] == x || parent[x] == -1) return parent[x] = x;
-        return parent[x] = find(parent, parent[x]);
+class disJointSet {
+    vector<int> parent;
+public:
+    disJointSet(const int n) {
+        parent.resize(n);
+        iota(parent.begin(), parent.end(), 0);
     }
-    bool unionSet(vector<int> &parent, int x, int y) {
-        int u = find(parent, x);
-        int v = find(parent, y);
-        if (u == v) return false;
-        parent[v] = u;
+    int find(int x) {
+        if (parent[x] == x)
+            return x;
+        return parent[x] = find(parent[x]);
+    }
+    bool unionSet(int x, int y) {
+        x = find(x), y = find(y);
+        if (x == y)
+            return false;
+        parent[x] = y;
         return true;
     }
+};
+
+class Solution {
 public:
     int detectCycle(int V, vector<int>adj[]) {
-        vector<int> parent(V, -1);
+        disJointSet ds(V);
         for (int i = 0; i < V; ++i) {
-            int u = find(parent, i);
             for (auto j : adj[i]) {
                 if (j <= i) continue;
-                if (!unionSet(parent, u, j)) return 1;
+                if (!ds.unionSet(i, j))
+                    return 1;
             }
         }
         return 0;
