@@ -20,24 +20,24 @@ using namespace std;
 
 class Solution {
     int find(vector<int> &parent, int x) {
-        if (parent[x] == x) return x;
+        if (parent[x] == x || parent[x] == -1) return x;
         return parent[x] = find(parent, parent[x]);
     }
 public:
     int detectCycle(int V, vector<int>adj[]) {
         vector<int> parent(V, -1);
-        set<pair<int, int>> edges;
         for (int i = 0; i < V; ++i) {
-            for (auto j : adj[i]) {
-                edges.insert({min(i, j), max(i, j)});
+            if (parent[i] == -1) {
+                parent[i] = i;
             }
-        }
-        for (int i = 0; i < V; ++i) parent[i] = i;
-        for (auto i : edges) {
-            int u = i.first, v = i.second;
-            int x = find(parent, u), y = find(parent, v);
-            if (x == y) return 1;
-            else parent[x] = y;
+            int u = find(parent, i);
+            sort(adj[i].begin(), adj[i].end());
+            for (auto j : adj[i]) {
+                if (j <= i) continue;
+                int v = find(parent, j);
+                if (v == u) return 1;
+                parent[v] = u;
+            }
         }
         return 0;
     }
