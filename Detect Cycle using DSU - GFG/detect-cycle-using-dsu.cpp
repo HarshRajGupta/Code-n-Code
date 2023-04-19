@@ -20,7 +20,7 @@ using namespace std;
 
 class Solution {
     int find(vector<int> &parent, int x) {
-        if (parent[x] == x || parent[x] == -1) return x;
+        if (parent[x] == x || parent[x] == -1) return parent[x] = x;
         return parent[x] = find(parent, parent[x]);
     }
     bool unionSet(vector<int> &parent, int x, int y) {
@@ -34,9 +34,6 @@ public:
     int detectCycle(int V, vector<int>adj[]) {
         vector<int> parent(V, -1);
         for (int i = 0; i < V; ++i) {
-            if (parent[i] == -1) {
-                parent[i] = i;
-            }
             int u = find(parent, i);
             for (auto j : adj[i]) {
                 if (j <= i) continue;
