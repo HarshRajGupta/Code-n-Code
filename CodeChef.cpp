@@ -44,7 +44,6 @@ public:
     }
     void test() {
         /* test */
-        cout << 1;
     }
 };
 

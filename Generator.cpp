@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
-#define r ((1ll * (rand() % rand()) * (rand() % rand())) % 1000000007 / (rand() % rand()))
+#define r ((1ll * (rand() % rand() + 1) * (rand() % rand() + 1) % 1000000007) / (rand() % rand()))
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
@@ -36,8 +36,7 @@ struct testCase {
         std::cout << n << '\n';
         std::vector<int> v(N);
         for (size_t i = 0; i < N; ++i) v[i] = i + 1;
-        std::random_shuffle(v.begin(), v.end());
-        v.resize(n);
+        std::random_shuffle(v.begin(), v.end()); v.resize(n);
         for (const int &i : v) std::cout << i << ' ';
         std::cout << std::endl;
         fflush(stdout);
@@ -97,10 +96,10 @@ class Solution : private testCase {
         /* generate test case */
         // std::cout << r << '\n';
         // generatePair();
-        // generateArray();
-        // generatePositiveArray();
+        // generateArray(r % 100);
+        generatePositiveArray(10);
         // generatePermutation();
-        generateUniqueArray(2);
+        // generateUniqueArray(2);
         // generateBinaryArray();
         // generateLowerString();
         // generateUpperString();

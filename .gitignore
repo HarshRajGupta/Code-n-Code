@@ -2,10 +2,13 @@
 /a.exe
 /input
 /input.txt
+/input.*
 /output
 /output.txt
+/output.*
 /log
 /log.txt
+/log.*
 /program
 /program.exe
 /program.out
@@ -13,3 +16,8 @@
 /*.exe
 /.fleet
 /.vscode
+/*.txt
+/Notes.txt
+/Notes.notes
+/Notes
+/Notes.*

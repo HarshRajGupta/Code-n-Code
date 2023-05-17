@@ -1,30 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
 #ifndef debug
 #define debug(...)
 #endif
 
-#define ll long long
-#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
-#define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int64_t i = n; i >= 0; --i)
+#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
-    template <class T> using v = std::vector<T>;
-    template <class T> using xHeap = std::priority_queue<T>;
-    template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
+class Solution {
+    int subSeq(const vector<int> &nums, const int t, int index = 0, int sum = 0) {
+        if (index == nums.size() || sum >= t) {
+            return (sum == t);
+        }
+        return subSeq(nums, t, index + 1, sum) + subSeq(nums, t, index, sum + nums[index]);
+    }
 public:
-    /* function */
+    int combinationSum4(vector<int>& nums, int target) {
+        return subSeq(nums, target);
+    }
     void test() {
-        cout << 1;
+        /* test */
     }
 };
 
-#ifndef ONLINE_JUDGE
-#include "leetcode.h"
+#ifdef __TEST__
+__TEST__
 #endif
