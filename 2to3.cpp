@@ -11,7 +11,7 @@ class Solution {
 public:
     /* function */
     void test() {
-        /* test */
+        cout << 1;
     }
 };
 
