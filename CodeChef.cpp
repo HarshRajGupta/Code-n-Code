@@ -65,10 +65,13 @@ void solve(void) {
         int temp = power(2, n - count - a[i]);
         if (count >= i) {
             temp = (temp * nCr(count, i)) % MOD;
-            temp = (temp * (power(2, a[i]) - 1)) % MOD;
-            ans += temp;
+            temp = (temp * (power(2, a[i]) - 1 + MOD)) % MOD;
+            ans = (ans + temp) % MOD;
         } else {
-
+            if (count + a[i] > i) {
+                temp = (temp * (power(2, count + a[i] - i) - 1)) % MOD;
+                ans = (ans + temp) % MOD;
+            }
         }
         count += a[i];
     }
