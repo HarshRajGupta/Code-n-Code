@@ -40,6 +40,16 @@ const int power(int n, int expo, int MOD = 1e9 + 7) {
     return ans;
 }
 
+map<int32_t, map<int32_t, int32_t>> dp;
+int nCr(int n, int r) {
+    if (dp[n][r]) return dp[n][r];
+    if (r > n)
+        return 0;
+    if (r == 0 || r == n)
+        return 1;
+    return dp[n][r] = (nCr(n - 1, r - 1) + nCr(n - 1, r)) % MOD;
+}
+
 void solve(void) {
     int n; cin >> n;
     v<int> arr(n);
@@ -50,16 +60,15 @@ void solve(void) {
         if (i > n) continue;
         ++a[i - 1];
     }
-    int ans = 0, prev = 1, count = n;
-    foreach (i, a) {
-        count -= i;
-        if (!i) {
-            cout << ans;
-            return;
+    int ans = 0, count = 0;
+    _for(i, n) {
+        int temp = power(2, n - count - a[i]);
+        if (count >= i) {
+            temp = (temp * nCr(count, i)) % MOD;
+            temp = (temp * (power(2, a[i]) - 1)) % MOD;
+            ans += temp;
         }
-        ans = (ans + ((prev * ((power(2, i) - 1) * (power(2, count)) % MOD)) % MOD)) % MOD;
     }
-    cout << ans;
 }
 
 static bool preCompute(void) {
