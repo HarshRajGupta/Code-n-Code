@@ -43,7 +43,9 @@ const int power(int n, int expo, int MOD = 1e9 + 7) {
 v<int> fact(1e5 + 7, 1), invFact(1e5 + 7);
 
 int nCr(int n, int r) {
-    return (fact[n] * ((invFact[n - r] * invFact[r]) % MOD)) % MOD;
+    int ans =  (fact[n] * ((invFact[n - r] * invFact[r]) % MOD)) % MOD;
+    debug(ans, n, r)
+    return ans;
 }
 
 void solve(void) {
@@ -90,7 +92,7 @@ static bool preCompute(void) {
         fact[i] = (fact[i - 1] * i) % MOD;
         invFact[i] = invMod(fact[i]);
     }
-    debug(fact)
+    // debug(fact)
     return 0;
 }
 
