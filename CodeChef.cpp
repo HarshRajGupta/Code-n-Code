@@ -50,7 +50,8 @@ public:
         auto res = successfulPairs(s, p, 2966799365), r2 = st(s, p, 2966799365);
         for (int i = 0; i < res.size(); ++i) {
             if (res[i] != r2[i]) {
-                debug(i, s[i], res[i], r2[i]);
+                auto t = ceil(2966799365, s[i]);
+                debug(i, s[i], res[i], r2[i], t, p[p.size() - 1 - res[i]]);
             }
         }
     }
