@@ -38,7 +38,7 @@ public:
         for (int i = 0; i < spells.size(); ++i) {
             long long t = spells[i];
             for (auto &j : potions) {
-                if ((t * i) >= success) ++ans[i];
+                if ((t * j) >= success) ++ans[i];
             }
         }
         return ans;
