@@ -92,7 +92,7 @@ static bool preCompute(void) {
         fact[i] = (fact[i - 1] * i) % MOD;
         invFact[i] = invMod(fact[i]);
     }
-    // debug(fact)
+    debug(invFact)
     return 0;
 }
 
