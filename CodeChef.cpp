@@ -20,7 +20,8 @@ class Solution {
         }
         return ans;
     }
-    int64_t ceil (long double n, long double d = 1) {
+    int64_t ceil (long long n, long long d = 1) {
+
         return (n / d) + (n > (d * ((int64_t)(n / d))));
     }
 public:
