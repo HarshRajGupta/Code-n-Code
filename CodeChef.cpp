@@ -8,7 +8,7 @@ using namespace std;
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
 class Solution {
-    const int lB(const std::vector<int> &arr, const int64_t t, int l = 0, int r = -1) {
+    const int lB(const std::vector<int> &arr, const int32_t t, int l = 0, int r = -1) {
         if (r == -1) r = (arr.size() - 1);
         if (arr[l] >= t) return l - 1;
         if (arr[r] < t) return r;
