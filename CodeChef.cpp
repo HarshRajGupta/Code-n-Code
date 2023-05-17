@@ -69,6 +69,7 @@ void solve(void) {
             ans += temp;
         }
     }
+    cout << ans;
 }
 
 static bool preCompute(void) {
