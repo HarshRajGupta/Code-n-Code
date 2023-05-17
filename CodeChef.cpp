@@ -86,10 +86,11 @@ const int invMod(int n, const int MOD = 1e9 + 7) {
 
 static bool preCompute(void) {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
-    rep(i, 2, 1e5 + 7) {
+    rep(i, 2, sz(fact)) {
         fact[i] = fact[i - 1] * i;
         invFact[i] = invMod(fact[i]);
     }
+    debug(fact)
 }
 
 __MAIN__
