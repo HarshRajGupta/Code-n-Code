@@ -21,11 +21,10 @@ class Solution {
         return ans;
     }
     int64_t ceil (long long n, long long d = 1) {
-
         return (n / d) + (n > (d * ((int64_t)(n / d))));
     }
 public:
-    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions,const long long success) {
         sort(potions.begin(), potions.end());
         vector<int> ans = spells;
         int n = potions.size() - 1;
