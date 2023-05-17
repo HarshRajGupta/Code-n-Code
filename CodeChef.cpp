@@ -67,7 +67,10 @@ void solve(void) {
             temp = (temp * nCr(count, i)) % MOD;
             temp = (temp * (power(2, a[i]) - 1)) % MOD;
             ans += temp;
+        } else {
+
         }
+        count += a[i];
     }
     cout << ans;
 }
