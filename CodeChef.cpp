@@ -40,11 +40,20 @@ const int power(int n, int expo, int MOD = 1e9 + 7) {
     return ans;
 }
 
-v<int> fact(1e5 + 7, 1), invFact(1e5 + 7);
+v<int> fact(1e5 + 7, 1);
+
+const int invMod(int n, const int MOD = 1e9 + 7) {
+    int ans = 1, expo = MOD - 2; n %= MOD;
+    while (expo) {
+        if (expo & 1) ans = (ans * 1ll * n) % MOD;
+        n = (n * 1ll * n) % MOD;
+        expo >>= 1;
+    }
+    return ans;
+}
 
 int nCr(int n, int r) {
-    int ans =  (fact[n] * ((invFact[n - r] * invFact[r]) % MOD)) % MOD;
-    debug(ans, n, r)
+    int ans = (fact[n] * invMod((fact[n - r] * fact[r]) % MOD)) % MOD;
     return ans;
 }
 
@@ -76,24 +85,11 @@ void solve(void) {
     cout << ans;
 }
 
-const int invMod(int n, const int MOD = 1e9 + 7) {
-    int ans = 1, expo = MOD - 2; n %= MOD;
-    while (expo) {
-        if (expo & 1) ans = (ans * 1ll * n) % MOD;
-        n = (n * 1ll * n) % MOD;
-        expo >>= 1;
-    }
-    return ans;
-}
-
 static bool preCompute(void) {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
-    invFact[0] = invFact[1] = invMod(1);
     rep(i, 2, sz(fact)) {
         fact[i] = (fact[i - 1] * i) % MOD;
-        invFact[i] = invMod(fact[i]);
     }
-    debug(invFact)
     return 0;
 }
 
