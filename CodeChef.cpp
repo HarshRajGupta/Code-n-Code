@@ -34,7 +34,7 @@ public:
         return ans;
     }
     vector<int> st(vector<int>& spells, vector<int>& potions, long long success) {
-        vector<int> ans(spells.size());
+        vector<int> ans(spells.size(), 0);
         for (int i = 0; i < spells.size(); ++i) {
             long long t = spells[i];
             for (auto &j : potions) {
