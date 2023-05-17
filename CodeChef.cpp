@@ -30,16 +30,36 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-void solve(void) {
-    int n, m; cin >> n >> m;
-    if (n < m) {
-        cout << "NO";
-        return;
+const int power(int n, int expo, int MOD = 1e9 + 7) {
+    int ans = 1; n %= MOD;
+    while (expo) {
+        if (expo & 1) ans = (ans * 1ll * n) % MOD;
+        n = (n * 1ll * n) % MOD;
+        expo >>= 1;
     }
-    while (!(n & 1)) n >>= 1;
-    debug(n, m)
-    if (m % n == 0) cout << "YES";
-    else cout << "NO";
+    return ans;
+}
+
+void solve(void) {
+    int n; cin >> n;
+    v<int> arr(n);
+    foreach(i, arr) cin >> i;
+    sort(all(arr));
+    v<int> a(n);
+    foreach (i, arr) {
+        if (i > n) continue;
+        ++a[i - 1];
+    }
+    int ans = 0, prev = 1, count = n;
+    foreach (i, a) {
+        count -= i;
+        if (!i) {
+            cout << ans;
+            return;
+        }
+        ans = (ans + ((prev * ((power(2, i) - 1) * (power(2, count)) % MOD)) % MOD)) % MOD;
+    }
+    cout << ans;
 }
 
 static bool preCompute(void) {
