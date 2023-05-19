@@ -43,6 +43,7 @@ public:
         int ans = 0, i = 0;
         while (height[i] != currMax) {
             int j = i + leftMonotony[i];
+            debug(i, j)
             ans += ((j - i - 1) * height[i]) - (prefixSum[j] - prefixSum[i + 1]);
             debug(i, j, ans)
             i = j;
@@ -51,6 +52,7 @@ public:
         i = n - 1;
         while (height[i] != currMax) {
             int j = i - rightMonotony[i];
+            debug(i, j)
             ans += (i - j - 1) * height[i] - (prefixSum[i] - prefixSum[j + 1]);
             debug(i, j, ans)
             i = j;
