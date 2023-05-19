@@ -5,15 +5,13 @@ using namespace std;
 #define debug(...)
 #endif
 
-#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
-
 class Solution {
 public:
     int trap(vector<int>& height) {
         const int n = height.size();
         vector<int> leftMonotony(n), rightMonotony(n, 0), prefixSum(n + 1);
         int currMax = 0;
-        rep(i, 0, n) {
+        for (int i = 0; i < n; ++i) {
             prefixSum[i + 1] = prefixSum[i] + height[i];
             if (currMax < height[i]) {
                 currMax = height[i];
@@ -60,7 +58,7 @@ public:
         return ans;
     }
     void test() {
-        vector<int> t = {4,2,0,3,2,5};
+        vector<int> t = {2,0,2};
         cout << trap(t) << endl;
     }
 };
