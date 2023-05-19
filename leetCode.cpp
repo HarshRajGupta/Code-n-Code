@@ -51,7 +51,11 @@ void solve(void) {
     }
     v<int> a(arr.begin(), arr.end());
     int ans = 0, prev = 1;
-    _for(i, min(k, sz(a))) {
+    if (k > sz(a)) {
+        cout << 0;
+        return;
+    }
+    _for(i, k) {
         prev = (prev * mp[a[i]]) % MOD;
     }
     _for(i, sz(a) - k + 1) {
