@@ -223,7 +223,7 @@ void solve(void) {
         else mt.insert(res[i]);
     }
     debug(res, mt)
-    while (sz(mt) > 2) {
+    while (sz(mt) >= 2) {
         auto it1 = mt.begin();
         auto it2 = mt.rbegin();
         int z = (*it1 + *it2) - 2;
