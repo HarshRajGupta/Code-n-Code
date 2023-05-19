@@ -62,7 +62,7 @@ void solve(void) {
     _for(i, k) {
         prev = (prev * mp[a[i]]) % MOD;
     }
-    _for(i, n - k - 1) {
+    _for(i, n - k) {
         debug(i, a[i], a[i + k], prev)
         if (a[i + k] - a[i] == k) {
             ans = (ans + prev) % MOD;
