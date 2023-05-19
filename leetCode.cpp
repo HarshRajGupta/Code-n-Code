@@ -58,6 +58,7 @@ void solve(void) {
         if (a[i + k - 1] - a[i] == (k - 1)) {
             ans = (ans + prev) % MOD;
         }
+        debug(i + k, sz(a))
         if (i + k + 1 < sz(a))
             prev = (((prev * invMod(mp[a[i]])) % MOD) * mp[a[i + k]]) % MOD;
     }
