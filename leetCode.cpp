@@ -32,12 +32,13 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 
 struct Graph {
-    vector<vector<int>> adj, edges;
+    vector<vector<int>> edges;
+    vector<set<int>> adj;
     map<pair<int, int>, int> weight;
     vector<int> indegree, outdegree;
-    Graph(int n) : adj(vector<vector<int>>(n)), indegree(vector<int>(n)), outdegree(vector<int>(n)) {}
+    Graph(int n) : adj(vector<set<int>>(n)), indegree(vector<int>(n)), outdegree(vector<int>(n)) {}
     void addEdge(int u, int v, int w = 1) {
-        adj[u].push_back(v);
+        adj[u].insert(v);
         edges.push_back({w, u, v});
         weight[ {u, v} ] = w;
         ++outdegree[u];
