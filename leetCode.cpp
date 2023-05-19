@@ -31,20 +31,44 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    int n, k; cin >> n >> k;
-    v<pair<int, int>> a(n);
+    int n; cin >> n;
+    v<int> arr(n);
+    int  N;
     _for(i, n) {
-        int t; cin >> t;
-        a[i] = {t, i};
+        cin >> arr[i];
+        if (arr[i] == n) {
+            N = i;
+        }
     }
-    v<int> b(n); foreach(i, b)cin >> i;
-    sort(all(a));
-    sort(all(b));
-    v<int> z(n);
-    _for(i, n) {
-        z[a[i].second] = b[i];
+    if (N == n - 1) {
+        int one = 0;
+        for (int i = N - 1; i > 0; --i) {
+            if (arr[i] < arr[0]) {
+                one = i; break;
+            }
+        }
+        for (int i = n - 1; i > one; --i) cout << arr[i] << " ";
+        for (int i = 0; i <= one; ++i) cout << arr[i] << " ";
+    } else if (N == 0) {
+        _for(i, n) {
+            if (arr[i] == n - 1) {
+                N = i;
+            }
+        }
+        for (int i = N; i < n; ++i) cout << arr[i] << " ";
+        cout << arr[N - 1] << " ";
+        for (int i = 0; i < N - 1; ++i) cout << arr[i] << " ";
+    } else {
+        int one = 0;
+        for (int i = N - 1; i > 0; --i) {
+            if (arr[i] < arr[0]) {
+                one = i; break;
+            }
+        }
+        for (int i = N; i < n; ++i) cout << arr[i] << " ";
+        for (int i = N - 1; i > one; --i) cout << arr[i] << " ";
+        for (int i = 0; i <= one; ++i) cout << arr[i] << " ";
     }
-    _for(i, n) cout << z[i] << " ";
 }
 
 static bool preCompute(void) {
