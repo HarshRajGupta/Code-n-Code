@@ -9,26 +9,53 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> dailyTemperatures(vector<int>& temperatures) {
-        vector<int> ans(temperatures.size(), 0);
-        for (int i = ans.size() - 2; i >= 0; --i) {
-            if (temperatures[i] < temperatures[i + 1]) ans[i] = 1;
-            else {
-                int j = ans[i + 1];
-                while (j && temperatures[i] >= temperatures[i + j + 1] ) {
-                    if (ans[i + j + 1]) j += ans[i + j + 1];
-                    else j = 0;
+    int trap(vector<int>& height) {
+        const int n = height.size();
+        vector<int> leftMonotony(n), rightMonotony(n, 0), prefixSum(n + 1);
+        int currMax = 0;
+        rep(i, 0, n) {
+            prefixSum[i + 1] = prefixSum[i] + height[i];
+            if (currMax < height[i]) {
+                currMax = height[i];
+                rightMonotony[i] = 0;
+            } else {
+                int j = i - 1;
+                while (height[j] < height[i]) {
+                    j -= rightMonotony[j];
                 }
-                if (temperatures[i] < temperatures[i + j + 1])
-                    ans[i] = j + 1;
+                rightMonotony[i] = i - j;
             }
+        }
+        currMax = 0;
+        for (int i = n - 1; i >= 0; --i) {
+            if (currMax < height[i]) {
+                currMax = height[i];
+                leftMonotony[i] = 0;
+            } else {
+                int j = i + 1;
+                while (height[j] < height[i]) {
+                    j += leftMonotony[j];
+                }
+                leftMonotony[i] = j - i;
+            }
+        }
+        int ans = 0, i = 0;
+        while (height[i] != currMax) {
+            int j = i + leftMonotony[i];
+            ans += (j - i) * height[i] - (prefixSum[j + 1] - prefixSum[i + 1]);
+            i = j;
+        }
+        i = n - 1;
+        while (height[i] != currMax) {
+            int j = i - rightMonotony[i];
+            ans += (i - j) * height[i] - (prefixSum[i] - prefixSum[j]);
+            i = j;
         }
         return ans;
     }
     void test() {
-        vector<int> temp = {55, 38, 53, 81, 61, 93, 97, 32, 43, 78};
-        vector<int> ans = dailyTemperatures(temp);
-        debug(ans)
+        vector<int> t = {0,1,0,2,1,0,1,3,2,1,2,1};
+        cout << trap(t) << endl;
     }
 };
 
