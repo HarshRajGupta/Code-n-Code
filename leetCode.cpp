@@ -31,14 +31,20 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    int n; string s;
-    cin >> n >> s;
-    set<string> st;
-    rep(i, 0, n - 1) {
-        string t = {s[i], s[i + 1]};
-        st.insert(t);
+    int n, k; cin >> n >> k;
+    v<pair<int, int>> a(n);
+    _for(i, n) {
+        int t; cin >> t;
+        a[i] = {t, i};
     }
-    cout << sz(st);
+    v<int> b(n); foreach(i, b)cin >> i;
+    sort(all(a));
+    sort(all(b));
+    v<int> z(n);
+    _for(i, n) {
+        z[a[i].second] = b[i];
+    }
+    _for(i, n) cout << z[i];
 }
 
 static bool preCompute(void) {
