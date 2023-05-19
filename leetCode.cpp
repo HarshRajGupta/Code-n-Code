@@ -39,6 +39,7 @@ public:
                 leftMonotony[i] = j - i;
             }
         }
+        debug(height, leftMonotony, rightMonotony, prefixSum)
         int ans = 0, i = 0;
         while (height[i] != currMax) {
             int j = i + leftMonotony[i];
