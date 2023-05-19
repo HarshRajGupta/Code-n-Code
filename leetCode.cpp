@@ -47,8 +47,9 @@ public:
             i = j;
         }
         debug(ans)
+        currMax = i;
         i = n - 1;
-        while (height[i] != currMax) {
+        while (i != currMax) {
             int j = i - rightMonotony[i];
             debug(i, j)
             ans += (i - j - 1) * height[i] - (prefixSum[i] - prefixSum[j + 1]);
@@ -58,7 +59,7 @@ public:
         return ans;
     }
     void test() {
-        vector<int> t = {2,0,2};
+        vector<int> t = {2, 0, 2};
         cout << trap(t) << endl;
     }
 };
