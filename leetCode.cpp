@@ -51,15 +51,14 @@ void solve(void) {
     }
     v<int> a(arr.begin(), arr.end());
     int ans = 0, prev = 1;
-    _for(i, k) {
+    _for(i, min(k, sz(a))) {
         prev = (prev * mp[a[i]]) % MOD;
     }
     _for(i, sz(a) - k + 1) {
         if (a[i + k - 1] - a[i] == (k - 1)) {
             ans = (ans + prev) % MOD;
         }
-        debug(i + k, sz(a))
-        if (i + k + 1 < sz(a))
+        if (i + k < sz(a))
             prev = (((prev * invMod(mp[a[i]])) % MOD) * mp[a[i + k]]) % MOD;
     }
     cout << ans;
