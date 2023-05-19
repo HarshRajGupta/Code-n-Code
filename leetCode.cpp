@@ -60,6 +60,7 @@ void solve(void) {
     debug(a, mp)
     int ans = 0, prev = 1;
     _for(i, k) {
+        debug(i, k)
         prev = (prev * mp[a[i]]) % MOD;
     }
     _for(i, n - k - 1) {
