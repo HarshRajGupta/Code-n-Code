@@ -60,7 +60,7 @@ void solve(void) {
         for (int i = 0; i < N - 1; ++i) cout << arr[i] << " ";
     } else {
         int one = 0;
-        for (int i = N - 1; i > 0; --i) {
+        for (int i = N - 2; i > 0; --i) {
             if (arr[i] < arr[0]) {
                 one = i; break;
             }
