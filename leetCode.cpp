@@ -57,7 +57,7 @@ void solve(void) {
         mp[x]++;
     }
     v<int> a(arr.begin(), arr.end());
-    debug(a)
+    debug(a, mp)
     int ans = 0, prev = 1;
     _for(i, k) {
         prev = (prev * mp[a[i]]) % MOD;
