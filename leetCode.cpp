@@ -50,7 +50,7 @@ public:
         i = n - 1;
         while (height[i] != currMax) {
             int j = i - rightMonotony[i];
-            ans += (i - j) * height[i] - (prefixSum[i] - prefixSum[j]);
+            ans += (i - j) * height[i] - (prefixSum[i+1] - prefixSum[j]);
             i = j;
         }
         return ans;
