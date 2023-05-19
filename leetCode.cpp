@@ -50,13 +50,13 @@ public:
         i = n - 1;
         while (height[i] != currMax) {
             int j = i - rightMonotony[i];
-            ans += (i - j) * height[i] - (prefixSum[i+1] - prefixSum[j]);
+            ans += (i - j) * height[i] - (prefixSum[i + 1] - prefixSum[j + 1]);
             i = j;
         }
         return ans;
     }
     void test() {
-        vector<int> t = {0,1,0,2,1,0,1,3,2,1,2,1};
+        vector<int> t = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         cout << trap(t) << endl;
     }
 };
