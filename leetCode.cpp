@@ -40,13 +40,6 @@ const int invMod(int n, const int MOD = 1e9 + 7) {
     return ans;
 }
 
-
-v<int> fact(1e5 + 7, 1);
-int nCr(int n, int r) {
-    int ans = (fact[n] * invMod((fact[n - r] * fact[r]) % MOD)) % MOD;
-    return ans;
-}
-
 void solve(void) {
     int n, k; cin >> n >> k;
     map<int, int> mp;
@@ -57,26 +50,22 @@ void solve(void) {
         mp[x]++;
     }
     v<int> a(arr.begin(), arr.end());
-    debug(a, mp)
     int ans = 0, prev = 1;
     _for(i, k) {
         prev = (prev * mp[a[i]]) % MOD;
     }
     _for(i, sz(a) - k + 1) {
-        debug(i, a[i], a[i + k - 1], prev)
         if (a[i + k - 1] - a[i] == (k - 1)) {
             ans = (ans + prev) % MOD;
         }
-        prev = (prev * invMod(mp[a[i]]) * mp[a[i + k]]) % MOD;
+        if (i + k < sz(a))
+            prev = (((prev * invMod(mp[a[i]])) % MOD) * mp[a[i + k]]) % MOD;
     }
     cout << ans;
 }
 
 static bool preCompute(void) {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
-    rep(i, 2, sz(fact)) {
-        fact[i] = (fact[i - 1] * i) % MOD;
-    }
     return 0;
 }
 
