@@ -60,7 +60,7 @@ public:
         return ans;
     }
     void test() {
-        vector<int> t = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        vector<int> t = {4,2,0,3,2,5};
         cout << trap(t) << endl;
     }
 };
