@@ -67,7 +67,7 @@ void solve(void) {
         if (a[i + k] - a[i] == k) {
             ans = (ans + prev) % MOD;
         }
-        prev = (prev * invMod(mp[a[i]])) % MOD;
+        prev = (prev * invMod(mp[a[i]]) * mp[a[i + k]]) % MOD;
     }
     cout << ans;
 }
