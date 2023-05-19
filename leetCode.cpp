@@ -214,6 +214,8 @@ void solve(void) {
         int u; cin >> u;
         g.addUEdge(u - 1, i);
     }
+    set<int> z = {1, 4, 1, 3};
+    debug(z)
     auto res = g.connect();
     sort(all(res));
     debug(res)
