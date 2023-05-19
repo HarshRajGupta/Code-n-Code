@@ -189,7 +189,7 @@ struct Graph {
     vector<int> connect() {
         vector<bool> visited(adj.size());
         vector<int> count;
-        debug(adj)
+        // debug(adj)
         function<int(int)> dfs = [&](int u) {
             visited[u] = true;
             int res = 0;
@@ -214,16 +214,30 @@ void solve(void) {
         int u; cin >> u;
         g.addUEdge(u - 1, i);
     }
-    set<int> z = {1, 4, 1, 3};
-    debug(z)
     auto res = g.connect();
     sort(all(res));
-    debug(res)
-    cout << g.connectedComponents() << '\n';
+    multiset<int> mt;
+    int a = 0;
+    _for(i, sz(res)) {
+        if (!res[i]) ++a;
+        else mt.insert(res[i]);
+    }
+    debug(res, mt)
+    while (sz(mt) > 2) {
+        auto it1 = mt.begin();
+        auto it2 = mt.rbegin();
+        int z = (*it1 + *it2) - 2;
+        mt.erase(it1);
+        mt.erase(mt.find(*it2));
+        if (z) mt.insert(z);
+        else ++a;
+        debug(a, mt)
+    }
+    cout << a + mt.size() << " " << g.connectedComponents() << '\n';
 }
 
 static bool preCompute(void) {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
+    // ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
 }
 
 __MAIN__
