@@ -208,7 +208,7 @@ void solve(void) {
     Graph g(n);
     for (int i = 0; i < n; ++i) {
         int u; cin >> u;
-        g.addEdge(u - 1, i);
+        g.addUEdge(u - 1, i);
     }
     auto res = g.connect();
     sort(all(res));
