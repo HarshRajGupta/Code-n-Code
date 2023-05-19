@@ -188,10 +188,13 @@ struct Graph {
     vector<int> connect() {
         vector<bool> visited(adj.size());
         vector<int> count;
+        debug(adj)
         function<int(int)> dfs = [&](int u) {
             visited[u] = true;
             int res = 0;
-            if (sz(adj[u]) == 1) ++res;
+            if (sz(adj[u]) == 1) {
+                ++res;
+            }
             for (auto v : adj[u])
                 if (!visited[v])
                     res += dfs(v);
