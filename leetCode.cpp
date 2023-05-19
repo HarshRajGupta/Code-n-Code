@@ -44,7 +44,7 @@ void solve(void) {
     _for(i, n) {
         z[a[i].second] = b[i];
     }
-    _for(i, n) cout << z[i];
+    _for(i, n) cout << z[i] << " ";
 }
 
 static bool preCompute(void) {
