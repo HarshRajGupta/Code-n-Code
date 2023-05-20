@@ -4,14 +4,10 @@ using namespace  __gnu_debug;
 
 class Solution {
 public:
-    vector<string> wordBreak() {
-        string S = "12"; 
-        debug(S)
-        return {};
-    }
-    /* function */
     void test() {
-        wordBreak();
+        vector<set<int>> arr(2); 
+        arr[1].insert(7);
+        debug(arr)
     }
 };
 
