@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace  __gnu_debug;
 
-
 class Solution {
 public:
     void test() {
