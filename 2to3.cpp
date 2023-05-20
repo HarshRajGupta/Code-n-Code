@@ -1,49 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#endif
+
 #ifndef debug
 #define debug(...)
 #endif
 
-#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
-
-class Solution {
-    void nCr(vector<int> &arr, int k, int pos, vector<int> &a) {
-        if (a.size() == k) {
-            for (int i : a) cout << i << ' ';
-            cout << '\n';
-            return;
-        }
-        if (pos == arr.size()) return;
-        a.push_back(arr[pos]);
-        nCr(arr, k, pos + 1, a);
-        a.pop_back();
-        nCr(arr, k, pos + 1, a);
-    }
-public:
-    int longSubarrWthSumDivByK(int arr[], int n, int k) {
-        vector<int> prefixSum(n + 1);
-        map<int, pair<int, int>> mp;
-        pair<int, int> testPair;
-        int MAX = 0;
-        rep(i, 0, n) {
-            prefixSum[i + 1] = (prefixSum[i] + arr[i]) % k;
-            if (prefixSum[i + 1] && mp[prefixSum[i + 1]] == testPair) {
-                mp[prefixSum[i + 1]] = {i + 1, i + 1};
-            } else {
-                auto [l, r] = mp[prefixSum[i + 1]];
-                mp[prefixSum[i + 1]] = {min(i + 1, l), max(i + 1, r)};
-                MAX = max(MAX, mp[prefixSum[i + 1]].second - mp[prefixSum[i + 1]].first);
-            }
-        }
-        return MAX;
-    }
-    void test() {
-        vector<int> vt = {18, 9, 9, 10, 5, 16, 15, 13, 6, 15, 3}, cd;
-        nCr(vt, 3, 0, cd);
-    }
-};
-
-#ifdef __TEST__
-__TEST__
+#ifndef __MAIN__
+#define __MAIN__ signed main() {preCompute(); signed t; cin >> t; while (t--)solve(), cout << '\n'; return 0;}
 #endif
+
+#define int long long
+const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
+
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+#define bw(i, n) for (int32_t i = n; i >= 0; --i)
+
+template<class T>using v = vector<T>;
+template<class T>using maxHeap = priority_queue<T>;
+template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
+
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(),(x).end()
+
+void solve(void) {
+    int n; cin >> n;
+    v<int> arr(n);
+    foreach (i, arr)
+        cin >> i;
+    int ans = 0;
+    _for(i, n - 1) {
+        int j = i + 1;
+        while (j < n && arr[j - 1] <= arr[j]) ++j;
+        ans += (j - i + (n - 1 - i)) * (n - j) / 2;
+    }
+    cout << ans;
+}
+
+static bool preCompute(void) {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
+}
+
+__MAIN__
