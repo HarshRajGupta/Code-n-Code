@@ -11,7 +11,7 @@ class Solution {
 public:
     /* function */
     void test() {
-        vector<set<int>> arr(2);
+        set<int> arr[2];
         arr[0].insert(0);
         debug(arr)
     }
