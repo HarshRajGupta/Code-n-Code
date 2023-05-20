@@ -8,6 +8,17 @@ using namespace std;
 #define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
 
 class Solution {
+    void nCr(vector<int> &arr, int k, int pos, vector<int> &a) {
+        if (a.size() == k) {
+            for (int i : a) cout << i << ' ';
+            cout << '\n';
+        }
+        if (pos == arr.size()) return;
+        a.push_back(arr[pos]);
+        nCr(arr, k, pos + 1, a);
+        a.pop_back();
+        nCr(arr, k, pos + 1, a);
+    }
 public:
     int longSubarrWthSumDivByK(int arr[], int n, int k) {
         vector<int> prefixSum(n + 1);
@@ -24,13 +35,11 @@ public:
                 MAX = max(MAX, mp[prefixSum[i + 1]].second - mp[prefixSum[i + 1]].first);
             }
         }
-        debug(prefixSum, mp)
-        if (prefixSum[n] == 0) return n;
         return MAX;
     }
     void test() {
-        int vt[] = {18, 9, 9, 10, 5, 16, 15, 13, 6, 15, 3};
-        cout << longSubarrWthSumDivByK(vt, 11, 4);
+        vector<int> vt = {18, 9, 9, 10, 5, 16, 15, 13, 6, 15, 3}, cd;
+        nCr(vt, 3, 0, cd);
     }
 };
 
