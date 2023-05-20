@@ -16,7 +16,7 @@ public:
         int MAX = 0;
         rep(i, 0, n) {
             prefixSum[i + 1] = (prefixSum[i] + arr[i]) % k;
-            if (mp[prefixSum[i + 1]] == testPair) {
+            if (prefixSum[i + 1] && mp[prefixSum[i + 1]] == testPair) {
                 mp[prefixSum[i + 1]] = {i + 1, i + 1};
             } else {
                 auto [l, r] = mp[prefixSum[i + 1]];
@@ -29,7 +29,7 @@ public:
         return MAX;
     }
     void test() {
-        int vt[] = {18,9,9,10,5,16,15,13,6,15,3};
+        int vt[] = {18, 9, 9, 10, 5, 16, 15, 13, 6, 15, 3};
         cout << longSubarrWthSumDivByK(vt, 11, 4);
     }
 };
