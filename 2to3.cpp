@@ -12,6 +12,7 @@ class Solution {
         if (a.size() == k) {
             for (int i : a) cout << i << ' ';
             cout << '\n';
+            return;
         }
         if (pos == arr.size()) return;
         a.push_back(arr[pos]);
