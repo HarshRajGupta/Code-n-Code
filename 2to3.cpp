@@ -21,7 +21,7 @@ public:
             } else {
                 auto [l, r] = mp[prefixSum[i + 1]];
                 mp[prefixSum[i + 1]] = {min(i + 1, l), max(i + 1, r)};
-                MAX = max(MAX, mp[prefixSum[i + 1]].second - mp[prefixSum[i + 1]].first + 1);
+                MAX = max(MAX, mp[prefixSum[i + 1]].second - mp[prefixSum[i + 1]].first);
             }
         }
         return MAX;
