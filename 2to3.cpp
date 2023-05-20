@@ -14,8 +14,9 @@ public:
         int i = 0, j = 0, MAX = 0, count = 0;
         while (j < s.size()) {
             ++cnt[s[j] - 'A'];
-            if (j - i + 1 - cnt[s[j] - 'A'] > k) {
-                cnt[s[i] - 'A']--;
+            count = max(count, cnt[s[j] - 'A']);
+            while (j - i + 1 - count > k) {
+                --cnt[s[i] - 'A'];
                 ++i;
             }
             MAX = max(MAX, j - i + 1);
