@@ -13,7 +13,7 @@ public:
     void test() {
         vector<set<int>> arr(2);
         arr[0].insert(0);
-        debug(arr[0])
+        debug(arr)
     }
 };
 
