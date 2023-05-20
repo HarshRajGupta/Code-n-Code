@@ -7,7 +7,7 @@ public:
     void test() {
         set<int> arr[2];
         arr[1].insert(7);
-        debug(arr)
+        debug(arr[0])
     }
 };
 
