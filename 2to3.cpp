@@ -4,9 +4,9 @@ using namespace  __gnu_debug;
 class Solution {
 public:
     void test() {
-        set<int> arr[2];
+        vector<set<int>> arr(5);
         arr[1].insert(7);
-        debug(arr[0])
+        debug(arr)
     }
 };
 
