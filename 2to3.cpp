@@ -16,6 +16,7 @@ public:
         // debug(root)
         auto head = new debug::ListNode(1, new debug::ListNode(2, new debug::ListNode(3, new debug::ListNode(4, new debug::ListNode(5)))));
         debug(head)
+        cout << head->val;
     }
 };
 
