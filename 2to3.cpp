@@ -24,6 +24,7 @@ public:
                 MAX = max(MAX, mp[prefixSum[i + 1]].second - mp[prefixSum[i + 1]].first);
             }
         }
+        debug(prefixSum, mp)
         return MAX;
     }
     void test() {
