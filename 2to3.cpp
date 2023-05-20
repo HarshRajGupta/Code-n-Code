@@ -11,10 +11,11 @@ class Solution {
 public:
     /* function */
     void test() {
-        set<int> arr[2];
-        arr[0].insert(0);
-        debug(arr)
-        cout << rank<set<int>*>::value;
+        vector<map<int, int>> mp(2);
+        mp[1][0] = 4;
+        mp[0][1] = 9;
+        mp[0][7] = 1;
+        debug(mp)
     }
 };
 
