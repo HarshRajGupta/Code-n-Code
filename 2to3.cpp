@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-using namespace std;
+using namespace __dataStructures;
 
 // struct TreeNode {
 //     int val;
@@ -14,9 +14,9 @@ public:
     void test() {
         TreeNode *root = new TreeNode(1, new TreeNode(2, NULL, new TreeNode(5)), new TreeNode(3));
         debug(root)
-        auto head = new debug::ListNode(1, new debug::ListNode(2, new debug::ListNode(3, new debug::ListNode(4, new debug::ListNode(5)))));
+        auto head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
         debug(head)
-        cout << head->val;
+        std::cout << head->val;
     }
 };
 
