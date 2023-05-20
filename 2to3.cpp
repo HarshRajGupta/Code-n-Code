@@ -28,8 +28,8 @@ public:
         return MAX;
     }
     void test() {
-        int vt[] = {20, 13, 11, 14, 2, 7, 4, 2, 6, 7, 6, 13, 6};
-        cout << longSubarrWthSumDivByK(vt, 13, 1);
+        int vt[] = {18,9,9,10,5,16,15,13,6,15,3};
+        cout << longSubarrWthSumDivByK(vt, 11, 4);
     }
 };
 
