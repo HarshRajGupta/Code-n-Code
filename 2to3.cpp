@@ -20,6 +20,7 @@ public:
             }
             MAX = max(MAX, j - i + 1);
             ++j;
+            debug(i, j, cnt)
         }
         return MAX;
     }
