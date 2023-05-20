@@ -14,7 +14,7 @@ public:
         set<int> arr[2];
         arr[0].insert(0);
         debug(arr)
-        cout << rank<set<int>*>::value;
+        cout << rank<set<int>>::value;
     }
 };
 
