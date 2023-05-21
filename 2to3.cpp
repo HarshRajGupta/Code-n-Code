@@ -48,7 +48,7 @@ public:
         return ans;
     }
     void test() {
-        cout << punishmentNumber(379) << endl;
+        cout << punishmentNumber(1000) << endl;
         /* test */
     }
 };
