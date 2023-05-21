@@ -8,6 +8,8 @@ using namespace __gnu_debug;
 class Solution {
     map<string, map<int, int>> cache;
     bool isPunishable(string s, int pos, int sum) {
+        if (sum < 0)
+            return false;
         if (cache[s][sum] == -1)
             return false;
         if (cache[s][sum] == 1)
@@ -46,7 +48,7 @@ public:
         return ans;
     }
     void test() {
-        cout << punishmentNumber(1000) << endl;
+        cout << punishmentNumber(379) << endl;
         /* test */
     }
 };
