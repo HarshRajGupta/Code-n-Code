@@ -5,28 +5,47 @@ using namespace __gnu_debug;
 #define debug(...)
 #endif
 
-#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
-
 class Solution {
-public:
-    int characterReplacement(string s, int k) {
-        vector<int> cnt(26, 0);
-        int i = 0, j = 0, MAX = 0, count = 0;
-        while (j < s.size()) {
-            ++cnt[s[j] - 'A'];
-            count = max(count, cnt[s[j] - 'A']);
-            while (j - i + 1 - count > k) {
-                --cnt[s[i] - 'A'];
-                ++i;
-            }
-            MAX = max(MAX, j - i + 1);
-            ++j;
-            debug(i, j, cnt)
+    map<string, map<int, int>> cache;
+    bool isPunishable(string s, int pos, int sum) {
+        if (cache[s][sum] == -1)
+            return false;
+        if (cache[s][sum] == 1)
+            return true;
+        if (pos == s.size()) {
+            return sum == 0;
         }
-        return MAX;
+        for (int i = 1; i <= min((int)s.size() - pos, (int)log10(sum) + 1); ++i) {
+            if (isPunishable(s, pos + i, sum - stoi(s.substr(pos, i))))
+                return cache[s][sum] = 1;
+        }
+        cache[s][sum] = -1;
+        return false;
+    }
+    string intToString(int n) {
+        string s;
+        while (n) {
+            s += n % 10 + '0';
+            n /= 10;
+        }
+        reverse(s.begin(), s.end());
+        return s;
+    }
+public:
+    int punishmentNumber(int n) {
+        int ans = 0;
+        for (int i = 1; i <= n; ++i) {
+            int z = i * i;
+            if (isPunishable(intToString(z), 0, i)) {
+                ans += z;
+                cout << i << ' ';
+            }
+        }
+        return ans;
     }
     void test() {
-        cout << characterReplacement("BAAAB", 2);
+        cout << punishmentNumber(10) << endl; 
+        /* test */
     }
 };
 
