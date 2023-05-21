@@ -20,6 +20,7 @@ class Solution {
                 return cache[s][sum] = 1;
         }
         cache[s][sum] = -1;
+        debug(s, sum)
         return false;
     }
     string intToString(int n) {
