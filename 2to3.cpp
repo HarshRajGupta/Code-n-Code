@@ -20,7 +20,7 @@ class Solution {
                 return cache[s][sum] = 1;
         }
         cache[s][sum] = -1;
-        debug(s, sum)
+        // debug(s, sum)
         return false;
     }
     string intToString(int n) {
@@ -30,7 +30,7 @@ class Solution {
             n /= 10;
         }
         reverse(s.begin(), s.end());
-        debug(n, s)
+        // debug(n, s)
         return s;
     }
 public:
@@ -46,7 +46,7 @@ public:
         return ans;
     }
     void test() {
-        cout << punishmentNumber(10) << endl;
+        cout << punishmentNumber(1000) << endl;
         /* test */
     }
 };
