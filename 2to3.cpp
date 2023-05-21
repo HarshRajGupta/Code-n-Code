@@ -29,6 +29,7 @@ class Solution {
             n /= 10;
         }
         reverse(s.begin(), s.end());
+        debug(n, s)
         return s;
     }
 public:
