@@ -15,7 +15,7 @@ class Solution {
         if (pos == s.size()) {
             return sum == 0;
         }
-        for (int i = 1; i <= min((int)s.size() - pos, (int)log10(sum) + 1); ++i) {
+        for (int i = 1; i <= min((int)s.size() - pos, (int)log10(sum + 1) + 1); ++i) {
             if (isPunishable(s, pos + i, sum - stoi(s.substr(pos, i))))
                 return cache[s][sum] = 1;
         }
@@ -46,7 +46,7 @@ public:
         return ans;
     }
     void test() {
-        cout << punishmentNumber(10) << endl; 
+        cout << punishmentNumber(10) << endl;
         /* test */
     }
 };
