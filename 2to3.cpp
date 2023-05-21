@@ -6,22 +6,22 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    map<string, map<int, int>> cache;
+    // map<string, map<int, int>> cache;
     bool isPunishable(string s, int pos, int sum) {
         if (sum < 0)
             return false;
-        if (cache[s][sum] == -1)
-            return false;
-        if (cache[s][sum] == 1)
-            return true;
+        // if (cache[s][sum] == -1)
+        //     return false;
+        // if (cache[s][sum] == 1)
+        //     return true;
         if (pos == s.size()) {
             return sum == 0;
         }
         for (int i = 1; i <= s.size() - pos; ++i) {
             if (isPunishable(s, pos + i, sum - stoi(s.substr(pos, i))))
-                return cache[s][sum] = 1;
+                return 1;
         }
-        cache[s][sum] = -1;
+        // cache[s][sum] = -1;
         // debug(s, sum)
         return false;
     }
