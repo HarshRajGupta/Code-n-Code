@@ -10,7 +10,6 @@ public:
     void test() {
         ListNode* l = new ListNode(1);
         debug(l);
-        /* test */
     }
 };
 
