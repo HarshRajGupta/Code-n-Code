@@ -8,6 +8,8 @@ using namespace __gnu_debug;
 class Solution {
 public:
     void test() {
+        ListNode* l = new ListNode(1);
+        debug(l);
         /* test */
     }
 };
