@@ -30,6 +30,19 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
+int64_t ceil (long double n, long double d = 1) {
+    return (n / d) + (n > (d * ((int64_t)(n / d))));
+}
+
+int powerOf2(int n) {
+    int ans = 0;
+    while (n) {
+        ++ans;
+        n >>= 1;
+    }
+    return ans;
+}
+
 const int power(int n, int expo, int MOD = 1e9 + 7) {
     int ans = 1; n %= MOD;
     while (expo) {
@@ -40,57 +53,13 @@ const int power(int n, int expo, int MOD = 1e9 + 7) {
     return ans;
 }
 
-v<int> fact(1e5 + 7, 1);
-
-const int invMod(int n, const int MOD = 1e9 + 7) {
-    int ans = 1, expo = MOD - 2; n %= MOD;
-    while (expo) {
-        if (expo & 1) ans = (ans * 1ll * n) % MOD;
-        n = (n * 1ll * n) % MOD;
-        expo >>= 1;
-    }
-    return ans;
-}
-
-int nCr(int n, int r) {
-    int ans = (fact[n] * invMod((fact[n - r] * fact[r]) % MOD)) % MOD;
-    return ans;
-}
-
 void solve(void) {
-    int n; cin >> n;
-    v<int> arr(n);
-    foreach(i, arr) cin >> i;
-    sort(all(arr));
-    v<int> a(n);
-    foreach (i, arr) {
-        if (i > n) continue;
-        ++a[i - 1];
-    }
-    int ans = 0, count = 0;
-    _for(i, n) {
-        int temp = power(2, n - count - a[i]);
-        if (count >= i) {
-            temp = (temp * nCr(count, i)) % MOD;
-            temp = (temp * (power(2, a[i]) - 1 + MOD)) % MOD;
-            ans = (ans + temp) % MOD;
-        } else {
-            if (count + a[i] > i) {
-                temp = (temp * (power(2, count + a[i] - i) - 1 + MOD)) % MOD;
-                ans = (ans + temp) % MOD;
-            }
-        }
-        count += a[i];
-    }
-    cout << ans;
+    int l, r; cin >> l >> r;
+    cout << power(powerOf2(r), 2);
 }
 
 static bool preCompute(void) {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
-    rep(i, 2, sz(fact)) {
-        fact[i] = (fact[i - 1] * i) % MOD;
-    }
-    return 0;
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
 }
 
 __MAIN__
