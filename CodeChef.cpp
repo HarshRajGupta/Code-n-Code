@@ -55,7 +55,7 @@ const int power(int n, int expo, int MOD = 1e9 + 7) {
 
 void solve(void) {
     int l, r; cin >> l >> r;
-    cout << power(powerOf2(r), 2);
+    cout << power(2, powerOf2(r));
 }
 
 static bool preCompute(void) {
