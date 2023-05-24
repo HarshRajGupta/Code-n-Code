@@ -116,7 +116,7 @@ class Solution : private testCase {
         // generateMatrix();
         // generatePositiveMatrix();
         // generateBinaryMatrix();
-        cout << 0 << ' ' << power(2, rand() % 63) - 1 << endl;
+        cout << 0 << ' ' << power(2, (rand() % 60) + 3) - 1 << endl;
     }
 public:
     void test(void) {
