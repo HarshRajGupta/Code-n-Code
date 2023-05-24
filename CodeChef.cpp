@@ -43,11 +43,11 @@ int powerOf2(int n) {
     return ans;
 }
 
-const int power(int n, int expo, int MOD = 1e9 + 7) {
-    int ans = 1; n %= MOD;
+const int power(int n, int expo) {
+    int ans = 1; 
     while (expo) {
-        if (expo & 1) ans = (ans * 1ll * n) % MOD;
-        n = (n * 1ll * n) % MOD;
+        if (expo & 1) ans = (ans * 1ll * n);
+        n = (n * 1ll * n);
         expo >>= 1;
     }
     return ans;
