@@ -57,7 +57,7 @@ void solve(void) {
     int l, r; cin >> l >> r;
     int z = power(2, powerOf2(r));
     if (z != r + 1) {
-        debug(r);
+        debug(r, z);
     }
 }
 
