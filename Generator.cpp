@@ -92,7 +92,7 @@ struct testCase {
 };
 
 class Solution : private testCase {
-    const int power(int n, int expo, int64_t MOD = 1e18 + 7) {
+    const int power(int n, int expo, int64_t MOD = 1e18) {
         int ans = 1; n %= MOD;
         while (expo) {
             if (expo & 1) ans = (ans * 1ll * n) % MOD;
@@ -116,7 +116,7 @@ class Solution : private testCase {
         // generateMatrix();
         // generatePositiveMatrix();
         // generateBinaryMatrix();
-        cout << 0 << ' ' << power(2, rand() % 64) - 1 << endl;
+        cout << 0 << ' ' << power(2, rand() % 63) - 1 << endl;
     }
 public:
     void test(void) {
