@@ -92,7 +92,7 @@ struct testCase {
 };
 
 class Solution : private testCase {
-    const int64_t power(int n, int expo) {
+    const int64_t power(int64_t n, int expo) {
         int64_t ans = 1;
         while (expo) {
             if (expo & 1) ans = (ans * 1ll * n);
