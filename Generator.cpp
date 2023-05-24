@@ -92,12 +92,21 @@ struct testCase {
 };
 
 class Solution : private testCase {
+    const int power(int n, int expo, int MOD = 1e9 + 7) {
+        int ans = 1; n %= MOD;
+        while (expo) {
+            if (expo & 1) ans = (ans * 1ll * n) % MOD;
+            n = (n * 1ll * n) % MOD;
+            expo >>= 1;
+        }
+        return ans;
+    }
     void generateTestCase(void) {
         /* generate test case */
         // std::cout << r << '\n';
         // generatePair();
         // generateArray(r % 100);
-        generatePositiveArray(10);
+        // generatePositiveArray(10);
         // generatePermutation();
         // generateUniqueArray(2);
         // generateBinaryArray();
@@ -107,6 +116,7 @@ class Solution : private testCase {
         // generateMatrix();
         // generatePositiveMatrix();
         // generateBinaryMatrix();
+        cout << 0 << ' ' << power(2, rand() % 64) - 1 << endl;
     }
 public:
     void test(void) {
