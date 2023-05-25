@@ -52,7 +52,11 @@ void solve(void) {
         b.push_back(x);
     }
     debug(b)
-    cout << min(a.size(), b.size());
+    set<int> ar;
+    _for(i, n + 1) {
+        ar.insert(max(a[i], b[i]));
+    }
+    cout << ar.size();
 }
 
 static bool preCompute(void) {
