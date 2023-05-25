@@ -33,30 +33,23 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve(void) {
     int n; cin >> n;
     string s; cin >> s;
-    vector<int> a, b;
-    int x = 1000;
-    a.push_back(x);
+    set<int> a;
+    int x = n * 2;
+    a.insert(x);
     for (auto &i : s) {
         if (i == '>') --x;
         else if (i == '<') ++x;
-        // debug(x)
-        a.push_back(x);
+        a.insert(x);
     }
-    x = 1000;
-    b.push_back(x);
-    debug(a)
-    for (int i = n - 1; i >= 0; --i) {
-        if (s[i] == '>') ++x;
-        else if (s[i] == '<') --x;
-        // debug(x)
-        b.push_back(x);
+    stack<char> st;
+    size_t MAX = 0;
+    for (auto &i : s) {
+        if (st.empty() || st.top() == i) {
+            st.push(i);
+        } else st.pop();
+        MAX = max(MAX, st.size());
     }
-    debug(b)
-    set<int> ar;
-    _for(i, n + 1) {
-        ar.insert(max(a[i], b[i]));
-    }
-    cout << ar.size();
+    cout << MAX;
 }
 
 static bool preCompute(void) {
