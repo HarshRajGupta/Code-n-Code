@@ -33,14 +33,6 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve(void) {
     int n; cin >> n;
     string s; cin >> s;
-    set<int> a;
-    int x = n * 2;
-    a.insert(x);
-    for (auto &i : s) {
-        if (i == '>') --x;
-        else if (i == '<') ++x;
-        a.insert(x);
-    }
     stack<char> st;
     size_t MAX = 0;
     for (auto &i : s) {
@@ -53,7 +45,7 @@ void solve(void) {
 }
 
 static bool preCompute(void) {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
+    return 0;
 }
 
 __MAIN__
