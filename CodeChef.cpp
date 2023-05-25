@@ -48,6 +48,7 @@ void solve(void) {
         else if (s[i] == '<') --x;
         b.insert(x);
     }
+    debug(a, b)
     cout << min(a.size(), b.size());
 }
 
