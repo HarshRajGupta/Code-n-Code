@@ -39,16 +39,19 @@ void solve(void) {
     for (auto &i : s) {
         if (i == '>') --x;
         else if (i == '<') ++x;
+        debug(x)
         a.insert(x);
     }
     x = 1000;
     b.insert(x);
+    debug(a)
     for (int i = n - 1; i >= 0; --i) {
         if (s[i] == '>') ++x;
         else if (s[i] == '<') --x;
+        debug(x)
         b.insert(x);
     }
-    debug(a, b)
+    debug(b)
     cout << min(a.size(), b.size());
 }
 
