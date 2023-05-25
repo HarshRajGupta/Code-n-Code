@@ -49,7 +49,7 @@ void solve(void) {
         } else st.pop();
         MAX = max(MAX, st.size());
     }
-    cout << MAX;
+    cout << MAX + 1;
 }
 
 static bool preCompute(void) {
