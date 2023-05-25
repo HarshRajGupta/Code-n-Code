@@ -30,35 +30,18 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-int64_t ceil (long double n, long double d = 1) {
-    return (n / d) + (n > (d * ((int64_t)(n / d))));
-}
-
-int powerOf2(int n) {
-    int ans = 0;
-    while (n) {
-        ++ans;
-        n >>= 1;
-    }
-    return ans;
-}
-
-const int power(int n, int expo) {
-    int ans = 1; 
-    while (expo) {
-        if (expo & 1) ans = (ans * 1ll * n);
-        n = (n * 1ll * n);
-        expo >>= 1;
-    }
-    return ans;
-}
-
 void solve(void) {
-    int l, r; cin >> l >> r;
-    int z = power(2, powerOf2(r));
-    if (z != r + 1) {
-        debug(r, z);
+    int n; cin >> n;
+    string s; cin >> s;
+    set<int> a;
+    int x = n * 2;
+    a.insert(x);
+    for (auto &i : s) {
+        if (i == '>') --x;
+        else if (i == '<') ++x;
+        a.insert(x);
     }
+    cout << a.size();
 }
 
 static bool preCompute(void) {
