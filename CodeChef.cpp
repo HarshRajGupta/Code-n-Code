@@ -33,23 +33,23 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve(void) {
     int n; cin >> n;
     string s; cin >> s;
-    set<int> a, b;
+    vector<int> a, b;
     int x = 1000;
-    a.insert(x);
+    a.push_back(x);
     for (auto &i : s) {
         if (i == '>') --x;
         else if (i == '<') ++x;
-        debug(x)
-        a.insert(x);
+        // debug(x)
+        a.push_back(x);
     }
     x = 1000;
-    b.insert(x);
+    b.push_back(x);
     debug(a)
     for (int i = n - 1; i >= 0; --i) {
         if (s[i] == '>') ++x;
         else if (s[i] == '<') --x;
-        debug(x)
-        b.insert(x);
+        // debug(x)
+        b.push_back(x);
     }
     debug(b)
     cout << min(a.size(), b.size());
