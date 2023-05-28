@@ -11,7 +11,7 @@ public:
         vector<vector<int>> ans = vector<vector<int>>(grid.size(), vector<int>(grid[0].size(), 0));
         for (int k = 0; k < grid[0].size(); ++k) {
             unordered_map<int, int> mp, mp2;
-            int i = k, j = k, count = 0, pre = 0;
+            int i = 0, j = k, count = 0, pre = 0;
             while (i < grid.size() && j < grid[0].size()) {
                 mp[grid[i][j]]++;
                 if (mp[grid[i][j]] == 1) {
