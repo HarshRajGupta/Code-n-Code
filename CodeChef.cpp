@@ -20,7 +20,7 @@ public:
                 i++;
                 j++;
             }
-            i = k, j = k;
+            i = 0, j = k;
             while (i < grid.size() && j < grid[0].size()) {
                 // debug(i, j, count, pre)
                 mp[grid[i][j]]--;
