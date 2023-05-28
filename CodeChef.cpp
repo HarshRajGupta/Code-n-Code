@@ -1,51 +1,48 @@
 #include <bits/stdc++.h>
-using namespace std;
-
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
-#endif
+using namespace __gnu_debug;
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#ifndef __MAIN__
-#define __MAIN__ signed main() {preCompute(); signed t; cin >> t; while (t--)solve(), cout << '\n'; return 0;}
-#endif
-
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-#define bw(i, n) for (int32_t i = n; i >= 0; --i)
-
-template<class T>using v = vector<T>;
-template<class T>using maxHeap = priority_queue<T>;
-template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(),(x).end()
-
-void solve(void) {
-    int n; cin >> n;
-    string s; cin >> s;
-    stack<char> st;
-    size_t MAX = 0;
-    for (auto &i : s) {
-        if (st.empty() || st.top() == i) {
-            st.push(i);
-        } else st.pop();
-        MAX = max(MAX, st.size());
+class Solution {
+public:
+    vector<vector<int>> differenceOfDistinctValues(vector<vector<int>>& grid) {
+        vector<vector<int>> ans = vector<vector<int>>(grid.size(), vector<int>(grid[0].size(), 0));
+        for (int k = 0; k < grid[0].size(); ++k) {
+            unordered_map<int, int> mp, mp2;
+            int i = k, j = k, count = 0, pre = 0;
+            while (i < grid.size() && j < grid[0].size()) {
+                mp[grid[i][j]]++;
+                if (mp[grid[i][j]] == 1) {
+                    count++;
+                }
+                i++;
+                j++;
+            }
+            i = k, j = k;
+            while (i < grid.size() && j < grid[0].size()) {
+                mp[grid[i][j]]--;
+                if (mp[grid[i][j]] == 0) {
+                    count--;
+                }
+                ans[i][j] = abs(count - pre);
+                mp2[grid[i][j]]++;
+                if (mp2[grid[i][j]] == 1) {
+                    pre++;
+                }
+                i++; j++;
+            }
+        }
+        return ans;
     }
-    cout << MAX + 1;
-}
+    void test() {
+        /* test */
+        vector<vector<int>> grid = {{1,2,3},{4,5,6},{7,8,9}};
+        vector<vector<int>> ans = differenceOfDistinctValues(grid);
+    }
+};
 
-static bool preCompute(void) {
-    return 0;
-}
-
-__MAIN__
+#ifdef __TEST__
+__TEST__
+#endif
