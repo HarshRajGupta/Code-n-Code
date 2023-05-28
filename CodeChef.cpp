@@ -22,6 +22,7 @@ public:
             }
             i = k, j = k;
             while (i < grid.size() && j < grid[0].size()) {
+                debug(i, j, count, pre)
                 mp[grid[i][j]]--;
                 if (mp[grid[i][j]] == 0) {
                     count--;
