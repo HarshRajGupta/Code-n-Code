@@ -22,12 +22,12 @@ public:
             }
             i = k, j = k;
             while (i < grid.size() && j < grid[0].size()) {
-                debug(i, j, count, pre)
+                // debug(i, j, count, pre)
                 mp[grid[i][j]]--;
                 if (mp[grid[i][j]] == 0) {
                     count--;
                 }
-                debug(i, j, count, pre)
+                debug(i, j, k, count, pre)
                 ans[i][j] = abs(count - pre);
                 mp2[grid[i][j]]++;
                 if (mp2[grid[i][j]] == 1) {
