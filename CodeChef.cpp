@@ -27,6 +27,7 @@ public:
                 if (mp[grid[i][j]] == 0) {
                     count--;
                 }
+                debug(i, j, count, pre)
                 ans[i][j] = abs(count - pre);
                 mp2[grid[i][j]]++;
                 if (mp2[grid[i][j]] == 1) {
