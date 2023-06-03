@@ -47,6 +47,10 @@ vector<int> bruteforce(int n, vector<int> &q) {
                 ans.push_back(pos - 1);
                 break;
             }
+            if (curr == i) {
+                ans.push_back(pos);
+                break;
+            }
         }
     }
     return ans;
