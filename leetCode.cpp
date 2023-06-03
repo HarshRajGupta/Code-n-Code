@@ -87,7 +87,7 @@ signed main(void) {
     vector<int> ans = find_x(n, q, queries), brute = bruteforce(n, queries);
     for (int i = 0; i < q; ++i) {
         if (ans[i] != brute[i]) {
-            cout << "WA on " << i << endl;
+            cout << "WA on " << i << ' ' << queries[i] << endl;
             cout << "Expected: " << brute[i] << endl;
             cout << "Got: " << ans[i] << endl;
             // return 0;
