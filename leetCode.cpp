@@ -11,7 +11,7 @@ public:
         int ans = 0;
         sort(nums.begin(), nums.end());
         int i = 0, j = 1;
-        while (j < n) {
+        while (i <= j && j < n) {
             if (nums[j] - nums[i] <= (2 * k)) {
                 ans = max(ans, j - i + 1);
                 j++;
