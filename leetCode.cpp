@@ -32,9 +32,8 @@ vector<int> find_x(int n, int k, vector<int> &q) {
     }
     vector<int> ans;
     for (int i : q) {
-        int pos = lB(arr, i);
+        int pos = lB(arr, i + 1);
         ans.push_back(pos + 1);
-
     }
     return ans;
 }
