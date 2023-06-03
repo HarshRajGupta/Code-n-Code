@@ -52,7 +52,7 @@ vector<int> find_x(int n, int k, vector<int> &q) {
         if (pos != -1) ans.push_back(pos + 1);
         else {
             pos = lB(arr, i);
-            ans.push_back(pos + 1);
+            ans.push_back(pos + 2);
         }
         debug(i, pos)
     }
