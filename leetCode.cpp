@@ -90,7 +90,7 @@ signed main(void) {
             cout << "WA on " << i << endl;
             cout << "Expected: " << brute[i] << endl;
             cout << "Got: " << ans[i] << endl;
-            return 0;
+            // return 0;
         }
     }
     // for (int &i : ans) cout << i << ' ';
