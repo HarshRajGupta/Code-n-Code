@@ -54,6 +54,7 @@ vector<int> find_x(int n, int k, vector<int> &q) {
             pos = lB(arr, i);
             ans.push_back(pos + 1);
         }
+        debug(i, pos)
     }
     return ans;
 }
