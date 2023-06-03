@@ -36,16 +36,15 @@ vector<int> bruteforce(int n, vector<int> &q) {
         bool inc = true;
         while (curr < n * n) {
             if (pos >= n) inc = false;
-            if (inc) {
-                curr += pos;
-                pos++;
-            } else {
-                curr += pos;
-                pos--;
-            }
+            curr += pos;
             if (curr > i) {
                 ans.push_back(pos);
                 break;
+            }
+            if (inc) {
+                pos++;
+            } else {
+                pos--;
             }
         }
     }
