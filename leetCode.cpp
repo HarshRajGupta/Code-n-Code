@@ -23,7 +23,7 @@ public:
     }
     void test() {
         int n = 4, k = 1;
-        vector<int> nums = {2, 3, 5, 3};
+        vector<int> nums = {2, 3, 4, 3};
         cout << MaximizeEqualNumbers(n, k, nums) << endl;
         /* test */
     }
