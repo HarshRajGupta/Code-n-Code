@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 // 107 211 997 2111 10007 20011 100003 200003 1000003 10000019
-#define r ((1ll * (rand() % rand() + 1) * (rand() % rand() + 1) % 1000000007) / (rand() % rand()))
+// #define r ((1ll * (rand() % rand() + 1) * (rand() % rand() + 1) % 1000000007) / (rand() % rand()))
+#define r rand()%1000000
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * rand() * (rand() % rand()) * (rand() % rand()) % 1000000007)
 // #define r (1ll * (rand() % rand()) * (rand() % rand()) * (rand() % rand()))
@@ -106,7 +107,7 @@ class Solution : private testCase {
         // std::cout << r << '\n';
         // generatePair();
         // generateArray(r % 100);
-        // generatePositiveArray(10);
+        generatePositiveArray(100);
         // generatePermutation();
         // generateUniqueArray(2);
         // generateBinaryArray();
@@ -116,12 +117,12 @@ class Solution : private testCase {
         // generateMatrix();
         // generatePositiveMatrix();
         // generateBinaryMatrix();
-        cout << 0 << ' ' << power(2, (rand() % 60) + 3) - 1 << endl;
     }
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = rand() % 211; std::cout << t << '\n';
+        int t = 1; 
+        // std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
