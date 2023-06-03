@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int lB(const std::vector<int> &arr, const int t, int l = 0, int r = -1) {
-    if (r == -1) r = (arr.size() - 1);
+const int lB(vector<int> &arr, const int t) {
+    int l = 0,  r = (arr.size() - 1);
     if (arr[l] >= t) return l - 1;
     if (arr[r] < t) return r;
     int ans = l - 1, mid;
@@ -14,9 +14,8 @@ const int lB(const std::vector<int> &arr, const int t, int l = 0, int r = -1) {
     return ans;
 }
 
-const int bS(const vector<int> &arr, const int t, int l = 0, int r = -1) {
-    if (r == -1)
-        r = (arr.size() - 1);
+const int bS(const vector<int> &arr, const int t) {
+    int l = 0, r = (arr.size() - 1);
     while (l <= r) {
         const int mid = (l + r) >> 1;
         if (arr[mid] == t)
@@ -27,6 +26,30 @@ const int bS(const vector<int> &arr, const int t, int l = 0, int r = -1) {
             l = (mid + 1);
     }
     return ((arr[l] == t) ? l : ((arr[r] == t) ? r : -1));
+}
+
+
+vector<int> bruteforce(int n, vector<int> &q) {
+    vector<int> ans;
+    for (int &i : q) {
+        int curr = 0, pos = 1;
+        bool inc = true;
+        while (curr < n * n) {
+            if (pos >= n) inc = false;
+            if (inc) {
+                curr += pos;
+                pos++;
+            } else {
+                curr += pos;
+                pos--;
+            }
+            if (curr <= i) {
+                ans.push_back(pos);
+                break;
+            }
+        }
+    }
+    return ans;
 }
 
 vector<int> find_x(int n, int k, vector<int> &q) {
@@ -45,7 +68,6 @@ vector<int> find_x(int n, int k, vector<int> &q) {
             arr.push_back(curr);
         }
     }
-    debug(arr)
     vector<int> ans;
     for (int i : q) {
         int pos = bS(arr, i);
@@ -54,7 +76,6 @@ vector<int> find_x(int n, int k, vector<int> &q) {
             pos = lB(arr, i) + 1;
             ans.push_back(pos + 1);
         }
-        debug(i, pos)
     }
     return ans;
 }
@@ -63,7 +84,15 @@ signed main(void) {
     int n, q; cin >> n >> q;
     vector<int> queries(q);
     for (int &i : queries) cin >> i;
-    vector<int> ans = find_x(n, q, queries);
-    for (int i : ans) cout << i << ' ';
+    vector<int> ans = find_x(n, q, queries), brute = bruteforce(n, queries);
+    for (int i = 0; i < q; ++i) {
+        if (ans[i] != brute[i]) {
+            cout << "WA on " << i << endl;
+            cout << "Expected: " << brute[i] << endl;
+            cout << "Got: " << ans[i] << endl;
+            return 0;
+        }
+    }
+    // for (int &i : ans) cout << i << ' ';
     return 0;
 }
