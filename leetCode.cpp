@@ -43,8 +43,8 @@ vector<int> bruteforce(int n, vector<int> &q) {
                 curr += pos;
                 pos--;
             }
-            if (curr <= i) {
-                ans.push_back(pos);
+            if (curr > i) {
+                ans.push_back(pos - 1);
                 break;
             }
         }
