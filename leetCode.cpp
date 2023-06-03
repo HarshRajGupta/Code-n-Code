@@ -73,11 +73,13 @@ vector<int> find_x(int n, int k, vector<int> &q) {
     vector<int> ans;
     for (int i : q) {
         int pos = bS(arr, i);
+        debug(pos, i);
         if (pos != -1) ans.push_back(pos + 1);
         else {
             pos = lB(arr, i) + 1;
             ans.push_back(pos + 1);
         }
+        debug(pos, ans.back(), i);
     }
     return ans;
 }
