@@ -30,6 +30,7 @@ vector<int> find_x(int n, int k, vector<int> &q) {
             arr.push_back(curr);
         }
     }
+    debug(arr)
     vector<int> ans;
     for (int i : q) {
         int pos = lB(arr, i + 1);
