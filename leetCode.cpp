@@ -37,7 +37,7 @@ vector<int> bruteforce(int n, vector<int> &q) {
         while (curr < n * n) {
             if (pos >= n) inc = false;
             curr += pos;
-            if (curr > i) {
+            if (curr >= i) {
                 ans.push_back(pos);
                 break;
             }
@@ -66,9 +66,6 @@ vector<int> find_x(int n, int k, vector<int> &q) {
             pos--;
             arr.push_back(curr);
         }
-    }
-    for (int i = 0; i < arr.size(); i++) {
-        cerr << i << " - " << arr[i] << endl;
     }
     vector<int> ans;
     for (int i : q) {
