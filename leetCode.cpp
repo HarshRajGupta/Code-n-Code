@@ -31,9 +31,9 @@ public:
             for (int i = 0; i < n; i++) {
                 if (i == p) continue;
                 if (M[i][p] == 0)
-                    ans.erase(i);
-                if (M[i][p] == 1)
                     ans.erase(p);
+                if (M[i][p] == 1)
+                    ans.erase(i);
                 if (ans.empty())
                     break;
                 debug(i, p, ans)
