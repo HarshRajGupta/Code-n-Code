@@ -36,6 +36,7 @@ public:
                     ans.erase(p);
                 if (ans.empty())
                     break;
+                debug(i, p, ans)
             }
         }
         if (!ans.empty()) return *ans.begin();
