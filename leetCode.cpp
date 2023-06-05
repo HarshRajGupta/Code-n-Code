@@ -1,99 +1,57 @@
 #include <bits/stdc++.h>
-using namespace std;
+using namespace __gnu_debug;
 
-const int lB(vector<int> &arr, const int t) {
-    int l = 0,  r = (arr.size() - 1);
-    if (arr[l] >= t) return l - 1;
-    if (arr[r] < t) return r;
-    int ans = l - 1, mid;
-    while (l <= r) {
-        mid = (l + r) >> 1;
-        if (arr[mid] >= t) r = (mid - 1);
-        else ans = mid, l = (mid + 1);
+#ifndef debug
+#define debug(...)
+#endif
+
+class Solution {
+public:
+    ListNode* removeNodes(ListNode* head) {
+        if (!head) return nullptr;
+        ListNode* next = removeNodes(head->next);
+        if (!next) {
+            head->next = nullptr;
+            return head;
+        }
+        if (head->val > next->val) {
+            head->next = next;
+            return head;
+        }
+        return next;
     }
-    return ans;
-}
+    int celebrity(vector<vector<int> >& M, int n)
+    {
+        set<int> ans;
+        for (int i = 0; i < n; i++)
+            ans.insert(i);
 
-const int bS(const vector<int> &arr, const int t) {
-    int l = 0, r = (arr.size() - 1);
-    while (l <= r) {
-        const int mid = (l + r) >> 1;
-        if (arr[mid] == t)
-            return mid;
-        else if (arr[mid] > t)
-            r = (mid - 1);
-        else
-            l = (mid + 1);
-    }
-    return ((arr[l] == t) ? l : ((arr[r] == t) ? r : -1));
-}
-
-
-vector<int> bruteforce(int n, vector<int> &q) {
-    vector<int> ans;
-    for (int &i : q) {
-        int curr = 0, pos = 1;
-        bool inc = true;
-        while (curr < n * n) {
-            if (pos >= n) inc = false;
-            curr += pos;
-            if (curr >= i) {
-                ans.push_back(pos);
-                break;
-            }
-            if (inc) {
-                pos++;
-            } else {
-                pos--;
+        for (int p = 0; p < n; ++p)
+        {
+            for (int i = 0; i < n; i++) {
+                if (i == p) continue;
+                if (M[i][p] == 0)
+                    ans.erase(i);
+                if (M[i][p] == 1)
+                    ans.erase(p);
+                if (ans.empty())
+                    break;
             }
         }
+        if (!ans.empty()) return *ans.begin();
+        return -1;
     }
-    return ans;
-}
+    void test() {
+        vector<vector<int>> m = {
+            {0, 1, 0},
+            {0, 0, 0},
+            {0, 1, 0}
+        };
+        cout << celebrity(m, 3) << endl;
+        /* test */
+    }
+};
 
-vector<int> find_x(int n, int k, vector<int> &q) {
-    int curr = 0, pos = 1;
-    bool inc = true;
-    vector<int> arr;
-    while (curr < n * n) {
-        if (pos >= n) inc = false;
-        if (inc) {
-            curr += pos;
-            pos++;
-            arr.push_back(curr);
-        } else {
-            curr += pos;
-            pos--;
-            arr.push_back(curr);
-        }
-    }
-    vector<int> ans;
-    for (int i : q) {
-        int pos = bS(arr, i);
-        debug(pos, i);
-        if (pos != -1) ans.push_back(pos + 1);
-        else {
-            pos = lB(arr, i) + 1;
-            ans.push_back(pos + 1);
-        }
-        debug(pos, ans.back(), i);
-    }
-    return ans;
-}
-
-signed main(void) {
-    int n, q; cin >> n >> q;
-    vector<int> queries(q);
-    for (int &i : queries) cin >> i;
-    vector<int> ans = find_x(n, q, queries), brute = bruteforce(n, queries);
-    for (int i = 0; i < q; ++i) {
-        if (ans[i] != brute[i]) {
-            cout << "WA on " << i << ' ' << queries[i] << endl;
-            cout << "Expected: " << brute[i] << endl;
-            cout << "Got: " << ans[i] << endl;
-            // return 0;
-        }
-    }
-    // for (int &i : ans) cout << i << ' ';
-    return 0;
-}
+#ifdef __TEST__
+__TEST__
+#endif
