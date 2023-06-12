@@ -12,8 +12,9 @@ public:
             int z = i;
             while (arr[z] > 0) {
                 debug(z, i, arr[z])
+                int temp = arr[z] - 1;
                 arr[arr[z] - 1] = (z + 1) * -1;
-                z = arr[z] - 1;
+                z = temp;
             }
         }
         debug(arr)
