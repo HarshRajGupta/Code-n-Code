@@ -9,12 +9,11 @@ class Solution {
 public:
     int firstCompleteIndex(vector<int>& arr, vector<vector<int>> mat) {
         for (int i = 0; i < arr.size(); ++i) {
-            int z = i;
-            while (arr[z] > 0) {
-                debug(z, i, arr[z])
-                int temp = arr[z] - 1;
-                arr[arr[z] - 1] = (z + 1) * -1;
-                z = temp;
+            int x = i, y = arr[i];
+            while (y > 0) {
+                int X = arr[x], Y = arr[arr[x] - 1];
+                arr[arr[x] - 1] = (x + 1) * -1;
+                x = X, y = Y;
             }
         }
         debug(arr)
