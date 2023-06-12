@@ -11,7 +11,7 @@ public:
         for (int i = 0; i < arr.size(); ++i) {
             int z = i;
             while (arr[z] > 0) {
-                debug(z, i)
+                debug(z, i, arr[z])
                 arr[arr[z] - 1] = (z + 1) * -1;
                 z = arr[z] - 1;
             }
