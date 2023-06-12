@@ -12,7 +12,7 @@ public:
             int x = i, y = arr[i];
             while (y > 0) {
                 int X = y, Y = arr[y - 1];
-                arr[y - 1] = (x + 1) * -1;
+                arr[y - 1] = (x) * -1;
                 x = X, y = Y;
             }
         }
