@@ -7,49 +7,21 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    ListNode* removeNodes(ListNode* head) {
-        if (!head) return nullptr;
-        ListNode* next = removeNodes(head->next);
-        if (!next) {
-            head->next = nullptr;
-            return head;
-        }
-        if (head->val > next->val) {
-            head->next = next;
-            return head;
-        }
-        return next;
-    }
-    int celebrity(vector<vector<int> >& M, int n)
-    {
-        set<int> ans;
-        for (int i = 0; i < n; i++)
-            ans.insert(i);
-
-        for (int p = 0; p < n; ++p)
-        {
-            for (int i = 0; i < n; i++) {
-                if (i == p) continue;
-                if (M[i][p] == 0)
-                    ans.erase(p);
-                if (M[i][p] == 1)
-                    ans.erase(i);
-                if (ans.empty())
-                    break;
-                debug(i, p, ans)
+    int firstCompleteIndex(vector<int>& arr, vector<vector<int>> mat) {
+        for (int i = 0; i < arr.size(); ++i) {
+            int z = i;
+            while (arr[z] > 0) {
+                debug(z)
+                arr[arr[z] - 1] = (z + 1) * -1;
+                z = arr[z] - 1;
             }
         }
-        if (!ans.empty()) return *ans.begin();
-        return -1;
+        debug(arr)
+        return 0;
     }
     void test() {
-        vector<vector<int>> m = {
-            {0, 1, 0},
-            {0, 0, 0},
-            {0, 1, 0}
-        };
-        cout << celebrity(m, 3) << endl;
-        /* test */
+        std::vector<int> v = {1, 3, 4, 2};
+        firstCompleteIndex(v, {});
     }
 };
 
