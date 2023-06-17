@@ -77,8 +77,8 @@ public:
     void test() {
         // vector<vector<int>> e = {{0, 1}, {0, 2}};
         // cout << colorfulGraph(4, 2, e, 2, {0, 1, 0, 2});
-        vector<int> a = {2, 3, 4}, b = {1, 5, 7}, h= {10, 6, 8};
-        cout << terminalDefence(3, 3, a, h, b, 5);
+        vector<int> a = {2, 14, 20, 38, 42, 47, 57, 76, 78}, b = {1, 13, 16, 21, 27, 28, 33, 35}, h= {112, 377, 65, 314, 251, 136, 43, 392, 164 };
+        cout << terminalDefence(8, 9, a, h, b, 89);
         // cout << scoreAndCost(a, b, 162);
     }
 };
