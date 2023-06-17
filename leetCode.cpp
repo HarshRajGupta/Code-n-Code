@@ -21,7 +21,7 @@ class Solution {
 public:
     int scoreAndCost(vector<int> &a, vector<int> &b, int x) {
         int ans = -1, l = 1, r = 1e5, mid;
-        while (l < r) {
+        while (l <= r) {
             debug(l, r)
             mid = (l + r) / 2;
             if (canDo(a, b, x, mid)) {
