@@ -54,7 +54,7 @@ class Solution {
                 prev = max(prev, h + fired);
             }
         }
-        debug("right")
+        debug(prev)
         if (prev <= 0) return 1;
         reverse(arr.begin(), arr.end());
         prev = 0, fired = 0;
