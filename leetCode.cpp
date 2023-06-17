@@ -18,7 +18,7 @@ class Solution {
         return (ans + MAX) >= x;
     }
     int scoreAndCost(vector<int> &a, vector<int> &b, int x) {
-        int ans = -1, l = 1, r = 1e5, mid;
+        int ans = -1, l = 0, r = 1e9 + 7, mid;
         while (l <= r) {
             mid = (l + r) / 2;
             if (canDo(a, b, x, mid)) {
