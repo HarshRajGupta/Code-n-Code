@@ -6,32 +6,40 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    bool canDo(vector<int> &a, vector<int> &b, int x, int y) {
-        int ans = 0, MAX = 0;
-        for (int i = 0; i < a.size(); ++i) {
-            if (b[i] <= y)
-                ans += a[i];
+    void dfs(vector<vector<int>> &adj, vector<bool> &visited, int src) {
+        if (visited[src]) return;
+        visited[src] = true;
+        for (auto &i : adj[src]) {
+            dfs(adj, visited, i);
+        }
+    }
+    int colorfulGraph(int n, int m, vector<vector<int>> &edges, int k, vector<int> c) {
+        vector<vector<int>> adj(n);
+        int ans = 0;
+        for (auto &i : edges) {
+            if (c[i[0]] != c[i[1]]) ++ans;
             else {
-                MAX = max(MAX, a[i]);
+                adj[i[1]].push_back(i[0]);
+                adj[i[0]].push_back(i[1]);
             }
         }
-        return (ans + MAX) >= x;
-    }
-    int scoreAndCost(vector<int> &a, vector<int> &b, int x) {
-        int ans = -1, l = 0, r = 1e9 + 7, mid;
-        while (l <= r) {
-            mid = (l + r) / 2;
-            if (canDo(a, b, x, mid)) {
-                ans = mid;
-                r = mid - 1;
-            } else l = mid + 1;
+        vector<bool> found(k, 0), visited(n, 0);
+        for (int i = 0; i < n; ++i) {
+            if (!visited[i]) {
+                dfs(adj, visited, i);
+                if (!found[c[i]]) {
+                    found[c[i]] = true;
+                } else ++ans;
+            }
         }
         return ans;
     }
 public:
     void test() {
-        vector<int> a = {3, 7, 1}, b = {2, 4, 4};
-        cout << scoreAndCost(a, b, 162);
+        vector<vector<int>> e = {{0,1}, {1,2}};
+        cout << colorfulGraph(3, 2, e, 2, {0, 1, 0});
+        // vector<int> a = {3, 7, 1}, b = {2, 4, 4};
+        // cout << scoreAndCost(a, b, 162);
     }
 };
 
