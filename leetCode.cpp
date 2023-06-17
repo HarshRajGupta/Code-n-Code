@@ -42,6 +42,7 @@ class Solution {
         for (int &i : b) line.insert({i, -1 * k});
         vector<pair<int, int>> arr(line.begin(), line.end());
         int prev = 0, fired = 0;
+        debug(arr)
         for (auto &i : arr) {
             auto [x, h] = i;
             if (h < 0) {
