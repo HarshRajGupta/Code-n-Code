@@ -36,8 +36,8 @@ class Solution {
     }
 public:
     void test() {
-        vector<vector<int>> e = {{0,1}, {1,2}};
-        cout << colorfulGraph(3, 2, e, 2, {0, 1, 0});
+        vector<vector<int>> e = {{0,1}, {0,2}};
+        cout << colorfulGraph(4, 2, e, 2, {0, 1, 0, 2});
         // vector<int> a = {3, 7, 1}, b = {2, 4, 4};
         // cout << scoreAndCost(a, b, 162);
     }
