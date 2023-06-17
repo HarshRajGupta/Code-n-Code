@@ -70,6 +70,7 @@ class Solution {
                 prev = max(prev, h + fired);
             }
         }
+         debug(prev)
         if (prev <= 0) return 1;
         return 0;
     }
