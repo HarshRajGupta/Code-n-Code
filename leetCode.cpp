@@ -31,7 +31,7 @@ class Solution {
 public:
     void test() {
         vector<int> a = {3, 7, 1}, b = {2, 4, 4};
-        cout << scoreAndCost(a, b, 2);
+        cout << scoreAndCost(a, b, 162);
     }
 };
 
