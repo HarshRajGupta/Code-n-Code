@@ -6,22 +6,33 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-public:
-    int firstCompleteIndex(vector<int>& arr, vector<vector<int>> mat) {
-        for (int i = 0; i < arr.size(); ++i) {
-            int x = i, y = arr[i];
-            while (y > 0) {
-                int X = y, Y = arr[y - 1];
-                arr[y - 1] = (x) * -1;
-                x = X, y = Y;
+    bool canDo(vector<int> &a, vector<int> &b, int x, int y) {
+        debug(1)
+        int ans = 0, MAX = 0;
+        for (int i = 0; i < a.size(); ++i) {
+            if (b[i] <= y)
+                ans += a[i];
+            else {
+                MAX = max(MAX, a[i]);
             }
         }
-        debug(arr)
-        return 0;
+        return (ans + MAX) >= x;
+    }
+public:
+    int scoreAndCost(vector<int> &a, vector<int> &b, int x) {
+        int ans = -1, l = 1, r = 1e5, mid;
+        while (l < r) {
+            mid = (l + r) / 2;
+            if (canDo(a, b, x, mid)) {
+                ans = mid;
+                r = mid - 1;
+            } else l = mid + 1;
+        }
+        return ans;
     }
     void test() {
-        std::vector<int> v = {1, 3, 4, 2};
-        firstCompleteIndex(v, {});
+        vector<int> a = {3, 7, 1}, b = {2, 4, 4};
+        cout << scoreAndCost(a, b, 9);
     }
 };
 
