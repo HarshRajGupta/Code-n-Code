@@ -45,6 +45,7 @@ class Solution {
         debug(arr)
         for (auto &i : arr) {
             auto [x, h] = i;
+            debug(x, h, fired, prev)
             if (h < 0) {
                 if (prev == 0) {
                     fired += h;
@@ -61,6 +62,7 @@ class Solution {
         prev = 0, fired = 0;
         for (auto &i : arr) {
             auto [x, h] = i;
+            debug(x, h, fired, prev)
             if (h < 0) {
                 if (prev == 0) {
                     fired += h;
