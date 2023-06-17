@@ -7,7 +7,7 @@ using namespace __gnu_debug;
 
 class Solution {
     bool canDo(vector<int> &a, vector<int> &b, int x, int y) {
-        debug(1)
+        // debug(1)
         int ans = 0, MAX = 0;
         for (int i = 0; i < a.size(); ++i) {
             if (b[i] <= y)
@@ -22,6 +22,7 @@ public:
     int scoreAndCost(vector<int> &a, vector<int> &b, int x) {
         int ans = -1, l = 1, r = 1e5, mid;
         while (l < r) {
+            debug(l, r)
             mid = (l + r) / 2;
             if (canDo(a, b, x, mid)) {
                 ans = mid;
