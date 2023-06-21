@@ -23,6 +23,7 @@ public:
         }
         checkPath(root->left, path, sum);
         checkPath(root->right, path, sum);
+        path.pop_back();
     }
     vector<vector<int>> fun(TreeNode* root, int s) {
         vector<int> path;
