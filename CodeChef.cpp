@@ -9,13 +9,14 @@ class Solution {
 public:
     vector<vector<int>> ans;
     void checkPath(TreeNode* root, vector<int> &path, int sum) {
-        if (root == nullptr) {
+        if (!root) return;
+        path.push_back(root->val);
+        sum -= root->val;
+        if (sum < 0) return;
+        if (!root->left && !root->right) {
             if (sum == 0) ans.push_back(path);
             return;
         }
-        if (sum < 0) return;
-        path.push_back(root->val);
-        sum -= root->val;
         checkPath(root->left, path, sum);
         checkPath(root->right, path, sum);
         path.pop_back();
