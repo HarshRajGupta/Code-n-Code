@@ -12,14 +12,17 @@ public:
         if (!root) return;
         path.push_back(root->val);
         sum -= root->val;
-        if (sum < 0) return;
+        if (sum < 0) {
+            path.pop_back();
+            return;
+        }
         if (!root->left && !root->right) {
             if (sum == 0) ans.push_back(path);
+            path.pop_back();
             return;
         }
         checkPath(root->left, path, sum);
         checkPath(root->right, path, sum);
-        path.pop_back();
     }
     vector<vector<int>> fun(TreeNode* root, int s) {
         vector<int> path;
