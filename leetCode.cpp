@@ -17,9 +17,9 @@ public:
                 ans[i] = (arr.size());
             }
             else {
-                int low = lower_bound(ans.begin(), ans.end(),
+                int low = upper_bound(arr.begin(), arr.end(),
                                       nums[i])
-                          - ans.begin();
+                          - arr.begin();
                 arr[low] = nums[i];
                 ans[i] = low + 1;
             }
