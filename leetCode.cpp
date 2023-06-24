@@ -7,30 +7,25 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    vector<int> fun(vector<int> &nums) {
-        int n = nums.size();
+    vector<int> fun(int n, vector<int> &nums) {
         vector<int> ans(n, 1), arr = {nums[0]};
-
         for (int i = 1; i < n; i++) {
             if (nums[i] > arr.back()) {
                 arr.push_back(nums[i]);
                 ans[i] = (arr.size());
             }
             else {
-                int low = upper_bound(arr.begin(), arr.end(),
-                                      nums[i])
-                          - arr.begin();
+                int low = upper_bound(arr.begin(), arr.end(), nums[i]) - arr.begin();
                 arr[low] = nums[i];
                 ans[i] = low + 1;
             }
-            debug(i, arr, ans[i])
         }
         return ans;
     }
     void test() {
         vector<int> t = {2, 1, 3, 1, 6, 2};
 
-        auto ans = fun(t);
+        auto ans = fun(6, t);
         debug(ans);
 
     }
