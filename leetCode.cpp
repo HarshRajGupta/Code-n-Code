@@ -6,84 +6,32 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    void dfs(vector<vector<int>> &adj, vector<bool> &visited, int src) {
-        if (visited[src]) return;
-        visited[src] = true;
-        for (auto &i : adj[src]) {
-            dfs(adj, visited, i);
-        }
-    }
-    int colorfulGraph(int n, int m, vector<vector<int>> &edges, int k, vector<int> &c) {
-        vector<vector<int>> adj(n);
-        int ans = 0;
-        for (auto &i : edges) {
-            if (c[i[0]] != c[i[1]]) ++ans;
-            else {
-                adj[i[1]].push_back(i[0]);
-                adj[i[0]].push_back(i[1]);
+public:
+    vector<int> fun(vector<int> &nums) {
+        int n = nums.size();
+        vector<int> ans(n, 1), arr = {nums[0]};
+
+        for (int i = 1; i < n; i++) {
+            if (nums[i] > ans.back()) {
+                arr.push_back(nums[i]);
+                ans[i] = (arr.size());
             }
-        }
-        vector<bool> found(k, 0), visited(n, 0);
-        for (int i = 0; i < n; ++i) {
-            if (!visited[i]) {
-                dfs(adj, visited, i);
-                if (!found[c[i]]) {
-                    found[c[i]] = true;
-                } else ++ans;
+            else {
+                int low = lower_bound(ans.begin(), ans.end(),
+                                      nums[i])
+                          - ans.begin();
+                arr[low] = nums[i];
+                ans[i] = low + 1;
             }
         }
         return ans;
     }
-    int terminalDefence(int n, int m, vector<int> &a, vector<int> &h, vector<int> &b, int k) {
-        set<pair<int, int>> line;
-        for (int i = 0; i < a.size(); ++i) {
-            line.insert({a[i], h[i]});
-        }
-        for (int &i : b) line.insert({i, -1 * k});
-        vector<pair<int, int>> arr(line.begin(), line.end());
-        int prev = 0, fired = 0;
-        debug(arr)
-        for (auto &i : arr) {
-            auto [x, h] = i;
-            debug(x, h, fired, prev)
-            if (h < 0) {
-                if (prev == 0) {
-                    fired += h;
-                } else {
-                    prev = max(prev + h, 0);
-                }
-            } else {
-                prev = max(prev, h + fired);
-            }
-        }
-        debug(prev)
-        if (prev <= 0) return 1;
-        reverse(arr.begin(), arr.end());
-        prev = 0, fired = 0;
-        for (auto &i : arr) {
-            auto [x, h] = i;
-            debug(x, h, fired, prev)
-            if (h < 0) {
-                if (prev == 0) {
-                    fired += h;
-                } else {
-                    prev = max(prev + h, 0);
-                }
-            } else {
-                prev = max(prev, h + fired);
-            }
-        }
-         debug(prev)
-        if (prev <= 0) return 1;
-        return 0;
-    }
-public:
     void test() {
-        // vector<vector<int>> e = {{0, 1}, {0, 2}};
-        // cout << colorfulGraph(4, 2, e, 2, {0, 1, 0, 2});
-        vector<int> a = {2, 14, 20, 38, 42, 47, 57, 76, 78}, b = {1, 13, 16, 21, 27, 28, 33, 35}, h= {112, 377, 65, 314, 251, 136, 43, 392, 164 };
-        cout << terminalDefence(8, 9, a, h, b, 89);
-        // cout << scoreAndCost(a, b, 162);
+        vector<int> t = {2, 1, 3, 1, 6, 2};
+
+        auto ans = fun(t);
+        debug(ans);
+    
     }
 };
 
