@@ -20,6 +20,7 @@ public:
                 int low = upper_bound(arr.begin(), arr.end(),
                                       nums[i])
                           - arr.begin();
+                debug(nums[i], low);
                 arr[low] = nums[i];
                 ans[i] = low + 1;
             }
