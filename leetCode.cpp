@@ -12,7 +12,7 @@ public:
         vector<int> ans(n, 1), arr = {nums[0]};
 
         for (int i = 1; i < n; i++) {
-            if (nums[i] > ans.back()) {
+            if (nums[i] > arr.back()) {
                 arr.push_back(nums[i]);
                 ans[i] = (arr.size());
             }
@@ -20,7 +20,6 @@ public:
                 int low = upper_bound(arr.begin(), arr.end(),
                                       nums[i])
                           - arr.begin();
-                debug(nums[i], low);
                 arr[low] = nums[i];
                 ans[i] = low + 1;
             }
