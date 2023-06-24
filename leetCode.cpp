@@ -24,6 +24,7 @@ public:
                 arr[low] = nums[i];
                 ans[i] = low + 1;
             }
+            debug(ans[i])
         }
         return ans;
     }
