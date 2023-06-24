@@ -12,7 +12,6 @@ public:
         vector<int> ans(n, 1), arr = {nums[0]};
 
         for (int i = 1; i < n; i++) {
-            debug(i, arr)
             if (nums[i] > ans.back()) {
                 arr.push_back(nums[i]);
                 ans[i] = (arr.size());
@@ -24,7 +23,7 @@ public:
                 arr[low] = nums[i];
                 ans[i] = low + 1;
             }
-            debug(ans[i])
+            debug(i, arr, ans[i])
         }
         return ans;
     }
