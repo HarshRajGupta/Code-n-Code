@@ -107,7 +107,7 @@ class Solution : private testCase {
         // std::cout << r << '\n';
         // generatePair();
         // generateArray(r % 100);
-        generatePositiveArray(100);
+        generatePositiveArray();
         // generatePermutation();
         // generateUniqueArray(2);
         // generateBinaryArray();
