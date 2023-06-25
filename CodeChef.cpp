@@ -102,10 +102,8 @@ long long equi2 (int n, vector<int> &a) {
         return -1;
     if ((odd & 1 && !(MAX & 1)) || (even & 1 && MAX & 1))
         ++MAX;
-    if (odd & 1)
-        ans += even / 2;
-    if (even & 1)
-        ans += odd / 2;
+    if (MAX & 1) ans += even / 2;
+    else ans += odd / 2;
     for (auto &i : a) {
         ans += (MAX - i) / 2;
     }
