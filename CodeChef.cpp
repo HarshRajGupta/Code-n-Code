@@ -49,7 +49,7 @@ long long equi (int n, vector<int> &a) {
                 ans += (MAX - (i + 1)) / 2;
             }
         }
-        debug(ans, odd, even, MAX)
+        // debug(ans, odd, even, MAX)
         return ans;
     } else if (even & 1) {
         if (MAX & 1) ++MAX;
@@ -61,7 +61,7 @@ long long equi (int n, vector<int> &a) {
                 ans += (MAX - (i + 1)) / 2;
             }
         }
-        debug(ans, odd, even, MAX)
+        // debug(ans, odd, even, MAX)
         return ans;
     } else {
         if (MAX & 1) {
@@ -73,7 +73,7 @@ long long equi (int n, vector<int> &a) {
                     ans += (MAX - (i + 1)) / 2;
                 }
             }
-            debug(ans, odd, even, MAX)
+            // debug(ans, odd, even, MAX)
             return ans;
         } else {
             long long ans = odd / 2;
@@ -84,7 +84,7 @@ long long equi (int n, vector<int> &a) {
                     ans += (MAX - (i + 1)) / 2;
                 }
             }
-            debug(ans, odd, even, MAX)
+            // debug(ans, odd, even, MAX)
             return ans;
         }
     }
@@ -102,12 +102,13 @@ long long equi2 (int n, vector<int> &a) {
         return -1;
     if ((odd & 1 && !(MAX & 1)) || (even & 1 && MAX & 1))
         ++MAX;
-    if (MAX & 1) ans += even / 2;
-    else ans += odd / 2;
+    if (MAX & 1)
+        ans += even / 2;
+    else
+        ans += odd / 2;
     for (auto &i : a) {
         ans += (MAX - i) / 2;
     }
-    debug(odd, even, MAX)
     return ans;
 }
 
