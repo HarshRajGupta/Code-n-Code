@@ -121,8 +121,8 @@ class Solution : private testCase {
 public:
     void test(void) {
         freopen("input.txt", "w", stdout);
-        int t = 1; 
-        // std::cout << t << '\n';
+        int t = 10; 
+        std::cout << t << '\n';
         while (t--) generateTestCase();
     }
 };
