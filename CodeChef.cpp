@@ -118,7 +118,7 @@ void solve(void) {
     v<int> a(n);
     foreach(i, a) cin >> i;
     int one = equi(n, a), two = equi2(n, a);
-    if (equi(n, a) != equi2(n, a)) {
+    if (one != 2) {
         debug(one, two, a)
     }
 }
