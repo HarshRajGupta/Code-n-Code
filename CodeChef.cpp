@@ -86,7 +86,7 @@ long long equi (int n, vector<int> &a) {
 }
 
 void solve(void) {
-    v<int> a = {1, 2, 1};
+    v<int> a = {1, 2, 2};
     cout << equi(a.size(), a);
 }
 
