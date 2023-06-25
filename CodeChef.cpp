@@ -1,41 +1,93 @@
 #include <bits/stdc++.h>
-using namespace __gnu_debug;
+using namespace std;
+
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#endif
 
 #ifndef debug
 #define debug(...)
 #endif
 
-class Solution {
-public:
-    vector<vector<int>> ans;
-    void checkPath(TreeNode* root, vector<int> &path, int sum) {
-        if (!root) return;
-        path.push_back(root->val);
-        sum -= root->val;
-        if (sum < 0) {
-            path.pop_back();
-            return;
-        }
-        if (!root->left && !root->right) {
-            if (sum == 0) ans.push_back(path);
-            path.pop_back();
-            return;
-        }
-        checkPath(root->left, path, sum);
-        checkPath(root->right, path, sum);
-        path.pop_back();
-    }
-    vector<vector<int>> fun(TreeNode* root, int s) {
-        vector<int> path;
-        checkPath(root, path, s);
-        return ans;
-    }
-    void test() {
-        auto root = new TreeNode(5, new TreeNode(4, new TreeNode(11, new TreeNode(7), new TreeNode(2))), new TreeNode(8, new TreeNode(13), new TreeNode(4, nullptr, new TreeNode(5))));
-        debug(fun(root, 22));
-    }
-};
-
-#ifdef __TEST__
-__TEST__
+#ifndef __SOLVE__
+#define __SOLVE__ signed main() {solve(); return 0;}
 #endif
+
+#define int long long
+const uint64_t MOD = 1e9 + 7;
+
+#define _for(i, n) for(int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for(int32_t i = a; i < (int32_t)n; ++i)
+#define bw(i, n) for(int32_t i = n; i >= 0; --i)
+
+template<class T>using v = vector<T>;
+template<class T>using maxHeap = priority_queue<T>;
+template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
+
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(), (x).end()
+
+
+long long equi (int n, vector<int> &a) {
+    int even = 0, odd = 0, MAX = 0;
+    for (auto &i : a) {
+        if (i & 1) ++odd;
+        else ++even;
+        MAX = max(MAX, i);
+    }
+    if (odd & 1 && even & 1) {
+        return -1;
+    } else if (odd & 1) {
+        if (!(MAX & 1)) ++MAX;
+        long long ans = even / 2;
+        for (auto &i : a) {
+            if (i & 1) {
+                ans += (MAX - i) / 2;
+            } else {
+                ans += (MAX - (i + 1)) / 2;
+            }
+        }
+        return ans;
+    } else if (even & 1) {
+        if (MAX & 1) ++MAX;
+        long long ans = odd / 2;
+        for (auto &i : a) {
+            if (!(i & 1)) {
+                ans += (MAX - i) / 2;
+            } else {
+                ans += (MAX - (i + 1)) / 2;
+            }
+        }
+        return ans;
+    } else {
+        if (MAX & 1) {
+            long long ans = even / 2;
+            for (auto &i : a) {
+                if (i & 1) {
+                    ans += (MAX - i) / 2;
+                } else {
+                    ans += (MAX - (i + 1)) / 2;
+                }
+            }
+            return ans;
+        } else {
+            long long ans = odd / 2;
+            for (auto &i : a) {
+                if (!(i & 1)) {
+                    ans += (MAX - i) / 2;
+                } else {
+                    ans += (MAX - (i + 1)) / 2;
+                }
+            }
+            return ans;
+        }
+    }
+}
+
+void solve(void) {
+    v<int> a = {1, 2, 1};
+    cout << equi(a.size(), a);
+}
+
+__SOLVE__
