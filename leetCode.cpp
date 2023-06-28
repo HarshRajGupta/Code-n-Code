@@ -33,6 +33,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve(void) {
     int n, m, k, z; cin >> n >> m >> k;
     _for(i, n) cin >> z;
+    debug(m, k, z)
     if ((m + 1) - z <= k) cout << "YES";
     else cout << "NO";
 }
