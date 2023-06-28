@@ -30,25 +30,31 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
+int arrLength;
+int fun(map<int, int> &count, v<int> &ans, int prev, int pos = 1) {
+    if (!count[pos]) {
+        _for(i, prev) ans.push_back(pos);
+        arrLength -= pos * prev;
+        return prev;
+    }
+    int z = fun(count, ans, min(prev, count[pos]), pos + 1);
+    _for(i, prev - z) ans.push_back(pos);
+    arrLength -= pos * (prev - z);
+    return prev;
+}
+
 void solve(void) {
-    int n, k; cin >> n >> k;
-    v<int> a(n); foreach(i, a) cin >> i;
-    if (k < n / 2) {
-        sort(all(a));
-        foreach(i, a) cout << i << ' ';
-        return;
+    int n; cin >> n;
+    arrLength = n;
+    v<int> arr(n);
+    map<int, int> count;
+    foreach (i, arr) {
+        cin >> i;
+        ++count[i];
     }
-    if (k >= n) {
-        foreach(i, a) cout << i << ' ';
-        return;
-    }
-    v<int> z;
-    _for(i, n - k) z.push_back(a[i]);
-    rep(i, k, n) z.push_back(a[i]);
-    sort(all(z));
-    _for(i, n - k) cout << z[i] << ' ';
-    rep(i, n - k, k) cout << a[i] << ' ';
-    rep(i, n - k, sz(z)) cout << z[i] << ' ';
+    v<int> ans;
+    fun(count, ans, count[0]);
+    foreach (i, ans) cout << i << ' ';
 }
 
 bool preCompute(void) {
