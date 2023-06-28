@@ -30,34 +30,38 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-int arrLength;
-int fun(map<int, int> &count, v<int> &ans, int prev, int pos = 1) {
-    if (!count[pos]) {
-        _for(i, prev) ans.push_back(pos);
-        arrLength -= pos * prev;
-        return prev;
-    }
-    int z = fun(count, ans, min(prev, count[pos]), pos + 1);
-    debug(pos, z, prev)
-    _for(i, prev - z) ans.push_back(pos);
-    arrLength -= pos * (prev - z);
-    return prev;
-}
 
 void solve(void) {
     int n; cin >> n;
-    arrLength = n;
-    v<int> arr(n);
-    map<int, int> count;
-    foreach (i, arr) {
-        cin >> i;
-        ++count[i];
+    v<int> a(n);
+    foreach(i, a)cin >> i;
+    int odd = 0, even = 0;
+    _for(i, n) {
+        if (a[i] > a[(i - 1 + n) % n] + a[(i + 1) % n]) {
+            cout << "NO";
+            return;
+        }
+        if (i & 1)odd++;
+        else even++;
     }
-    v<int> ans;
-    fun(count, ans, count[0]);
-    _for(i, arrLength) ans.push_back(0);
-    cout << sz(ans) << ln;
-    foreach (i, ans) cout << i << ' ';
+    if ((odd + even) & 1) {
+        cout << "NO";
+        return;
+    }
+    if (n & 1) {
+        if (odd > even) {
+            cout << "NO";
+            return;
+        } else if (((even - odd) & 1) || (((even - odd) >> 1) > min(a[0], a[n - 1]))) {
+            cout << "NO";
+            return;
+        }
+        cout << "YES";
+        return;
+    }
+    if (even != odd) {
+        cout << "NO";
+    } else cout << "YES";
 }
 
 bool preCompute(void) {
