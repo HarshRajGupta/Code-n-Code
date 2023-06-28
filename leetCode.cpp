@@ -38,6 +38,7 @@ int fun(map<int, int> &count, v<int> &ans, int prev, int pos = 1) {
         return prev;
     }
     int z = fun(count, ans, min(prev, count[pos]), pos + 1);
+    debug(pos, z, prev)
     _for(i, prev - z) ans.push_back(pos);
     arrLength -= pos * (prev - z);
     return prev;
