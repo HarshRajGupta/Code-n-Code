@@ -34,7 +34,7 @@ void solve(void) {
     int n, m, k, z; cin >> n >> m >> k;
     _for(i, n) cin >> z;
     debug(m, k, z)
-    if ((m) - z <= k) cout << "YES";
+    if ((m) - z >= k) cout << "YES";
     else cout << "NO";
 }
 
