@@ -36,6 +36,7 @@ void solve(void) {
         cin >> z;
         sum += z;
     }
+    debug(N, n, sum)
     N = (N * (N + 1)) >> 1;
     cout << N - sum;
 }
