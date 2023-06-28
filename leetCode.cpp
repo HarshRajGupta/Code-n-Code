@@ -38,6 +38,10 @@ void solve(void) {
         foreach(i, a) cout << i << ' ';
         return;
     }
+    if (k >= n) {
+        foreach(i, a) cout << i << ' ';
+        return;
+    }
     v<int> z;
     _for(i, n - k) z.push_back(a[i]);
     rep(i, k, n) z.push_back(a[i]);
