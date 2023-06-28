@@ -31,7 +31,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    int sum, N, n, z; cin >> N >> n;
+    int sum = 0, N, n, z; cin >> N >> n;
     _for(i, n) {
         cin >> z;
         sum += z;
