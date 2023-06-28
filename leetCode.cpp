@@ -56,6 +56,7 @@ void solve(void) {
     v<int> ans;
     fun(count, ans, count[0]);
     _for(i, arrLength) ans.push_back(0);
+    cout << sz(ans) << ln;
     foreach (i, ans) cout << i << ' ';
 }
 
