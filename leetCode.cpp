@@ -44,6 +44,7 @@ void solve(void) {
         if (i & 1)odd++;
         else even++;
     }
+    debug(odd, even)
     if ((odd + even) & 1) {
         cout << "NO";
         return;
