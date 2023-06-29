@@ -31,23 +31,22 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 int index(string &s, int pos, char t) {
-    if (pos == -1) return -1;
     for (int i = pos; i < sz(s); ++i) {
-        if (s[i] == t) return i + 1;
+        if (s[i] == t) return i;
     }
-    return -1;
+    return sz(s);
 }
 
 bool canDo = false;
 
 void ans(string &s, string &l, string &r, int pos, int ind) {
     if (pos == sz(l)) {
-        if (ind != -1) canDo = true;
+        if (ind <= sz(s)) canDo = true;
         return;
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
         int next = index(s, ind, i);
-        ans(s, l, r, pos + 1, next);
+        ans(s, l, r, pos + 1, next + 1);
         if (canDo) {
             return;
         }
