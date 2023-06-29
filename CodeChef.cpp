@@ -30,7 +30,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-int index(string &s, int &pos, char &t) {
+int index(string &s, int pos, char &t) {
     for (int i = pos; i < sz(s); ++i) {
         if (s[i] == t) return i + 1;
     }
@@ -39,7 +39,7 @@ int index(string &s, int &pos, char &t) {
 
 bool canDo = false;
 
-void ans(string &s, string &l, string &r, int &pos, int &ind) {
+void ans(string &s, string &l, string &r, int pos, int ind) {
     if (pos == sz(l)) {
         if (ind > sz(s)) canDo = true;
         return;
