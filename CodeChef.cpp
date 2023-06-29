@@ -36,24 +36,37 @@ int m;
 
 int index(int pos, char &t) {
     for (int i = pos; i < sz(s); ++i) {
-        if (s[i] == t) return i + 1;
-    }
+        if (s[i] == t) {
+            return i + 1;
+        }
+    } 
     return sz(s) + 1;
 }
 
 bool ans(int pos, int ind) {
     if (pos == sz(l)) {
-        if (ind > sz(s)) return true;
-        return false;
+        if (ind > sz(s)) {
+            return true;
+        } else {
+            return false;
+        }
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
-        if (ans(pos + 1, index(ind, i))) return true;
+        if (ans(pos + 1, index(ind, i))) {
+            return true;
+        }
     }
     return false;
 }
 
 void solve(void) {
     cin >> s >> m >> l >> r;
+    _for(i, m) {
+        if (r[i] < l[i]) {
+            cout << "NO";
+            return;
+        }
+    }
     if (ans(0, 0)) {
         cout << "YES";
     } else {
