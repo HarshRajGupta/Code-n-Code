@@ -68,7 +68,7 @@ void solve(void) {
 }
 
 bool preCompute(void) {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); return 0;
 }
 
 __MAIN__
