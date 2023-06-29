@@ -30,25 +30,25 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-int index(string &s, int pos, char &t) {
+bool canDo = false;
+string s, l, r;
+int m;
+
+int index(int pos, char &t) {
     for (int i = pos; i < sz(s); ++i) {
         if (s[i] == t) return i + 1;
     }
     return sz(s) + 1;
 }
 
-bool canDo = false;
-string s, l, r;
-int m;
-
-void ans(string &s, string &l, string &r, int pos, int ind) {
+void ans(int pos, int ind) {
     if (pos == sz(l)) {
         if (ind > sz(s)) canDo = true;
         return;
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
-        int next = index(s, ind, i);
-        ans(s, l, r, pos + 1, next);
+        int next = index(ind, i);
+        ans(pos + 1, next);
         if (canDo) {
             return;
         }
@@ -58,7 +58,7 @@ void ans(string &s, string &l, string &r, int pos, int ind) {
 void solve(void) {
     cin >> s >> m >> l >> r;
     canDo = false;
-    ans(s, l, r, 0, 0);
+    ans(0, 0);
     if (canDo) {
         cout << "YES";
     } else {
