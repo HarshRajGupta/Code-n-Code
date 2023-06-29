@@ -31,29 +31,16 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve(void) {
-    int n, k, x; cin >> n >> k >> x;
-    if (x != 1) {
-        cout << "YES\n" << n << ln;
-        for (int i = 0; i < n; ++i) cout << 1 << " ";
-        return;
+    int xa, ya, xb, yb, xc, yc;
+    cin >> xa >> ya >> xb >> yb >> xc >> yc;
+    int ans = 1;
+    if ((xa > xb && xa > xc) || (xa < xb && xa < xc)) {
+        ans += min(abs(xa - xb), abs(xa - xc));
     }
-    if (k == 1) {
-        cout << "NO\n";
-        return;
+    if ((ya > yb && yb > yc) || (ya < yb && ya < yc)) {
+        ans += min(abs(ya - yb), abs(ya - yc));
     }
-    if (k == 2 && n & 1) {
-        cout << "NO\n";
-        return;
-    }
-    cout << "YES\n";
-    cout << (n >> 1) << ln;
-    if (n & 1) {
-        for (int i = 1; i < (n >> 1); ++i) cout << 2 << " ";
-        cout << 3;
-    } else {
-        for (int i = 1; i < (n >> 1); ++i) cout << 2 << " ";
-        cout << 2;
-    }
+    cout << ans;
 }
 
 bool preCompute(void) {
