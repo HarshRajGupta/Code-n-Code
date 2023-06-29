@@ -48,10 +48,10 @@ void solve(void) {
     cout << "YES\n";
     cout << (n >> 1) << ln;
     if (n & 1) {
-        for (int i = 1; i < (n >> 1); i += 2) cout << 2 << " ";
+        for (int i = 1; i < (n >> 1); ++i) cout << 2 << " ";
         cout << 3;
     } else {
-        for (int i = 1; i < (n >> 1); i += 2) cout << 2 << " ";
+        for (int i = 1; i < (n >> 1); ++i) cout << 2 << " ";
         cout << 2;
     }
 }
