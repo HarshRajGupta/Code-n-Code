@@ -33,7 +33,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 int index(string &s, int pos, char t) {
     if (pos == -1) return -1;
     for (int i = pos; i < sz(s); ++i) {
-        if (s[i] == t) return i;
+        if (s[i] == t) return i + 1;
     }
     return -1;
 }
@@ -47,7 +47,7 @@ void ans(string &s, string &l, string &r, int pos, int ind) {
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
         int next = index(s, ind, i);
-        ans(s, l, r, pos + 1, next + 1);
+        ans(s, l, r, pos + 1, next);
         if (canDo) {
             return;
         }
