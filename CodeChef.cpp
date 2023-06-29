@@ -48,6 +48,7 @@ void ans(string &s, string &l, string &r, int pos, int ind) {
         int next = index(s, ind, i);
         ans(s, l, r, pos + 1, next + 1);
         if (canDo) {
+            debug(pos, i)
             return;
         }
     }
