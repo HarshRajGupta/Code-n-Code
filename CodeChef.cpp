@@ -41,24 +41,20 @@ int index(int pos, char &t) {
     return sz(s) + 1;
 }
 
-void ans(int pos, int ind) {
+bool ans(int pos, int ind) {
     if (pos == sz(l)) {
-        if (ind > sz(s)) canDo = true;
-        return;
+        if (ind > sz(s)) return true;
+        return false;
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
-        ans(pos + 1, index(ind, i));
-        if (canDo) {
-            return;
-        }
+        if (ans(pos + 1, index(ind, i))) return true;
     }
+    return false;
 }
 
 void solve(void) {
     cin >> s >> m >> l >> r;
-    canDo = false;
-    ans(0, 0);
-    if (canDo) {
+    if (ans(0, 0)) {
         cout << "YES";
     } else {
         cout << "NO";
