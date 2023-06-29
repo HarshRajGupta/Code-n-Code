@@ -47,8 +47,7 @@ void ans(int pos, int ind) {
         return;
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
-        int next = index(ind, i);
-        ans(pos + 1, next);
+        ans(pos + 1, index(ind, i));
         if (canDo) {
             return;
         }
