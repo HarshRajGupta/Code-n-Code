@@ -46,8 +46,7 @@ void ans(string &s, string &l, string &r, int pos, int ind) {
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
         int next = index(s, ind, i);
-        ++pos;
-        ans(s, l, r, pos, next);
+        ans(s, l, r, pos + 1, next);
         if (canDo) {
             return;
         }
@@ -59,8 +58,7 @@ void solve(void) {
     int m;
     cin >> s >> m >> l >> r;
     canDo = false;
-    int pos = 0, ind = 0;
-    ans(s, l, r, pos, ind);
+    ans(s, l, r, 0, 0);
     if (canDo) {
         cout << "YES";
     } else {
@@ -70,7 +68,7 @@ void solve(void) {
 }
 
 bool preCompute(void) {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); return 0;
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
 }
 
 __MAIN__
