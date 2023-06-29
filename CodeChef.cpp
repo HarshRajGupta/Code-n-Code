@@ -1,27 +1,67 @@
 #include <bits/stdc++.h>
-using namespace __gnu_debug;
+using namespace std;
+
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3","Ofast","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#endif
 
 #ifndef debug
 #define debug(...)
 #endif
 
-class Solution {
-    const int factorial[10] = {
-        1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880
-    };
-public:
-    string getPermutation(int n, int k) {
-        vector<int> nums(n);
-        iota(nums.begin(), nums.end(), 1);
-        debug(nums);
-        return "";
-    }
-    void test() {
-        getPermutation(10, 4);
-        /* test */
-    }
-};
-
-#ifdef __TEST__
-__TEST__
+#ifndef __MAIN__
+#define __MAIN__ signed main() {preCompute(); signed t; cin >> t; while (t--)solve(), cout << '\n'; return 0;}
 #endif
+
+#define int long long
+const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
+
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+#define bw(i, n) for (int32_t i = n; i >= 0; --i)
+
+template<class T>using v = vector<T>;
+template<class T>using maxHeap = priority_queue<T>;
+template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
+
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(),(x).end()
+
+void solve(void) {
+    int n, k, x; cin >> n >> k >> x;
+    if (x != 1) {
+        cout << "YES\n" << n << ln;
+        for (int i = 0; i < n; ++i) cout << 1 << " ";
+        return;
+    }
+    if (k == 1) {
+        cout << "NO\n";
+        return;
+    }
+    if (k == 2 && n & 1) {
+        cout << "NO\n";
+        return;
+    }
+    cout << "YES\n";
+    cout << (n >> 1) << ln;
+    if (n & 1) {
+        for (int i = 1; i < (n >> 1); i += 2) cout << 2 << " ";
+        cout << 3;
+    } else {
+        for (int i = 1; i < (n >> 1); i += 2) cout << 2 << " ";
+        cout << 2;
+    }
+}
+
+bool preCompute(void) {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 0;
+}
+
+__MAIN__
+
+/*
+ * @ScratchPad
+*/
