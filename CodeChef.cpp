@@ -30,17 +30,41 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
+int index(string &s, int pos, char t) {
+    for (int i = pos; i < sz(s); ++i) {
+        if (s[i] == t) return i;
+    }
+    return s.size();
+}
+
+bool canDo = false;
+
+void ans(string &s, string &l, string &r, int pos, int ind) {
+    if (pos == sz(l)) {
+        if (ind != sz(s)) canDo = true;
+        return;
+    }
+    for (char i = l[pos]; i <= r[pos]; ++i) {
+        int next = index(s, ind, i);
+        ans(s, l, r, pos + 1, next + 1);
+        if (canDo) {
+            return;
+        }
+    }
+}
+
 void solve(void) {
-    int xa, ya, xb, yb, xc, yc;
-    cin >> xa >> ya >> xb >> yb >> xc >> yc;
-    int ans = 1;
-    if ((xa > xb && xa > xc) || (xa < xb && xa < xc)) {
-        ans += min(abs(xa - xb), abs(xa - xc));
+    string s, l, r;
+    int m;
+    cin >> s >> m >> l >> r;
+    canDo = false;
+    ans(s, l, r, 0, 0);
+    if (canDo) {
+        cout << "YES";
+    } else {
+        cout << "NO";
     }
-    if ((ya > yb && yb > yc) || (ya < yb && ya < yc)) {
-        ans += min(abs(ya - yb), abs(ya - yc));
-    }
-    cout << ans;
+
 }
 
 bool preCompute(void) {
