@@ -38,6 +38,8 @@ int index(string &s, int pos, char &t) {
 }
 
 bool canDo = false;
+string s, l, r;
+int m;
 
 void ans(string &s, string &l, string &r, int pos, int ind) {
     if (pos == sz(l)) {
@@ -54,8 +56,6 @@ void ans(string &s, string &l, string &r, int pos, int ind) {
 }
 
 void solve(void) {
-    string s, l, r;
-    int m;
     cin >> s >> m >> l >> r;
     canDo = false;
     ans(s, l, r, 0, 0);
