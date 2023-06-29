@@ -34,14 +34,14 @@ int index(string &s, int pos, char t) {
     for (int i = pos; i < sz(s); ++i) {
         if (s[i] == t) return i;
     }
-    return s.size();
+    return sz(s);
 }
 
 bool canDo = false;
 
 void ans(string &s, string &l, string &r, int pos, int ind) {
     if (pos == sz(l)) {
-        if (ind != sz(s)) canDo = true;
+        if (ind < sz(s)) canDo = true;
         return;
     }
     for (char i = l[pos]; i <= r[pos]; ++i) {
