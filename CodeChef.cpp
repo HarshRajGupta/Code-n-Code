@@ -6,17 +6,18 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
+    const int factorial[10] = {
+        1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880
+    };
 public:
     string getPermutation(int n, int k) {
-
+        vector<int> nums(n);
+        iota(nums.begin(), nums.end(), 1);
+        debug(nums);
+        return "";
     }
     void test() {
-        vector<int> factorial(10);
-        factorial[0] = 1;
-        for (int i = 1; i < 10; ++i) {
-            factorial[i] = factorial[i - 1] * i;
-        }
-        debug(factorial);
+        getPermutation(10, 4);
         /* test */
     }
 };
