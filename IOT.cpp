@@ -34,8 +34,8 @@ void solve() {
     cout << 1;
 }
 
-void preCompute() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
+bool preCompute() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush(); return 1;
 }
 
 /**
