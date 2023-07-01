@@ -6,14 +6,10 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	
-
 public:
-    vector<string> findPath(vector<vector<int>> &m, int n) {
-        // Your code goes here
-    }
+    /* function */
     void test() {
-        /* test */
+        cout << 1;
     }
 };
 
