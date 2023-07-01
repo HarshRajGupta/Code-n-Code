@@ -8,9 +8,14 @@ using namespace __gnu_debug;
 class Solution {
 public:
     /* function */
+    int sqr(int n) {
+        return n * n;
+    }
     void test() {
-        int n; cin >> n;
-        cout << n * n;
+        int n;
+        cin >> n;
+        auto z = sqr(n);
+        cout << z - n;
     }
 };
 
