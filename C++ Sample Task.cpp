@@ -10,19 +10,19 @@ int main() {
 
 void printMainMenu() {
     std::cout << "d -> Deposit Money\n"
-              << "w -> Withdraw Money\n"
-              << "b -> Request Balance\n"
-              << "q -> Quit\n\n> ";
+        << "w -> Withdraw Money\n"
+        << "b -> Request Balance\n"
+        << "q -> Quit\n\n> ";
 }
 
-void login() {/* PHASE 2 */}
+void login() {/* PHASE 2 */ }
 
-void createAccount() {/* PHASE 2 */}
+void createAccount() {/* PHASE 2 */ }
 
 void printIntroMenu() {
     std::cout << "l -> Login\n"
-              << "c -> Create New Account\n"
-              << "q -> Quit\n\n> ";
+        << "c -> Create New Account\n"
+        << "q -> Quit\n\n> ";
 }
 
 void start() {
@@ -46,12 +46,13 @@ void start() {
                 createAccount();
                 break;
             }
-            case 'q' : {
+            case 'q': {
                 std::cout << "Thanks for stopping by!";
                 exit(0);
             }
             default: std::cout << "Invalid input. Please try again.\n";
             }
-        } else {/* PHASE 2 */}
+        }
+        else {/* PHASE 2 */ }
     } while (true);
 }
