@@ -1,13 +1,13 @@
-#ifndef __FAST_IO
-#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
 #endif
 
 #include <bits/stdc++.h>
 using namespace std;
 
 #ifndef debug
-#define debug(...) ;
+#define debug(...)
 #endif
 
 #ifndef __RUN
@@ -36,7 +36,7 @@ const char ln = '\n';
 #define sz(x) ((int64_t)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve(void) { 
+void solve(void) {
     int n; cin >> n;
     cout << 5;
 }
@@ -46,10 +46,10 @@ signed main() {
 #ifdef __TAG1
     __TAG1
 #endif
-    int32_t tCs; cin >> tCs;
+        int32_t tCs; cin >> tCs;
     for (int32_t tC = 0; ++tC <= tCs; __RUN);
 #ifdef __TAG2
     __TAG2
 #endif
-    return 0;
+        return 0;
 }
