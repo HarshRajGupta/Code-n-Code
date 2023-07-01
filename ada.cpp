@@ -46,7 +46,7 @@ signed main() {
 #ifdef __TAG1
     __TAG1
 #endif
-        int32_t tCs = 0; cin >> tCs;
+        int32_t tCs; cin >> tCs;
     for (int32_t tC = 0; ++tC <= tCs; __RUN);
 #ifdef __TAG2
     __TAG2
