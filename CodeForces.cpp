@@ -1,67 +1,85 @@
-#ifndef __FAST_IO
-#pragma GCC optimize("O3", "Ofast", "unroll-loops", "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "ssse3", "sse4", "popcnt", "abm", "mmx", "avx", "avx2")
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
 #endif
 
 #include <bits/stdc++.h>
 using namespace std;
 
 #ifndef debug
-#define debug(...) ;
+#define debug(...)
 #endif
 
-#ifndef __RUN
-// #define __RUN std::cout << "Case #" << tC << ": ", solve(), std::cout << '\n'
-#define __RUN solve(), std::cout << '\n'
+#ifndef __MAIN__
+#define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
 #endif
-
-const unsigned long long MOD = 1e9 + 7;
-const char ln = '\n';
 
 #define int long long
-#define ll long double
+const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
 
-#define Y std::cout << "YES";
-#define N std::cout << "NO";
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+#define bw(i, n) for (int32_t i = n; i >= 0; --i)
 
-#define _for(i, n) for (int i = 0; i < n; ++i)
-#define rep(i, a, n) for (auto i = a; i < n; ++i)
-#define bw(i, n) for (int i = n; i >= 0; --i)
+template<class T>using v = vector<T>;
+template<class T>using maxHeap = priority_queue<T>;
+template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
-#define v std::vector
-#define maxHeap std::priority_queue<int>
-#define minHeap std::priority_queue<int, std::vector<int>, std::greater<int>>
-
-#define ft first
-#define sd second
 #define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
+#define all(x) (x).begin(),(x).end()
 
 void solve() {
-    int x, y; cin >> x >> y;
-    if (x >= y) {
-        int a = y - 1, b = y;
-        int c = (3 * x) - a - b;
-        cout << a << " " << b << " " << c;
-        return;
+    string s; cin >> s;
+    int r = 0, ans = 0;
+    multiset<char> ms;
+    for (int i = 0; i < sz(s); ++i) {
+        // debug(i, s[i]);
+        int parity = -1;
+        if (ms.empty()) {
+            ms.insert(s[i]);
+            r = i;
+        } else if (ms.count('?') != ms.size()) {
+            ans += sz(ms);
+            ms.erase(ms.find(s[i]));
+            continue;
+        }
+        if (s[i] == '0')
+            parity = 0;
+        else if (s[i] == '1')
+            parity = 1;
+        for (int j = r + 1; j < sz(s); ++j) {
+            debug(i, j, s[j], parity, ms)
+            if (s[j] == '?') {
+                ms.insert(s[j]);
+                ++r;
+                continue;
+            }
+            if (parity == -1) {
+                parity = ((s[j] - '0') ^ ((j - i) & 1));
+                ms.insert(s[j]);
+            } else {
+                if (parity != ((s[j] - '0') ^ ((j - i) & 1))) {
+                    break;
+                }
+                ms.insert(s[j]);
+                ++r;
+            }
+        }
+        debug(i, ms)
+        ans += sz(ms);
+        ms.erase(ms.find(s[i]));
     }
-    int c = y + 1, b = y;
-    int a = (3 * x) - b - c;
-    cout << a << " " << b << " " << c;
+    cout << ans;
 }
 
-signed main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-#ifdef __TAG1
-    __TAG1
-#endif
-    int tCs;
-    cin >> tCs;
-    for (int tC = 0; tC++ < tCs; __RUN)
-        ;
-#ifdef __TAG2
-    __TAG2
-#endif
-    return 0;
+void preCompute() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
 }
+
+/**
+ * @ScratchPad
+ */
+
+__MAIN__
