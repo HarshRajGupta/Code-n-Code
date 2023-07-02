@@ -14,7 +14,7 @@ using namespace std;
 #define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
 #endif
 
-// #define int long long
+#define int long long
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -30,41 +30,46 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-void solve() {
-    string s; cin >> s;
-    int r = 0, qs = 0;
-    long long ans = 0;
-    multiset<char> ms;
-    for (int32_t i = 0; i < sz(s); ++i) {
-        if (ms.empty()) {
-            ms.insert(s[i]);
-            r = i;
-            if (s[i] == '?') ++qs;
-        } else if (qs != ms.size()) {
-            ans += sz(ms);
-            ms.erase(ms.find(s[i]));
-            if (s[i] == '?') --qs;
-            continue;
-        }
-        int parity = -1;
-        if (s[i] != '?')
-            parity = s[i] - '0';
-        for (int j = r + 1; j < sz(s); ++j) {
-            if (s[j] != '?') {
-                if (parity == -1)
-                    parity = ((s[j] - '0') ^ ((j - i) & 1));
-                else if (parity != ((s[j] - '0') ^ ((j - i) & 1)))
-                    break;
-            } else ++qs;
-            ms.insert(s[j]);
-            ++r;
-        }
-        debug(i, ms)
-        ans += sz(ms);
-        ms.erase(ms.find(s[i]));
-        if (s[i] == '?') --qs;
+void maxSum(vector<int> &arr) {
+    sort(all(arr), greater<int>());
+    int sum = 0;
+    foreach (i, arr) {
+        sum += i;
+        i = sum;
     }
-    cout << ans;
+}
+
+void solve() {
+    int n; cin >> n;
+    vector<vector<int>> arr(n);
+    vector<int> a(n);
+    foreach(i, a) {cin >> i; --i;}
+    set<int> s;
+    _for(i, n) {
+        int temp; cin >> temp;
+        arr[a[i]].push_back(temp);
+        s.insert(a[i]);
+    }
+    foreach (i, s) {
+        maxSum(arr[i]);
+    }
+    _for(i, n) {
+        int ans = 0;
+        vector<int> eraseThese;
+        foreach (j, s) {
+            if (sz(arr[j]) < (i + 1)) {
+                eraseThese.push_back(j);
+                continue;
+            } else {
+                ans += arr[j][sz(arr[j]) - (sz(arr[j]) % (i + 1)) - 1];
+            }
+        }
+        foreach (j, eraseThese) {
+            s.erase(j);
+        }
+        debug(i, s, ans, arr);
+        cout << ans << ' ';
+    }
 }
 
 void preCompute() {
