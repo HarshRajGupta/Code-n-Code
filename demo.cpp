@@ -32,7 +32,7 @@ std::pair<int, int> findMinMax(const std::vector<std::pair<int, int>>& precomput
 }
 
 int main() {
-    std::vector<int> arr = {4, 3, 5, 8, 1, 2, 6};
+    std::vector<int> arr = {0, 3, 5, 8, 1, 2, 6};
     std::vector<std::pair<int, int>> precomputedMinMax = precomputeMinMax(arr);
 
     // Example queries
