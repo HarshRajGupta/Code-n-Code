@@ -35,8 +35,6 @@ void solve() {
     int r = 0, ans = 0;
     multiset<char> ms;
     for (int i = 0; i < sz(s); ++i) {
-        // debug(i, s[i]);
-        int parity = -1;
         if (ms.empty()) {
             ms.insert(s[i]);
             r = i;
@@ -45,27 +43,19 @@ void solve() {
             ms.erase(ms.find(s[i]));
             continue;
         }
-        if (s[i] == '0')
-            parity = 0;
-        else if (s[i] == '1')
-            parity = 1;
+        int parity = -1;
+        if (s[i] != '?')
+            parity = s[i] - '0';
+
         for (int j = r + 1; j < sz(s); ++j) {
-            debug(i, j, s[j], parity, ms)
-            if (s[j] == '?') {
-                ms.insert(s[j]);
-                ++r;
-                continue;
-            }
-            if (parity == -1) {
-                parity = ((s[j] - '0') ^ ((j - i) & 1));
-                ms.insert(s[j]);
-            } else {
-                if (parity != ((s[j] - '0') ^ ((j - i) & 1))) {
+            if (s[j] != '?') {
+                if (parity == -1)
+                    parity = ((s[j] - '0') ^ ((j - i) & 1));
+                else if (parity != ((s[j] - '0') ^ ((j - i) & 1)))
                     break;
-                }
-                ms.insert(s[j]);
-                ++r;
             }
+            ms.insert(s[j]);
+            ++r;
         }
         debug(i, ms)
         ans += sz(ms);
