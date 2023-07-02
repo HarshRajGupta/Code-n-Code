@@ -2,42 +2,66 @@
 #include <vector>
 #include <climits>
 
-std::vector<std::pair<int, int>> precomputeMinMax(const std::vector<int>& arr) {
-    int n = arr.size();
-    std::vector<std::pair<int, int>> precomputedMinMax(n);
+struct SegmentTreeNode {
+    int minVal;
+    int maxVal;
+};
 
-    // Initialize the precomputedMinMax array
-    for (int i = 0; i < n; i++) {
-        precomputedMinMax[i].first = INT_MAX;  // Initialize minimum to maximum value
-        precomputedMinMax[i].second = INT_MIN; // Initialize maximum to minimum value
-    }
+class SegmentTree {
+private:
+    std::vector<SegmentTreeNode> tree;
+    int n;
 
-    // Precompute the minimum and maximum values for each subarray
-    for (int i = 0; i < n; i++) {
-        int currentMin = arr[i];
-        int currentMax = arr[i];
-        for (int j = i; j < n; j++) {
-            currentMin = std::min(currentMin, arr[j]);
-            currentMax = std::max(currentMax, arr[j]);
-            precomputedMinMax[j].first = std::min(precomputedMinMax[j].first, currentMin);
-            precomputedMinMax[j].second = std::max(precomputedMinMax[j].second, currentMax);
+    void buildTree(const std::vector<int>& arr, int node, int start, int end) {
+        if (start == end) {
+            tree[node].minVal = arr[start];
+            tree[node].maxVal = arr[start];
+        } else {
+            int mid = (start + end) / 2;
+            buildTree(arr, 2 * node + 1, start, mid);
+            buildTree(arr, 2 * node + 2, mid + 1, end);
+            tree[node].minVal = std::min(tree[2 * node + 1].minVal, tree[2 * node + 2].minVal);
+            tree[node].maxVal = std::max(tree[2 * node + 1].maxVal, tree[2 * node + 2].maxVal);
         }
     }
 
-    return precomputedMinMax;
-}
+    std::pair<int, int> query(int node, int start, int end, int left, int right) {
+        // If the current segment is outside the query range
+        if (start > right || end < left)
+            return std::make_pair(INT_MAX, INT_MIN);
 
-std::pair<int, int> findMinMax(const std::vector<std::pair<int, int>>& precomputedMinMax, int left, int right) {
-    return std::make_pair(precomputedMinMax[right].first, precomputedMinMax[left].second);
-}
+        // If the current segment is completely inside the query range
+        if (start >= left && end <= right)
+            return std::make_pair(tree[node].minVal, tree[node].maxVal);
+
+        // If the current segment partially overlaps with the query range
+        int mid = (start + end) / 2;
+        std::pair<int, int> leftResult = query(2 * node + 1, start, mid, left, right);
+        std::pair<int, int> rightResult = query(2 * node + 2, mid + 1, end, left, right);
+        return std::make_pair(std::min(leftResult.first, rightResult.first), std::max(leftResult.second, rightResult.second));
+    }
+
+public:
+    SegmentTree(const std::vector<int>& arr) {
+        n = arr.size();
+        tree.resize(4 * n);
+        buildTree(arr, 0, 0, n - 1);
+    }
+
+    std::pair<int, int> findMinMax(int left, int right) {
+        if (left < 0 || right >= n || left > right)
+            return std::make_pair(INT_MAX, INT_MIN);
+        return query(0, 0, n - 1, left, right);
+    }
+};
 
 int main() {
     std::vector<int> arr = {4, 3, 5, 8, 1, 2, 6};
-    std::vector<std::pair<int, int>> precomputedMinMax = precomputeMinMax(arr);
+    SegmentTree segmentTree(arr);
 
     // Example queries
-    std::pair<int, int> result1 = findMinMax(precomputedMinMax, 1, 4);
-    std::pair<int, int> result2 = findMinMax(precomputedMinMax, 2, 6);
+    std::pair<int, int> result1 = segmentTree.findMinMax(1, 4);
+    std::pair<int, int> result2 = segmentTree.findMinMax(2, 6);
 
     std::cout << "Minimum and Maximum of subarray [1, 4]: " << result1.first << ", " << result1.second << std::endl;
     std::cout << "Minimum and Maximum of subarray [2, 6]: " << result2.first << ", " << result2.second << std::endl;
