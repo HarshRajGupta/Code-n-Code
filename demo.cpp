@@ -60,7 +60,7 @@ int main() {
     SegmentTree segmentTree(arr);
 
     // Example queries
-    std::pair<int, int> result1 = segmentTree.findMinMax(1, 4);
+    std::pair<int, int> result1 = segmentTree.findMinMax(1, 1);
     std::pair<int, int> result2 = segmentTree.findMinMax(2, 6);
 
     std::cout << "Minimum and Maximum of subarray [1, 4]: " << result1.first << ", " << result1.second << std::endl;
