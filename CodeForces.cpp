@@ -67,7 +67,7 @@ void solve() {
         foreach (j, eraseThese) {
             s.erase(j);
         }
-        debug(i, s, ans, arr);
+        // debug(i, s, ans, arr);
         cout << ans << ' ';
     }
 }
