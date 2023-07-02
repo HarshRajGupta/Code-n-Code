@@ -28,11 +28,11 @@ std::vector<std::pair<int, int>> precomputeMinMax(const std::vector<int>& arr) {
 }
 
 std::pair<int, int> findMinMax(const std::vector<std::pair<int, int>>& precomputedMinMax, int left, int right) {
-    return precomputedMinMax[right];  // Directly return the precomputed values
+    return std::make_pair(precomputedMinMax[right].first, precomputedMinMax[left].second);
 }
 
 int main() {
-    std::vector<int> arr = {0, 3, 5, 8, 1, 2, 6};
+    std::vector<int> arr = {4, 3, 5, 8, 1, 2, 6};
     std::vector<std::pair<int, int>> precomputedMinMax = precomputeMinMax(arr);
 
     // Example queries
