@@ -43,6 +43,7 @@ void solve() {
         } else if (qs != ms.size()) {
             ans += sz(ms);
             ms.erase(ms.find(s[i]));
+            if (s[i] == '?') ++qs;
             continue;
         }
         int parity = -1;
