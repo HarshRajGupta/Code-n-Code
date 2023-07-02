@@ -14,7 +14,7 @@ using namespace std;
 #define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
 #endif
 
-#define int long long
+// #define int long long
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -32,13 +32,15 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 void solve() {
     string s; cin >> s;
-    int r = 0, ans = 0;
+    int r = 0, qs = 0;
+    long long ans = 0;
     multiset<char> ms;
-    for (int i = 0; i < sz(s); ++i) {
+    for (int32_t i = 0; i < sz(s); ++i) {
         if (ms.empty()) {
             ms.insert(s[i]);
             r = i;
-        } else if (ms.count('?') != ms.size()) {
+            if (s[i] == '?') ++qs;
+        } else if (qs != ms.size()) {
             ans += sz(ms);
             ms.erase(ms.find(s[i]));
             continue;
@@ -46,20 +48,20 @@ void solve() {
         int parity = -1;
         if (s[i] != '?')
             parity = s[i] - '0';
-
         for (int j = r + 1; j < sz(s); ++j) {
             if (s[j] != '?') {
                 if (parity == -1)
                     parity = ((s[j] - '0') ^ ((j - i) & 1));
                 else if (parity != ((s[j] - '0') ^ ((j - i) & 1)))
                     break;
-            }
+            } else ++qs;
             ms.insert(s[j]);
             ++r;
         }
         debug(i, ms)
         ans += sz(ms);
         ms.erase(ms.find(s[i]));
+        if (s[i] == '?') --qs;
     }
     cout << ans;
 }
