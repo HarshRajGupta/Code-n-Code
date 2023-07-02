@@ -1,54 +1,46 @@
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize ("Ofast")
-#pragma GCC optimize ("unroll-loops")
-#endif
+#include <iostream>
+#include <vector>
+#include <climits>
 
-#include <bits/stdc++.h>
-using namespace std;
+std::vector<std::pair<int, int>> precomputeMinMax(const std::vector<int>& arr) {
+    int n = arr.size();
+    std::vector<std::pair<int, int>> precomputedMinMax(n);
 
-#ifndef debug
-#define debug(...)
-#endif
-
-#ifndef __RUN
-#define __RUN solve(), std::cout << '\n'
-#endif
-
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define int long long
-#define ll long double
-
-template <class T> using v = std::vector<T>;
-template <class T> using xHeap = std::priority_queue<T>;
-template <class T> using nHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
-
-#define _for(i, n) for(int64_t i = 0; i < (int64_t)n; ++i)
-#define rep(i, a, n) for(auto i = a; i < n; ++i)
-#define bw(i, n) for(int64_t i = n; i >= 0; --i)
-
-#define ft first
-#define sd second
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-void solve(void) {
-    int n = 1, l = LLONG_MAX;
-    _for(i, 19) {
-        n *= (i+1);
-        debug(n, i)
+    // Initialize the precomputedMinMax array
+    for (int i = 0; i < n; i++) {
+        precomputedMinMax[i].first = INT_MAX;  // Initialize minimum to maximum value
+        precomputedMinMax[i].second = INT_MIN; // Initialize maximum to minimum value
     }
+
+    // Precompute the minimum and maximum values for each subarray
+    for (int i = 0; i < n; i++) {
+        int currentMin = arr[i];
+        int currentMax = arr[i];
+        for (int j = i; j < n; j++) {
+            currentMin = std::min(currentMin, arr[j]);
+            currentMax = std::max(currentMax, arr[j]);
+            precomputedMinMax[j].first = std::min(precomputedMinMax[j].first, currentMin);
+            precomputedMinMax[j].second = std::max(precomputedMinMax[j].second, currentMax);
+        }
+    }
+
+    return precomputedMinMax;
 }
 
-signed main(void) {
-    ios_base::sync_with_stdio(false); cin.tie(NULL);
-#ifdef __TAG1
-    __TAG1
-#endif
-    solve();
-#ifdef __TAG2
-    __TAG2
-#endif
+std::pair<int, int> findMinMax(const std::vector<std::pair<int, int>>& precomputedMinMax, int left, int right) {
+    return precomputedMinMax[right];  // Directly return the precomputed values
+}
+
+int main() {
+    std::vector<int> arr = {4, 3, 5, 8, 1, 2, 6};
+    std::vector<std::pair<int, int>> precomputedMinMax = precomputeMinMax(arr);
+
+    // Example queries
+    std::pair<int, int> result1 = findMinMax(precomputedMinMax, 1, 4);
+    std::pair<int, int> result2 = findMinMax(precomputedMinMax, 2, 6);
+
+    std::cout << "Minimum and Maximum of subarray [1, 4]: " << result1.first << ", " << result1.second << std::endl;
+    std::cout << "Minimum and Maximum of subarray [2, 6]: " << result2.first << ", " << result2.second << std::endl;
+
     return 0;
 }
