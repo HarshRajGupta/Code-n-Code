@@ -56,7 +56,7 @@ public:
 };
 
 int main() {
-    std::vector<int> arr = {0, 5, 5, 8, 0, 2, 6};
+    std::vector<int> arr = {0, 10, 5, 8, 0, 2, 6};
     SegmentTree segmentTree(arr);
 
     // Example queries
