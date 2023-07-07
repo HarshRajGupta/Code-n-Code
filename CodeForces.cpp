@@ -48,7 +48,7 @@ void solve() {
             cout << s[i][0];
             return;
         }
-        debug(s[0][i], s[1][i], s[2][i])
+        debug(s[0][i], s[1][i], s[2][i], (s[0][i] == s[1][i] == s[2][i]), (s[0][i] != '.') )
         if ((s[0][i] == s[1][i] == s[2][i]) && (s[0][i] != '.')) {
             cout << s[0][i];
             return;
