@@ -36,7 +36,8 @@ map<int, bool> snowFlake;
 
 void solve() {
     int n; cin >> n;
-    if (snowFlake.find(n) != snowFlake.end()) cout << "YES";
+    if (snowFlake.find(n) != snowFlake.end())
+        cout << "YES";
     else cout << "NO";
 }
 
@@ -47,7 +48,7 @@ void preCompute() {
         int prev = i * i, dec = N / i;
         for (int j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
-            if (dec - prev < j) break;
+            if ((dec - prev) < j) break;
             prev *= i;
         }
     }
