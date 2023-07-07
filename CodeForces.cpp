@@ -33,6 +33,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve() {
     v<string> s(3);
     foreach(i, s) cin >> i;
+    debug(s)
     if ((s[0][0] == s[1][1] == s[2][2]) && (s[0][0] != '.')) {
         cout << s[0][0];
         return;
