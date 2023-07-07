@@ -48,7 +48,7 @@ void solve() {
         }
         prev = arr[i];
     }
-    cout << setprecision(8) <<ans;
+    cout <<  fixed << setprecision(7) <<ans;
 }
 
 void preCompute() {
