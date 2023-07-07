@@ -48,7 +48,7 @@ void solve() {
             sum = sum + sum + arr[i][j];
             ++points;
         }
-        rank[i] = {points, i};
+        rank[i] = {points, sum};
     }
     debug(rank)
     auto rudolf = rank[0];
