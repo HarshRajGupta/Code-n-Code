@@ -46,6 +46,7 @@ void preCompute() {
         int prev = i * i;
         for (int j = 1 + i + prev; j <= 1e6 + 7; j += prev) {
             snowFlake[j] = true;
+            if (N / i < prev) break;
             prev *= i;
         }
     }
