@@ -51,7 +51,7 @@ void preCompute() {
             snowFlake[j] = true;
             if ((dec - prev) < j) break;
             prev *= i;
-            traversed[prev] = true;
+            traversed[j] = true;
         }
     }
     debug(snowFlake.size())
