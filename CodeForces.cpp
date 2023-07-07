@@ -42,12 +42,12 @@ void solve() {
 
 
 void preCompute() {
-    for (int i = 2; i * i < N; ++i) {
+    for (int32_t i = 2; i * 1ll * i < N; ++i) {
         // if (snowFlake.find(i) != snowFlake.end()) continue;
-        int prev = i * i;
+        int prev = i * i, dec = N / i;
         for (int j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
-            if (N / i < prev) break;
+            if (dec - prev < j) break;
             prev *= i;
         }
     }
