@@ -48,7 +48,7 @@ void preCompute() {
         int64_t prev = i * i, dec = N / i;
         for (int64_t j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
-            // if (dec <= prev) break;
+            if (dec <= prev) break;
             prev *= i;
             ++cnt;
         }
