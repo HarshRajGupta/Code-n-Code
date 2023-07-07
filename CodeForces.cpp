@@ -50,7 +50,7 @@ void preCompute() {
             prev *= i;
         }
     }
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 }
 
 /**
