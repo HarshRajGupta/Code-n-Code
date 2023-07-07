@@ -30,7 +30,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-const int N = 1e5 + 7;
+const int N = 1e10 + 7;
 
 unordered_map<int, bool> snowFlake;
 
@@ -43,16 +43,11 @@ void solve() {
 
 
 void preCompute() {
-    unordered_map<int, bool> traversed;
     for (int32_t i = 2; i * 1ll * i < N; ++i) {
-        snowFlake[1 + i + (i * i)] = true;
         int prev = i * i, dec = N / i;
-
-        if (traversed.find(i) != traversed.end()) continue;
         for (int j = 1 + i + prev; j < N; j += prev) {
-            traversed[prev] = true;
             snowFlake[j] = true;
-            if ((dec - prev) < j) break;
+            if (dec <= prev) break;
             prev *= i;
         }
     }
