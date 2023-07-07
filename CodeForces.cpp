@@ -37,13 +37,16 @@ void solve() {
     sort(all(arr), greater<int>());
     int prev = INT_MAX;
     long double ans = 0, area = (1.0 * d * 0.5 * h);
+    debug(area)
     _for(i, n) {
+        debug(arr[i], prev)
         if (arr[i] + h <= prev) {
             ans += area;
         } else {
-            long double ratio =  h / (1 * 0 * (arr[i] + h - prev));
+            long double ratio =  h / (1.0 * (arr[i] + h - prev));
             ans += (area - (area / (ratio * ratio)));
         }
+        prev = arr[i];
     }
     cout << ans;
 }
