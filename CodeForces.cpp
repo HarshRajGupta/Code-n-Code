@@ -14,7 +14,7 @@ using namespace std;
 #define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
 #endif
 
-#define int long long
+// #define int long long
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
@@ -32,7 +32,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 const int N = 1e14 + 7;
 
-unordered_map<int, bool> snowFlake;
+unordered_map<int64_t, bool> snowFlake;
 int cnt;
 
 void solve() {
@@ -45,8 +45,8 @@ void solve() {
 
 void preCompute() {
     for (int32_t i = 2; (i * 1ll * i) < N; ++i) {
-        int prev = i * i, dec = N / i;
-        for (int j = 1 + i + prev; j < N; j += prev) {
+        int64_t prev = i * i, dec = N / i;
+        for (int64_t j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
             if (dec <= prev) break;
             prev *= i;
