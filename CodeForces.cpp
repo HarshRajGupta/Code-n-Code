@@ -30,28 +30,25 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
+const int N = 1e6 + 7;
+
+bool snowFlake[N];
+
 void solve() {
-    int n, d, h; cin >> n >> d >> h;
-    v<int> arr(n);
-    foreach(i, arr) cin >> i;
-    sort(all(arr), greater<int>());
-    int prev = INT_MAX;
-    long double ans = 0, area = (1.0 * d * 0.5 * h);
-    debug(area)
-    _for(i, n) {
-        debug(arr[i], prev)
-        if (arr[i] + h <= prev) {
-            ans += area;
-        } else {
-            long double ratio =  h / (1.0 * (arr[i] + h - prev));
-            ans += (area - (area / (ratio * ratio)));
-        }
-        prev = arr[i];
-    }
-    cout <<  fixed << setprecision(7) <<ans;
+    int n; cin >> n;
+    if (snowFlake[n]) cout << "YES";
+    else cout << "NO";
 }
 
+
 void preCompute() {
+    for (int i = 2; i * i < N; ++i) {
+        int prev = i * i;
+        for (int j = 1 + i + prev; j <= 1e6 + 7; j += prev) {
+            snowFlake[j] = true;
+            prev *= i;
+        }
+    }
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
 }
 
