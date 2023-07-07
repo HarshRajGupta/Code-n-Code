@@ -45,8 +45,10 @@ void solve() {
 void preCompute() {
     unordered_map<int, bool> traversed;
     for (int32_t i = 2; i * 1ll * i < N; ++i) {
-        // if(traversed.find(i) != traversed.end()) continue;
+        snowFlake[1 + i + (i * i)] = true;
         int prev = i * i, dec = N / i;
+
+        if (traversed.find(i) != traversed.end()) continue;
         for (int j = 1 + i + prev; j < N; j += prev) {
             traversed[prev] = true;
             snowFlake[j] = true;
