@@ -36,14 +36,14 @@ map<int, bool> snowFlake;
 
 void solve() {
     int n; cin >> n;
-    if (snowFlake[n]) cout << "YES";
+    if (snowFlake.find(n) != snowFlake.end()) cout << "YES";
     else cout << "NO";
 }
 
 
 void preCompute() {
     for (int i = 2; i * i < N; ++i) {
-        if (snowFlake[i]) continue;
+        if (snowFlake.find(i) != snowFlake.end()) continue;
         int prev = i * i;
         for (int j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
