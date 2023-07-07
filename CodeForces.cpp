@@ -45,7 +45,7 @@ void solve() {
 void preCompute() {
     unordered_map<int, bool> traversed;
     for (int32_t i = 2; i * 1ll * i < N; ++i) {
-        if(traversed.find(i) != traversed.end()) continue;
+        // if(traversed.find(i) != traversed.end()) continue;
         int prev = i * i, dec = N / i;
         for (int j = 1 + i + prev; j < N; j += prev) {
             traversed[prev] = true;
