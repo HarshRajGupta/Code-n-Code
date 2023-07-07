@@ -14,7 +14,7 @@ using namespace std;
 #define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
 #endif
 
-// #define int long long
+#define int long long
 const uint64_t MOD = 1e9 + 7;
 const char ln = '\n';
 
