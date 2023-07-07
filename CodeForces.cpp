@@ -31,34 +31,18 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    int n, m, h; cin >> n >> m >> h;
-    v<pair<int, int>> rank(n);
-    v<v<int>> arr(n, v<int>(m));
-    foreach (i, arr) {
-        foreach(j, i) cin >> j;
-        sort(all(i));
-    }
-    debug(arr);
+    int n, d, h; cin >> n >> d >> h;
+    v<int> arr(n);
+    foreach(i, arr) cin >> i;
+    sort(all(arr), greater<int>());
+    int prev = INT_MAX;
+    long double ans = 0, area = (1.0 * d * 0.5 * h);
     _for(i, n) {
-        int sum = 0, points = 0, time = 0;
-        _for (j, m) {
-            if (time + arr[i][j] > h) {
-                break;
-            }
-            time += arr[i][j];
-            sum += time;
-            ++points;
-        }
-        rank[i] = {points, sum};
-    }
-    debug(rank)
-    auto rudolf = rank[0];
-    int ans = 1;
-    _for(i, n) {
-        if (rank[i].first > rudolf.first) {
-            ++ans;
-        } else if (rank[i].first == rudolf.first && rank[i].second < rudolf.second) {
-            ++ans;
+        if (arr[i] + h <= prev) {
+            ans += area;
+        } else {
+            long double ratio =  h / (1 * 0 * (arr[i] + h - prev));
+            ans += (area - (area / (ratio * ratio)));
         }
     }
     cout << ans;
