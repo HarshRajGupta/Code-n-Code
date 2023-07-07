@@ -30,9 +30,9 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-const int N = 1e6 + 7;
+const int N = 1e18 + 7;
 
-bool snowFlake[N];
+map<int, bool> snowFlake;
 
 void solve() {
     int n; cin >> n;
