@@ -33,6 +33,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 const int N = 1e11 + 7;
 
 unordered_map<int, bool> snowFlake;
+int cnt;
 
 void solve() {
     int n; cin >> n;
@@ -43,16 +44,16 @@ void solve() {
 
 
 void preCompute() {
-    for (int32_t i = 2; i * 1ll * i < N; ++i) {
-        debug(i)
+    for (int32_t i = 2; (i * 1ll * i) < N; ++i) {
         int prev = i * i, dec = N / i;
         for (int j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
             if (dec <= prev) break;
             prev *= i;
+            ++cnt;
         }
     }
-    debug(snowFlake.size())
+    debug(cnt)
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 }
 
