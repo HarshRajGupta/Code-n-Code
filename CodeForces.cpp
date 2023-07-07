@@ -31,7 +31,12 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    cout << 1;
+    int n, ans = 0; cin >> n;
+    _for(i, n) {
+        int a, b; cin >> a>> b;
+        if (a > b) ++ans;
+    }
+    cout << ans;
 }
 
 void preCompute() {
