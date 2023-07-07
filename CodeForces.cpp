@@ -30,13 +30,13 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-const long long N = 1e10 + 7;
+const unsigned long long N = 1e10 + 7;
 
 unordered_map<int64_t, bool> snowFlake;
 int cnt;
 
 void solve() {
-    int n; cin >> n;
+    unsigned long long n; cin >> n;
     if (snowFlake.find(n) != snowFlake.end())
         cout << "YES";
     else cout << "NO";
@@ -48,7 +48,6 @@ void preCompute() {
         int64_t prev = i * i, dec = N / i;
         for (int64_t j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
-            // if (dec <= prev) break;
             prev *= i;
             ++cnt;
         }
