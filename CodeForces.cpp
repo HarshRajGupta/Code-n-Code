@@ -40,12 +40,13 @@ void solve() {
     }
     debug(arr);
     _for(i, n) {
-        int sum = 0, points = 0;
+        int sum = 0, points = 0, time = 0;
         _for (j, m) {
-            if (sum + sum + arr[i][j] > h) {
+            if (time + arr[i][j] > h) {
                 break;
             }
-            sum = sum + sum + arr[i][j];
+            time += arr[i][j];
+            sum += time;
             ++points;
         }
         rank[i] = {points, sum};
