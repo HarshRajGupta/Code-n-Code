@@ -32,7 +32,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 const int N = 1e10 + 7;
 
-map<int, bool> snowFlake;
+unordered_map<int, bool> snowFlake;
 
 void solve() {
     int n; cin >> n;
