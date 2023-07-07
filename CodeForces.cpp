@@ -48,8 +48,8 @@ void preCompute() {
         // if (snowFlake.find(i) != snowFlake.end()) continue;
         int prev = i * i, dec = N / i;
         for (int j = 1 + i + prev; j < N; j += prev) {
-            if (traversed.find(prev) != traversed.end()) break;
-            traversed[prev] = true;
+            // if (traversed.find(prev) != traversed.end()) break;
+            // traversed[prev] = true;
             snowFlake[j] = true;
             if ((dec - prev) < j) break;
             prev *= i;
