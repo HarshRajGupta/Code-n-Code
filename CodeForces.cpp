@@ -31,12 +31,27 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    int n, ans = 0; cin >> n;
-    _for(i, n) {
-        int a, b; cin >> a>> b;
-        if (a > b) ++ans;
+    v<string> s(3);
+    foreach(i, s) cin >> i;
+    if ((s[0][0] == s[1][1] == s[2][2]) && (s[0][0] != '.')) {
+        cout << s[0][0];
+        return;
     }
-    cout << ans;
+    if ((s[0][2] == s[1][1] == s[2][0]) && (s[0][2] != '.')) {
+        cout << s[0][2];
+        return;
+    }
+    _for(i, 3) {
+        if ((s[i][0] == s[i][1] == s[i][2]) && (s[i][0] != '.')) {
+            cout << s[i][0];
+            return;
+        }
+        if ((s[0][i] == s[1][i] == s[2][i]) && (s[0][i] != '.')) {
+            cout << s[0][i];
+            return;
+        }
+    }
+    cout << "DRAW";
 }
 
 void preCompute() {
