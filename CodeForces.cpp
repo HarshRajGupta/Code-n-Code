@@ -31,29 +31,36 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    v<string> s(3);
-    foreach(i, s) cin >> i;
-    debug(s)
-    if ((s[0][0] == s[1][1] && s[1][1] == s[2][2]) && (s[0][0] != '.')) {
-        cout << s[0][0];
-        return;
+    int n, m, h; cin >> n >> m >> h;
+    v<pair<int, int>> rank(n);
+    v<v<int>> arr(n, v<int>(m));
+    foreach (i, arr) {
+        foreach(j, i) cin >> j;
+        sort(all(i));
     }
-    if ((s[0][2] == s[1][1] && s[1][1] == s[2][0]) && (s[0][2] != '.')) {
-        cout << s[0][2];
-        return;
-    }
-    _for(i, 3) {
-        if ((s[i][0] == s[i][1] && s[i][1] == s[i][2]) && (s[i][0] != '.')) {
-            cout << s[i][0];
-            return;
+    debug(arr);
+    _for(i, n) {
+        int sum = 0, points = 0;
+        _for (j, m) {
+            if (sum + sum + arr[i][j] > h) {
+                break;
+            }
+            sum = sum + sum + arr[i][j];
+            ++points;
         }
-        // debug(s[0][i], s[1][i], s[2][i], (s[0][i] == s[1][i] == s[2][i]), (s[0][i] != '.') )
-        if ((s[0][i] == s[1][i] && s[1][i] == s[2][i]) && (s[0][i] != '.')) {
-            cout << s[0][i];
-            return;
+        rank[i] = {points, i};
+    }
+    debug(rank)
+    auto rudolf = rank[0];
+    int ans = 1;
+    _for(i, n) {
+        if (rank[i].first > rudolf.first) {
+            ++ans;
+        } else if (rank[i].first == rudolf.first && rank[i].second < rudolf.second) {
+            ++ans;
         }
     }
-    cout << "DRAW";
+    cout << ans;
 }
 
 void preCompute() {
