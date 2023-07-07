@@ -44,6 +44,7 @@ void solve() {
 
 void preCompute() {
     for (int32_t i = 2; i * 1ll * i < N; ++i) {
+        debug(i)
         int prev = i * i, dec = N / i;
         for (int j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
