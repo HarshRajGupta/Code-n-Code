@@ -30,7 +30,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-const int N = 1e10 + 7;
+const int N = 1e11 + 7;
 
 unordered_map<int, bool> snowFlake;
 
