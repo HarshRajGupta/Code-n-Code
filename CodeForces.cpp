@@ -43,10 +43,12 @@ void solve() {
         return;
     }
     _for(i, 3) {
+        debug(s[i][0], s[i][1], s[i][2])
         if ((s[i][0] == s[i][1] == s[i][2]) && (s[i][0] != '.')) {
             cout << s[i][0];
             return;
         }
+        debug(s[0][i], s[1][i], s[2][i])
         if ((s[0][i] == s[1][i] == s[2][i]) && (s[0][i] != '.')) {
             cout << s[0][i];
             return;
