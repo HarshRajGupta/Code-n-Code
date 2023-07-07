@@ -43,7 +43,7 @@ void solve() {
 
 void preCompute() {
     for (int i = 2; i * i < N; ++i) {
-        if (snowFlake.find(i) != snowFlake.end()) continue;
+        // if (snowFlake.find(i) != snowFlake.end()) continue;
         int prev = i * i;
         for (int j = 1 + i + prev; j < N; j += prev) {
             snowFlake[j] = true;
