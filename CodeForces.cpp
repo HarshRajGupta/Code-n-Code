@@ -20,7 +20,7 @@ public:
         return ans;
     }
     void test() {
-        vector<int> a = {2,3,4,3,4};
+        vector<int> a = {4,5,6};
         cout << alternatingSubarray(a);
         /* test */
     }
