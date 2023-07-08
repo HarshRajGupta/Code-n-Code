@@ -31,7 +31,7 @@ public:
     }
     void test() {
         /* test */
-        cout << minimumBeautifulSubstrings("111");
+        cout << minimumBeautifulSubstrings("1110");
     }
 };
 
