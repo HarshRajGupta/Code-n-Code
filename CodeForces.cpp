@@ -10,6 +10,7 @@ class Solution {
     set<int> powersOf5 = {1, 5, 25, 125, 625, 3125, 15625, 78125, 390625, 1953125, 9765625, 48828125, 244140625};
 
     int ans(string s, int pos) {
+        if (pos == s.size()) return 0;
         int num = 0;
         int res = 1e5;
         if (s[pos] == '0') return -1;
