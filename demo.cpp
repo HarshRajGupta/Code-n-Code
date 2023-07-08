@@ -8,7 +8,7 @@ using namespace __gnu_debug;
 class Solution {
 public:
     void test() {
-        for (int i = 1; i < 1e5; i *= 5) {
+        for (int i = 1; i < 1e9; i *= 5) {
             cout << i << ", ";
         }
     }
