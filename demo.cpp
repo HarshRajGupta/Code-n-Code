@@ -6,61 +6,67 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    void bfs(vector<vector<int>>& board, int i, int j) {
-        queue<pair<int, int>> q;
-        q.push({i, j});
-        board[i][j] = 0;
-        while (!q.empty()) {
-            auto [x, y] = q.front();
-            if (x > 0 && board[x - 1][y] == 1) {
-                board[x - 1][y] = 0;
-                q.push({x - 1, y});
+    bool differBy1(string &s1, string &s2) {
+        int differ = 0;
+        for (int i = 0; i < s1.size(); ++i) {
+            if (s1[i] != s2[i]) {
+                if (++differ == 2) return false;
             }
-            if (y > 0 && board[x][y - 1] == 1) {
-                board[x][y - 1] = 0;
-                q.push({x, y - 1});
-            }
-            if (x < board.size() - 1 && board[x + 1][y] == 1) {
-                board[x + 1][y] = 0;
-                q.push({x + 1, y});
-            }
-            if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
-                board[x][y + 1] = 0;
-                q.push({x, y + 1});
-            }
-            q.pop();
         }
+        return true;
     }
 public:
-    int numEnclaves(vector<vector<int>>& board) {
-        for (int j = 0; j < board[0].size(); ++j) {
-            if (board[0][j] == 1) {
-                bfs(board, 0, j);
+    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        wordList.push_back(beginWord);
+        vector<int> endExit;
+        vector<int> graph[wordList.size() + 1];
+        for (int i = 0; i < wordList.size(); ++i) {
+            for (int j = i + 1; j < wordList.size(); ++j) {
+                if (differBy1(wordList[i], wordList[j])) {
+                    graph[i].push_back(j);
+                    graph[j].push_back(i);
+                }
             }
-            if (board[board.size() - 1][j] == 1) {
-                bfs(board, board.size() - 1, j);
-            }
-        }
-        for (int i = 0; i < board.size(); ++i) {
-            if (board[i][0] == 1) {
-                bfs(board, i, 0);
-            }
-            if (board[i][board[0].size() - 1] == 1) {
-                bfs(board, i, board[0].size() - 1);
+            if (wordList[i] == endWord) {
+                endExit = graph[i];
             }
         }
-        debug(board)
-        int cnt = 0;
-        for (auto &i : board) {
-            for (auto &j : i) {
-                if (j) ++cnt;
+
+        if (endExit.size() == 0) return {};
+
+        vector<int> visited(wordList.size(), wordList.size() + 1);
+        vector<vector<string>> ans;
+        queue<pair<int, vector<string>>> q;
+        int shortest = wordList.size() + 1;
+        q.push({wordList.size() - 1, {}});
+        visited[wordList.size() - 1] = 0;
+
+        while (!q.empty()) {
+            auto [src, v] = q.front();
+            q.pop();
+            v.push_back(wordList[src]);
+            if (endExit[src]) {
+                v.push_back(endWord);
+                if (v.size() <= shortest) {
+                    shortest = v.size();
+                    ans.push_back(v);
+                }
+                continue;
+            }
+            if (v.size() >= shortest) continue;
+            for (auto &i : graph[src]) {
+                if (visited[i] >= v.size()) {
+                    visited[i] = v.size();
+                    q.push({i, v});
+                }
             }
         }
-        return cnt;
+        return ans;
     }
     void test() {
-        vector<vector<int>> a = {{0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1}, {0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1}, {1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0}, {0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0}, {1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1}, {0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1}, {1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0}, {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0}, {1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1}};
-        cout << numEnclaves(a);
+        string a = "hit", b = "cog";
+        vector<string> c= {"hot","dot","dog","lot","log","cog"};
+        debug(findLadders(a, b, c));
     }
 };
 
