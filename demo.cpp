@@ -22,7 +22,8 @@ public:
         return true;
     }
     void test() {
-        vector<int> nums = {2, 2, 3, 1, 1, 0}; int k = 3;
+        vector<int> nums = {60, 72, 87, 89, 63, 52, 64, 62, 31, 37, 57, 83, 98, 94, 92, 77, 94, 91, 87, 100, 91, 91, 50, 26};
+        int k = 4;
         cout << checkArray(nums, k) << endl;
         /* test */
     }
