@@ -22,7 +22,7 @@ public:
             auto &p = q.front();
             int x = p[0], y = p[1];
             q.pop();
-            int v = ans[x][y];
+            int &v = ans[x][y];
             if (x > 0 && v + 1 < ans[x - 1][y]) {
                 ans[x - 1][y] = v + 1;
                 q.push({x - 1, y});
