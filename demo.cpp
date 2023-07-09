@@ -18,7 +18,7 @@ class Solution {
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
         wordList.push_back(beginWord);
-        vector<int> endExit;
+        vector<bool> endExit;
         vector<vector<int>> graph(wordList.size());
         for (int i = 0; i < wordList.size(); ++i) {
             for (int j = i + 1; j < wordList.size(); ++j) {
@@ -28,7 +28,10 @@ public:
                 }
             }
             if (wordList[i] == endWord) {
-                endExit = graph[i];
+                endExit = vector<bool>(wordList.size());
+                for (auto &j : graph[i]) {
+                    endExit[j] = true;
+                }
             }
         }
 
