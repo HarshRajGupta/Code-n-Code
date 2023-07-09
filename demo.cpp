@@ -6,110 +6,47 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
+    void bfs(vector<vector<int>>& board, int i, int j) {
+        queue<pair<int, int>> q;
+        q.push({i, j});
+        board[i][j] = 2;
+        while (!q.empty()) {
+            auto &[x, y] = q.front();
+            if (x > 0 && board[x - 1][y] == 1) {
+                board[x - 1][y] = 1;
+                q.push({x - 1, y});
+            }
+            if (y > 0 && board[x][y - 1] == 1) {
+                board[x][y - 1] = 2;
+                q.push({x, y - 1});
+            }
+            if (x < board.size() - 1 && board[x + 1][y] == 1) {
+                board[x + 1][y] = 2;
+                q.push({x + 1, y});
+            }
+            if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
+                board[x][y + 1] = 2;
+                q.push({x, y + 1});
+            }
+            q.pop();
+        }
+    }
 public:
     int numEnclaves(vector<vector<int>>& board) {
         for (int j = 0; j < board[0].size(); ++j) {
             if (board[0][j] == 1) {
-                queue<pair<int, int>> q;
-                q.push({0, j});
-                board[0][j] = 2;
-                while (!q.empty()) {
-                    auto &[x, y] = q.front();
-                    if (x > 0 && board[x - 1][y] == 1) {
-                        board[x - 1][y] = 1;
-                        q.push({x - 1, y});
-                    }
-                    if (y > 0 && board[x][y - 1] == 1) {
-                        board[x][y - 1] = 2;
-                        q.push({x, y - 1});
-                    }
-                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
-                        board[x + 1][y] = 2;
-                        q.push({x + 1, y});
-                    }
-                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
-                        board[x][y + 1] = 2;
-                        q.push({x, y + 1});
-                    }
-                    q.pop();
-                }
+                bfs(board, 0, j);
             }
             if (board[board.size() - 1][j] == 1) {
-                queue<pair<int, int>> q;
-                q.push({board.size() - 1, j});
-                board[board.size() - 1][j] = 2;
-                while (!q.empty()) {
-                    auto &[x, y] = q.front();
-                    if (x > 0 && board[x - 1][y] == 1) {
-                        board[x - 1][y] = 2;
-                        q.push({x - 1, y});
-                    }
-                    if (y > 0 && board[x][y - 1] == 1) {
-                        board[x][y - 1] = 2;
-                        q.push({x, y - 1});
-                    }
-                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
-                        board[x + 1][y] = 2;
-                        q.push({x + 1, y});
-                    }
-                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
-                        board[x][y + 1] = 2;
-                        q.push({x, y + 1});
-                    }
-                    q.pop();
-                }
+                bfs(board, board.size() - 1, j);
             }
         }
         for (int i = 0; i < board.size(); ++i) {
             if (board[i][0] == 1) {
-                queue<pair<int, int>> q;
-                q.push({i, 0});
-                board[i][0] = 2;
-                while (!q.empty()) {
-                    auto &[x, y] = q.front();
-                    if (x > 0 && board[x - 1][y] == 1) {
-                        board[x - 1][y] = 2;
-                        q.push({x - 1, y});
-                    }
-                    if (y > 0 && board[x][y - 1] == 1) {
-                        board[x][y - 1] = 2;
-                        q.push({x, y - 1});
-                    }
-                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
-                        board[x + 1][y] = 2;
-                        q.push({x + 1, y});
-                    }
-                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
-                        board[x][y + 1] = 2;
-                        q.push({x, y + 1});
-                    }
-                    q.pop();
-                }
+                bfs(board, i, 0);
             }
             if (board[i][board[0].size() - 1] == 1) {
-                queue<pair<int, int>> q;
-                q.push({i, board[0].size() - 1});
-                board[i][board[0].size() - 1] = 2;
-                while (!q.empty()) {
-                    auto &[x, y] = q.front();
-                    if (x > 0 && board[x - 1][y] == 1) {
-                        board[x - 1][y] = 2;
-                        q.push({x - 1, y});
-                    }
-                    if (y > 0 && board[x][y - 1] == 1) {
-                        board[x][y - 1] = 2;
-                        q.push({x, y - 1});
-                    }
-                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
-                        board[x + 1][y] = 2;
-                        q.push({x + 1, y});
-                    }
-                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
-                        board[x][y + 1] = 2;
-                        q.push({x, y + 1});
-                    }
-                    q.pop();
-                }
+                bfs(board, i, board[0].size() - 1);
             }
         }
         debug(board)
