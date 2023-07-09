@@ -24,7 +24,6 @@ class Solution {
                        dfs(mat, ans, i - 1, j)
                    )
                ) + 1;
-        return 0;
     }
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
@@ -38,7 +37,7 @@ public:
         return ans;
     }
     void test() {
-        vector<vector<int>> a = {{0,0,0},{0,1,0},{0,0,0}};
+        vector<vector<int>> a = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
         debug(updateMatrix(a))
     }
 };
