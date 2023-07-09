@@ -6,28 +6,40 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
+    int dfs(vector<vector<int>>& mat, vector<vector<int>> &ans, int i, int j) {
+        if ((i < 0) || (i >= mat.size()) || (j < 0) || (j >= mat[0].size()))
+            return 1e5;
+        debug(i, j)
+        if (mat[i][j] == 0)
+            return (ans[i][j] = 0);
+        if (ans[i][j] != -1)
+            return ans[i][j];
+        return min(
+                   min(
+                       dfs(mat, ans, i, j + 1),
+                       dfs(mat, ans, i, j - 1)
+                   ),
+                   min(
+                       dfs(mat, ans, i + 1, j),
+                       dfs(mat, ans, i - 1, j)
+                   )
+               ) + 1;
+        return 0;
+    }
 public:
-    bool checkArray(vector<int>& nums, int k) {
-        vector<int> prefixSum(nums.size() + 7);
-        for (int i = 0; i < nums.size(); ++i) {
-            prefixSum[i + 1] += prefixSum[i];
-            nums[i] += prefixSum[i + 1];
-            debug(i, nums, prefixSum, nums[i])
-            if (nums[i] == 0) continue;
-            if (nums[i] < 0) return false;
-            if ((i + k) > nums.size()) return false;
-            prefixSum[i + 1] -= nums[i];
-            prefixSum[i + k + 1] += nums[i];
-            nums[i] = 0;
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        vector<vector<int>> ans(mat.size(), vector<int>(mat[0].size(), -1));
+        for (int i = 0; i < mat.size(); ++i) {
+            for (int j = 0; j < mat[0].size(); ++j) {
+                if (ans[i][j] == -1)
+                    dfs(mat, ans, i, j);
+            }
         }
-        return true;
+        return ans;
     }
     void test() {
-        vector<int> nums = {60, 72, 87, 89, 63, 52, 64, 62, 31, 37, 57, 83, 98, 94, 92, 77, 94, 91, 87, 100, 91, 91, 50, 26};
-        cout << nums.size();
-        int k = 4;
-        cout << checkArray(nums, k) << endl;
-        /* test */
+        vector<vector<int>> a = {{0,0,0},{0,1,0},{0,0,0}};
+        debug(updateMatrix(a))
     }
 };
 
