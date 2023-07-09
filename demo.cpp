@@ -15,7 +15,7 @@ public:
             debug(i, nums, prefixSum, nums[i])
             if (nums[i] == 0) continue;
             if (nums[i] < 0) return false;
-            if (i + k + 1 >= nums.size()) return false;
+            if ((i + k + 1) >= nums.size()) return false;
             prefixSum[i + 1] -= nums[i];
             prefixSum[i + k + 1] += nums[i];
             nums[i] = 0;
