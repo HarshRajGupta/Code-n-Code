@@ -20,12 +20,12 @@ public:
             auto &[p, v] = q.front();
             int x = p[0], y = p[1];
             q.pop();
-            debug(x, y, v)
+            // debug(x, y, v)
             ans[x][y] = v;
-            // if (x > 0 && v + 1 < ans[x - 1][y]) q.push({{x - 1, y}, v + 1});
-            // if (y > 0 && v + 1 < ans[x][y - 1]) q.push({{x, y - 1}, v + 1});
-            // if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) q.push({{x + 1, y}, v + 1});
-            // if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) q.push({{x, y + 1}, v + 1});
+            if (x > 0 && v + 1 < ans[x - 1][y]) q.push({{x - 1, y}, v + 1});
+            if (y > 0 && v + 1 < ans[x][y - 1]) q.push({{x, y - 1}, v + 1});
+            if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) q.push({{x + 1, y}, v + 1});
+            if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) q.push({{x, y + 1}, v + 1});
         }
         return ans;
     }
