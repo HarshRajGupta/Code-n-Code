@@ -7,44 +7,123 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
-        vector<vector<int>> ans(mat.size(), vector<int>(mat[0].size(), 1e9));
-        queue<vector<int>> q;
-        for (int i = 0; i < mat.size(); ++i) {
-            for (int j = 0; j < mat[0].size(); ++j) {
-                if (!mat[i][j]) {
-                    q.push({i, j});
-                    ans[i][j] = 0;
+    int numEnclaves(vector<vector<int>>& board) {
+        for (int j = 0; j < board[0].size(); ++j) {
+            if (board[0][j] == 1) {
+                queue<pair<int, int>> q;
+                q.push({0, j});
+                board[0][j] = 2;
+                while (!q.empty()) {
+                    auto &[x, y] = q.front();
+                    if (x > 0 && board[x - 1][y] == 1) {
+                        board[x - 1][y] = 1;
+                        q.push({x - 1, y});
+                    }
+                    if (y > 0 && board[x][y - 1] == 1) {
+                        board[x][y - 1] = 2;
+                        q.push({x, y - 1});
+                    }
+                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
+                        board[x + 1][y] = 2;
+                        q.push({x + 1, y});
+                    }
+                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
+                        board[x][y + 1] = 2;
+                        q.push({x, y + 1});
+                    }
+                    q.pop();
+                }
+            }
+            if (board[board.size() - 1][j] == 1) {
+                queue<pair<int, int>> q;
+                q.push({board.size() - 1, j});
+                board[board.size() - 1][j] = 2;
+                while (!q.empty()) {
+                    auto &[x, y] = q.front();
+                    if (x > 0 && board[x - 1][y] == 1) {
+                        board[x - 1][y] = 2;
+                        q.push({x - 1, y});
+                    }
+                    if (y > 0 && board[x][y - 1] == 1) {
+                        board[x][y - 1] = 2;
+                        q.push({x, y - 1});
+                    }
+                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
+                        board[x + 1][y] = 2;
+                        q.push({x + 1, y});
+                    }
+                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
+                        board[x][y + 1] = 2;
+                        q.push({x, y + 1});
+                    }
+                    q.pop();
                 }
             }
         }
-        while (!q.empty()) {
-            auto &p = q.front();
-            int x = p[0], y = p[1];
-            q.pop();
-            int &v = ans[x][y];
-            if (x > 0 && v + 1 < ans[x - 1][y]) {
-                ans[x - 1][y] = v + 1;
-                q.push({x - 1, y});
+        for (int i = 0; i < board.size(); ++i) {
+            if (board[i][0] == 1) {
+                queue<pair<int, int>> q;
+                q.push({i, 0});
+                board[i][0] = 2;
+                while (!q.empty()) {
+                    auto &[x, y] = q.front();
+                    if (x > 0 && board[x - 1][y] == 1) {
+                        board[x - 1][y] = 2;
+                        q.push({x - 1, y});
+                    }
+                    if (y > 0 && board[x][y - 1] == 1) {
+                        board[x][y - 1] = 2;
+                        q.push({x, y - 1});
+                    }
+                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
+                        board[x + 1][y] = 2;
+                        q.push({x + 1, y});
+                    }
+                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
+                        board[x][y + 1] = 2;
+                        q.push({x, y + 1});
+                    }
+                    q.pop();
+                }
             }
-            if (y > 0 && v + 1 < ans[x][y - 1]) {
-                ans[x][y - 1] = v + 1;
-                q.push({x, y - 1});
-            }
-            if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) {
-                ans[x + 1][y] = v + 1;
-                q.push({x + 1, y});
-            }
-            if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) {
-                ans[x][y + 1] = v + 1;
-                q.push({x, y + 1});
+            if (board[i][board[0].size() - 1] == 1) {
+                queue<pair<int, int>> q;
+                q.push({i, board[0].size() - 1});
+                board[i][board[0].size() - 1] = 2;
+                while (!q.empty()) {
+                    auto &[x, y] = q.front();
+                    if (x > 0 && board[x - 1][y] == 1) {
+                        board[x - 1][y] = 2;
+                        q.push({x - 1, y});
+                    }
+                    if (y > 0 && board[x][y - 1] == 1) {
+                        board[x][y - 1] = 2;
+                        q.push({x, y - 1});
+                    }
+                    if (x < board.size() - 1 && board[x + 1][y] == 1) {
+                        board[x + 1][y] = 2;
+                        q.push({x + 1, y});
+                    }
+                    if (y < board[0].size() - 1 && board[x][y + 1] == 1) {
+                        board[x][y + 1] = 2;
+                        q.push({x, y + 1});
+                    }
+                    q.pop();
+                }
             }
         }
-        return ans;
+        debug(board)
+        int cnt = 0;
+        for (auto &i : board) {
+            for (auto &j : i) {
+                if (j == 1) ++cnt;
+            }
+        }
+        return cnt;
     }
     void test() {
-        vector<vector<int>> a = {{0, 0, 0}, {0, 1, 0}, {1, 1, 1}};
-        debug(updateMatrix(a))
+        vector<vector<int>> a = {{0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1}, {0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1}, {1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0}, {0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0}, {1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1}, {0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1}, {1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0}, {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0}, {1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1}};
+        cout << numEnclaves(a);
     }
 };
 
