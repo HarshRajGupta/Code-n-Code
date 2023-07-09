@@ -6,34 +6,26 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    int dfs(vector<vector<int>>& mat, vector<vector<int>> &ans, int i, int j) {
-        if ((i < 0) || (i >= ans.size()) || (j < 0) || (j >= ans[0].size()))
-            return 1e5;
-        debug(i, j)
-        if (mat[i][j] == 0)
-            return (ans[i][j] = 0);
-        if (ans[i][j] != -1)
-            return ans[i][j];
-        ans[i][j] = 1e5;
-        return ans[i][j] = min(
-                               min(
-                                   dfs(mat, ans, i, j + 1),
-                                   dfs(mat, ans, i, j - 1)
-                               ),
-                               min(
-                                   dfs(mat, ans, i + 1, j),
-                                   dfs(mat, ans, i - 1, j)
-                               )
-                           ) + 1;
-    }
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
-        vector<vector<int>> ans(mat.size(), vector<int>(mat[0].size(), -1));
+        vector<vector<int>> ans(mat.size(), vector<int>(mat[0].size(), 1e9));
+        vector<vector<bool>> visited(mat.size(), vector<bool>(mat[0].size(), false));
+        queue<pair<vector<int>, int>> q;
         for (int i = 0; i < mat.size(); ++i) {
             for (int j = 0; j < mat[0].size(); ++j) {
-                if (ans[i][j] == -1)
-                    dfs(mat, ans, i, j);
+                if (!mat[i][j]) q.push({{i, j}, 0});
             }
+        }
+        while (!q.empty()) {
+            auto &[p, v] = q.front();
+            debug(p, v)
+            q.pop();
+            int x = p[0], y = p[1];
+            // ans[x][y] = v;
+            // if (x > 0 && v + 1 < ans[x - 1][y]) q.push({{x - 1, y}, v + 1});
+            // if (y > 0 && v + 1 < ans[x][y - 1]) q.push({{x, y - 1}, v + 1});
+            // if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) q.push({{x + 1, y}, v + 1});
+            // if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) q.push({{x, y + 1}, v + 1});
         }
         return ans;
     }
