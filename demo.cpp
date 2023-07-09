@@ -12,12 +12,13 @@ public:
         for (int i = 0; i < nums.size(); ++i) {
             prefixSum[i + 1] += prefixSum[i];
             nums[i] += prefixSum[i + 1];
-            debug(prefixSum, nums[i], i)
+            debug(i, nums, prefixSum, nums[i])
             if (nums[i] == 0) continue;
             if (nums[i] < 0) return false;
             if (i + k >= nums.size()) return false;
             prefixSum[i + 1] -= nums[i];
             prefixSum[i + k + 1] += nums[i];
+            nums[i] = 0;
         }
         return true;
     }
