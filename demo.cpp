@@ -18,10 +18,10 @@ public:
         }
         while (!q.empty()) {
             auto &[p, v] = q.front();
-            debug(p, v)
-            q.pop();
             int x = p[0], y = p[1];
-            // ans[x][y] = v;
+            q.pop();
+            debug(x, y, v)
+            ans[x][y] = v;
             // if (x > 0 && v + 1 < ans[x - 1][y]) q.push({{x - 1, y}, v + 1});
             // if (y > 0 && v + 1 < ans[x][y - 1]) q.push({{x, y - 1}, v + 1});
             // if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) q.push({{x + 1, y}, v + 1});
