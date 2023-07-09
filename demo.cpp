@@ -61,6 +61,7 @@ public:
                 }
             }
         }
+        debug(ans)
         return ans;
     }
     void test() {
