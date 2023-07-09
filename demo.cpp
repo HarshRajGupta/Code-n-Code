@@ -23,10 +23,22 @@ public:
             int x = p[0], y = p[1];
             q.pop();
             int v = ans[x][y];
-            if (x > 0 && v + 1 < ans[x - 1][y]) q.push({x - 1, y});
-            if (y > 0 && v + 1 < ans[x][y - 1]) q.push({x, y - 1});
-            if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) q.push({x + 1, y});
-            if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) q.push({x, y + 1});
+            if (x > 0 && v + 1 < ans[x - 1][y]) {
+                ans[x - 1][y] = v + 1;
+                q.push({x - 1, y});
+            }
+            if (y > 0 && v + 1 < ans[x][y - 1]) {
+                ans[x][y - 1] = v + 1;
+                q.push({x, y - 1});
+            }
+            if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) {
+                ans[x + 1][y] = v + 1;
+                q.push({x + 1, y});
+            }
+            if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) {
+                ans[x][y + 1] = v + 1;
+                q.push({x, y + 1});
+            }
         }
         return ans;
     }
