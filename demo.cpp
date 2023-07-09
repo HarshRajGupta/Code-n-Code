@@ -26,6 +26,7 @@ public:
             }
             res = max(res, max(dp[0][i], dp[1][i]));
         }
+        debug(dp[0], dp[1])
         return res;
     }
     void test() {
