@@ -44,6 +44,7 @@ public:
         while (!q.empty()) {
             auto [src, v] = q.front();
             q.pop();
+            debug(src, v)
             v.push_back(wordList[src]);
             if (endExit[src]) {
                 v.push_back(endWord);
