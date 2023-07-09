@@ -41,7 +41,7 @@ public:
         q.push({wordList.size() - 1, {}});
         visited[wordList.size() - 1] = 0;
 
-        debug(graph)
+        debug(graph, endExit)
         while (!q.empty()) {
             auto [src, v] = q.front();
             q.pop();
