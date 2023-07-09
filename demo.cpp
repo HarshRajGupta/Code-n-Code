@@ -18,7 +18,6 @@ public:
             if (i + k >= nums.size()) return false;
             prefixSum[i + 1] -= nums[i];
             prefixSum[i + k + 1] += nums[i];
-            nums[i] = 0;
         }
         return true;
     }
