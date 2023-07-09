@@ -19,7 +19,7 @@ public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
         wordList.push_back(beginWord);
         vector<int> endExit;
-        vector<int> graph[wordList.size() + 1];
+        vector<vector<int>> graph(wordList.size());
         for (int i = 0; i < wordList.size(); ++i) {
             for (int j = i + 1; j < wordList.size(); ++j) {
                 if (differBy1(wordList[i], wordList[j])) {
@@ -41,6 +41,7 @@ public:
         q.push({wordList.size() - 1, {}});
         visited[wordList.size() - 1] = 0;
 
+        debug(graph)
         while (!q.empty()) {
             auto [src, v] = q.front();
             q.pop();
@@ -67,7 +68,7 @@ public:
     }
     void test() {
         string a = "hit", b = "cog";
-        vector<string> c= {"hot","dot","dog","lot","log","cog"};
+        vector<string> c = {"hot", "dot", "dog", "lot", "log", "cog"};
         findLadders(a, b, c);
     }
 };
