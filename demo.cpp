@@ -7,7 +7,7 @@ using namespace __gnu_debug;
 
 class Solution {
     int dfs(vector<vector<int>>& mat, vector<vector<int>> &ans, int i, int j) {
-        if ((i < 0) || (i >= mat.size()) || (j < 0) || (j >= mat[0].size()))
+        if ((i < 0) || (i >= ans.size()) || (j < 0) || (j >= ans[0].size()))
             return 1e5;
         debug(i, j)
         if (mat[i][j] == 0)
