@@ -53,7 +53,7 @@ public:
         int cnt = 0;
         for (auto &i : board) {
             for (auto &j : i) {
-                if (j == 1) ++cnt;
+                if (j) ++cnt;
             }
         }
         return cnt;
