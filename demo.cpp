@@ -7,31 +7,24 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    int maxNonDecreasingLength(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> dp[2] = {vector<int>(nums1.size(), 1), vector<int>(nums1.size(), 1)};
-        dp[0][nums1.size() - 1] = dp[1][nums1.size() - 1] = 1;
-        int res = 1;
-        for (int i = nums1.size() - 2; i >= 0; --i) {
-            if (nums1[i] <= nums1[i + 1]) {
-                dp[0][i] = dp[0][i + 1] + 1;
-            }
-            if (nums2[i] <= nums2[i + 1]) {
-                dp[1][i] = dp[1][i + 1] + 1;
-            }
-            if (nums1[i] <= nums2[i + 1]) {
-                dp[0][i] = max(dp[0][i], dp[1][i + 1] + 1);
-            }
-            if (nums2[i] <= nums1[i + 1]) {
-                dp[1][i] = max(dp[1][i], dp[0][i + 1] + 1);
-            }
-            res = max(res, max(dp[0][i], dp[1][i]));
+    bool checkArray(vector<int>& nums, int k) {
+        vector<int> prefixSum(nums.size() + 7);
+        for (int i = 0; i < nums.size(); ++i) {
+            prefixSum[i + 1] += prefixSum[i];
+            nums[i] += prefixSum[i + 1];
+            if (nums[i] == 0) continue;
+            if (nums[i] < 0) return false;
+            if (i + k >= nums.size()) return false;
+            prefixSum[i + 1] -= nums[i];
+            nums[i] = 0;
+            prefixSum[i + k + 1] += nums[i];
         }
-        debug(dp[0], dp[1])
-        return res;
+        return true;
     }
     void test() {
-        vector<int> a = {2, 3, 1}, b = {1, 2, 1};
-        debug(maxNonDecreasingLength(a, b));
+        vector<int> nums = {2, 2, 3, 1, 1, 0}; int k = 3;
+        cout << checkArray(nums, k) << endl;
+        /* test */
     }
 };
 
