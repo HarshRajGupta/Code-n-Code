@@ -43,7 +43,7 @@ public:
         return ans;
     }
     void test() {
-        vector<vector<int>> a = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        vector<vector<int>> a = {{0, 0, 0}, {0, 1, 0}, {1, 1, 1}};
         debug(updateMatrix(a))
     }
 };
