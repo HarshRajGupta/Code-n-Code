@@ -8,7 +8,7 @@ using namespace __gnu_debug;
 class Solution {
 public:
     int maxNonDecreasingLength(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> dp[2] = {vector<int>(nums1.size(), -1), vector<int>(nums1.size(), -1)};
+        vector<int> dp[2] = {vector<int>(nums1.size(), 1), vector<int>(nums1.size(), 1)};
         dp[0][nums1.size() - 1] = dp[1][nums1.size() - 1] = 1;
         int res = 1;
         for (int i = nums1.size() - 2; i >= 0; --i) {
