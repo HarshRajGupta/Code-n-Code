@@ -7,10 +7,30 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    void test() {
-        for (int i = 1; i < 1e9; i *= 5) {
-            cout << i << ", ";
+    int maxNonDecreasingLength(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> dp[2] = {vector<int>(nums1.size(), -1), vector<int>(nums1.size(), -1)};
+        dp[0][nums1.size() - 1] = dp[1][nums1.size() - 1] = 1;
+        int res = 1;
+        for (int i = nums1.size() - 2; i >= 0; --i) {
+            if (nums1[i] <= nums1[i + 1]) {
+                dp[0][i] = dp[0][i + 1] + 1;
+            }
+            if (nums2[i] <= nums2[i + 1]) {
+                dp[1][i] = dp[1][i + 1] + 1;
+            }
+            if (nums1[i] <= nums2[i + 1]) {
+                dp[0][i] = max(dp[0][i], dp[1][i + 1] + 1);
+            }
+            if (nums2[i] <= nums1[i + 1]) {
+                dp[1][i] = max(dp[1][i], dp[0][i + 1] + 1);
+            }
+            res = max(res, max(dp[0][i], dp[1][i]));
         }
+        return res;
+    }
+    void test() {
+        vector<int> a = {2, 3, 1}, b = {1, 2, 1};
+        debug(maxNonDecreasingLength(a, b));
     }
 };
 
