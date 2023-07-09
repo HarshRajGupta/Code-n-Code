@@ -68,7 +68,7 @@ public:
     void test() {
         string a = "hit", b = "cog";
         vector<string> c= {"hot","dot","dog","lot","log","cog"};
-        debug(findLadders(a, b, c));
+        findLadders(a, b, c);
     }
 };
 
