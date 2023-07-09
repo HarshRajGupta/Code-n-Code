@@ -13,7 +13,7 @@ class Solution {
         while (!q.empty()) {
             auto [x, y] = q.front();
             if (x > 0 && board[x - 1][y] == 1) {
-                board[x - 1][y] = 1;
+                board[x - 1][y] = 2;
                 q.push({x - 1, y});
             }
             if (y > 0 && board[x][y - 1] == 1) {
