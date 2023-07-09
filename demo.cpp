@@ -14,16 +14,16 @@ class Solution {
             return (ans[i][j] = 0);
         if (ans[i][j] != -1)
             return ans[i][j];
-        return min(
-                   min(
-                       dfs(mat, ans, i, j + 1),
-                       dfs(mat, ans, i, j - 1)
-                   ),
-                   min(
-                       dfs(mat, ans, i + 1, j),
-                       dfs(mat, ans, i - 1, j)
-                   )
-               ) + 1;
+        return ans[i][j] = min(
+                               min(
+                                   dfs(mat, ans, i, j + 1),
+                                   dfs(mat, ans, i, j - 1)
+                               ),
+                               min(
+                                   dfs(mat, ans, i + 1, j),
+                                   dfs(mat, ans, i - 1, j)
+                               )
+                           ) + 1;
     }
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
