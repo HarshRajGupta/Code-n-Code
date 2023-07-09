@@ -9,23 +9,24 @@ class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
         vector<vector<int>> ans(mat.size(), vector<int>(mat[0].size(), 1e9));
-        queue<pair<vector<int>, int>> q;
+        queue<vector<int>> q;
         for (int i = 0; i < mat.size(); ++i) {
             for (int j = 0; j < mat[0].size(); ++j) {
-                if (!mat[i][j]) q.push({{i, j}, 0});
+                if (!mat[i][j]) {
+                    q.push({i, j});
+                    ans[i][j] = 0;
+                }
             }
         }
         while (!q.empty()) {
-            auto &[p, v] = q.front();
+            auto &p = q.front();
             int x = p[0], y = p[1];
             q.pop();
-            debug(x, y, v)
-            if (v > ans[x][y]) continue;
-            ans[x][y] = v;
-            if (x > 0 && v + 1 < ans[x - 1][y]) q.push({{x - 1, y}, v + 1});
-            if (y > 0 && v + 1 < ans[x][y - 1]) q.push({{x, y - 1}, v + 1});
-            if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) q.push({{x + 1, y}, v + 1});
-            if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) q.push({{x, y + 1}, v + 1});
+            int v = ans[x][y];
+            if (x > 0 && v + 1 < ans[x - 1][y]) q.push({x - 1, y});
+            if (y > 0 && v + 1 < ans[x][y - 1]) q.push({x, y - 1});
+            if (x < mat.size() - 1 && v + 1 < ans[x + 1][y]) q.push({x + 1, y});
+            if (y < mat[0].size() - 1 && v + 1 < ans[x][y + 1]) q.push({x, y + 1});
         }
         return ans;
     }
