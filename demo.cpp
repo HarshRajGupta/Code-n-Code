@@ -14,6 +14,7 @@ class Solution {
             return (ans[i][j] = 0);
         if (ans[i][j] != -1)
             return ans[i][j];
+        ans[i][j] = 1e5;
         return ans[i][j] = min(
                                min(
                                    dfs(mat, ans, i, j + 1),
@@ -37,7 +38,7 @@ public:
         return ans;
     }
     void test() {
-        vector<vector<int>> a = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        vector<vector<int>> a = {{0, 0, 0}, {0, 1, 0}, {1, 1, 1}};
         debug(updateMatrix(a))
     }
 };
