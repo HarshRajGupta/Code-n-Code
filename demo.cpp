@@ -11,7 +11,7 @@ class Solution {
         q.push({i, j});
         board[i][j] = 2;
         while (!q.empty()) {
-            auto &[x, y] = q.front();
+            auto [x, y] = q.front();
             if (x > 0 && board[x - 1][y] == 1) {
                 board[x - 1][y] = 1;
                 q.push({x - 1, y});
