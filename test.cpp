@@ -26,7 +26,7 @@ public:
     }
 
     void addInteger(int val) {
-         debug(val, parentList, parent)
+        debug(val, parentList, parent)
         if (val && parent[val - 1] != -1) {
             parent[val] = find(val - 1);
         } else {
@@ -57,18 +57,20 @@ class Solution {
 public:
     /* function */
     void test() {
-        auto dsu = new DisjointIntervals();
-        int q; cin >> q;
-        while (q--) {
-            int t; cin >> t;
-            debug(t)
-            if (t == 1) {
-                int a; cin >> a;
-                dsu->addInteger(a);
-            } else {
-                auto ans = dsu->getDisjointIntervals();
-                for (auto &i : ans) for (auto &j : i) cout << j << ' ';
-                cout << '\n';
+        int t; cin >> t;
+        while (t--) {
+            auto dsu = new DisjointIntervals();
+            int q; cin >> q;
+            while (q--) {
+                int t; cin >> t;
+                if (t == 1) {
+                    int a; cin >> a;
+                    dsu->addInteger(a);
+                } else {
+                    auto ans = dsu->getDisjointIntervals();
+                    for (auto &i : ans) for (auto &j : i) cout << j << ' ';
+                    cout << '\n';
+                }
             }
         }
     }
