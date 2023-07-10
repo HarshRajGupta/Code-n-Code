@@ -8,7 +8,7 @@ using namespace __gnu_debug;
 class Solution {
     vector<int> dp[2] = {vector<int>(5001, -1), vector<int>(5001, -1)};
     int maxProfitAtI(vector<int>& prices, int pos = 0, bool flag = false) {
-        // debug(pos, flag, dp[0], dp[1])
+        debug(pos, flag)
         if (pos == prices.size()) return 0;
         if (dp[flag][pos] != -1) return dp[flag][pos];
         if (flag) {
