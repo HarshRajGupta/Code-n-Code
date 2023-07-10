@@ -1,59 +1,80 @@
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
-#endif
-
 #include <bits/stdc++.h>
-using namespace std;
+using namespace __gnu_debug;
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#ifndef __MAIN__
-#define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
-#endif
+class DisjointIntervals {
+    set<int> parentList;
+    vector<int> parent, rank;
+public:
+    DisjointIntervals() {
+        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
+        parent = vector<int>(10001, -1);
+        rank = vector<int>(10001);
+    }
 
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
+    int find(int val) {
+        if (parent[val] == val)
+            return val;
+        parentList.erase(val);
+        rank[val] = 0;
+        return parent[val] = find(parent[val]);
+    }
 
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-
-template<class T>using v = vector<T>;
-template<class T>using maxHeap = priority_queue<T>;
-template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(),(x).end()
-
-void solve() {
-    int n; cin >> n;
-    v<int> arr(n);
-    foreach(i, arr) cin >> i;
-    int ans = 0, prev = 0, sum = 0;
-    foreach (i, arr) {
-        sum += abs(i);
-        if ((i < 0 && prev) || (i == 0)) continue;
-        else if (i < 0) {
-            prev = 1;
-            ++ans;
+    void addInteger(int val) {
+        if (val && parent[val - 1] != -1) {
+            parent[val] = find(val - 1);
         } else {
-            prev = 0;
+            parent[val] = val;
+        }
+        ++rank[parent[val]];
+        if (parent[val + 1] != -1) {
+            parent[val + 1] = parent[val];
+            rank[parent[val]] += rank[parent[val + 1]];
+            rank[parent[val + 1]] = 0;
         }
     }
-    debug(arr)
-    cout << sum << ' ' << ans;
-}
+    vector<vector<int>> getDisjointIntervals() {
+        vector<vector<int>> res;
+        int prev = -1;
+        for (auto &i : parentList) {
+            if (prev < i) {
+                res.push_back({i, prev = i - 1 + rank[i]});
+            }
+        }
+        return res;
+    }
+};
 
-static void preCompute() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
-}
+class Solution {
+public:
+    /* function */
+    void test() {
+        auto dsu = new DisjointIntervals();
+        int q; cin >> q;
+        while (q--) {
+            int t; cin >> t;
+            if (t == 1) {
+                int a; cin >> a;
+                dsu->addInteger(a);
+            } else {
+                auto ans = dsu->getDisjointIntervals();
+                for (auto &i : ans) for (auto &j : i) cout << j << ' ';
+                cout << '\n';
+            }
+        }
+    }
+    Solution() {
+        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    }
+};
 
 /**
  * @ScratchPad
  */
 
-__MAIN__
+#ifdef __TEST__
+__TEST__
+#endif
