@@ -34,8 +34,8 @@ public:
         }
         ++rank[parent[val]];
         if (parent[val + 1] != -1) {
-            parent[val + 1] = parent[val];
             rank[parent[val]] += rank[parent[val + 1]];
+            parent[val + 1] = parent[val];
             rank[parent[val + 1]] = 0;
         }
         debug(val, parentList, parent, rank)
