@@ -44,6 +44,7 @@ void solve() {
         }
         sum += abs(i);
     }
+    debug(arr)
     cout << sum << ' ' << ans;
 }
 
