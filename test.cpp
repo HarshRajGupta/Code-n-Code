@@ -5,75 +5,30 @@ using namespace __gnu_debug;
 #define debug(...)
 #endif
 
-class DisjointIntervals {
-    int N = 10;
-    set<int> parentList;
-    vector<int> parent, rank;
-public:
-    DisjointIntervals() {
-        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
-        parent = vector<int>(N, -1);
-        // iota(parent.begin(), parent.end());
-        rank = vector<int>(N);
-    }
-
-    int find(int val) {
-        if (parent[val] == val)
-            return val;
-        parentList.erase(val);
-        rank[val] = 0;
-        return parent[val] = find(parent[val]);
-    }
-
-    void addInteger(int val) {
-        if (val && parent[val - 1] != -1) {
-            parent[val] = find(val - 1);
-        } else {
-            parentList.insert(val);
-            parent[val] = val;
-        }
-        ++rank[parent[val]];
-        debug(val, parentList, parent, rank)
-        if (parent[val + 1] != -1) {
-            rank[parent[val]] += rank[parent[val + 1]];
-            rank[parent[val + 1]] = 0;
-            parent[val + 1] = parent[val];
-        }
-        debug(val, parentList, parent, rank)
-    }
-    vector<vector<int>> getDisjointIntervals() {
-        debug(rank, parentList, parent)
-        vector<vector<int>> res;
-        int prev = -1;
-        for (auto &i : parentList) {
-            if (prev < i) {
-                res.push_back({i, prev = i - 1 + rank[i]});
-            }
-        }
-        return res;
-    }
-};
-
 class Solution {
-public:
-    /* function */
-    void test() {
-        int t; cin >> t;
-        while (t--) {
-            auto dsu = new DisjointIntervals();
-            int q; cin >> q;
-            while (q--) {
-                int t; cin >> t;
-                if (t == 1) {
-                    int a; cin >> a;
-                    dsu->addInteger(a);
-                } else {
-                    auto ans = dsu->getDisjointIntervals();
-                    for (auto &i : ans) for (auto &j : i) cout << j << ' ';
-                    cout << '\n';
-                }
-            }
+    vector<int> dp[2] = {vector<int>(5001, -1), vector<int>(5001, -1)};
+    int maxProfitAtI(vector<int>& prices, int pos = 0, bool flag = false) {
+        // debug(pos, flag, dp[0], dp[1])
+        if (pos == prices.size()) return 0;
+        if (dp[flag][pos] != -1) return dp[flag][pos];
+        if (flag) {
+            return dp[flag][pos] = max(
+                                       maxProfitAtI(prices, pos + 1, true),
+                                       prices[pos] + maxProfitAtI(prices, pos + 2, false)
+                                   );
         }
+        return dp[flag][pos] = max(
+                                   maxProfitAtI(prices, pos + 1, false),
+                                   maxProfitAtI(prices, pos + 1, true) - prices[pos]
+                               );
+    }
+public:
+    int maxProfit(vector<int>& prices) {
+        return maxProfitAtI(prices);
+    }
+    void test() {
+        vector<int> a = {1,2,3,0,2};
+        debug(maxProfitAtI(a))
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
