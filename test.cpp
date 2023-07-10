@@ -35,6 +35,7 @@ void solve() {
     foreach(i, arr) cin >> i;
     int ans = 0, prev = 0, sum = 0;
     foreach (i, arr) {
+        sum += abs(i);
         if (i < 0 && prev) continue;
         else if (i < 0) {
             prev = 1;
@@ -42,7 +43,6 @@ void solve() {
         } else {
             prev = 0;
         }
-        sum += abs(i);
     }
     debug(arr)
     cout << sum << ' ' << ans;
