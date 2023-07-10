@@ -6,7 +6,7 @@ using namespace __gnu_debug;
 #endif
 
 class DisjointIntervals {
-    int N = 12;
+    int N = 10;
     set<int> parentList;
     vector<int> parent, rank;
 public:
@@ -26,7 +26,6 @@ public:
     }
 
     void addInteger(int val) {
-        debug(val, parentList, parent)
         if (val && parent[val - 1] != -1) {
             parent[val] = find(val - 1);
         } else {
@@ -39,6 +38,7 @@ public:
             rank[parent[val]] += rank[parent[val + 1]];
             rank[parent[val + 1]] = 0;
         }
+        debug(val, parentList, parent, rank)
     }
     vector<vector<int>> getDisjointIntervals() {
         debug(rank, parentList, parent)
