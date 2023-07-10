@@ -61,6 +61,7 @@ public:
         int q; cin >> q;
         while (q--) {
             int t; cin >> t;
+            debug(t)
             if (t == 1) {
                 int a; cin >> a;
                 dsu->addInteger(a);
