@@ -12,8 +12,8 @@ class DisjointIntervals {
 public:
     DisjointIntervals() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
-        parent = vector<int>(N);
-        iota(parent.begin(), parent.end(), 0);
+        parent = vector<int>(N, -1);
+        // iota(parent.begin(), parent.end());
         rank = vector<int>(N);
     }
 
@@ -32,6 +32,7 @@ public:
             parentList.insert(val);
             parent[val] = val;
         }
+        debug(val, parentList, parent)
         ++rank[parent[val]];
         if (parent[val + 1] != -1) {
             parent[val + 1] = parent[val];
