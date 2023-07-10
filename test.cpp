@@ -6,13 +6,14 @@ using namespace __gnu_debug;
 #endif
 
 class DisjointIntervals {
+    int N = 12;
     set<int> parentList;
     vector<int> parent, rank;
 public:
     DisjointIntervals() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
-        parent = vector<int>(10001, -1);
-        rank = vector<int>(10001);
+        parent = vector<int>(N, -1);
+        rank = vector<int>(N);
     }
 
     int find(int val) {
@@ -38,6 +39,7 @@ public:
         }
     }
     vector<vector<int>> getDisjointIntervals() {
+        debug(rank, parentList, parent)
         vector<vector<int>> res;
         int prev = -1;
         for (auto &i : parentList) {
