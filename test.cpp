@@ -36,7 +36,7 @@ void solve() {
     int ans = 0, prev = 0, sum = 0;
     foreach (i, arr) {
         sum += abs(i);
-        if (i < 0 && prev) continue;
+        if ((i < 0 && prev) || (i == 0)) continue;
         else if (i < 0) {
             prev = 1;
             ++ans;
