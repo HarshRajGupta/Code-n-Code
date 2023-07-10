@@ -27,6 +27,7 @@ public:
         if (val && parent[val - 1] != -1) {
             parent[val] = find(val - 1);
         } else {
+            parentList.insert(val);
             parent[val] = val;
         }
         ++rank[parent[val]];
