@@ -38,8 +38,8 @@ public:
         if (endExit.size() == 0) return {};
 
         vector<int> visited(wordList.size(), wordList.size() + 1);
-        vector<vector<string>> ans;
-        queue<pair<int, vector<string>>> q;
+        vector<vector<int>> ans;
+        queue<pair<int, vector<int>>> q;
         int shortest = wordList.size() + 1;
         q.push({wordList.size() - 1, {}});
         visited[wordList.size() - 1] = 0;
@@ -49,9 +49,8 @@ public:
             auto [src, v] = q.front();
             q.pop();
             debug(src, v, visited)
-            v.push_back(wordList[src]);
+            v.push_back(src);
             if (endExit[src]) {
-                v.push_back(endWord);
                 if (v.size() <= shortest) {
                     shortest = v.size();
                     ans.push_back(v);
@@ -66,8 +65,8 @@ public:
                 }
             }
         }
-        debug(ans)
-        return ans;
+        vector<vector<string>> res(ans.size());
+        return res;
     }
     void test() {
         string a = "hit", b = "cog";
