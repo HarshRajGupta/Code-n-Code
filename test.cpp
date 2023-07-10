@@ -26,13 +26,13 @@ public:
     }
 
     void addInteger(int val) {
+         debug(val, parentList, parent)
         if (val && parent[val - 1] != -1) {
             parent[val] = find(val - 1);
         } else {
             parentList.insert(val);
             parent[val] = val;
         }
-        debug(val, parentList, parent)
         ++rank[parent[val]];
         if (parent[val + 1] != -1) {
             parent[val + 1] = parent[val];
