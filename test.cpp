@@ -6,27 +6,30 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
+    vector<vector<set<int>>> dp;
     int n = 0;
     set<int> subSeqSums(vector<int>& nums, int pos = 0, int selected = 0) {
         cout << pos << ' ' << selected << endl;
-        if (pos >= (n << 1)) return {};
+        if ((pos >= (n << 1)) || (selected >= n)) return {};
         if ((nums.size() - pos) < (n - selected)) return {};
+        if (dp[selected][pos].size()) return dp[selected][pos];
         if ((nums.size() - pos) == (n - selected)) {
             int sum = 0;
             for (int i = 0; i < (n - selected); ++i) sum += nums[pos + i];
-            return {sum};
+            return dp[selected][pos] = {sum};
         }
         set<int> skip = subSeqSums(nums, pos + 1, selected), select = subSeqSums(nums, pos + 1, selected + 1);
         for (auto &i : select) {
             skip.insert(i + nums[pos]);
         }
-        return skip;
+        return dp[selected][pos] = skip;
     }
 public:
     int minimumDifference(vector<int>& nums) {
         n = nums.size() >> 1;
+        dp = vector<vector<set<int>>>(n, vector<set<int>>(n << 1));
         auto subSeqSum = subSeqSums(nums);
-        for(auto &i: subSeqSum) cout << i << ' ';
+        for (auto &i : subSeqSum) cout << i << ' ';
         cout << endl;
         int sum = 0;
         for (auto &i : nums) sum += i;
@@ -44,6 +47,7 @@ public:
         } else if (ub != subSeqSum.end() && next(ub) != subSeqSum.end()) {
             MIN = min(MIN, sum - *next(ub));
         }
+        debug(dp)
         return MIN;
     }
     void test() {
