@@ -13,11 +13,6 @@ class Solution {
         if ((pos >= (n << 1)) || (selected >= n)) return {};
         if ((nums.size() - pos) < (n - selected)) return {};
         if (dp[selected][pos].size()) return dp[selected][pos];
-        if ((nums.size() - pos) == (n - selected)) {
-            int sum = 0;
-            for (int i = 0; i < (n - selected); ++i) sum += nums[pos + i];
-            return dp[selected][pos] = {sum};
-        }
         set<int> skip = subSeqSums(nums, pos + 1, selected), select = subSeqSums(nums, pos + 1, selected + 1);
         for (auto &i : select) {
             skip.insert(i + nums[pos]);
