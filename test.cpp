@@ -23,11 +23,8 @@ public:
         n = nums.size() >> 1;
         dp = vector<vector<set<int>>>(n, vector<set<int>>(n << 1));
         auto subSeqSum = subSeqSums(nums);
-        for (auto &i : subSeqSum) cout << i << ' ';
-        cout << endl;
         int sum = 0;
         for (auto &i : nums) sum += i;
-
         auto lb = subSeqSum.lower_bound((sum >> 1)), ub = subSeqSum.upper_bound((sum >> 1));
         // cout << *lb << ' ' << *ub << endl;
         int MIN = (sum - *lb);
