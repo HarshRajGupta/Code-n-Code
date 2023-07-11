@@ -20,7 +20,6 @@ class Solution {
         auto skip = subSeqSums(nums, pos + 1, selected),
              select = subSeqSums(nums, pos + 1, selected + 1);
         for (auto &i : select) skip.insert(i + nums[pos]);
-        if (selected == n - 1) skip.insert(nums[pos]);
         return dp[selected][pos] = skip;
     }
 public:
