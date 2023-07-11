@@ -6,14 +6,19 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    vector<vector<set<int>>> dp;
+    unordered_set<int> dp[15][30];
     int n = 0;
-    set<int> subSeqSums(vector<int>& nums, int pos = 0, int selected = 0) {
+    unordered_set<int> subSeqSums(vector<int>& nums, int pos = 0, int selected = 0) {
         if ((pos >= (n << 1)) || (selected >= n)) return {};
         if ((nums.size() - pos) < (n - selected)) return {};
         if (dp[selected][pos].size()) return dp[selected][pos];
-        set<int> skip = subSeqSums(nums, pos + 1, selected),
-                 select = subSeqSums(nums, pos + 1, selected + 1);
+        if ((nums.size() - pos) == (n - selected)) {
+            int sum = 0;
+            for (int i = pos; i < (n << 1); ++i) sum += nums[i];
+            return dp[selected][pos] = {sum};
+        }
+        auto skip = subSeqSums(nums, pos + 1, selected),
+             select = subSeqSums(nums, pos + 1, selected + 1);
         for (auto &i : select) skip.insert(i + nums[pos]);
         if (selected == n - 1) skip.insert(nums[pos]);
         return dp[selected][pos] = skip;
@@ -21,21 +26,20 @@ class Solution {
 public:
     int minimumDifference(vector<int>& nums) {
         n = nums.size() >> 1;
-        dp = vector<vector<set<int>>>(n, vector<set<int>>(n << 1));
         auto subSeqSum = subSeqSums(nums);
         int sum = 0;
         for (auto &i : nums) sum += i;
-        auto lb = subSeqSum.lower_bound((sum >> 1)), ub = subSeqSum.upper_bound((sum >> 1));
-        int MIN = abs(*lb - (sum - *lb));
-        if (lb != subSeqSum.begin()) {
-            MIN = min(MIN, abs(*prev(lb) - (sum - *prev(lb))));
-        } else if (lb != subSeqSum.end() && next(lb) != subSeqSum.end()) {
-            MIN = min(MIN, abs(*next(lb) - (sum - *next(lb))));
-        }
-        if (ub != subSeqSum.begin()) {
-            MIN = min(MIN, abs(*prev(ub) - (sum - *prev(ub))));
-        } else if (ub != subSeqSum.end() && next(ub) != subSeqSum.end()) {
-            MIN = min(MIN, abs(*next(ub) - (sum - *next(ub))));
+        // auto lb = subSeqSum.lower_bound((sum >> 1)), ub = subSeqSum.upper_bound((sum >> 1));
+        // int MIN = abs(*lb - (sum - *lb));
+        // if (lb != subSeqSum.begin()) {
+        //     MIN = min(MIN, abs(*prev(lb) - (sum - *prev(lb))));
+        // } else if (lb != subSeqSum.end() && next(lb) != subSeqSum.end()) {
+        //     MIN = min(MIN, abs(*next(lb) - (sum - *next(lb))));
+        // }
+        // return MIN;
+        int MIN = INT_MAX;
+        for (auto &i : subSeqSum) {
+            MIN = min(MIN, abs(i - (sum - i)));
         }
         return MIN;
     }
@@ -44,7 +48,7 @@ public:
         cout << minimumDifference(a);
     }
     Solution() {
-        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+        ios::sync_with_stdio(0); cin.tie(0);
     }
 };
 
