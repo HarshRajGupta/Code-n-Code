@@ -17,10 +17,10 @@ class Solution {
             for (int i = pos; i < (n << 1); ++i) sum += nums[i];
             return dp[selected][pos] = {sum};
         }
-        auto skip = subSeqSums(nums, pos + 1, selected),
-             select = subSeqSums(nums, pos + 1, selected + 1);
-        for (auto &i : select) skip.insert(i + nums[pos]);
-        return dp[selected][pos] = skip;
+        dp[selected][pos] = subSeqSums(nums, pos + 1, selected);
+        auto select = subSeqSums(nums, pos + 1, selected + 1);
+        for (auto &i : select) dp[selected][pos].insert(i + nums[pos]);
+        return  dp[selected][pos];
     }
 public:
     int minimumDifference(vector<int>& nums) {
@@ -43,7 +43,7 @@ public:
         return MIN;
     }
     void test() {
-        vector<int> a = { -768, 21048, -30104, 18383, 5515, 52512, -44374, 26201, 83243, -85658, 89956, -67529, -92254, 67182, -97560, -17563, 50650, 21425};
+        vector<int> a = { -14140, -98008, 80911, 64733, 18511, -39401, -53396, -79279, -69147, 25736, 27904, 77651, 12454, 58113, 55196, 77506, -77486, -32003};
         cout << minimumDifference(a);
     }
     Solution() {
