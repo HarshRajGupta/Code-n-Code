@@ -6,29 +6,49 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    vector<int> dp[2] = {vector<int>(10, -1), vector<int>(10, -1)};
-    int maxProfitAtI(vector<int>& prices, int pos = 0, bool flag = false) {
-        debug(pos, flag, dp[0], dp[1])
-        if (pos >= prices.size()) return 0;
-        if (dp[flag][pos] != -1) return dp[flag][pos];
-        if (flag) {
-            return dp[flag][pos] = max(
-                                       maxProfitAtI(prices, pos + 1, true),
-                                       prices[pos] + maxProfitAtI(prices, pos + 2, false)
-                                   );
+    int n = 0;
+    set<int> subSeqSums(vector<int>& nums, int pos = 0, int selected = 0) {
+        cout << pos << ' ' << selected << endl;
+        if (pos >= (n << 1)) return {};
+        if ((nums.size() - pos) < (n - selected)) return {};
+        if ((nums.size() - pos) == (n - selected)) {
+            int sum = 0;
+            for (int i = 0; i < (n - selected); ++i) sum += nums[pos + i];
+            return {sum};
         }
-        return dp[flag][pos] = max(
-                                   maxProfitAtI(prices, pos + 1, false),
-                                   maxProfitAtI(prices, pos + 1, true) - prices[pos]
-                               );
+        set<int> skip = subSeqSums(nums, pos + 1, selected), select = subSeqSums(nums, pos + 1, selected + 1);
+        for (auto &i : select) {
+            skip.insert(i + nums[pos]);
+        }
+        return skip;
     }
 public:
-    int maxProfit(vector<int>& prices) {
-        return maxProfitAtI(prices);
+    int minimumDifference(vector<int>& nums) {
+        n = nums.size() >> 1;
+        auto subSeqSum = subSeqSums(nums);
+        for(auto &i: subSeqSum) cout << i << ' ';
+        cout << endl;
+        int sum = 0;
+        for (auto &i : nums) sum += i;
+
+        auto lb = subSeqSum.lower_bound((sum >> 1)), ub = subSeqSum.upper_bound((sum >> 1));
+        // cout << *lb << ' ' << *ub << endl;
+        int MIN = (sum - *lb);
+        if (lb != subSeqSum.begin()) {
+            MIN = min(MIN, sum - *prev(lb));
+        } else if (lb != subSeqSum.end() && next(lb) != subSeqSum.end()) {
+            MIN = min(MIN, sum - *next(lb));
+        }
+        if (ub != subSeqSum.begin()) {
+            MIN = min(MIN, sum - *prev(ub));
+        } else if (ub != subSeqSum.end() && next(ub) != subSeqSum.end()) {
+            MIN = min(MIN, sum - *next(ub));
+        }
+        return MIN;
     }
     void test() {
-        vector<int> a = {1,2,3,0,2};
-        debug(maxProfitAtI(a))
+        vector<int> a = {3, 7, 9, 3};
+        cout << minimumDifference(a);
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
