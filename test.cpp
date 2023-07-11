@@ -26,9 +26,7 @@ public:
         int sum = 0;
         for (auto &i : nums) sum += i;
         auto lb = subSeqSum.lower_bound((sum >> 1)), ub = subSeqSum.upper_bound((sum >> 1));
-        cout << *lb << ' ' << *ub << endl;
-        cout << (sum - *next(ub)) << ' ';
-        int MIN = (sum - *lb);
+        int MIN = abs(*lb - (sum - *lb));
         if (lb != subSeqSum.begin()) {
             MIN = min(MIN, sum - *prev(lb));
         } else if (lb != subSeqSum.end() && next(lb) != subSeqSum.end()) {
@@ -39,7 +37,6 @@ public:
         } else if (ub != subSeqSum.end() && next(ub) != subSeqSum.end()) {
             MIN = min(MIN, sum - *next(ub));
         }
-        debug(dp)
         return MIN;
     }
     void test() {
