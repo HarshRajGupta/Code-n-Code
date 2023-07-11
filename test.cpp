@@ -9,7 +9,6 @@ class Solution {
     vector<vector<set<int>>> dp;
     int n = 0;
     set<int> subSeqSums(vector<int>& nums, int pos = 0, int selected = 0) {
-        cout << pos << ' ' << selected << endl;
         if ((pos >= (n << 1)) || (selected >= n)) return {};
         if ((nums.size() - pos) < (n - selected)) return {};
         if (dp[selected][pos].size()) return dp[selected][pos];
