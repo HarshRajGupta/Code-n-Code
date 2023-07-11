@@ -28,19 +28,19 @@ public:
         auto lb = subSeqSum.lower_bound((sum >> 1)), ub = subSeqSum.upper_bound((sum >> 1));
         int MIN = abs(*lb - (sum - *lb));
         if (lb != subSeqSum.begin()) {
-            MIN = min(MIN, sum - *prev(lb));
+            MIN = min(MIN, abs(*prev(lb) - (sum - *prev(lb))));
         } else if (lb != subSeqSum.end() && next(lb) != subSeqSum.end()) {
-            MIN = min(MIN, sum - *next(lb));
+            MIN = min(MIN, abs(*next(lb) - (sum - *next(lb))));
         }
         if (ub != subSeqSum.begin()) {
-            MIN = min(MIN, sum - *prev(ub));
+            MIN = min(MIN, abs(*prev(ub) - (sum - *prev(ub))));
         } else if (ub != subSeqSum.end() && next(ub) != subSeqSum.end()) {
-            MIN = min(MIN, sum - *next(ub));
+            MIN = min(MIN, abs(*next(ub) - (sum - *next(ub))));
         }
         return MIN;
     }
     void test() {
-        vector<int> a = {3, 7, 9, 3};
+        vector<int> a = { -768, 21048, -30104, 18383, 5515, 52512, -44374, 26201, 83243, -85658, 89956, -67529, -92254, 67182, -97560, -17563, 50650, 21425};
         cout << minimumDifference(a);
     }
     Solution() {
