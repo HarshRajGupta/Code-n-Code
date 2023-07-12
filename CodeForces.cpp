@@ -35,17 +35,14 @@ void solve() {
     int n; cin >> n;
     debug(n)
     v<int> arr(SIZE);
-    debug(arr)
     _for(i, n) {
         int t; cin >> t;
-        debug(t)
         ++arr[t];
     }
     _for(i, n) {
         int t; cin >> t;
         --arr[t + 1];
     }
-    debug(arr)
     int MAX = 0;
     rep(i, 1, SIZE) {
         arr[i] += arr[i - 1];
