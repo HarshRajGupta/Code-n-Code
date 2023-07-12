@@ -19,6 +19,7 @@ public:
                 if (j >= arr[i]) dp[i][j] += dp[i + 1][j - arr[i]];
             }
         }
+        debug(dp)
         return dp[0][k];
     }
     void test() {
