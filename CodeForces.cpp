@@ -13,7 +13,8 @@ class Solution {
 public:
     /* function */
     void test() {
-        cout << sizeof(zz);
+        pair<int, int> k;
+        cout << sizeof(k);
     }
     Solution() { 
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); 
