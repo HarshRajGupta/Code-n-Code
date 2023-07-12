@@ -7,25 +7,36 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    int findWays(vector<int>& arr, int k) {
-        // int dp[arr.size() + 1][k + 1] = {0};
-        vector<vector<int>> dp(arr.size() + 1, vector<int>(k + 1));
-        dp[arr.size()][0] = 1;
-        for (int i = arr.size() - 1; i >= 0; --i) {
-            for (int j = 0; j <= k; ++j) {
-                dp[i][j] += dp[i + 1][j];
-                if (j >= arr[i]) {
-                    dp[i][j] += dp[i + 1][j - arr[i]];
+    int minimumDifference(vector<int>& nums) {
+        int n = (nums.size() >> 1), totalSum = 0;
+        for (int &i : nums) totalSum += i;
+        vector<vector<int>> left(n + 1), right(n + 1);
+        for (int i = 1; i < (1 << n); ++i) {
+            int N = __builtin_popcount(i), lSum = 0, rSum = 0;
+            for (int j = 0; j < n; ++j) {
+                if (i && (1 << j)) {
+                    lSum += nums[j];
+                    rSum += nums[n + j];
+                }
+            }
+            left[N].emplace_back(lSum);
+            right[N].emplace_back(rSum);
+        }
+        sort(right.begin(), right.end());
+        int MIN = min(abs(totalSum - (left[n][0] * 2)), abs(totalSum - (right[n][0] * 2))), halfSum = (totalSum / 2);
+        for (int i = 1; i < n; ++i) {
+            for (int &j : left[i]) {
+                auto lb = lower_bound(right[n - i].begin(), right[n - i].end(), halfSum - j);
+                if (lb != right[n - i].end()) {
+                    MIN = min(MIN, abs(totalSum - ((j + *lb) << 1)));
                 }
             }
         }
-        return dp[0][k];
+        return MIN;
     }
     void test() {
-        int n, k; cin >> n >> k;
-        vector<int> a(n);
-        for(auto &i: a) cin >> i;
-        cout << findWays(a, k);
+        vector<int> a = {2, -1, 0, 4, -2, -9};
+        cout << minimumDifference(a);
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
