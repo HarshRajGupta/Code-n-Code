@@ -23,9 +23,7 @@ public:
             left[N].push_back(lSum);
             right[N].push_back(rSum);
         }
-        debug(left, right)
         int MIN = min(abs(totalSum - (left[n][0] * 2)), abs(totalSum - (right[n][0] * 2))), halfSum = (totalSum / 2);
-        debug(MIN, totalSum)
         for (int i = 1; i < n; ++i) {
             sort(right[n - i].begin(), right[n - i].end());
             for (int &j : left[i]) {
