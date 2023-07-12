@@ -33,7 +33,6 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 int SIZE = 14;
 void solve() {
     int n; cin >> n;
-    debug(n)
     v<int> arr(SIZE);
     _for(i, n) {
         int t; cin >> t;
@@ -48,6 +47,7 @@ void solve() {
         arr[i] += arr[i - 1];
         MAX = max(MAX, arr[i]);
     }
+    debug(arr)
     cout << MAX;
 }
 
