@@ -6,72 +6,26 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    bool differBy1(string &s1, string &s2) {
-        int differ = 0;
-        for (int i = 0; i < s1.size(); ++i) {
-            if (s1[i] != s2[i]) {
-                if (++differ == 2) return false;
-            }
-        }
-        return true;
-    }
 public:
-    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
-        wordList.push_back(beginWord);
-        vector<bool> endExit;
-        vector<vector<int>> graph(wordList.size());
-        for (int i = 0; i < wordList.size(); ++i) {
-            for (int j = i + 1; j < wordList.size(); ++j) {
-                if (differBy1(wordList[i], wordList[j])) {
-                    graph[i].push_back(j);
-                    graph[j].push_back(i);
+    int findWays(vector<int>& arr, int k) {
+        int dp[arr.size() + 1][k + 1] = {0};
+        for (int i = arr.size() - 1; i >= 0; --i) {
+            for (int j = 0; j <= k; ++j) {
+                if (i == 0) {
+                    dp[i][j] = 1;
                 }
-            }
-            if (wordList[i] == endWord) {
-                endExit = vector<bool>(wordList.size());
-                for (auto &j : graph[i]) {
-                    endExit[j] = true;
-                }
+                dp[i][j] += dp[i + 1][j];
+                if (j >= arr[i]) dp[i][j] += dp[i + 1][j - arr[i]];
             }
         }
-
-        if (endExit.size() == 0) return {};
-
-        vector<int> visited(wordList.size(), wordList.size() + 1);
-        vector<vector<int>> ans;
-        queue<pair<int, vector<int>>> q;
-        int shortest = wordList.size() + 1;
-        q.push({wordList.size() - 1, {}});
-        visited[wordList.size() - 1] = 0;
-
-        debug(graph, endExit)
-        while (!q.empty()) {
-            auto [src, v] = q.front();
-            q.pop();
-            debug(src, v, visited)
-            v.push_back(src);
-            if (endExit[src]) {
-                if (v.size() <= shortest) {
-                    shortest = v.size();
-                    ans.push_back(v);
-                }
-                continue;
-            }
-            if (v.size() >= shortest) continue;
-            for (auto &i : graph[src]) {
-                if (visited[i] >= v.size()) {
-                    visited[i] = v.size();
-                    q.push({i, v});
-                }
-            }
-        }
-        vector<vector<string>> res(ans.size());
-        return res;
+        return dp[0][k];
     }
     void test() {
-        string a = "hit", b = "cog";
-        vector<string> c = {"hot", "dot", "dog", "lot", "log", "cog"};
-        findLadders(a, b, c);
+        vector<int> a = {1, 4, 4, 5};
+        cout << findWays(a, 5);
+    }
+    Solution() {
+        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     }
 };
 
