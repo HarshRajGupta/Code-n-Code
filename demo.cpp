@@ -19,8 +19,8 @@ public:
                     rSum += nums[n + j];
                 }
             }
-            left[N].emplace_back(lSum);
-            right[N].emplace_back(rSum);
+            left[N].push_back(lSum);
+            right[N].push_back(rSum);
         }
         sort(right.begin(), right.end());
         debug(left, right)
