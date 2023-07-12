@@ -32,7 +32,6 @@ public:
                 auto lb = lower_bound(right[n - i].begin(), right[n - i].end(), halfSum - j);
                 if (lb != right[n - i].end()) {
                     MIN = min(MIN, abs(totalSum - ((j + *lb) << 1)));
-                    debug(j, *lb)
                 }
             }
         }
