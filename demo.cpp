@@ -14,10 +14,10 @@ public:
         for (int i = 1; i < (1 << n); ++i) {
             int N = __builtin_popcount(i), lSum = 0, rSum = 0;
             for (int j = 0; j < n; ++j) {
-                if (i && (1 << j)) {
+                if ((i & (1 << j))) {
                     lSum += nums[j];
                     rSum += nums[n + j];
-                    debug(i, j, (1<<j))
+                    debug(i, j, (1 << j))
                 }
             }
             left[N].push_back(lSum);
