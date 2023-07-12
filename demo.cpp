@@ -22,8 +22,10 @@ public:
         return dp[0][k];
     }
     void test() {
-        vector<int> a = {1, 4, 4, 5};
-        cout << findWays(a, 5);
+        int n, k; cin >> n >> k;
+        vector<int> a(n);
+        for(auto &i: a) cin >> i;
+        cout << findWays(a, k);
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
