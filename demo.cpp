@@ -8,7 +8,8 @@ using namespace __gnu_debug;
 class Solution {
 public:
     int findWays(vector<int>& arr, int k) {
-        int dp[arr.size() + 1][k + 1] = {0};
+        // int dp[arr.size() + 1][k + 1] = {0};
+        vector<vector<int>> dp(arr.size() + 1, vector<int>(k + 1));
         for (int i = arr.size() - 1; i >= 0; --i) {
             for (int j = 0; j <= k; ++j) {
                 if (i == 0) {
