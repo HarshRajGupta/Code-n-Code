@@ -13,9 +13,6 @@ public:
         dp[arr.size()][0] = 1;
         for (int i = arr.size() - 1; i >= 0; --i) {
             for (int j = 0; j <= k; ++j) {
-                if (j == 0) {
-                    dp[i][j] = 1;
-                }
                 dp[i][j] += dp[i + 1][j];
                 if (j >= arr[i]) dp[i][j] += dp[i + 1][j - arr[i]];
             }
