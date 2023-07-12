@@ -14,8 +14,10 @@ public:
         for (int i = arr.size() - 1; i >= 0; --i) {
             for (int j = 0; j <= k; ++j) {
                 dp[i][j] += dp[i + 1][j];
-                if (j >= arr[i]) dp[i][j] += dp[i + 1][j - arr[i]];
-                debug(arr[i], j, dp[i + 1][j - arr[i]])
+                if (j >= arr[i]) {
+                    dp[i][j] += dp[i + 1][j - arr[i]];
+                    debug(arr[i], j, dp[i + 1][j - arr[i]])
+                }
             }
             debug(dp[i])
         }
