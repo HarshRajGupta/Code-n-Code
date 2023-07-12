@@ -33,6 +33,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 int SIZE = 14;
 void solve() {
     int n; cin >> n;
+    debug(n)
     v<int> arr(SIZE);
     debug(arr)
     _for(i, n) {
