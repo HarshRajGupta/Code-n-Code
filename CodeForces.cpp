@@ -30,17 +30,31 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    int n, m; cin >> n >> m;
-    int empty = 0, filled = n;
-    _for(i, m) {
-        int t; cin >> t;
-        if (t > empty) {
-            t -= empty;
-            filled = t;
-        } else filled = 0;
-        empty = n - filled;
+    int n; cin >> n;
+    string s; cin >> s;
+    if (n % 3 == 1) {
+        cout << "YES";
+        return;
     }
-    cout << filled;
+    v<set<int>> charPos(26);
+    _for(i, n) charPos[s[i] - 'a'].insert(i % 3);
+    if (n % 3 == 2) {
+        _for(i, 26) {
+            if ((charPos[i].find(0) != charPos[i].end()) && (charPos[i].find(1) != charPos[i].end())) {
+                cout << "YES";
+                return;
+            }
+        }
+        cout << "NO";
+        return;
+    }
+    _for(i, 26) {
+        if ((charPos[i].find(0) != charPos[i].end()) && (charPos[i].find(2) != charPos[i].end())) {
+            cout << "YES";
+            return;
+        }
+    }
+    cout << "NO";
 }
 
 static void preCompute() {
