@@ -15,6 +15,7 @@ public:
             for (int j = 0; j <= k; ++j) {
                 dp[i][j] += dp[i + 1][j];
                 if (j >= arr[i]) dp[i][j] += dp[i + 1][j - arr[i]];
+                debug(arr[i], j, dp[i + 1][j - arr[i]])
             }
             debug(dp[i])
         }
