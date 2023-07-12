@@ -37,7 +37,7 @@ void solve() {
         if (t > empty) {
             t -= empty;
             filled = t;
-        }
+        } else filled = 0;
         empty = n - filled;
     }
     cout << filled;
