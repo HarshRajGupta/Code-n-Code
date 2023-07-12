@@ -29,25 +29,18 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-
-int SIZE = 14;
 void solve() {
-    int n; cin >> n;
-    v<int> arr(SIZE);
-    _for(i, n) {
+    int n, m; cin >> n >> m;
+    int empty = 0, filled = n;
+    _for(i, m) {
         int t; cin >> t;
-        ++arr[t];
+        if (t > empty) {
+            t -= empty;
+            filled = t;
+        }
+        empty = n - filled;
     }
-    _for(i, n) {
-        int t; cin >> t;
-        ++arr[t];
-    }
-    int MAX = 0;
-    rep(i, 1, SIZE) {
-        MAX = max(MAX, arr[i]);
-    }
-    debug(arr)
-    cout << MAX;
+    cout << filled;
 }
 
 static void preCompute() {
