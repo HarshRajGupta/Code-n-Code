@@ -33,6 +33,7 @@ public:
                 if (lb != right[n - i].end()) {
                     MIN = min(MIN, abs(totalSum - ((j + *lb) << 1)));
                 }
+                debug(j, *lb)
             }
         }
         return MIN;
