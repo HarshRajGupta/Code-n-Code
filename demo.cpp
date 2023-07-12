@@ -17,6 +17,7 @@ public:
                 if (i && (1 << j)) {
                     lSum += nums[j];
                     rSum += nums[n + j];
+                    debug(j)
                 }
             }
             left[N].push_back(lSum);
