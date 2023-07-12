@@ -36,25 +36,32 @@ void solve() {
         cout << "YES";
         return;
     }
-    v<set<int>> charPos(26);
-    _for(i, n) charPos[s[i] - 'a'].insert(i % 3);
-    debug(charPos)
     if (n % 3 == 2) {
-        _for(i, 26) {
-            if ((charPos[i].find(0) != charPos[i].end()) && (charPos[i].find(1) != charPos[i].end())) {
+        v<set<int>> charPos(26);
+        _for(i, n) {
+            if (i % 3 == 0)
+                charPos[s[i] - 'a'].insert(i % 3);
+            else if (i % 3 == 1) {
+                if (charPos[s[i] - 'a'].find(0) != charPos[s[i] - 'a'].end()) {
+                    cout << "YES";
+                    return;
+                }
+            }
+        };
+        cout << "NO";
+        return;
+    }
+    v<set<int>> charPos(26);
+    _for(i, n) {
+        if (i % 3 == 0)
+            charPos[s[i] - 'a'].insert(i % 3);
+        else if (i % 3 == 2) {
+            if (charPos[s[i] - 'a'].find(0) != charPos[s[i] - 'a'].end()) {
                 cout << "YES";
                 return;
             }
         }
-        cout << "NO";
-        return;
-    }
-    _for(i, 26) {
-        if ((charPos[i].find(0) != charPos[i].end()) && (charPos[i].find(2) != charPos[i].end())) {
-            cout << "YES";
-            return;
-        }
-    }
+    };
     cout << "NO";
 }
 
