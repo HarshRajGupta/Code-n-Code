@@ -38,6 +38,7 @@ void solve() {
     }
     v<set<int>> charPos(26);
     _for(i, n) charPos[s[i] - 'a'].insert(i % 3);
+    debug(charPos)
     if (n % 3 == 2) {
         _for(i, 26) {
             if ((charPos[i].find(0) != charPos[i].end()) && (charPos[i].find(1) != charPos[i].end())) {
