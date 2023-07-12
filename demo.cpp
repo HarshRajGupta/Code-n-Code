@@ -29,7 +29,7 @@ public:
         debug(MIN, totalSum)
         for (int i = 1; i < n; ++i) {
             for (int &j : left[i]) {
-                auto lb = lower_bound(right[n - i].begin(), right[n - i].end(), halfSum - j);
+                auto lb = lower_bound(right[n - i].begin(), right[n - i].end(), j-halfSum);
                 if (lb != right[n - i].end()) {
                     MIN = min(MIN, abs(totalSum - ((j + *lb) << 1)));
                     debug(j, *lb)
