@@ -40,11 +40,10 @@ void solve() {
     }
     _for(i, n) {
         int t; cin >> t;
-        --arr[t + 1];
+        ++arr[t];
     }
     int MAX = 0;
     rep(i, 1, SIZE) {
-        arr[i] += arr[i - 1];
         MAX = max(MAX, arr[i]);
     }
     debug(arr)
