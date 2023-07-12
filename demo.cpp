@@ -17,7 +17,7 @@ public:
                 if ((i & (1 << j))) {
                     lSum += nums[j];
                     rSum += nums[n + j];
-                    debug(i, j, (1 << j))
+                    // debug(i, j, (1 << j))
                 }
             }
             left[N].push_back(lSum);
@@ -32,8 +32,8 @@ public:
                 auto lb = lower_bound(right[n - i].begin(), right[n - i].end(), halfSum - j);
                 if (lb != right[n - i].end()) {
                     MIN = min(MIN, abs(totalSum - ((j + *lb) << 1)));
+                    debug(j, *lb)
                 }
-                debug(j, *lb)
             }
         }
         return MIN;
