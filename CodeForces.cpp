@@ -30,23 +30,16 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    string s; cin >> s;
-    int w = 0, l = 0;
-    _for(i, s.size()) {
-        if (s[i] - '0') {
-            ++w;
-            if (w >= 11 && (w - l) >= 2) {
-                cout << "WIN";
-                return;
-            }
-        } else {
-            ++l;
-            if (l >= 11 && (l - w) >= 2) {
-                cout << "LOSS";
-                return;
-            }
+    string s1, s2; cin >> s1 >> s2;
+    int  MIN = 0, MAX = 0;
+    _for(i, s1.size()) {
+        if (s1[i] == '?' || s2[i] == '?') {
+            ++MAX;
+        } else if (s1[i] != s2[i]) {
+            ++MAX, ++MIN;
         }
     }
+    cout << MIN << ' ' << MAX;
 }
 
 static void preCompute() {
