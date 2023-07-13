@@ -52,7 +52,7 @@ public:
             if (!i) break;
             if (mp[i] <= ele) {
                 for (int j = 0; j < mp[i]; ++j) {
-                    ans = (ans * i) % MOD;
+                    ans = (ans * 1ll * i) % MOD;
                 }
                 ele -= mp[i];
             } else {
