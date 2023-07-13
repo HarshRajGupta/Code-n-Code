@@ -19,7 +19,7 @@ const int invMod(int n, const int MOD = 1e9 + 7) {
 const int MOD = 1e9 + 7;
 void preCom() {
     for (int i = 2; i <= 26; ++i) {
-        fact[i] = (fact[i - 1] * i) % MOD;
+        fact[i] = (fact[i - 1] * 1ll * i) % MOD;
     }
     debug(fact)
 }
