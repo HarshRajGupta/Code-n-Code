@@ -55,6 +55,7 @@ public:
                 }
                 ele -= mp[i];
             } else {
+                debug(nCr(mp[i], ele))
                 ans = (ans * nCr(mp[i], ele)) % MOD;
                 break;
             }
