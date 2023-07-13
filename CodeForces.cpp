@@ -20,14 +20,14 @@ const int MOD = 1e9 + 7;
 void preCom() {
     for (int i = 2; i <= 26; ++i) {
         fact[i] = (fact[i - 1] * 1ll * i) % MOD;
+        invFact[i] = invMod(fact[i]);
     }
     debug(fact)
 }
 
 const nCr(int n, int r) {
     if (n == r || r == 0) return 1;
-    debug(n , r)
-    return (((fact[n] * 1ll * fact[r]) % MOD) / fact[n - r]) % MOD;
+    return (((fact[n] * 1ll * fact[r]) % MOD)* invFact[n - r]) % MOD;
 }
 
 class Solution {
