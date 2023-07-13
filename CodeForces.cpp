@@ -47,7 +47,7 @@ public:
         }
         int ans = 1, ele = k;
         for (auto &i : a) {
-            debug(ans, i, mp[i])
+            debug(ans, i, mp[i], ele)
             if (!i) break;
             if (mp[i] <= ele) {
                 for (int j = 0; j < mp[i]; ++j) {
