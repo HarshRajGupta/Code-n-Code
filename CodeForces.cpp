@@ -34,12 +34,14 @@ void solve() {
     int w = 0, l = 0;
     _for(i, s.size()) {
         if (s[i] - '0') {
-            if (++w == 11 && l < 10) {
+            ++w;
+            if (w >= 11 && (w - l) >= 2) {
                 cout << "WIN";
                 return;
             }
         } else {
-            if (++l == 11 && w < 10) {
+            ++l;
+            if (l >= 11 && (l - w) >= 2) {
                 cout << "LOSS";
                 return;
             }
