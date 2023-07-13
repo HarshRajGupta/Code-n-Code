@@ -26,7 +26,7 @@ void preCom() {
 
 const nCr(int n, int r) {
     if (n == r || r == 0) return 1;
-    return (((fact[n] * fact[r]) % MOD) / fact[n - r]) % MOD;
+    return (((fact[n] * 1ll * fact[r]) % MOD) / fact[n - r]) % MOD;
 }
 
 class Solution {
