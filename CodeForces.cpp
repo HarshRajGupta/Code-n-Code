@@ -56,6 +56,7 @@ public:
         return ans;
     }
     void test() {
+        preCom();
         string z = "abcdefghijjj";
         cout << ans(z, 8);
     }
