@@ -26,11 +26,29 @@ void preCom() {
     debug(fact)
 }
 
-const nCr(int n, int r) {
-    if (n == r || r == 0) return 1;
-    return (((fact[n] * 1ll * fact[r]) % MOD) * 1ll * invFact[n - r]) % MOD;
-}
+int nCr(int n, int r) {
+    long long p = 1, k = 1;
+    if (n - r < r)
+        r = n - r;
 
+    if (r != 0) {
+        while (r) {
+            p *= n;
+            k *= r;
+            long long m = __gcd(p, k);
+            p /= m;
+            k /= m;
+
+            n--;
+            r--;
+        }
+    }
+
+    else
+        p = 1;
+
+    return p % MOD;
+}
 class Solution {
 
 
