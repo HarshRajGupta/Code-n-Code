@@ -24,6 +24,11 @@ void preCom() {
     }
 }
 
+const nCr(int n, int r) {
+    if (n == r || r == 0) return 1;
+    return (((fact[n] * fact[r]) % MOD) * invFact[n - r]) % MOD;
+}
+
 class Solution {
 
 
@@ -50,7 +55,8 @@ public:
                 }
                 ele -= mp[i];
             } else {
-                ans = ((((ans * fact[mp[i]]) % MOD * fact[mp[i] - ele]) % MOD * invFact[ele]) % MOD * i) % MOD;
+                ans = (ans * nCr(mp[i], ele)) % MOD;
+                break;
             }
         }
         return ans;
