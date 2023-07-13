@@ -5,7 +5,7 @@ using namespace __gnu_debug;
 #define debug(...)
 #endif
 
-vector<int> fact(27, 1), invFact(1e5 + 7);
+vector<int> fact(27, 1), invFact(27 + 7);
 const int invMod(int n, const int MOD = 1e9 + 7) {
     int ans = 1, expo = MOD - 2; n %= MOD;
     while (expo) {
