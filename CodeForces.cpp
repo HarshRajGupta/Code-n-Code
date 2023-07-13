@@ -18,9 +18,10 @@ const int invMod(int n, const int MOD = 1e9 + 7) {
 
 const int MOD = 1e9 + 7;
 void preCom() {
-    for (int i = 2; i < 1e5 + 7; ++i) {
-        fact[i] = (fact[i - 1] * i);
+    for (int i = 2; i < 26; ++i) {
+        fact[i] = (fact[i - 1] * i) % MOD;
     }
+    debug(fact)
 }
 
 const nCr(int n, int r) {
