@@ -24,6 +24,7 @@ public:
             debug(start, ans, len, end, count);
             if (nums[start]&1) --count;
             ++start;
+            debug(start, ans, len, end, count);
         }
         return ans;
     }
