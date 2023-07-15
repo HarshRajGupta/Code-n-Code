@@ -6,30 +6,30 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-    int minimumTotal(vector<vector<int>>& triangle, vector<vector<int>> &dp, int i, int j) {
-        if (i == triangle.size()) return 0;
-        if (j == triangle[i].size()) return 1e8;
-        if (dp[i][j] != -1) return dp[i][j];
-        int I = minimumTotal(triangle, dp, i + 1, j), I1 = minimumTotal(triangle, dp, i + 1, j + 1);
-        return dp[i][j] = min(I, I1) + triangle[i][j];
-    }
 public:
-    int minimumTotal(vector<vector<int>>& triangle) {
-        vector<int> prev = triangle.back();
-        for (int i = triangle.size() - 2; i >= 0; --i) {
-            vector<int> curr = triangle[i];
-            for (int j = 0; j < triangle[i].size(); ++j) {
-                if (triangle[i + 1].size() > j + 1) curr[j] += min(prev[j], prev[j + 1]);
-                else curr[j] += prev[j];
+    int numberOfSubarrays(vector<int>& nums, int k) {
+        int start = 0, len = 0, end = 0, count = 0, ans = 0;
+        while (start < nums.size()) {
+            while (count < k && len < nums.size()) {
+                if (nums[len] & 1) ++count;
+                ++len;
             }
-            prev = curr;
+            if (len == nums.size()) break;
+            end = len;
+            while (count == k) {
+                if (nums[end] & 1) ++count;
+                else ++end;
+            }
+            ans += (end - len) + 1;
+            debug(start, ans, len, end, count);
+            if (nums[start]&1) --count;
+            ++start;
         }
-        debug(prev)
-        return prev[0];
+        return ans;
     }
     void test() {
-        vector<vector<int>> t = {{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}};
-        cout << minimumTotal(t);
+        vector<int> a = {1,1,2,1,1};
+        cout << numberOfSubarrays(a, 3);
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
