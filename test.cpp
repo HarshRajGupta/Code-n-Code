@@ -33,7 +33,7 @@ public:
     }
     void test() {
         vector<int> a = {2, 2, 2, 1, 2, 2, 1, 2, 2, 2};
-        cout << numberOfSubarrays(a, 3);
+        cout << numberOfSubarrays(a, 2);
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
