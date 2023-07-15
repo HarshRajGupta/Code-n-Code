@@ -6,15 +6,20 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-public:
-    int minimumTotal(vector<vector<int>>& triangle, int i = 0, int j = 0) {
+    int minimumTotal(vector<vector<int>>& triangle, vector<vector<int>> &dp, int i, int j) {
         if (i == triangle.size()) return 0;
         if (j == triangle[i].size()) return 1e8;
-        int I = minimumTotal(triangle, i + 1, j), I1 = minimumTotal(triangle, i + 1, j + 1);
-        return min(I, I1) + triangle[i][j];
+        if (dp[i][j] != -1) return dp[i][j];
+        int I = minimumTotal(triangle, dp, i + 1, j), I1 = minimumTotal(triangle, dp, i + 1, j + 1);
+        return dp[i][j] = min(I, I1) + triangle[i][j];
+    }
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        vector<vector<int>> dp(triangle.size(), vector<int>(triangle.back().size(), -1));
+        return minimumTotal(triangle, dp, 0, 0);
     }
     void test() {
-        vector<vector<int>> t = {{2},{3,4},{6,5,7},{4,1,8,3}};
+        vector<vector<int>> t = {{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}};
         cout << minimumTotal(t);
     }
     Solution() {
