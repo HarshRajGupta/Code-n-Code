@@ -25,7 +25,8 @@ public:
             ans += (end - len);
             debug(start, ans, len, end, count);
             if (nums[start] & 1) {
-                --count;
+                if (end == nums.size()) break;
+                else len = end;
             }
             ++start;
         }
