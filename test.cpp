@@ -15,7 +15,7 @@ public:
                 ++len;
             }
             if (len == nums.size()) break;
-            end = len + 1;
+            end = len;
             while (end < nums.size() && !(nums[end] & 1)) {
                 ++end;
             }
