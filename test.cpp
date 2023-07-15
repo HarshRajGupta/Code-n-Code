@@ -11,7 +11,7 @@ public:
         int start = 0, len = 0, end = 0, count = 0, ans = 0;
         while (start < nums.size()) {
             debug(start, ans, len, end, count);
-            while (len < nums.size()) {
+            while (count < k && len < nums.size()) {
                 if (nums[len] & 1) ++count;
                 if (count < k)
                     ++len;
