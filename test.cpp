@@ -15,20 +15,20 @@ public:
                 ++len;
             }
             if (len == nums.size()) break;
-            end = len;
+            end = len + 1;
             while (end < nums.size() && !(nums[end] & 1)) {
                 ++end;
             }
             ans += (end - len) + 1;
             debug(start, ans, len, end, count);
-            if (nums[start]&1) --count;
+            if (nums[start] & 1) --count;
             ++start;
             debug(start, ans, len, end, count);
         }
         return ans;
     }
     void test() {
-        vector<int> a = {1,1,2,1,1};
+        vector<int> a = {1, 1, 2, 1, 1};
         cout << numberOfSubarrays(a, 3);
     }
     Solution() {
