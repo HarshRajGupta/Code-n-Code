@@ -16,9 +16,8 @@ public:
             }
             if (len == nums.size()) break;
             end = len;
-            while (count == k) {
-                if (nums[end] & 1) ++count;
-                else ++end;
+            while (end < nums.size() && !(nums[end] & 1)) {
+                ++end;
             }
             ans += (end - len) + 1;
             debug(start, ans, len, end, count);
