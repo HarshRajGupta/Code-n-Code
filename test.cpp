@@ -15,15 +15,17 @@ class Solution {
     }
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
-        vector<vector<int>> dp = triangle;
+        vector<int> prev = triangle.back();
         for (int i = triangle.size() - 2; i >= 0; --i) {
+            vector<int> curr = triangle[i];
             for (int j = 0; j < triangle[i].size(); ++j) {
-                if (triangle[i + 1].size() > j + 1) dp[i][j] += min(dp[i + 1][j], dp[i + 1][j + 1]);
-                else dp[i][j] += dp[i + 1][j];
+                if (triangle[i + 1].size() > j + 1) curr[j] += min(prev[j], prev[j + 1]);
+                else curr[j] += prev[j];
             }
+            prev = curr;
         }
-        debug(dp)
-        return dp[0][0];
+        debug(prev)
+        return prev[0];
     }
     void test() {
         vector<vector<int>> t = {{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}};
