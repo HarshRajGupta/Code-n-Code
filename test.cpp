@@ -22,6 +22,7 @@ public:
                 else dp[i][j] += dp[i + 1][j];
             }
         }
+        debug(dp)
         return dp[0][0];
     }
     void test() {
