@@ -15,6 +15,7 @@ public:
                 ++len;
                 if (nums[len] & 1) ++count;
             }
+            debug(count < k, len < nums.size())
             debug(start, len, count);
             if (count < k) {
                 break;
