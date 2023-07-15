@@ -15,6 +15,7 @@ public:
                 if (nums[len] & 1) ++count;
                 if (count < k)
                     ++len;
+                else break;
             }
             if (count < k) {
                 break;
