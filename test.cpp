@@ -10,11 +10,14 @@ public:
     int numberOfSubarrays(vector<int>& nums, int k) {
         int start = 0, len = 0, end = 0, count = 0, ans = 0;
         while (start < nums.size()) {
+            debug(start, ans, len, end, count);
             while (count < k && len < nums.size()) {
                 if (nums[len] & 1) ++count;
                 ++len;
             }
-            if (len == nums.size()) break;
+            if (count < k) {
+                break;
+            }
             end = len;
             while (end < nums.size() && !(nums[end] & 1)) {
                 ++end;
