@@ -32,7 +32,7 @@ public:
         return ans;
     }
     void test() {
-        vector<int> a = {2, 2, 2, 1, 2, 2, 1, 2, 2, 2};
+        vector<int> a = {2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 3};
         cout << numberOfSubarrays(a, 2);
     }
     Solution() {
