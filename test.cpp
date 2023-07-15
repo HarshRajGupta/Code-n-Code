@@ -25,8 +25,8 @@ public:
             ans += (end - len) + 1;
             debug(start, ans, len, end, count);
             if (nums[start] & 1) {
-                len = end - 1;
-                --count;
+                len = end;
+                // --count;
             }
             ++start;
             debug(start, ans, len, end, count);
