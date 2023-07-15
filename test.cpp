@@ -18,11 +18,11 @@ public:
             if (count < k) {
                 break;
             }
-            end = len;
+            end = len + 1;
             while (end < nums.size() && !(nums[end] & 1)) {
                 ++end;
             }
-            ans += (end - len) + 1;
+            ans += (end - len);
             debug(start, ans, len, end, count);
             if (nums[start] & 1) {
                 --count;
