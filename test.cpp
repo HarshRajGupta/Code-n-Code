@@ -29,16 +29,28 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
+const int uB(const std::vector<int> &arr, const int t, int l = 0, int r = -1) {
+    if (r == -1) r = (arr.size() - 1);
+    if (t < arr[l]) return l;
+    if (t > arr[r]) return r + 1;
+    int ans = r + 1, mid;
+    while (l <= r) {
+        mid = (l + r) >> 1;
+        if (arr[mid] <= t) l = (mid + 1);
+        else ans = mid, r = (mid - 1);
+    }
+    return ans;
+}
+
 void solve() {
     int n; cin >> n;
     v<int> arr(n);
     foreach(i, arr) cin >> i;
+    auto a = arr;
     sort(all(arr));
-    int ans = arr[1] - arr[0];
-    for (int i = 2; i < arr.size(); ++i) {
-        ans = min(ans, arr[i] - arr[i - 1]);
+    _for(i, n) {
+        cout << n - uB(arr, a[i]) << ' ';
     }
-    cout << ans;
 }
 
 static void preCompute() {
