@@ -33,7 +33,7 @@ public:
         return -1;
     }
     void test() {
-        vector<int> a = {3,3,3,3,7,2,2};
+        vector<int> a = {1,2,2,2};
         cout << minimumIndex(a);
     }
     Solution() {
