@@ -30,15 +30,15 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    int n, k; cin >> n;
+    int n; cin >> n;
     v<int> arr(n);
     foreach(i, arr) cin >> i;
-    cin >> k;
-    int count = 1;
-    _for(i, n) {
-        if (arr[i] < arr[k - 1]) ++count;
+    sort(all(arr));
+    int ans = arr[1] - arr[0];
+    for (int i = 2; i < arr.size(); ++i) {
+        ans = min(ans, arr[i] - arr[i - 1]);
     }
-    cout << count;
+    cout << ans;
 }
 
 static void preCompute() {
