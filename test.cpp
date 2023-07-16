@@ -24,7 +24,7 @@ public:
                 debug(i, j, s)
                 if (i + j > word.size()) break;
                 if (mp.find(s) != mp.end()) {
-                    ans[i] = j - 1;
+                    ans[i] = min( ans[i], j - 1);
                     break;
                 }
                 debug(s, ans)
