@@ -21,7 +21,7 @@ public:
             ans[i] = ans[i + 1] + 1;
             for (auto &j : len) {
                 auto s = word.substr(i, j);
-                debug(s)
+                debug(i, j, s)
                 if (mp.find(s) != mp.end()) {
                     ans[i] = j - 1;
                     break;
