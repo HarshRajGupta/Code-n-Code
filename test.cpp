@@ -7,34 +7,34 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    int numberOfSubarrays(vector<int>& nums, int k) {
-        int start = 0, len = -1, end = 0, count = 0, ans = 0;
-        while (start < nums.size()) {
-            debug(start, ans, len, end, count);
-            while (count < k && len < (int)nums.size() - 1) {
-                ++len;
-                if (nums[len] & 1) ++count;
-            }
-            if (count < k) {
+    int minimumIndex(vector<int>& nums) {
+        unordered_map<int, int> mp;
+        int maj = -1;
+        for (int &i : nums) {
+            mp[i]++;
+            if (mp[i] * 2 > nums.size()) {
+                maj = i;
                 break;
             }
-            end = len + 1;
-            while (end < nums.size() && !(nums[end] & 1)) {
-                ++end;
-            }
-            ans += (end - len);
-            debug(start, ans, len, end, count);
-            if (nums[start] & 1) {
-                if (end == nums.size()) break;
-                else len = end;
-            }
-            ++start;
         }
-        return ans;
+        if (maj == -1) return -1;
+        vector<int> count(nums.size() + 1, 0);
+        int total = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] == maj) ++total;
+            count[i] = total;
+        }
+        debug(count);
+        for (int i = 0; i < nums.size() - 1; ++i) {
+            if ((count[i] * 2 > (i + 1)) && ((total - count[i]) * 2) > (nums.size() - i)) {
+                return i;
+            }
+        }
+        return -1;
     }
     void test() {
-        vector<int> a = {2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 3};
-        cout << numberOfSubarrays(a, 2);
+        vector<int> a = {3,3,3,3,7,2,2};
+        cout << minimumIndex(a);
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
