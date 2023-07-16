@@ -20,7 +20,9 @@ public:
         for (int i = word.size() - 1; i >= 0; --i) {
             ans[i] = ans[i + 1] + 1;
             for (auto &j : len) {
-                if (mp.find(word.substr(i, j)) != mp.end()) {
+                auto s = word.substr(i, j);
+                debug(s)
+                if (mp.find(s) != mp.end()) {
                     ans[i] = j - 1;
                     break;
                 }
