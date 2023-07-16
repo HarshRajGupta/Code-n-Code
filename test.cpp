@@ -26,13 +26,14 @@ public:
                     ans[i] = j - 1;
                     break;
                 }
+                if (i + j > word.size()) break;
             }
             MAX = max(ans[i], MAX);
         }
         return MAX;
     }
     void test() {
-        vector<string> a = {"bcca","aaa","aabaa","baaac"};
+        vector<string> a = {"bcca", "aaa", "aabaa", "baaac"};
         cout << longestValidSubstring("aaaabaaacc", a);
     }
     Solution() {
