@@ -34,11 +34,7 @@ void solve() {
     v<int> arr(n);
     foreach(i, arr) cin >> i;
     sort(all(arr));
-    if ((n + k) & 1) {
-        cout << arr[(n + k) >> 1];
-    } else {
-        cout << ((arr[((n + k) >> 1) - 1] + arr[(n + k) >> 1]) >> 1);
-    }
+    cout << arr[(n + k) >> 1];
 }
 
 static void preCompute() {
