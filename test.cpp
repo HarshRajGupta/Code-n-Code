@@ -28,6 +28,7 @@ public:
         for (int i = 0; i < nums.size() - 1; ++i) {
             debug(count[i], total, i);
             if ((count[i] * 2 > (i + 1)) && ((total - count[i]) * 2) > (nums.size() - i)) {
+                debug(total - count[i])
                 return i;
             }
         }
