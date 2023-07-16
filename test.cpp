@@ -18,7 +18,7 @@ public:
             }
         }
         if (maj == -1) return -1;
-        vector<int> count(nums.size() + 1, 0);
+        vector<int> count(nums.size(), 0);
         int total = 0;
         for (int i = 0; i < nums.size(); ++i) {
             if (nums[i] == maj) ++total;
