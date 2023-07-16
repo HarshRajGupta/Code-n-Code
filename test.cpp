@@ -15,7 +15,7 @@ public:
             len.insert(i.size());
         }
         debug(len, mp)
-        vector<int> ans(word.size());
+        vector<int> ans(word.size(), 0);
         int MAX = 0;
         for (int i = word.size() - 1; i >= 0; --i) {
             ans[i] = ans[i + 1] + 1;
