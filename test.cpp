@@ -6,37 +6,31 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
+    map<string, bool> mp;
+    set<int> len;
 public:
-    int minimumIndex(vector<int>& nums) {
-        unordered_map<int, int> mp;
-        int maj = -1;
-        for (int &i : nums) {
-            mp[i]++;
-            if (mp[i] * 2 > nums.size()) {
-                maj = i;
-                break;
+    int longestValidSubstring(string word, vector<string>& forbidden) {
+        for (auto &i : forbidden) {
+            mp[i] = true;
+            len.insert(i.size());
+        }
+        vector<int> ans(word.size());
+        int MAX = 0;
+        for (int i = word.size() - 1; i >= 0; --i) {
+            ans[i] = ans[i + 1] + 1;
+            for (auto &j : len) {
+                if (mp.find(word.substr(i, j)) != mp.end()) {
+                    ans[i] = j - 1;
+                    break;
+                }
             }
+            MAX = max(ans[i], MAX);
         }
-        if (maj == -1) return -1;
-        vector<int> count(nums.size(), 0);
-        int total = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            if (nums[i] == maj) ++total;
-            count[i] = total;
-        }
-        debug(count);
-        for (int i = 0; i < nums.size(); ++i) {
-            debug(count[i], total, i);
-            if ((count[i] * 2 > (i + 1)) && ((total - count[i]) * 2) > (nums.size() - i - 1)) {
-                debug(total - count[i])
-                return i;
-            }
-        }
-        return -1;
+        return MAX;
     }
     void test() {
-        vector<int> a = {1,2,2,2};
-        cout << minimumIndex(a);
+        vector<string> a = {"bcca","aaa","aabaa","baaac"};
+        cout << longestValidSubstring("aaaabaaacc", a);
     }
     Solution() {
         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
