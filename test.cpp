@@ -27,7 +27,7 @@ public:
         debug(count);
         for (int i = 0; i < nums.size(); ++i) {
             debug(count[i], total, i);
-            if ((count[i] * 2 > (i + 1)) && ((total - count[i]) * 2) > (nums.size() - i)) {
+            if ((count[i] * 2 > (i + 1)) && ((total - count[i]) * 2) > (nums.size() - i - 1)) {
                 debug(total - count[i])
                 return i;
             }
