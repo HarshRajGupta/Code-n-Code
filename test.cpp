@@ -23,11 +23,11 @@ public:
                 auto s = word.substr(i, j);
                 debug(i, j, s)
                 if (i + j > word.size()) break;
-                debug(s)
                 if (mp.find(s) != mp.end()) {
                     ans[i] = j - 1;
                     break;
                 }
+                debug(s, ans)
             }
             MAX = max(ans[i], MAX);
         }
