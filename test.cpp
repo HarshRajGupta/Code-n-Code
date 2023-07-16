@@ -34,7 +34,7 @@ void solve() {
     v<int> arr(n);
     foreach(i, arr) cin >> i;
     cin >> k;
-    int count = 0;
+    int count = 1;
     _for(i, n) {
         if (arr[i] < arr[k - 1]) ++count;
     }
