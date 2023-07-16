@@ -31,6 +31,7 @@ public:
             }
             MAX = max(ans[i], MAX);
         }
+        debug(ans)
         return MAX;
     }
     void test() {
