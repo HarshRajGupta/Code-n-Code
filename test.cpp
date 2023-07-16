@@ -1,52 +1,52 @@
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
+#endif
+
 #include <bits/stdc++.h>
-using namespace __gnu_debug;
+using namespace std;
 
 #ifndef debug
 #define debug(...)
 #endif
 
-class Solution {
-    map<string, bool> mp;
-    set<int> len;
-public:
-    int longestValidSubstring(string word, vector<string>& forbidden) {
-        for (auto &i : forbidden) {
-            mp[i] = true;
-            len.insert(i.size());
-        }
-        debug(len, mp)
-        vector<int> ans(word.size() + 1, 0);
-        int MAX = 0;
-        for (int i = word.size() - 1; i >= 0; --i) {
-            ans[i] = ans[i + 1] + 1;
-            for (auto &j : len) {
-                auto s = word.substr(i, j);
-                debug(i, j, s)
-                if (i + j > word.size()) break;
-                if (mp.find(s) != mp.end()) {
-                    ans[i] = min( ans[i], j - 1);
-                    break;
-                }
-                debug(s, ans)
-            }
-            MAX = max(ans[i], MAX);
-        }
-        debug(ans)
-        return MAX;
+#ifndef __MAIN__
+#define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
+#endif
+
+#define int long long
+const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
+
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+
+template<class T>using v = vector<T>;
+template<class T>using maxHeap = priority_queue<T>;
+template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
+
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(),(x).end()
+
+void solve() {
+    int n, k; cin >> n;
+    v<int> arr(n);
+    foreach(i, arr) cin >> i;
+    cin >> k;
+    int count = 0;
+    _for(i, n) {
+        if (arr[i] < arr[k - 1]) ++count;
     }
-    void test() {
-        vector<string> a = {"bcca", "aaa", "aabaa", "baaac"};
-        cout << longestValidSubstring("aaaabaaacc", a);
-    }
-    Solution() {
-        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    }
-};
+    cout << count;
+}
+
+static void preCompute() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
+}
 
 /**
  * @ScratchPad
  */
 
-#ifdef __TEST__
-__TEST__
-#endif
+__MAIN__
