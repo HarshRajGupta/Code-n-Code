@@ -14,6 +14,7 @@ public:
             mp[i] = true;
             len.insert(i.size());
         }
+        debug(len, mp)
         vector<int> ans(word.size());
         int MAX = 0;
         for (int i = word.size() - 1; i >= 0; --i) {
