@@ -18,19 +18,17 @@ public:
             }
         }
         int posFound = 0, negFound = 0;
-        debug(inDegree, outDegree)
         for (int i = 0; i < 26; ++i) {
             if (same[i] && !inDegree[i] && !outDegree[i]) {
                 if (same[i] == a.size()) return true;
                 return false;
             }
             int count = inDegree[i] - outDegree[i];
-            debug(count)
             if (count > 0) {
-                if (posFound && count != 1) return false;
+                if (posFound || count != 1) return false;
                 posFound = true;
             } else if (count < 0) {
-                if (negFound && count != -1) return false;
+                if (negFound || count != -1) return false;
                 negFound = true;
             }
         }
