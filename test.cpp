@@ -41,7 +41,7 @@ public:
         return ans;
     }
     void test() {
-        vector<string> s = {"ee", "ea", "eg"};
+        vector<string> s = {"he", "ll", "lo", "el"};
         cout << canJoin(s);
     }
     Solution() {
