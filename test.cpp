@@ -30,11 +30,8 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    int n, k; cin >> n >> k;
-    v<int> arr(n);
-    foreach(i, arr) cin >> i;
-    sort(all(arr));
-    cout << arr[(n + k) >> 1];
+    int n; cin >> n;
+    cout << sqrt(n >> 1);
 }
 
 static void preCompute() {
