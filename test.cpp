@@ -17,7 +17,7 @@ public:
                 outDegree[i[1] - 'a']++;
             }
         }
-        int posFound = -1, negFound = -1;
+        int posFound = 0, negFound = 0;
         for (int i = 0; i < 26; ++i) {
             if (same[i] && !inDegree[i] && !outDegree[i]) {
                 return false;
