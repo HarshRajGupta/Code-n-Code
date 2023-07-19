@@ -40,7 +40,7 @@ public:
         return ans;
     }
     void test() {
-        vector<string> s = {"le", "ll"};
+        vector<string> s = {"he", "ll", "lo", "el"};
         cout << canJoin(s);
     }
     Solution() {
