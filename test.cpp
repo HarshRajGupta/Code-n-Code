@@ -28,14 +28,15 @@ public:
     string canJoin(vector<string> &a) {
         string ans;
         vector<int> inDegree(26), outDegree(26), same(26);
-        for (auto &i : a) {
+        for (int j = 0; j < a.size(); ++j) {
+            auto i = a[j];
             if (i[0] == i[1]) {
                 same[i[0] - 'a']++;
             } else {
                 inDegree[i[0] - 'a']++;
                 outDegree[i[1] - 'a']++;
             }
-            ans.push_back(fun(a.size(), inDegree, outDegree, same));
+            ans.push_back(fun(j + 1, inDegree, outDegree, same));
         }
         return ans;
     }
