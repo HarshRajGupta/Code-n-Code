@@ -34,7 +34,7 @@ public:
         return true;
     }
     void test() {
-        vector<string> s = {"le", "ll"};
+        vector<string> s = {"ll", "ll"};
         cout << canJoin(s);
     }
     Solution() {
