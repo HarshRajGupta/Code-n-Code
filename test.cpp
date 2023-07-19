@@ -25,10 +25,10 @@ public:
             }
             int count = inDegree[i] - outDegree[i];
             if (count > 0) {
-                if (posFound) return false;
+                if (posFound && count != 1) return false;
                 posFound = true;
             } else if (count < 0) {
-                if (negFound) return false;
+                if (negFound && count != -1) return false;
                 negFound = true;
             }
         }
