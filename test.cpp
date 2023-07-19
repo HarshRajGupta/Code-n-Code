@@ -8,21 +8,19 @@ using namespace __gnu_debug;
 class Solution {
 public:
     bool canJoin(vector<string> &a) {
-        vector<int> charCount(26);
+        vector<int> inDegree(26), outDegree(26), same(26);
         for (auto &i : a) {
-            charCount[i[0]-'a']--;
-            charCount[i[1]-'a']++;
-        }
-        debug(charCount);
-        bool posFound = false, negFound = false;
-        for(int i = 0; i < 26; ++i) {
-            if (charCount[i] > 0) {
-                if (posFound) return false;
-                posFound = true;
+            if (i[0] == i[1]) {
+                same[i[0] - 'a']++;
+            } else {
+                inDegree[i[0] - 'a']++;
+                outDegree[i[1] - 'a']++;
             }
-            if (charCount[i] < 0) {
-                if (negFound) return false;
-                negFound = true;
+        }
+        int posFound = -1, negFound = -1;
+        for (int i = 0; i < 26; ++i) {
+            if (same[i] && !inDegree[i] && !outDegree[i]) {
+                return false;
             }
         }
         return true;
