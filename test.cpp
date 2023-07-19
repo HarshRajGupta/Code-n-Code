@@ -22,6 +22,14 @@ public:
             if (same[i] && !inDegree[i] && !outDegree[i]) {
                 return false;
             }
+            int count = inDegree[i] - outDegree[i];
+            if (count > 0) {
+                if (posFound) return false;
+                posFound = true;
+            } else if (count < 0) {
+                if (negFound) return false;
+                negFound = true;
+            }
         }
         return true;
     }
