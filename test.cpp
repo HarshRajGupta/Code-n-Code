@@ -20,6 +20,7 @@ public:
         int posFound = 0, negFound = 0;
         for (int i = 0; i < 26; ++i) {
             if (same[i] && !inDegree[i] && !outDegree[i]) {
+                if (same[i] == a.size()) return true;
                 return false;
             }
             int count = inDegree[i] - outDegree[i];
