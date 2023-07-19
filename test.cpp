@@ -10,8 +10,8 @@ public:
     bool canJoin(vector<string> &a) {
         vector<int> charCount(26);
         for (auto &i : a) {
-            charCount[i[0]]--;
-            charCount[i[1]]++;
+            charCount[i[0]-'a']--;
+            charCount[i[1]-'a']++;
         }
         debug(charCount);
         bool posFound = false, negFound = false;
