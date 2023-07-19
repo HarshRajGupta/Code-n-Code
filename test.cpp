@@ -13,6 +13,7 @@ public:
             charCount[i[0]]--;
             charCount[i[1]]++;
         }
+        debug(charCount);
         bool posFound = false, negFound = false;
         for(int i = 0; i < 26; ++i) {
             if (charCount[i] > 0) {
