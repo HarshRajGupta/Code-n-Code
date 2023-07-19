@@ -6,8 +6,27 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
+    char fun(int n, vector<int> &inDegree, vector<int> &outDegree, vector<int> &same) {
+        int posFound = 0, negFound = 0;
+        for (int i = 0; i < 26; ++i) {
+            if (same[i] && !inDegree[i] && !outDegree[i]) {
+                if (same[i] == n) return '1';
+                return '0';
+            }
+            int count = inDegree[i] - outDegree[i];
+            if (count > 0) {
+                if (posFound || count != 1) return '0';
+                posFound = true;
+            } else if (count < 0) {
+                if (negFound || count != -1) return '0';
+                negFound = true;
+            }
+        }
+        return '1';
+    }
 public:
     string canJoin(vector<string> &a) {
+        string ans;
         vector<int> inDegree(26), outDegree(26), same(26);
         for (auto &i : a) {
             if (i[0] == i[1]) {
@@ -16,23 +35,9 @@ public:
                 inDegree[i[0] - 'a']++;
                 outDegree[i[1] - 'a']++;
             }
+            ans.push_back(fun(a.size(), inDegree, outDegree, same));
         }
-        int posFound = 0, negFound = 0;
-        for (int i = 0; i < 26; ++i) {
-            if (same[i] && !inDegree[i] && !outDegree[i]) {
-                if (same[i] == a.size()) return "1";
-                return "0";
-            }
-            int count = inDegree[i] - outDegree[i];
-            if (count > 0) {
-                if (posFound || count != 1) return "0";
-                posFound = true;
-            } else if (count < 0) {
-                if (negFound || count != -1) return "0";
-                negFound = true;
-            }
-        }
-        return "1";
+        return ans;
     }
     void test() {
         vector<string> s = {"le", "ll"};
