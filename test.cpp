@@ -18,6 +18,7 @@ public:
             }
         }
         int posFound = 0, negFound = 0;
+        debug(inDegree, outDegree)
         for (int i = 0; i < 26; ++i) {
             if (same[i] && !inDegree[i] && !outDegree[i]) {
                 if (same[i] == a.size()) return true;
