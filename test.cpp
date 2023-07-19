@@ -7,7 +7,7 @@ using namespace __gnu_debug;
 
 class Solution {
 public:
-    bool canJoin(vector<string> &a) {
+    string canJoin(vector<string> &a) {
         vector<int> inDegree(26), outDegree(26), same(26);
         for (auto &i : a) {
             if (i[0] == i[1]) {
@@ -20,19 +20,19 @@ public:
         int posFound = 0, negFound = 0;
         for (int i = 0; i < 26; ++i) {
             if (same[i] && !inDegree[i] && !outDegree[i]) {
-                if (same[i] == a.size()) return true;
-                return false;
+                if (same[i] == a.size()) return "1";
+                return "0";
             }
             int count = inDegree[i] - outDegree[i];
             if (count > 0) {
-                if (posFound || count != 1) return false;
+                if (posFound || count != 1) return "0";
                 posFound = true;
             } else if (count < 0) {
-                if (negFound || count != -1) return false;
+                if (negFound || count != -1) return "0";
                 negFound = true;
             }
         }
-        return true;
+        return "1";
     }
     void test() {
         vector<string> s = {"le", "le"};
