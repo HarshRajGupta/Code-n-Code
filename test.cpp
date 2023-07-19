@@ -25,6 +25,7 @@ public:
                 return false;
             }
             int count = inDegree[i] - outDegree[i];
+            debug(count)
             if (count > 0) {
                 if (posFound && count != 1) return false;
                 posFound = true;
