@@ -32,6 +32,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve() {
     int n; cin >> n;
     int m = sqrt((n+1) >> 1);
+    debug(m)
     if (m*(m+1)/2 <=  n) cout << m;
     else cout << m - 1;
 }
