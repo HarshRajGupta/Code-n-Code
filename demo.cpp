@@ -29,19 +29,26 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-void solve() {
-    int m, x, y; cin >> m >> x >> y;
-    x *= y;
-    v<int> arr(105);
-    _for(i, m) {
-        cin >> y;
-        ++arr[max(1ll, y - x)];
-        --arr[min(101ll, y + x + 1)];
+bool canEat(v<int> &arr, int h, int t) {
+    int T = 0;
+    foreach (i, arr) {
+        T += (i / h) + (i % h != 0);
     }
-    int prev = 0, ans = 0;
-    rep(i, 1, 101) {
-        prev += arr[i];
-        if (!prev) ++ans;
+    return T <= t;
+}
+
+void solve() {
+    int n, h; cin >> n >> h;
+    v<int> arr(n); foreach(i, arr) cin >> i;
+    int l = 1, r = 1e9, ans = 1e9;
+    while (l <= r) {
+        int mid = (l + r) >> 1;
+        if (canEat(arr, h, mid)) {
+            ans = mid;
+            r = mid - 1;
+        } else {
+            l = mid + 1;
+        }
     }
     cout << ans;
 }
