@@ -31,10 +31,10 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 void solve() {
     int n; cin >> n;
-    int m = sqrt((n+1) >> 1);
+    int m = sqrt(n >> 1);
     debug(m)
-    if (m*(m+1)/2 <=  n) cout << m;
-    else cout << m - 1;
+    while ((m * (m + 1) >> 1) <= n) ++m;
+    cout << m - 1;
 }
 
 static void preCompute() {
