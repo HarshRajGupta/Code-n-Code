@@ -1,53 +1,47 @@
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3","fast-math","unroll-loops","no-stack-protector","omit-frame-pointer")
+#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
+#endif
+
 #include <bits/stdc++.h>
-using namespace __gnu_debug;
+using namespace std;
 
 #ifndef debug
 #define debug(...)
 #endif
 
-class Solution {
-public:
-    int minimumDifference(vector<int>& nums) {
-        int n = (nums.size() >> 1), totalSum = 0;
-        for (int &i : nums) totalSum += i;
-        vector<vector<int>> left(n + 1), right(n + 1);
-        for (int i = 1; i < (1 << n); ++i) {
-            int N = __builtin_popcount(i), lSum = 0, rSum = 0;
-            for (int j = 0; j < n; ++j) {
-                if ((i & (1 << j))) {
-                    lSum += nums[j];
-                    rSum += nums[n + j];
-                    // debug(i, j, (1 << j))
-                }
-            }
-            left[N].push_back(lSum);
-            right[N].push_back(rSum);
-        }
-        int MIN = min(abs(totalSum - (left[n][0] * 2)), abs(totalSum - (right[n][0] * 2))), halfSum = (totalSum / 2);
-        for (int i = 1; i < n; ++i) {
-            sort(right[n - i].begin(), right[n - i].end());
-            for (int &j : left[i]) {
-                auto lb = lower_bound(right[n - i].begin(), right[n - i].end(), halfSum - j);
-                if (lb != right[n - i].end()) {
-                    MIN = min(MIN, abs(totalSum - ((j + *lb) << 1)));
-                }
-            }
-        }
-        return MIN;
-    }
-    void test() {
-        vector<int> a = {2, -1, 0, 4, -2, -9};
-        cout << minimumDifference(a);
-    }
-    Solution() {
-        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    }
-};
+#ifndef __MAIN__
+#define __MAIN__ signed main(){preCompute();signed t;cin>>t;while(t--)solve(),cout<<'\n';return 0;}
+#endif
+
+#define int long long
+const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
+
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+
+template<class T>using v = vector<T>;
+template<class T>using maxHeap = priority_queue<T>;
+template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
+
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(),(x).end()
+
+void solve() {
+    int n; cin >> n;
+    int m = sqrt((n+1) >> 1);
+    if (m*(m+1)/2 <=  n) cout << m;
+    else cout << m - 1;
+}
+
+static void preCompute() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); cout.flush();
+}
 
 /**
  * @ScratchPad
  */
 
-#ifdef __TEST__
-__TEST__
-#endif
+__MAIN__
