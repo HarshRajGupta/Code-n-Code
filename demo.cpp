@@ -39,7 +39,7 @@ void solve() {
         --arr[min(101ll, y + x + 1)];
     }
     int prev = 0, ans = 0;
-    rep(i, 1, 102) {
+    rep(i, 1, 101) {
         prev += arr[i];
         if (!prev) ++ans;
     }
