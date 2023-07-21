@@ -29,7 +29,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(),(x).end()
 
-bool canEat(v<int> &arr, int h, int t) {
+bool canEat(v<int> &arr, int t, int h) {
     int T = 0;
     foreach (i, arr) {
         T += (i / h) + (i % h != 0);
