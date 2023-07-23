@@ -30,7 +30,7 @@ public:
         cout << maxScore(arr, 14618);
     }
     Solution() {
-        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+        // ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     }
 };
 
