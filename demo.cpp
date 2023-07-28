@@ -60,7 +60,7 @@ void solve(void) {
 		graph[u - 1].push_back(v - 1);
 		graph[v - 1].push_back(u - 1);
 	}
-	// foreach(i, cost) cin >> i;
+	foreach(i, cost) cin >> i;
 	debug(cost, graph);
 	v<bool> visited(n, false);
 	int ans = 0;
