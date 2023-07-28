@@ -10,10 +10,7 @@ class Solution {
    public:
 	/* function */
 	void test() {
-		{
-			int t = 0;
-			cout << t + 10;
-		}
+		
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
