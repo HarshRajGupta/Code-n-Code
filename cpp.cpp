@@ -53,11 +53,11 @@ void solve(void) {
             if (i == sz(s) - 1) break;
             if (i > 0 && (dist[i - 1] > dist[i] + 1)) {
                 dist[i - 1] = dist[i] + 1;
-                q.push({cost + 1, s[i - 1] - '0'});
+                q.push({dist[i - 1] + 1, s[i - 1] - '0'});
             }
             if ((dist[i + 1] > dist[i] + 1)) {
                 dist[i + 1] = dist[i] + 1;
-                q.push({cost + 1, s[i + 1] - '0'});
+                q.push({dist[i + 1] + 1, s[i + 1] - '0'});
             }
         }
     }
