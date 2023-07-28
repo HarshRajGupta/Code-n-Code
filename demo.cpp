@@ -7,7 +7,7 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-public:
+   public:
 	/* function */
 	void test() {
 		{
