@@ -49,7 +49,6 @@ void solve(void) {
         auto [cost, cur] = q.top();
         q.pop();
         foreach (i, graph[cur]) {
-            debug(i, cur, cost, dist[i])
             if (dist[i] > cost + 1) { dist[i] = cost + 1; }
             if (i == sz(s) - 1) break;
             if (i > 0 && (dist[i - 1] > dist[i] + 1)) {
