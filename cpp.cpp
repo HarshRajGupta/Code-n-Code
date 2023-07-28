@@ -44,23 +44,14 @@ void solve(void) {
     debug(graph) minHeap<pair<int, int>> q;
     v<int> dist(sz(s) + 7, 1e6);
     dist[0] = 0;
-    q.push({0, 0});
+    q.push({0, s[0] - '0'});
     while (!q.empty()) {
         int cost = q.top().first, cur = q.top().second;
         q.pop();
-        if (cur == sz(s) - 1) break;
-        if (cur > 0 && dist[cur - 1] > cost) {
-            dist[cur - 1] = cost + 1;
-            q.push({cost + 1, cur - 1});
-        }
-        if (dist[cur + 1] > cost) {
-            dist[cur + 1] = cost + 1;
-            q.push({cost + 1, cur + 1});
-        }
-        foreach (i, graph[s[cur] - '0']) {
-            if (dist[i] > cost) {
+        foreach (i, graph[cur]) {
+            if (dist[i] > cost + 1) {
                 dist[i] = cost + 1;
-                q.push({cost + 1, i});
+                q.push({dist[i], s[i] - '0'});
             }
         }
     }
