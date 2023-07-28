@@ -64,6 +64,7 @@ void solve(void) {
             }
         }
     }
+    debug(dist)
     cout << dist[sz(s) - 1] << endl;
 }
 
