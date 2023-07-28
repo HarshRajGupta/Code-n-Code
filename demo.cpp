@@ -70,16 +70,12 @@ void solve(void) {
 	bool neg = false;
 	_for(i, n) {
 		if (visited[i]) continue;
-		if (neg) {
-			cout << -1;
-			return;
-		}
-		++count;
 		int temp = dfs(graph, cost, visited, i);
 		if (temp >= 0)
 			ans += temp;
 		else
 			neg = true;
+		++count;
 	}
 	if (count > 1 && neg) {
 		cout << -1;
