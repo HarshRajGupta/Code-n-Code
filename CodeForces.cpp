@@ -30,7 +30,7 @@ template<class T>using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(),(x).end()
 
 void solve() {
-    int n; 
+    int n; cin >> n;
     cout << n;
 }
 
