@@ -46,27 +46,22 @@ void solve(void) {
     dist[0] = 0;
     q.push({0, s[0] - '0'});
     while (!q.empty()) {
-        debug(q, dist)
-        int cost = q.top().first, cur = q.top().second;
+        debug(q, dist) int cost = q.top().first, cur = q.top().second;
         q.pop();
         foreach (i, graph[cur]) {
-            debug(i, cur, cost)
-            if (dist[i] > cost + 1) {
-                dist[i] = cost + 1;
-            }
+            debug(i, cur, cost) if (dist[i] > cost + 1) { dist[i] = cost + 1; }
             if (i == sz(s) - 1) break;
-            if (i > 0 && dist[i - 1] > cost + 1) {
-                dist[i - 1] = cost + 1;
+            if (i > 0 && dist[i - 1] > dist[i] + 1) {
+                dist[i - 1] = dist[i] + 1;
                 q.push({cost + 1, s[i - 1] - '0'});
             }
-            if (dist[i + 1] > cost + 1) {
-                dist[i + 1] = cost + 1;
+            if (dist[i + 1] > dist[i] + 1) {
+                dist[i + 1] = dist[i] + 1;
                 q.push({cost + 1, s[i + 1] - '0'});
             }
         }
     }
-    debug(dist)
-    cout << dist[sz(s) - 1] << endl;
+    debug(dist) cout << dist[sz(s) - 1] << endl;
 }
 
 /**
