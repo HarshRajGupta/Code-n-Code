@@ -46,6 +46,7 @@ void solve(void) {
     dist[0] = 0;
     q.push({0, s[0] - '0'});
     while (!q.empty()) {
+        debug(q, dist)
         int cost = q.top().first, cur = q.top().second;
         q.pop();
         foreach (i, graph[cur]) {
