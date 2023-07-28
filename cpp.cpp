@@ -51,12 +51,14 @@ void solve(void) {
         debug(q)
         auto [cost, cur] = q.top();
         q.pop();
-        if ((cur < 0) || (cur >= sz(s)) || dist[cur] < cost) continue;
+        
         dist[cur] = cost;
-        q.push({cost + 1, cur + 1});
-        q.push({cost + 1, cur - 1});
+        if (cur == sz(s) - 1) break;
+        if (cur > 0 && dist[cur - 1] > cost) q.push({cost + 1, cur - 1});
+        if (dist[cur + 1] > cost)q.push({cost + 1, cur + 1});
         foreach (i, graph[s[cur] - '0']) {
-            q.push({cost + 1, i});
+            if (dist[i] > cost)
+                q.push({cost + 1, i});
         }
     }
     cout << dist[sz(s) - 1] << endl;
