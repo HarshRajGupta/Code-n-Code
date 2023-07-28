@@ -54,7 +54,6 @@ void solve(void) {
 	int n, m; cin >> n >> m;
 	v<v<int>> graph(n);
 	v<int> cost(n);
-	debug(n, m)
 	_for(i, m) {
 		int u, v; cin >> u >> v;
 		graph[u - 1].push_back(v - 1);
@@ -66,11 +65,14 @@ void solve(void) {
 	int ans = 0;
 	_for(i, n) {
 		if (visited[i]) continue;
+		if (ans < 0) {
+			cout << -1;
+			return;
+		}
 		int temp = dfs(graph, cost, visited, i);
 		if (temp >= 0) ans += temp;
 		else {
-			cout << "-1";
-			return;
+			ans = -1;
 		}
 	}
 	cout << ans;
