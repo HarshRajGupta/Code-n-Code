@@ -37,7 +37,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(), (x).end()
 
 int dfs(v<v<int>> &graph, v<int> &cost, v<bool> &visited, int src) {
-	if (visited[src]) return cost[src];
+	if (visited[src]) return -1;
 	int ans = cost[src];
 	visited[src] = true;
 	foreach (i, graph[src]) {
