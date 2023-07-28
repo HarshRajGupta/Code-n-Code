@@ -51,16 +51,16 @@ void solve(void) {
         foreach (i, graph[cur]) {
             if (dist[i] > cost + 1) {
                 dist[i] = cost + 1;
-                q.push({dist[i], s[i] - '0'});
+                q.push({cost + 1, s[i] - '0'});
             }
             if (i == sz(s) - 1) break;
             if (i > 0 && dist[i - 1] > cost + 1) {
                 dist[i - 1] = cost + 1;
-                q.push({dist[i - 1], s[i - 1] - '0'});
+                q.push({cost + 1, s[i - 1] - '0'});
             }
             if (dist[i + 1] > cost + 1) {
                 dist[i + 1] = cost + 1;
-                q.push({dist[i + 1], s[i + 1] - '0'});
+                q.push({cost + 1, s[i + 1] - '0'});
             }
         }
     }
