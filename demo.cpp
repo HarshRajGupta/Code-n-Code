@@ -1,6 +1,6 @@
 #ifdef ONLINE_JUDGE
 #pragma GCC optimize("O3", "fast-math", "unroll-loops", "no-stack-protector", \
-                         "omit-frame-pointer")
+						 "omit-frame-pointer")
 #pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
 #endif
 
@@ -13,10 +13,10 @@ using namespace std;
 
 #ifndef __SOLVE__
 #define __SOLVE__   \
-    signed main() { \
-        solve();    \
-        return 0;   \
-    }
+	signed main() { \
+		solve();    \
+		return 0;   \
+	}
 #endif
 
 #define int long long
@@ -43,37 +43,47 @@ int dfs(v<v<int>> &graph, v<int> &cost, v<bool> &visited, int src) {
 	foreach (i, graph[src]) {
 		int temp = dfs(graph, cost, visited, i);
 		if (temp >= 0) {
-			if (ans < 0) ans = temp;
-			else ans = min(ans, temp);
+			if (ans < 0)
+				ans = temp;
+			else
+				ans = min(ans, temp);
 		}
 	}
 	return ans;
 }
 
 void solve(void) {
-	int n, m; cin >> n >> m;
+	int n, m;
+	cin >> n >> m;
 	v<v<int>> graph(n);
 	v<int> cost(n);
 	_for(i, m) {
-		int u, v; cin >> u >> v;
+		int u, v;
+		cin >> u >> v;
 		graph[u - 1].push_back(v - 1);
 		graph[v - 1].push_back(u - 1);
 	}
-	foreach(i, cost) cin >> i;
+	foreach (i, cost) cin >> i;
 	debug(cost, graph);
 	v<bool> visited(n, false);
-	int ans = 0;
+	int ans = 0, count = 0;
+	bool neg = false;
 	_for(i, n) {
 		if (visited[i]) continue;
-		if (ans < 0) {
+		if (neg) {
 			cout << -1;
 			return;
 		}
+		++count;
 		int temp = dfs(graph, cost, visited, i);
-		if (temp >= 0) ans += temp;
-		else {
-			ans = -1;
-		}
+		if (temp >= 0)
+			ans += temp;
+		else
+			neg = true;
+	}
+	if (count > 1 && neg) {
+		cout << -1;
+		return;
 	}
 	cout << ans;
 }
