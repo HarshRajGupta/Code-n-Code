@@ -19,7 +19,7 @@ using namespace std;
     }
 #endif
 
-#define int long long
+// #define int long long
 const uint64_t MOD = 1e9 + 7;
 
 #define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
@@ -40,25 +40,28 @@ void solve(void) {
     string s;
     cin >> s;
     v<v<int>> graph(10);
-    _for(i, sz(s)) {
-        graph[s[i] - '0'].push_back(i);
-    }
-    debug(graph)
-    minHeap<pair<int, int>> q;
-    v<int> dist(sz(s), INT_MAX);
+    _for(i, sz(s)) { graph[s[i] - '0'].push_back(i); }
+    debug(graph) minHeap<pair<int, int>> q;
+    v<int> dist(sz(s) + 7, 1e6);
+    dist[0] = 0;
     q.push({0, 0});
     while (!q.empty()) {
-        debug(q)
-        auto [cost, cur] = q.top();
+        int cost = q.top().first, cur = q.top().second;
         q.pop();
-        
-        dist[cur] = cost;
         if (cur == sz(s) - 1) break;
-        if (cur > 0 && dist[cur - 1] > cost) q.push({cost + 1, cur - 1});
-        if (dist[cur + 1] > cost)q.push({cost + 1, cur + 1});
+        if (cur > 0 && dist[cur - 1] > cost) {
+            dist[cur - 1] = cost + 1;
+            q.push({cost + 1, cur - 1});
+        }
+        if (dist[cur + 1] > cost) {
+            dist[cur + 1] = cost + 1;
+            q.push({cost + 1, cur + 1});
+        }
         foreach (i, graph[s[cur] - '0']) {
-            if (dist[i] > cost)
+            if (dist[i] > cost) {
+                dist[i] = cost + 1;
                 q.push({cost + 1, i});
+            }
         }
     }
     cout << dist[sz(s) - 1] << endl;
