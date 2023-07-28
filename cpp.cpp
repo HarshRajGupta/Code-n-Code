@@ -50,7 +50,7 @@ void solve(void) {
         int cost = q.top().first, cur = q.top().second;
         q.pop();
         foreach (i, graph[cur]) {
-            debug(i, cur)
+            debug(i, cur, cost)
             if (dist[i] > cost + 1) {
                 dist[i] = cost + 1;
             }
