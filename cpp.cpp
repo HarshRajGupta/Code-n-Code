@@ -58,6 +58,7 @@ void solve(void) {
             }
             if ((dist[i + 1] > dist[i] + 1)) {
                 dist[i + 1] = dist[i] + 1;
+                if (i + 1 == sz(s) - 1) break;
                 q.push({dist[i + 1], s[i + 1] - '0'});
             }
         }
