@@ -42,7 +42,7 @@ void solve(void) {
     v<v<int>> graph(10);
     _for(i, sz(s)) { graph[s[i] - '0'].push_back(i); }
     debug(graph) minHeap<pair<int, int>> q;
-    v<int> dist(sz(s) + 7, 1e6);
+    v<int> dist(sz(s), 1e6);
     dist[0] = 0;
     q.push({0, s[0] - '0'});
     while (!q.empty()) {
