@@ -56,6 +56,10 @@ void solve() {
 		q.push({i, j - 1, v - 1});
 		q.push({i + 1, j, v - 1});
 		q.push({i, j + 1, v - 1});
+		q.push({i - 1, j - 1, v - 1});
+		q.push({i + 1, j - 1, v - 1});
+		q.push({i - 1, j + 1, v - 1});
+		q.push({i + 1, j + 1, v - 1});
 		++ans;
 	}
 	cout << ans;
