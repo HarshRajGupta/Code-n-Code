@@ -1,3 +1,4 @@
+#include <vector>
 #ifdef ONLINE_JUDGE
 #pragma GCC optimize("O3", "fast-math", "unroll-loops", "no-stack-protector", \
                          "omit-frame-pointer")
@@ -43,18 +44,18 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve() {
 	int r, c, k; cin >> r >> c >> k;
 	vector<vector<bool>> grid(8, vector<bool>(8, false));
-	queue<pair<int, int>> q;
+	queue<vector<int>> q;
 	int ans = 0;
-	q.push({r - 1, c - 1});
+	q.push({r - 1, c - 1, k});
 	while (!q.empty()) {
-		auto [i, j] = q.front();
+		auto i = q.front()[0], j = q.front()[1], v = q.front()[2];
 		q.pop();
-		if ((i < 0) || (j < 0) || (i >= 8) || (j >= 8) || (grid[i][j])) continue;
+		if ( (v < 0) || (i < 0) || (j < 0) || (i >= 8) || (j >= 8) || (grid[i][j])) continue;
 		grid[i][j] = true;
-		q.push({i - 1, j});
-		q.push({i, j - 1});
-		q.push({i + 1, j});
-		q.push({i, j + 1});
+		q.push({i - 1, j, v - 1});
+		q.push({i, j - 1, v - 1});
+		q.push({i + 1, j, v - 1});
+		q.push({i, j + 1, v - 1});
 		++ans;
 	}
 	cout << ans;
