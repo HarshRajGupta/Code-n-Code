@@ -46,10 +46,10 @@ void solve(void) {
     dist[0] = 0;
     q.push({0, s[0] - '0'});
     while (!q.empty()) {
-        auto [cost, cur] = q.top();
+        debug(q, dist) int cost = q.top().first, cur = q.top().second;
         q.pop();
         foreach (i, graph[cur]) {
-            if (i == sz(s) - 1) break;
+            debug(i, cur, cost, dist[i])
             if (dist[i] > cost + 1) { dist[i] = cost + 1; }
             if (i == sz(s) - 1) break;
             if (i > 0 && (dist[i - 1] > dist[i] + 1)) {
@@ -58,7 +58,6 @@ void solve(void) {
             }
             if ((dist[i + 1] > dist[i] + 1)) {
                 dist[i + 1] = dist[i] + 1;
-                if (i + 1 == sz(s) - 1) break;
                 q.push({dist[i + 1], s[i + 1] - '0'});
             }
         }
