@@ -49,13 +49,13 @@ void solve(void) {
         debug(q, dist) int cost = q.top().first, cur = q.top().second;
         q.pop();
         foreach (i, graph[cur]) {
-            debug(i, cur, cost) if (dist[i] > cost + 1) { dist[i] = cost + 1; }
+            debug(i, cur, cost, dist[i]) if (dist[i] > cost + 1) { dist[i] = cost + 1; }
             if (i == sz(s) - 1) break;
-            if (i > 0 && dist[i - 1] > dist[i] + 1) {
+            if (i > 0 && (dist[i - 1] > dist[i] + 1)) {
                 dist[i - 1] = dist[i] + 1;
                 q.push({cost + 1, s[i - 1] - '0'});
             }
-            if (dist[i + 1] > dist[i] + 1) {
+            if ((dist[i + 1] > dist[i] + 1)) {
                 dist[i + 1] = dist[i] + 1;
                 q.push({cost + 1, s[i + 1] - '0'});
             }
