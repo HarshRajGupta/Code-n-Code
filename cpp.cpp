@@ -45,9 +45,12 @@ void solve(void) {
     v<int> dist(sz(s), 1e6);
     dist[0] = 0;
     q.push({0, s[0] - '0'});
+    v<int> visited(10, 1e6);
     while (!q.empty()) {
         auto [cost, cur] = q.top();
         q.pop();
+        if (visited[cur] <= cost) continue;
+        visited[cur] = cost;
         foreach (i, graph[cur]) {
             if (dist[i] > cost + 1) { dist[i] = cost + 1; }
             if (i == sz(s) - 1) break;
@@ -57,12 +60,11 @@ void solve(void) {
             }
             if ((dist[i + 1] > dist[i] + 1)) {
                 dist[i + 1] = dist[i] + 1;
-                if (i + 1 == sz(s) - 1) break;
                 q.push({dist[i + 1], s[i + 1] - '0'});
             }
         }
     }
-    debug(dist) cout << dist[sz(s) - 1] << endl;
+    cout << dist[sz(s) - 1] << endl;
 }
 
 /**
