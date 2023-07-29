@@ -34,7 +34,7 @@ void solve() {
 	string s; cin >> s;
 	int ans = 0;
 	for (auto& i : s) {
-		ans += i - '0';
+		ans += (i - '0');
 	}
 	cout << ans << endl;
 }
