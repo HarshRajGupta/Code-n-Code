@@ -1,6 +1,6 @@
 #ifdef ONLINE_JUDGE
 #pragma GCC optimize("O3", "fast-math", "unroll-loops", "no-stack-protector", \
-						 "omit-frame-pointer")
+                         "omit-frame-pointer")
 #pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
 #endif
 
@@ -11,16 +11,20 @@ using namespace std;
 #define debug(...)
 #endif
 
-#ifndef __SOLVE__
-#define __SOLVE__   \
-	signed main() { \
-		solve();    \
-		return 0;   \
-	}
+#ifndef __MAIN__
+#define __MAIN__                           \
+    signed main() {                        \
+        preCompute();                      \
+        signed t;                          \
+        cin >> t;                          \
+        while (t--) solve(), cout << '\n'; \
+        return 0;                          \
+    }
 #endif
 
 #define int long long
 const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
 
 #define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
 #define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
@@ -36,43 +40,47 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve(void) {
-	int n, m;
-	cin >> n >> m;
-	v<v<int>> graph(n), revGraph(n);
-	_for(i, m) {
-		int u, v;
-		cin >> u >> v;
-		graph[u - 1].push_back(v - 1);
-		revGraph[v - 1].push_back(u - 1);
+void solve() {
+	int n; cin >> n;
+	v<int> inDegree(n);
+	v<v<int>> tree(n);
+	_for(i, n - 1) {
+		int u, v; cin >> u >> v;
+		u--; v--;
+		tree[u].push_back(v);
+		inDegree[v]++;
 	}
-	v<int> dist(n, 1e6);
+	int ans = 0;
 	minHeap<pair<int, int>> q;
-	q.push({0, 0});
+	_for(i, n) {
+		q.push({inDegree[i], i});
+	}
+	v<bool> visited(n);
 	while (!q.empty()) {
-		auto [cost, node] = q.top();
+		auto [cost, u] = q.top();
 		q.pop();
-		for (auto &i : graph[node]) {
-			if (dist[i] > cost) {
-				dist[i] = cost;
-				q.push({cost, i});
-			}
-		}
-		for (auto &i : revGraph[node]) {
-			if (dist[i] > cost + 1) {
-				dist[i] = cost + 1;
-				q.push({cost + 1, i});
-			}
+		if (visited[u]) continue;
+		visited[u] = true;
+		ans += cost;
+		foreach (v, tree[u]) {
+			if (visited[v]) continue;
+			--inDegree[v];
+			q.push({inDegree[v], v});
 		}
 	}
-	if (dist[n - 1] == 1e6)
-		cout << -1;
-	else
-		cout << dist[n - 1];
+	cout << ans;
+}
+
+static void preCompute() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	cout.flush();
+
 }
 
 /**
  * @ScratchPad
  */
 
-__SOLVE__
+__MAIN__
