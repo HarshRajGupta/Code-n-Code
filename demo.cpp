@@ -57,7 +57,7 @@ void solve() {
 	}
 	v<bool> visited(n);
 	while (!q.empty()) {
-		debug(q)
+		debug(q, inDegree)
 		auto [cost, u] = q.top();
 		q.pop();
 		if (visited[u]) continue;
