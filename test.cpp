@@ -36,6 +36,7 @@ void solve() {
 	for (auto& i : s) {
 		ans += i - '0';
 	}
+	cout << ans << endl;
 }
 
 /**
