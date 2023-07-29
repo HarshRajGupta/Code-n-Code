@@ -1,6 +1,6 @@
 #ifdef ONLINE_JUDGE
 #pragma GCC optimize("O3", "fast-math", "unroll-loops", "no-stack-protector", \
-                         "omit-frame-pointer")
+						 "omit-frame-pointer")
 #pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
 #endif
 
@@ -13,10 +13,10 @@ using namespace std;
 
 #ifndef __SOLVE__
 #define __SOLVE__   \
-    signed main() { \
-        solve();    \
-        return 0;   \
-    }
+	signed main() { \
+		solve();    \
+		return 0;   \
+	}
 #endif
 
 #define int long long
@@ -37,10 +37,12 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(), (x).end()
 
 void solve(void) {
-	int n, m; cin >> n >> m;
+	int n, m;
+	cin >> n >> m;
 	v<v<int>> graph(n), revGraph(n);
 	_for(i, m) {
-		int u, v; cin >> u >> v;
+		int u, v;
+		cin >> u >> v;
 		graph[u - 1].push_back(v - 1);
 		revGraph[v - 1].push_back(u - 1);
 	}
@@ -63,7 +65,10 @@ void solve(void) {
 			}
 		}
 	}
-	cout << dist[n - 1];
+	if (dist[n - 1] == 1e6)
+		cout << -1;
+	else
+		cout << dist[n - 1];
 }
 
 /**
