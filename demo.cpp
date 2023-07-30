@@ -45,7 +45,7 @@ public:
 	}
 	void test() {
 		{
-			cout << countSteppingNumbers("1", "8");
+			cout << countSteppingNumbers("1", "81");
 		}
 	}
 	Solution() {
