@@ -42,9 +42,7 @@ class Solution {
 		for (int i = 1; i < high[0] - '0'; ++i) {
 			ans = (ans + mid(high.size(), 0, i)) % MOD;
 		}
-		for (int i = 1; i < high.size(); ++i) {
-			ans = (ans + 9ll * mid(high.size(), i, 0)) % MOD;
-		}
+		
 		for (int i = 1; i < high.size(); ++i)
 			;
 		debug(dp) return ans;
