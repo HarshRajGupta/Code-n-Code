@@ -40,6 +40,7 @@ public:
 		for (int i = low[0] - '0' + 1; i < high[0] - '0'; ++i) {
 			ans = (ans + mid(low, high, 0, i)) % MOD;
 		}
+		debug(dp)
 		return ans;
 	}
 	void test() {
