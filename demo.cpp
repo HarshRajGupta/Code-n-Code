@@ -1,87 +1,63 @@
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3", "fast-math", "unroll-loops", "no-stack-protector", \
-                         "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
-#endif
-
 #include <bits/stdc++.h>
 using namespace std;
+using namespace __gnu_debug;
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#ifndef __MAIN__
-#define __MAIN__                           \
-    signed main() {                        \
-        preCompute();                      \
-        signed t;                          \
-        cin >> t;                          \
-        while (t--) solve(), cout << '\n'; \
-        return 0;                          \
-    }
-#endif
-
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-
-template <class T>
-using v = vector<T>;
-template <class T>
-using maxHeap = priority_queue<T>;
-template <class T>
-using minHeap = priority_queue<T, vector<T>, greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-void solve() {
-	int n; cin >> n;
-	v<int> inDegree(n);
-	v<v<int>> tree(n);
-	_for(i, n - 1) {
-		int u, v; cin >> u >> v;
-		u--; v--;
-		tree[u].push_back(v);
-		inDegree[v]++;
+class Solution {
+	const int MOD = 1e9 + 7;
+	int cmp(string &low, string &high, string s) {
+		if (s.size() < low.size()) return -1;
+		if (s.size() > high.size()) return 1;
+		if (s < low) return -1;
+		if (s > high) return 1;
+		return 0;
 	}
-	int ans = 0;
-	minHeap<pair<int, int>> q;
-	_for(i, n) {
-		q.push({inDegree[i], i});
+	map<int, map<int, int>> dp;
+	int mid(string &low, string &high, int pos, int prev) {
+		if (pos == high.size()) return 0;
+		if (dp.find(pos) != dp.end() && dp[pos].find(prev) != dp[pos].end()) {
+			return dp[pos][prev];
+		}
+		int ans = 0;
+		if (prev > 0 && prev < 9) {
+			ans = (mid(low, high, pos + 1, prev - 1) + 0ll +  mid(low, high, pos + 1, prev + 1)) % MOD;
+		} else if (prev == 0) {
+			ans = (0ll + mid(low, high, pos + 1, prev + 1)) % MOD;
+		} else if (prev == 9) {
+			ans = (0ll + mid(low, high, pos + 1, prev - 1)) % MOD;
+		}
+		if (pos + 1 >= low.size()) {
+			ans = (ans + 1) % MOD;
+		}
+		return dp[pos][prev] = ans;
 	}
-	v<bool> visited(n);
-	while (!q.empty()) {
-		debug(q, inDegree)
-		auto [cost, u] = q.top();
-		q.pop();
-		if (visited[u]) continue;
-		visited[u] = true;
-		ans += cost;
-		foreach (v, tree[u]) {
-			if (visited[v]) continue;
-			--inDegree[v];
-			q.push({inDegree[v], v});
+public:
+	int countSteppingNumbers(string low, string high) {
+		int ans = 0;
+		for (int i = low[0] - '0' + 1; i < high[0] - '0'; ++i) {
+			ans = (ans + mid(low, high, 0, i)) % MOD;
+		}
+		return ans;
+	}
+	void test() {
+		{
+			cout << countSteppingNumbers("1", "111");
 		}
 	}
-	cout << ans;
-}
-
-static void preCompute() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
-	cout.flush();
-
-}
+	Solution() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		cout.tie(0);
+	}
+};
 
 /**
  * @ScratchPad
  */
 
-__MAIN__
+#ifdef __TEST__
+__TEST__
+#endif
