@@ -7,48 +7,49 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	const int MOD = 1e9 + 7;
-	int cmp(string &low, string &high, string s) {
-		if (s.size() < low.size()) return -1;
-		if (s.size() > high.size()) return 1;
-		if (s < low) return -1;
-		if (s > high) return 1;
-		return 0;
-	}
-	map<int, map<int, map<int, int>>> dp;
-	int mid(int high, int pos, int prev) {
-		if (pos == high) return 0;
-		if (dp.find(high) != dp.end() && dp[high].find(pos) != dp[high].end() &&
-			dp[high][pos].find(prev) != dp[high][pos].end()) {
-			return dp[high][pos][prev];
+	int kSum(multiset<int, greater<int>> &ms, int k) {
+		int ans = 0, count = 0;
+		for (auto &i : ms) {
+			ans += i;
+			if (++count == k) {
+				break;
+			}
 		}
-		int ans = 0;
-		if (prev > 0 && prev < 9) {
-			ans = (mid(high, pos + 1, prev - 1) + 0ll +
-				   mid(high, pos + 1, prev + 1)) %
-				  MOD;
-		} else if (prev == 0) {
-			ans = (0ll + mid(high, pos + 1, prev + 1)) % MOD;
-		} else if (prev == 9) {
-			ans = (0ll + mid(high, pos + 1, prev - 1)) % MOD;
-		}
-		ans = (ans + 1) % MOD;
-		return dp[high][pos][prev] = ans;
+		return ans;
 	}
 
    public:
-	int countNumbers(string high) {
-		int ans = 0;
-		for (int i = 1; i < high[0] - '0'; ++i) {
-			ans = (ans + mid(high.size(), 0, i)) % MOD;
+	int maxKnowledge(vector<int> &s, vector<int> &e, vector<int> &a, int k) {
+		map<int, vector<pair<int, int>>> mp;
+		set<int> arr;
+		for (int i = 0; i < s.size(); ++i) {
+			mp[e[i]].push_back({a[i], -1});
+			mp[s[i]].push_back({a[i], 1});
+			arr.insert(e[i]);
+			arr.insert(s[i]);
 		}
-		
-		for (int i = 1; i < high.size(); ++i)
-			;
-		debug(dp) return ans;
+		multiset<int, greater<int>> ms;
+		int ans = 0;
+		for (auto &i : arr) {
+			for (auto &j : mp[i]) {
+				if (j.second == 1) {
+					ms.insert(j.first);
+				} else {
+					ms.erase(ms.find(j.first));
+				}
+			}
+			ans = max(ans, kSum(ms, k));
+		}
+		return ans;
 	}
 	void test() {
-		{ cout << countNumbers("81"); }
+		int n, k;
+		cin >> n >> k;
+		vector<int> s(n), e(n), a(n);
+		for (auto &i : s) cin >> i;
+		for (auto &i : e) cin >> i;
+		for (auto &i : a) cin >> i;
+		cout << maxKnowledge(s, e, a, k);
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
