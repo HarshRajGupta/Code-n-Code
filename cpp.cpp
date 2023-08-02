@@ -51,11 +51,11 @@ int dfs(v<v<int>> &tree, int u = 0, int p = -1) {
     int t1 = heap.top();
     heap.pop();
     if (heap.empty()) {
-        mx = max(mx, t1 + 1);
+        mx = max(mx, t1);
         return t1 + 1;
     }
     int t2 = heap.top();
-    mx = max(mx, t1 + t2 + 2);
+    mx = max(mx, t1 + t2 + 1);
     return t1 + 1;
 }
 
