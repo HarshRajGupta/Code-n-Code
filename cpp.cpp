@@ -36,6 +36,17 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+int dp[100007];
+
+int dfs(v<v<int>> &tree, int node = 0) {
+    int ans = 0;
+    foreach (child, tree[node]) {
+        ans += dfs(tree, child);
+    }
+    return dp[node] = ans + 1;
+}
+
+
 void solve(void) {
     int n; cin >> n;
     v<v<int>> tree(n);
@@ -44,6 +55,10 @@ void solve(void) {
         tree[t - 1].push_back(i + 1);
     }
     debug(tree)
+    dfs(tree);
+    _for(i, n) {
+        cout << dp[i] - 1 << " ";
+    }
 }
 
 /**
