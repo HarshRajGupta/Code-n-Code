@@ -1,74 +1,85 @@
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3", "fast-math", "unroll-loops", "no-stack-protector", \
-                         "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
-#endif
-
 #include <bits/stdc++.h>
 using namespace std;
+using namespace __gnu_debug;
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#ifndef __SOLVE__
-#define __SOLVE__   \
-    signed main() { \
-        solve();    \
-        return 0;   \
-    }
-#endif
+class Solution {
+	const int MOD = 1e9 + 7;
+	int dp[107][11][2];
+	int stepping(string s, int n, int prev, bool isLow) {
+		if (n == s.size()) return prev > 0;
+		if (dp[n][prev + 1][isLow] != -1) return dp[n][prev + 1][isLow];
+		if (prev == -1) {
+			if (n) {
+				int ans = 0;
+				for (int i = -1; i < 10; ++i) {
+					ans = (ans + stepping(s, n + 1, i, true)) % MOD;
+				}
+				return dp[n][prev + 1][isLow] = ans;
+			}
+			int ans = 0;
+			for (int i = -1; i < (s[0] - '0'); ++i) {
+				ans = (ans + stepping(s, n + 1, i, true)) % MOD;
+			}
+			ans = (ans + stepping(s, n + 1, s[0] - '0', false)) % MOD;
+			return dp[n][prev + 1][isLow] = ans;
+		}
+		if (isLow) {
+			int ans = 0;
+			if (prev > 0) {
+				ans = (ans + stepping(s, n + 1, prev - 1, true)) % MOD;
+			}
+			if (prev < 9) {
+				ans = (ans + stepping(s, n + 1, prev + 1, true)) % MOD;
+			}
+			return dp[n][prev + 1][isLow] = ans;
+		}
+		int ans = 0;
+		if (prev > 0) {
+			if ((prev - 1) > s[n] - '0') {
+				return dp[n][prev + 1][isLow] = 0;
+			}
+			ans = (ans +
+				   stepping(s, n + 1, prev - 1, (s[n] - '0') < (prev - 1))) %
+				  MOD;
+		}
+		if (prev < 9) {
+			if (prev + 1 > s[n] - '0') {
+				return dp[n][prev + 1][isLow] = ans;
+			}
+			ans = (ans +
+				   stepping(s, n + 1, prev + 1, (s[n] - '0') < (prev + 1))) %
+				  MOD;
+		}
+		return dp[n][prev + 1][isLow] = ans;
+	}
 
-// #define int long long
-const uint64_t MOD = 1e9 + 7;
-
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-
-template <class T>
-using v = vector<T>;
-template <class T>
-using maxHeap = priority_queue<T>;
-template <class T>
-using minHeap = priority_queue<T, vector<T>, greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-void solve(void) {
-    string s;
-    cin >> s;
-    v<v<int>> graph(10);
-    _for(i, sz(s)) { graph[s[i] - '0'].push_back(i); }
-    debug(graph) minHeap<pair<int, int>> q;
-    v<int> dist(sz(s), 1e6);
-    dist[0] = 0;
-    q.push({0, s[0] - '0'});
-    v<int> visited(10, 1e6);
-    while (!q.empty()) {
-        auto [cost, cur] = q.top();
-        q.pop();
-        if (visited[cur] <= cost) continue;
-        visited[cur] = cost;
-        foreach (i, graph[cur]) {
-            if (dist[i] > cost + 1) { dist[i] = cost + 1; }
-            if (i == sz(s) - 1) break;
-            if (i > 0 && (dist[i - 1] > dist[i] + 1)) {
-                dist[i - 1] = dist[i] + 1;
-                q.push({dist[i - 1], s[i - 1] - '0'});
-            }
-            if ((dist[i + 1] > dist[i] + 1)) {
-                dist[i + 1] = dist[i] + 1;
-                q.push({dist[i + 1], s[i + 1] - '0'});
-            }
-        }
-    }
-    cout << dist[sz(s) - 1] << endl;
-}
+   public:
+	int countSteppingNumbers(string low, string high) {
+		memset(dp, -1, sizeof(dp));
+		int LOW = stepping(low, 0, -1, false);
+		memset(dp, -1, sizeof(dp));
+		int HIGH = stepping(high, 0, -1, false);
+		cout << LOW << ' ' << HIGH << endl;
+		return (HIGH - LOW + MOD) % MOD;
+	}
+	void test() {
+        cout << countSteppingNumbers("0", "1000000000");
+	}
+	Solution() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		cout.tie(0);
+	}
+};
 
 /**
  * @ScratchPad
  */
 
-__SOLVE__
+#ifdef __TEST__
+__TEST__
+#endif
