@@ -52,7 +52,7 @@ int dfs(v<v<int>> &tree, int u = 0, int p = -1) {
         mx = max(mx, t1);
     } else {
         int t2 = heap.top();
-        mx = max(mx, t1 + t2 + 1);
+        mx = max(mx, t1 + t2);
     }
     debug(u, p, t1, mx)
     return t1 + 1;
