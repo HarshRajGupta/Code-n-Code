@@ -36,8 +36,6 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-vector<vector<int>> dp(2e5 + 7, vector<int>(2, -1));
-
 int mx = 0;
 
 int dfs(v<v<int>> &tree, int u = 0, int p = -1) {
@@ -52,10 +50,11 @@ int dfs(v<v<int>> &tree, int u = 0, int p = -1) {
     heap.pop();
     if (heap.empty()) {
         mx = max(mx, t1);
-        return t1 + 1;
+    } else {
+        int t2 = heap.top();
+        mx = max(mx, t1 + t2 + 1);
     }
-    int t2 = heap.top();
-    mx = max(mx, t1 + t2 + 1);
+    debug(u, p, t1, mx)
     return t1 + 1;
 }
 
