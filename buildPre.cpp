@@ -64,7 +64,7 @@ public:
         return (b - a + MOD) % MOD;
     }
     void test() {
-        cout << countSteppingNumbers("11", "111111");
+        cout << countSteppingNumbers("1", "11");
     }
     Solution() {
         ios::sync_with_stdio(0);
