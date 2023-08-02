@@ -67,7 +67,7 @@ class Solution {
 		return (HIGH - LOW + MOD) % MOD;
 	}
 	void test() {
-        cout << countSteppingNumbers("0", "1000000000");
+        cout << countSteppingNumbers("1", "100");
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
