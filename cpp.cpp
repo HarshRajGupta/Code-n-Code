@@ -38,25 +38,23 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 vector<vector<int>> dp(2e5 + 7, vector<int>(2, -1));
 
-int dfs(const v<v<int>> &tree, int parent = -1, int node = 0, bool canPick = true) {
-    if (dp[node][canPick] != -1) return dp[node][canPick];
-    debug(parent, node, canPick)
-    int ans = 0;
-    foreach (child, tree[node]) {
-        if (child != parent) ans += dfs(tree, node, child, true);
+int mx = 0;
+
+int dfs(v<v<int>> &tree, int u = 0, int p = -1) {
+    debug(u, p);
+    maxHeap<int> heap;
+    foreach (v, tree[u]) {
+        if (v == p) continue;
+        heap.push(dfs(tree, v, u));
     }
-    if (!canPick) {
-        return dp[node][false] = ans;
-    }
-    int mx = ans;
-    foreach (child, tree[node]) {
-        if (child != parent) {
-            int t1 = dfs(tree, node, child, false), t2 = dfs(tree, node, child, true);
-            mx = max(mx, ans + t1 - t2 + 1);
-        }
-    }
-    return dp[node][canPick] = mx;
+    if(heap.empty()) return 1;
+    int t1 = heap.top();
+    heap.pop();
+    int t2 = heap.top();
+    mx = max(mx, t1 + t2 + 1);
+    return t1 + 1;
 }
+
 
 void solve(void) {
     int n;
