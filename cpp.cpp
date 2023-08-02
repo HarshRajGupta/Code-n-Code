@@ -72,7 +72,8 @@ void solve(void) {
         tree[v].push_back(u);
     }
     debug(tree)
-    cout << dfs(tree);
+    dfs(tree);
+    cout << mx;
 }
 
 /**
