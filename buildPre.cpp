@@ -15,7 +15,7 @@ public:
     }
     void test() {
         // cout << f(5, 5);
-        cout << 'f' + 's' + 'x';
+        cout << 1;
     }
     Solution() {
         ios::sync_with_stdio(0);
