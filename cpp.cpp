@@ -15,7 +15,8 @@ class Solution {
 		if (prev == -1) {
 			if (n) {
 				int ans = 0;
-				for (int i = -1; i < 10; ++i) {
+                ans = (ans + stepping(s, n + 1, -1, true)) % MOD;
+				for (int i = 1; i < 10; ++i) {
 					ans = (ans + stepping(s, n + 1, i, true)) % MOD;
 				}
 				debug(s, n, prev, isLow, ans);
