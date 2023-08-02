@@ -7,15 +7,10 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-public:
-    int f(int a, int b) {
-        if (a < b) return (b, a);
-        if (b != 0) return a * f(a, b - 1);
-        return 0;
-    }
+   public:
+    /* function */
     void test() {
-        // cout << f(5, 5);
-        cout << 1;
+        cout << 0;
     }
     Solution() {
         ios::sync_with_stdio(0);
