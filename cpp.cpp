@@ -18,6 +18,7 @@ class Solution {
 				for (int i = -1; i < 10; ++i) {
 					ans = (ans + stepping(s, n + 1, i, true)) % MOD;
 				}
+				debug(s, n, prev, isLow, ans);
 				return dp[n][prev + 1][isLow] = ans;
 			}
 			int ans = 0;
@@ -25,6 +26,7 @@ class Solution {
 				ans = (ans + stepping(s, n + 1, i, true)) % MOD;
 			}
 			ans = (ans + stepping(s, n + 1, s[0] - '0', false)) % MOD;
+            debug(s, n, prev, isLow, ans);
 			return dp[n][prev + 1][isLow] = ans;
 		}
 		if (isLow) {
@@ -35,11 +37,13 @@ class Solution {
 			if (prev < 9) {
 				ans = (ans + stepping(s, n + 1, prev + 1, true)) % MOD;
 			}
+            debug(s, n, prev, isLow, ans);
 			return dp[n][prev + 1][isLow] = ans;
 		}
 		int ans = 0;
 		if (prev > 0) {
 			if ((prev - 1) > s[n] - '0') {
+                debug(s, n, prev, isLow, ans);
 				return dp[n][prev + 1][isLow] = 0;
 			}
 			ans = (ans +
@@ -48,12 +52,14 @@ class Solution {
 		}
 		if (prev < 9) {
 			if (prev + 1 > s[n] - '0') {
+                debug(s, n, prev, isLow, ans);
 				return dp[n][prev + 1][isLow] = ans;
 			}
 			ans = (ans +
 				   stepping(s, n + 1, prev + 1, (s[n] - '0') < (prev + 1))) %
 				  MOD;
 		}
+        debug(s, n, prev, isLow, ans);
 		return dp[n][prev + 1][isLow] = ans;
 	}
 
@@ -66,9 +72,7 @@ class Solution {
 		cout << LOW << ' ' << HIGH << endl;
 		return (HIGH - LOW + MOD) % MOD;
 	}
-	void test() {
-        cout << countSteppingNumbers("1", "100");
-	}
+	void test() { cout << countSteppingNumbers("1", "100"); }
 	Solution() {
 		ios::sync_with_stdio(0);
 		cin.tie(0);
