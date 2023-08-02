@@ -53,6 +53,7 @@ public:
             s.size(), vector<vector<int>>(10, vector<int>(2, -1)));
         int ans = 0;
         for (int i = 0; i < s[0] - '0'; ++i) {
+            debug(i, s)
             ans = (ans + steppingNumbers(dp, s, 0, i, true)) % MOD;
         }
         ans = (ans + steppingNumbers(dp, s, 0, s[0] - '0', false)) % MOD;
