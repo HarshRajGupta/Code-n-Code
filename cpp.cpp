@@ -55,7 +55,7 @@ int dfs(v<v<int>> &tree, int u = 0, int p = -1) {
         return t1 + 1;
     }
     int t2 = heap.top();
-    mx = max(mx, t1 + t2 + 1);
+    mx = max(mx, t1 + t2 + 2);
     return t1 + 1;
 }
 
