@@ -52,7 +52,7 @@ int dfs(const v<v<int>> &tree, int parent = -1, int node = 0, bool canPick = tru
     foreach (child, tree[node]) {
         if (child != parent) {
             int t1 = dfs(tree, node, child, false), t2 = dfs(tree, node, child, true);
-            mx = max(mx, ans + t1 - t2);
+            mx = max(mx, ans + t1 - t2 + 1);
         }
     }
     return dp[node][canPick] = mx;
