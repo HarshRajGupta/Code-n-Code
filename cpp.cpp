@@ -63,7 +63,7 @@ class Solution {
 		int LOW = stepping(low, 0, -1, false);
 		memset(dp, -1, sizeof(dp));
 		int HIGH = stepping(high, 0, -1, false);
-		cerr << LOW << ' ' << HIGH << endl;
+		cout << LOW << ' ' << HIGH << endl;
 		return (HIGH - LOW + MOD) % MOD;
 	}
 	void test() {
