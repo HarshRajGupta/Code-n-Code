@@ -34,7 +34,11 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-void solve() { cout << 1; }
+void solve() {
+	int n;
+	cin >> n;
+	cout << n;
+}
 
 static void preCompute() {
 	ios::sync_with_stdio(0);
