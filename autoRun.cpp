@@ -37,7 +37,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve() {
 	int n;
 	cin >> n;
-	(++n) + (n++) - (n);
+	int t = ((++n) + (n++) - (n));
 	cout << n;
 }
 
