@@ -35,9 +35,10 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    int n;
-    cout << n - 1;
-    if (n != 0) n = 0; 
+    function<int(int)> f = [](int n) {
+        return n*n;
+    };
+    cout << f(5);
 }
 
 static void preCompute() {
