@@ -7,13 +7,13 @@ using namespace std;
 
 #ifndef __MAIN__
 #define __MAIN__                           \
-    signed main() {                        \
-        preCompute();                      \
-        signed t;                          \
-        cin >> t;                          \
-        while (t--) solve(), cout << '\n'; \
-        return 0;                          \
-    }
+	signed main() {                        \
+		preCompute();                      \
+		signed t;                          \
+		cin >> t;                          \
+		while (t--) solve(), cout << '\n'; \
+		return 0;                          \
+	}
 #endif
 
 #define int long long
@@ -35,16 +35,16 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    function<int(int)> f = [](int n) {
-        return n*n;
-    };
-    cout << f(5);
+	int a = 1, b = 10;
+	function<int(int)> f = [a, &b](int n) { return b = (a + b + n); };
+	f(5);
+	cout << b << ' ' << a;
 }
 
 static void preCompute() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 }
 
 /**
