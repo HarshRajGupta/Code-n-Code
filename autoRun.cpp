@@ -34,12 +34,12 @@ template <class T>
 using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 #define sz(x) ((int)(x).size())
+
 #define all(x) (x).begin(), (x).end()
 
 void solve(void) {
-    int n; 
-    cin >> n;
-    cout << n;
+    int n;
+    cout << n - 4;
 }
 
 /**
