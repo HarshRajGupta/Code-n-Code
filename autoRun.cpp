@@ -10,9 +10,9 @@ using namespace __gnu_debug;
 
 class Solution {
 	bool canDo(vector<int>& nums1, vector<int>& nums2, int x, int t) {
-		vector<pair<int, int>> arr;
+		vector<pair<long long, int>> arr;
 		for (int i = 0; i < nums1.size(); ++i) {
-			arr.emplace_back(nums1[i] + t * nums2[i], i);
+			arr.emplace_back(nums1[i] + 0ll + (t * 1ll * nums2[i]), i);
 		}
 		sort(arr.begin(), arr.end(), greater<pair<int, int>>());
 		debug(arr) return false;
