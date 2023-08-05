@@ -11,8 +11,8 @@ class Solution {
 	int cost(vector<int>& adj, int n) {
 		int ans = 0;
 		for (int i = 0; i < adj.size() - 1; ++i) {
-			ans = max(ans, ((adj[i + 1] - adj[i]) >> 1) +
-							   ((adj[i + 1] - adj[i]) & 1));
+			ans = max(ans, ((adj[i + 1] - adj[i] - 1) >> 1) +
+							   ((adj[i + 1] - adj[i] - 1) & 1));
 		}
 		ans = max(ans, ((n - 1 - adj.back() + adj[0]) >> 1) + ((n-1 - adj.back() + adj[0])&1));
 		debug(ans, adj)
