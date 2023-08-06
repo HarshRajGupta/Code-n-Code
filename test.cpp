@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 #include <vector>
 using namespace std;
 using namespace __gnu_debug;
@@ -8,33 +9,71 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	int cost(vector<int>& adj, int n) {
-		int ans = 0;
-		for (int i = 0; i < adj.size() - 1; ++i) {
-			ans = max(ans, ((adj[i + 1] - adj[i] - 1) >> 1) +
-							   ((adj[i + 1] - adj[i] - 1) & 1));
+	vector<vector<int>> man(const vector<vector<int>>& grid) {
+		vector<vector<int>> dist(grid.size(), vector<int>(grid.size(), 1e9));
+		queue<vector<int>> q;
+		for (int i = 0; i < grid.size(); i++) {
+			for (int j = 0; j < grid.size(); j++) {
+				if (grid[i][j] == 1) {
+					dist[i][j] = 0;
+					q.push({i, j, 0});
+				}
+			}
 		}
-		ans = max(ans, ((n - 1 - adj.back() + adj[0]) >> 1) + ((n-1 - adj.back() + adj[0])&1));
-		debug(ans, adj)
+		while (!q.empty()) {
+			int i = q.front()[0], j = q.front()[1], d = q.front()[2];
+			q.pop();
+			if (dist[i][j] < d) continue;
+			if (i > 0 && dist[i - 1][j] > d + 1) {
+				dist[i - 1][j] = d + 1;
+				q.push({i - 1, j, d + 1});
+			}
+			if (j > 0 && dist[i][j - 1] > d + 1) {
+				dist[i][j - 1] = d + 1;
+				q.push({i, j - 1, d + 1});
+			}
+			if (i < grid.size() - 1 && dist[i + 1][j] > d + 1) {
+				dist[i + 1][j] = d + 1;
+				q.push({i + 1, j, d + 1});
+			}
+			if (j < grid.size() - 1 && dist[i][j + 1] > d + 1) {
+				dist[i][j + 1] = d + 1;
+				q.push({i, j + 1, d + 1});
+			}
+		}
+		return dist;
+	}
+	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist, vector<vector<bool>> &visited, int i = 0,
+			int j = 0, int d = 1e9) {
+		if (visited[i][j]) return 1e9;
+		visited[i][j] = true;
+		int ans = min(d, dist[i][j]);
+		if (i == grid.size() - 1 && j == grid.size() - 1) return ans;
+		if (i > 0) {
+			ans = min(ans, dfs(grid, dist, visited, i - 1, j, dist[i][j]));
+		}
+		if (j > 0) {
+			ans = min(ans, dfs(grid, dist, visited, i, j - 1, dist[i][j]));
+		}
+		if (i < grid.size() - 1) {
+			ans = min(ans, dfs(grid, dist, visited, i + 1, j, dist[i][j]));
+		}
+		if (j < grid.size() - 1) {
+			ans = min(ans, dfs(grid, dist, visited, i, j + 1, dist[i][j]));
+		}
 		return ans;
 	}
 
    public:
-	int minimumSeconds(vector<int>& nums) {
-		map<int, vector<int>> mp;
-		for (int i = 0; i < nums.size(); ++i) {
-			mp[nums[i]].push_back(i);
-		}
-		int ans = INT_MAX;
-		for (auto& [k, v] : mp) {
-			ans = min(ans, cost(v, nums.size()));
-		}
-		return ans;
+	int maximumSafenessFactor(vector<vector<int>>& grid) {
+		auto dist = man(grid);
+		vector<vector<bool>> dp(grid.size(), vector<bool>(grid.size(), false));
+		debug(dist, grid) return dfs(grid, dist, dp);
 	}
 	void test() {
 		{
-			vector<int> nums = {5,5,5,5};
-			cout << minimumSeconds(nums);
+			vector<vector<int>> a = {{1, 0, 0}, {0, 0, 0}, {0, 0, 1}};
+			cout << maximumSafenessFactor(a);
 		}
 	}
 	Solution() {
