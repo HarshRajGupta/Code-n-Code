@@ -47,20 +47,21 @@ class Solution {
 			vector<vector<bool>>& visited, int i = 0, int j = 0, int d = 1e9) {
 		if (visited[i][j]) return 1e9;
 		visited[i][j] = true;
-		int ans = min(d, dist[i][j]);
+		d = min(d, dist[i][j]);
+		int ans = 0;
 		debug(i, j, d, dist[i][j]);
 		if (i == grid.size() - 1 && j == grid.size() - 1) return ans;
 		if (i > 0) {
-			ans = max(ans, dfs(grid, dist, visited, i - 1, j, dist[i][j]));
+			ans = max(d, dfs(grid, dist, visited, i - 1, j, dist[i][j]));
 		}
 		if (j > 0) {
-			ans = max(ans, dfs(grid, dist, visited, i, j - 1, dist[i][j]));
+			ans = max(d, dfs(grid, dist, visited, i, j - 1, dist[i][j]));
 		}
 		if (i < grid.size() - 1) {
-			ans = max(ans, dfs(grid, dist, visited, i + 1, j, dist[i][j]));
+			ans = max(d, dfs(grid, dist, visited, i + 1, j, dist[i][j]));
 		}
 		if (j < grid.size() - 1) {
-			ans = max(ans, dfs(grid, dist, visited, i, j + 1, dist[i][j]));
+			ans = max(d, dfs(grid, dist, visited, i, j + 1, dist[i][j]));
 		}
 		return ans;
 	}
