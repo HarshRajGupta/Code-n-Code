@@ -9,7 +9,7 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	// int dp[407][407][1000];
+	int dp[407][407];
 	vector<vector<int>> man(const vector<vector<int>>& grid) {
 		vector<vector<int>> dist(grid.size(), vector<int>(grid.size(), 1e9));
 		queue<vector<int>> q;
@@ -46,16 +46,16 @@ class Solution {
 	}
 	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist, int i = 0,
 			int j = 0) {
-		debug(i, j)
 		if (i == grid.size() && j == grid.size()) return 1e9;
 		if (i >= grid.size() || j >= grid.size()) return 0;
 		int l = dfs(grid, dist, i + 1, j), r = dfs(grid, dist, i, j + 1);
+		debug(i, j, l, r, dist[i][j])
 		return min(dist[i][j], max(l, r));
 	}
 
    public:
 	int maximumSafenessFactor(vector<vector<int>>& grid) {
-		// memset(dp, -1, sizeof(dp));
+		memset(dp, -1, sizeof(dp));
 		auto dist = man(grid);
 		vector<vector<bool>> dp(grid.size(), vector<bool>(grid.size(), false));
 		debug(dist, grid) return dfs(grid, dist);
