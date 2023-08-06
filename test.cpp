@@ -64,7 +64,13 @@ class Solution {
 		{
 			vector<vector<int>> a = {
 				{0, 0, 0, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 0, 0, 0}};
-			cout << maximumSafenessFactor(a);
+			maximumSafenessFactor(a);
+			for(int i = 0; i < 5; ++i) {
+				for(int j = 0; j < 5; ++j) {
+					cout << i << ' ' << j;
+				}
+				cout << endl;
+			}
 		}
 	}
 	Solution() {
