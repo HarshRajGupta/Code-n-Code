@@ -9,7 +9,7 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	int dp[407][407];
+	// int dp[407][407][1000];
 	vector<vector<int>> man(const vector<vector<int>>& grid) {
 		vector<vector<int>> dist(grid.size(), vector<int>(grid.size(), 1e9));
 		queue<vector<int>> q;
@@ -45,24 +45,17 @@ class Solution {
 		return dist;
 	}
 	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist, int i = 0,
-			int j = 0, int d = 1e9) {
-		d = min(d, dist[i][j]);
-		if (i == grid.size() - 1 && j == grid.size() - 1) return d;
-		if (dp[i][j] != -1) return min(d, dp[i][j]);
-		int ans = 0;
-		if (i < grid.size() - 1) {
-			ans = max(ans, dfs(grid, dist, i + 1, j, dist[i][j]));
-		}
-		if (j < grid.size() - 1) {
-			ans = max(ans, dfs(grid, dist, i, j + 1, dist[i][j]));
-		}
-        dp[i][j] = ans;
-		return min(d, ans);
+			int j = 0) {
+		debug(i, j)
+		if (i == grid.size() && j == grid.size()) return 1e9;
+		if (i >= grid.size() || j >= grid.size()) return 0;
+		int l = dfs(grid, dist, i + 1, j), r = dfs(grid, dist, i, j + 1);
+		return min(dist[i][j], max(l, r));
 	}
 
    public:
 	int maximumSafenessFactor(vector<vector<int>>& grid) {
-		memset(dp, -1, sizeof(dp));
+		// memset(dp, -1, sizeof(dp));
 		auto dist = man(grid);
 		vector<vector<bool>> dp(grid.size(), vector<bool>(grid.size(), false));
 		debug(dist, grid) return dfs(grid, dist);
