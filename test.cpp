@@ -51,16 +51,16 @@ class Solution {
 		debug(i, j, d, dist[i][j]);
 		if (i == grid.size() - 1 && j == grid.size() - 1) return ans;
 		if (i > 0) {
-			ans = min(ans, dfs(grid, dist, visited, i - 1, j, dist[i][j]));
+			ans = max(ans, dfs(grid, dist, visited, i - 1, j, dist[i][j]));
 		}
 		if (j > 0) {
-			ans = min(ans, dfs(grid, dist, visited, i, j - 1, dist[i][j]));
+			ans = max(ans, dfs(grid, dist, visited, i, j - 1, dist[i][j]));
 		}
 		if (i < grid.size() - 1) {
-			ans = min(ans, dfs(grid, dist, visited, i + 1, j, dist[i][j]));
+			ans = max(ans, dfs(grid, dist, visited, i + 1, j, dist[i][j]));
 		}
 		if (j < grid.size() - 1) {
-			ans = min(ans, dfs(grid, dist, visited, i, j + 1, dist[i][j]));
+			ans = max(ans, dfs(grid, dist, visited, i, j + 1, dist[i][j]));
 		}
 		return ans;
 	}
