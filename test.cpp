@@ -48,9 +48,9 @@ class Solution {
 			int j = 0) {
 		if (i == grid.size() - 1 && j == grid.size() - 1) return dist[i][j];
 		if (i >= grid.size() || j >= grid.size()) return 0;
+		if (dp[i][j] != -1) return dp[i][j];
 		int l = dfs(grid, dist, i + 1, j), r = dfs(grid, dist, i, j + 1);
-		debug(i, j, l, r, dist[i][j])
-		return min(dist[i][j], max(l, r));
+		return dp[i][j] = min(dist[i][j], max(l, r));
 	}
 
    public:
