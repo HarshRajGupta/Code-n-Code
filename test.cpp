@@ -45,7 +45,7 @@ class Solution {
 	}
 	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist,
 			vector<vector<bool>>& visited, int i = 0, int j = 0, int d = 1e9) {
-		if (visited[i][j]) return 1e9;
+		if (visited[i][j]) return 0;
 		visited[i][j] = true;
 		d = min(d, dist[i][j]);
 		int ans = 0;
