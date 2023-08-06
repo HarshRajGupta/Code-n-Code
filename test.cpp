@@ -43,8 +43,8 @@ class Solution {
 		}
 		return dist;
 	}
-	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist, vector<vector<bool>> &visited, int i = 0,
-			int j = 0, int d = 1e9) {
+	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist,
+			vector<vector<bool>>& visited, int i = 0, int j = 0, int d = 1e9) {
 		if (visited[i][j]) return 1e9;
 		visited[i][j] = true;
 		int ans = min(d, dist[i][j]);
@@ -72,7 +72,8 @@ class Solution {
 	}
 	void test() {
 		{
-			vector<vector<int>> a = {{1, 0, 0}, {0, 0, 0}, {0, 0, 1}};
+			vector<vector<int>> a = {
+				{0, 0, 0, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 0, 0, 0}};
 			cout << maximumSafenessFactor(a);
 		}
 	}
