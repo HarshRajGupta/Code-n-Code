@@ -43,19 +43,18 @@ class Solution {
 		}
 		return dist;
 	}
-	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist,
-			vector<vector<bool>>& visited, int i = 0, int j = 0, int d = 1e9) {
-		debug(i, j, d)
-		if(i == grid.size() - 1 && j == grid.size() - 1) return d;
+	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist, int i = 0,
+			int j = 0, int d = 1e9) {
+		debug(i, j,
+			  d) if (i == grid.size() - 1 && j == grid.size() - 1) return d;
 		int ans = 0;
-		d = min(d, dist[i][j]);
 		if (i < grid.size() - 1) {
-			ans = max(ans, dfs(grid, dist, visited, i + 1, j, d));
+			ans = max(ans, dfs(grid, dist, i + 1, j, dist[i][j]));
 		}
 		if (j < grid.size() - 1) {
-			ans = max(ans, dfs(grid, dist, visited, i, j + 1, d));
+			ans = max(ans, dfs(grid, dist, i, j + 1, dist[i][j]));
 		}
-		debug(i, j, d, ans)
+		ans = min(d, ans);
 		return ans;
 	}
 
@@ -63,7 +62,7 @@ class Solution {
 	int maximumSafenessFactor(vector<vector<int>>& grid) {
 		auto dist = man(grid);
 		vector<vector<bool>> dp(grid.size(), vector<bool>(grid.size(), false));
-		debug(dist, grid) return dfs(grid, dist, dp);
+		debug(dist, grid) return dfs(grid, dist);
 	}
 	void test() {
 		{
