@@ -63,6 +63,7 @@ class Solution {
 		if (j < grid.size() - 1) {
 			ans = max(ans, min(d, dfs(grid, dist, visited, i, j + 1, dist[i][j])));
 		}
+		debug(i, j, ans)
 		return ans;
 	}
 
