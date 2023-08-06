@@ -48,6 +48,7 @@ class Solution {
 		if (visited[i][j]) return 1e9;
 		visited[i][j] = true;
 		int ans = min(d, dist[i][j]);
+		debug(i, j, d, dist[i][j]);
 		if (i == grid.size() - 1 && j == grid.size() - 1) return ans;
 		if (i > 0) {
 			ans = min(ans, dfs(grid, dist, visited, i - 1, j, dist[i][j]));
