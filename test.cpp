@@ -45,25 +45,23 @@ class Solution {
 	}
 	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist,
 			vector<vector<bool>>& visited, int i = 0, int j = 0, int d = 1e9) {
-		if (visited[i][j]) return 0;
-		visited[i][j] = true;
-		d = min(d, dist[i][j]);
+		if(i == grid.size() - 1 && j == grid.size() - 1) return d;
 		int ans = 0;
-		debug(i, j, d, dist[i][j]);
-		if (i == grid.size() - 1 && j == grid.size() - 1) return ans;
-		if (i > 0) {
-			ans = max(ans, min(d, dfs(grid, dist, visited, i - 1, j, dist[i][j])));
+		d = min(d, dist[i][j]);
+		if (visited[i][j]) return 1e9;
+		visited[i][j] = true;
+		if (i > 0 && !visited[i - 1][j]) {
+			ans = max(ans, dfs(grid, dist, visited, i - 1, j, d));
 		}
-		if (j > 0) {
-			ans = max(ans, min(d, dfs(grid, dist, visited, i, j - 1, dist[i][j])));
+		if (j > 0 && !visited[i][j - 1]) {
+			ans = max(ans, dfs(grid, dist, visited, i, j - 1, d));
 		}
-		if (i < grid.size() - 1) {
-			ans = max(ans, min(d, dfs(grid, dist, visited, i + 1, j, dist[i][j])));
+		if (i < grid.size() - 1 && !visited[i + 1][j]) {
+			ans = max(ans, dfs(grid, dist, visited, i + 1, j, d));
 		}
-		if (j < grid.size() - 1) {
-			ans = max(ans, min(d, dfs(grid, dist, visited, i, j + 1, dist[i][j])));
+		if (j < grid.size() - 1 && !visited[i][j + 1]) {
+			ans = max(ans, dfs(grid, dist, visited, i, j + 1, d));
 		}
-		debug(i, j, ans)
 		return ans;
 	}
 
