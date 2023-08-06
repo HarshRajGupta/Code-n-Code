@@ -46,7 +46,7 @@ class Solution {
 	}
 	int dfs(vector<vector<int>>& grid, vector<vector<int>>& dist, int i = 0,
 			int j = 0) {
-		if (i == grid.size() && j == grid.size()) return 1e9;
+		if (i == grid.size() - 1 && j == grid.size() - 1) return dist[i][j];
 		if (i >= grid.size() || j >= grid.size()) return 0;
 		int l = dfs(grid, dist, i + 1, j), r = dfs(grid, dist, i, j + 1);
 		debug(i, j, l, r, dist[i][j])
