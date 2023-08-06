@@ -49,14 +49,12 @@ class Solution {
 		if(i == grid.size() - 1 && j == grid.size() - 1) return d;
 		int ans = 0;
 		d = min(d, dist[i][j]);
-		visited[i][j] = true;
-		if (i < grid.size() - 1 && !visited[i + 1][j]) {
+		if (i < grid.size() - 1) {
 			ans = max(ans, dfs(grid, dist, visited, i + 1, j, d));
 		}
-		if (j < grid.size() - 1 && !visited[i][j + 1]) {
+		if (j < grid.size() - 1) {
 			ans = max(ans, dfs(grid, dist, visited, i, j + 1, d));
 		}
-		visited[i][j] = false;
 		debug(i, j, d, ans)
 		return ans;
 	}
