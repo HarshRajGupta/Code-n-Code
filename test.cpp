@@ -50,12 +50,6 @@ class Solution {
 		int ans = 0;
 		d = min(d, dist[i][j]);
 		visited[i][j] = true;
-		if (i > 0 && !visited[i - 1][j]) {
-			ans = max(ans, dfs(grid, dist, visited, i - 1, j, d));
-		}
-		if (j > 0 && !visited[i][j - 1]) {
-			ans = max(ans, dfs(grid, dist, visited, i, j - 1, d));
-		}
 		if (i < grid.size() - 1 && !visited[i + 1][j]) {
 			ans = max(ans, dfs(grid, dist, visited, i + 1, j, d));
 		}
