@@ -48,7 +48,6 @@ class Solution {
 		if(i == grid.size() - 1 && j == grid.size() - 1) return d;
 		int ans = 0;
 		d = min(d, dist[i][j]);
-		if (visited[i][j]) return 1e9;
 		visited[i][j] = true;
 		if (i > 0 && !visited[i - 1][j]) {
 			ans = max(ans, dfs(grid, dist, visited, i - 1, j, d));
