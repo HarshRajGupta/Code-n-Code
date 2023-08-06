@@ -62,6 +62,7 @@ class Solution {
 		if (j < grid.size() - 1 && !visited[i][j + 1]) {
 			ans = max(ans, dfs(grid, dist, visited, i, j + 1, d));
 		}
+		visited[i][j] = false;
 		debug(i, j, d, ans)
 		return ans;
 	}
