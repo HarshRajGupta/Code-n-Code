@@ -10,7 +10,7 @@ class Solution {
    public:
 	/* function */
 	void test() {
-		int n = 0;
+		int n = 2;
 		cout << n;
 	}
 	Solution() {
