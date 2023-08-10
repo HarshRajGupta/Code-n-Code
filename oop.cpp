@@ -9,7 +9,10 @@ class parent {
 	int get() { return a; }
 	int set(int x) { return a = x; }
 	void print() { cout << "Parent" << endl; }
-	virtual int t() { return 0; };
+	virtual int t() {
+		cout << "parent: t" << a << endl;
+		return 0;
+	};
 };
 
 class derived : public parent {
