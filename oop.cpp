@@ -9,18 +9,21 @@ class parent {
 	int get() { return a; }
 	int set(int x) { return a = x; }
 	void print() { cout << "Parent" << endl; }
+	virtual int t() { return 0; };
 };
 
 class derived : public parent {
    public:
-   	derived(int t = 0) : parent(t) { cout << "derived: " << t << endl; }
+	derived(int t = 0) : parent(t) { cout << "derived: " << t << endl; }
 	void print() { cout << "Derived" << endl; }
+	int t() {
+		cout << "t" << endl;
+		return 0;
+	}
 };
 
 signed main(void) {
-	derived* d = new derived(5);
-	cout << d->get();
-	d->set(1);
-	cout << d->get();
+	parent z(10);
+	z.t();
 	return 0;
 }
