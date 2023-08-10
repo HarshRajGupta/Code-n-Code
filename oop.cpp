@@ -32,7 +32,7 @@ class Solution {
 	}
 	void test() {
 		vector<int> a= {1, 2, 1};
-		vector<char> b = {'+', '-', '+'};
+		vector<char> b = {'+', '+', '-'};
 		cout << fun(3, a, b);
 	}
 	Solution() {
