@@ -19,7 +19,7 @@ class derived : public parent {
 
 signed main(void) {
 	derived d;
-	d.set(10);
+	d.set(1);
 	cout << d.get();
 	return 0;
 }
