@@ -14,8 +14,6 @@ class derived : public parent {
 	int b = 0;
 
    public:
-	int get() { return b; }
-	int set(int x) { return b = x; }
 	void print() { cout << "Derived" << endl; }
 };
 
