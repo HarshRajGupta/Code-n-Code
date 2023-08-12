@@ -11,7 +11,6 @@ using namespace __gnu_debug;
 #endif
 
 vector<char> word = {'W', 'O', 'R', 'D'};
-
 vector<vector<int>> dp(200, vector<int>(7, -2));
 int ans(string s, int pos = 0, int prev = 0) {
 	if (pos == s.size()) {
@@ -39,7 +38,7 @@ int ans(string s, int pos = 0, int prev = 0) {
 class Solution {
    public:
 	void test() {
-		string s = "WWWOOORDRRDDDEEEE";
+		string s = "777WWWOOORDRRDDDEEEE";
 		cout << ans(s);
 	}
 	Solution() {
