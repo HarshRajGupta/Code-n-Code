@@ -34,7 +34,7 @@ class Solution {
 		return ans(s, pos + 1, prev);
 	}
 	void test() {
-		string s = "WWWOOORRRDDDDEEE";
+		string s = "WWWAAVOOORRRDDDDEEE";
 		cout << ans(s);
 	}
 	Solution() {
