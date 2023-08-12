@@ -39,7 +39,7 @@ int ans(string s, int pos = 0, int prev = 0) {
 class Solution {
    public:
 	void test() {
-		string s = "777WWWVBDJBVAAVOOHBFRHIRDORDDDRRRDDDDEEE";
+		string s = "WWWOOORRRDDDEEEE";
 		cout << ans(s);
 	}
 	Solution() {
