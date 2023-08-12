@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <string>
 using namespace std;
 using namespace __gnu_debug;
 
@@ -7,34 +8,40 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
+	vector<char> word = {'W', 'O', 'R', 'D'};
+
    public:
-    int ans(string s) {
-    	vector<int> a(s.size() + 1), b(s.size() + 1);
-    	for(int i = 0; i < s.size(); ++i) {
-    		a[i+1] = a[i];
-    		b[i+1] = b[i];
-    		if (s[i] == 'a') {
-	 			a[i+1]++;
-	 		} else {
-	 			b[i+1]++;
-	 		}
-    	}
-    	int ans = 0;
-    	for(int i = 0; i < s.size(); ++i) {
-    		if (s[i] == 'b') {
-    			ans += a[i];
-    		}
-    	}
-    	return ans;
-    }
-    void test() {
-        cout << ans("ababa");
-    }
-    Solution() {
-        ios::sync_with_stdio(0);
-        cin.tie(0);
-        cout.tie(0);
-    }
+	int ans(string s, int pos = 0, int prev = 0) {
+		if (pos == s.size()) {
+			if (prev == 3) return 0;
+			return -1;
+		}
+		if (prev == 3) {
+			int res = ans(s, pos + 1, prev);
+			if (res == -1) return (s[pos] == word[prev]);
+			return res + (s[pos] == word[prev]);
+		}
+		if (s[pos] == word[prev]) {
+			int res = ans(s, pos + 1, prev);
+			if (res == -1) return -1;
+			return res + 1;
+		}
+		if (s[pos] == word[prev + 1]) {
+			int res = ans(s, pos + 1, prev + 1);
+			if (res == -1) return -1;
+			return res + 1;
+		}
+		return ans(s, pos + 1, prev);
+	}
+	void test() {
+		string s = "WWWOOORRRDDDDEEE";
+		cout << ans(s);
+	}
+	Solution() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		cout.tie(0);
+	}
 };
 
 /**
