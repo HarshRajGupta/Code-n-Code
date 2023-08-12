@@ -34,7 +34,7 @@ class Solution {
 		return ans(s, pos + 1, prev);
 	}
 	void test() {
-		string s = "777WWWAAVOOORRRDDDDEEE";
+		string s = "777WWWVBDJBVAAVOOHBFRHIRDORDDDRRRDDDDEEE";
 		cout << ans(s);
 	}
 	Solution() {
