@@ -30,9 +30,9 @@ int ans(string s, int pos = 0, int prev = 0) {
 		return dp[pos][prev] = res + 1;
 	}
 	if (s[pos] == word[prev + 1]) {
-		int res = ans(s, pos + 1, prev + 1);
-		if (res == -1) return dp[pos][prev] = -1;
-		return dp[pos][prev] = res + 1;
+		int res = ans(s, pos + 1, prev + 1), res2 = ans(s, pos + 1, prev);
+		if (res == -1 && res2 == -1) return dp[pos][prev] = -1;
+		return dp[pos][prev] = max(res + 1, res2);
 	}
 	return dp[pos][prev] = ans(s, pos + 1, prev);
 }
