@@ -10,7 +10,7 @@ class Solution {
    public:
     /* function */
     void test() {
-        {}
+        cout << 1;
     }
     Solution() {
         ios::sync_with_stdio(0);
