@@ -8,16 +8,15 @@ using namespace __gnu_debug;
 
 class Solution {
    public:
-	/* function */
-	void test() {
-		int n = 12;
-		cout << n;
-	}
-	Solution() {
-		ios::sync_with_stdio(0);
-		cin.tie(0);
-		cout.tie(0);
-	}
+    /* function */
+    void test() {
+        {}
+    }
+    Solution() {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+    }
 };
 
 /**
