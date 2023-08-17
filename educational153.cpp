@@ -50,10 +50,10 @@ bool isSubstr(string &a, string &b) {
 void solve() {
 	string s;
 	cin >> s;
-	string a("()", s.size());
-	string tt(10, 'a');
-	string b = string('(', s.size()) + string(')', s.size());
-	debug(s, tt);
+	string a;
+	for (int i = 0; i < s.size(); ++i) a += "()";
+	string b = string(s.size(), '(') + string(s.size(), ')');
+	debug(s, a, b);
 }
 
 static void preCompute() {
