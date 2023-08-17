@@ -10,6 +10,11 @@ struct ListNode {
 		while (pos->next != nullptr) pos = pos->next;
 		return pos->next = new ListNode(val);
 	}
+	ListNode *operator[](int index) {
+		auto pos = this;
+		while (index--) pos = pos->next;
+		return pos;
+	}
 };
 
 void __PRINT_VARIABLE(ListNode *x) {
