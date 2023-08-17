@@ -8,10 +8,10 @@ struct ListNode {
 	ListNode(int x = 0, ListNode *next = nullptr) : val(x), next(next) {}
 };
 
-ListNode operator+(ListNode x, ListNode y) {
+ListNode operator+(ListNode &x, int y) {
 	ListNode *X = &x;
 	while (X->next != nullptr) X = X->next;
-	X->next = &y;
+	X->next = new ListNode(y);
 	return x;
 }
 
@@ -44,7 +44,7 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		auto t = (*head) + ListNode(10);
+		(*head) + 10;
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
