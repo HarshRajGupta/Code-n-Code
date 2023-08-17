@@ -10,10 +10,11 @@ struct ListNode {
 		while (pos->next != nullptr) pos = pos->next;
 		return pos->next = new ListNode(val);
 	}
-	ListNode *operator[](int index) {
+	ListNode operator[](int index) {
+		cout << index;
 		auto pos = this;
 		while (index--) pos = pos->next;
-		return pos;
+		return *pos;
 	}
 };
 
@@ -21,6 +22,17 @@ void __PRINT_VARIABLE(ListNode *x) {
 	std::cerr << '[';
 	unsigned int f = 0;
 	for (ListNode *i = x; i != nullptr; i = i->next, ++f) {
+		if (f) std::cerr << ", ";
+		std::cerr << i->val;
+	}
+	std::cerr << ']';
+}
+
+void __PRINT_VARIABLE(ListNode x) {
+	std::cerr << '[';
+	unsigned int f = 0;
+	cout << x.val;
+	for (ListNode *i = &x; i != nullptr; i = i->next, ++f) {
 		if (f) std::cerr << ", ";
 		std::cerr << i->val;
 	}
@@ -35,8 +47,9 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		auto t = head->add(20);
+		head->add(20);
 		head->add(30);
+		ListNode t =  (*head)[1];
 		debug(head, t)
 	}
 	Solution() {
