@@ -49,11 +49,11 @@ void solve() {
 		} else {
 			int diff = m - ((k * b));
 			if (a >= k) {
-				diff -= (a - a % k);
+				diff -= (a - (a % k));
 				a = a % k;
 			}
 			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
-			debug(diff, diff / k, diff % k);
+			debug(diff / k, diff % k);
 			cout << ans;
 		}
 	}
