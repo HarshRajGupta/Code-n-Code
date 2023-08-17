@@ -15,10 +15,10 @@ ListNode *operator+(ListNode x, ListNode y) {
 	return &x;
 }
 
-void __PRINT_VARIABLE(ListNode *x) {
+void __PRINT_VARIABLE(ListNode *z) {
 	std::cerr << '[';
 	unsigned int f = 0;
-	for (ListNode *i = x; i != nullptr; i = i->next, ++f) {
+	for (ListNode *i = z; i != nullptr; i = i->next, ++f) {
 		if (f) std::cerr << ", ";
 		std::cerr << i->val;
 	}
