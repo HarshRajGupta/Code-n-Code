@@ -46,7 +46,7 @@ void solve() {
 		auto it = s.upper_bound(arr[i]);
 		bool b = (*it < arr[i]);
 		debug(s, arr[i], *it, parity);
-		if (*it < arr[i]) {
+		if (it == s.begin() && *it < arr[i]) {
 			parity[arr[i]] = (parity[*it] + 1);
 			if (parity[arr[i]] == 1) ans++;
 		}
