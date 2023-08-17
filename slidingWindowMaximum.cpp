@@ -8,11 +8,11 @@ struct ListNode {
 	ListNode(int x = 0, ListNode *next = nullptr) : val(x), next(next) {}
 };
 
-ListNode *operator+(ListNode x, ListNode y) {
+ListNode operator+(ListNode x, ListNode y) {
 	ListNode *X = &x;
 	while (X->next != nullptr) X = X->next;
 	X->next = &y;
-	return &x;
+	return x;
 }
 
 void __PRINT_VARIABLE(ListNode *z) {
