@@ -41,7 +41,7 @@ void solve() {
 	foreach (i, arr) cin >> i;
 	set<int> s;
 	for (int i = 0; i < n; ++i) {
-		auto it = s.lower_bound(arr[i]);
+		auto it = s.upper_bound(arr[i]);
 		if (it != s.end() && *it < arr[i]) {
 			debug(s, *it, arr[i]);
 		} else {
