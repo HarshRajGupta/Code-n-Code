@@ -53,7 +53,7 @@ void solve() {
 				a = a % k;
 			}
 			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
-			debug(diff / k, diff % k);
+			debug(diff, diff / k, diff % k);
 			cout << ans;
 		}
 	}
