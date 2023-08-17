@@ -42,13 +42,13 @@ void solve() {
 	int i;
 	for (i = 1; i < n; ++i)
 		if (arr[i] > arr[i - 1]) break;
+	debug(i)
 	for (; i < n; ++i) {
 		if (arr[i] > arr[i - 1]) {
 			break;
 		}
 		++ans;
 	}
-
 	cout << ans;
 }
 
