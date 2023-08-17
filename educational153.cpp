@@ -41,13 +41,13 @@ void solve() {
 	foreach (i, arr) cin >> i;
 	set<int> s;
 	s.insert(arr[0]);
+	v<int> parity(n + 1);
 	for (int i = 1; i < n; ++i) {
 		auto it = s.lower_bound(arr[i]);
 		bool b = (*it < arr[i]);
 		if (*it < arr[i]) {
-			debug(s, *it, arr[i]);
-		} else {
-			debug(s, "no", arr[i], *it);
+			parity[arr[i]] = parity[*it] + 1;
+			if (parity[arr[i]] == 1) ans++;
 		}
 		s.insert(arr[i]);
 	}
