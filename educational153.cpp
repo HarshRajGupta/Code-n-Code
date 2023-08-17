@@ -40,10 +40,11 @@ void solve() {
 	v<int> arr(n);
 	foreach (i, arr) cin >> i;
 	set<int> s;
-	for (int i = 0; i < n; ++i) {
+	s.insert(arr[0]);
+	for (int i = 1; i < n; ++i) {
 		auto it = s.lower_bound(arr[i]);
-		bool a = (it != s.end()), b = (*it < arr[i]);
-		debug(s, arr[i], a, b)
+		bool b = (*it < arr[i]);
+		debug(s, arr[i], b)
 		// if (it != s.end() && *it < arr[i]) {
 		// 	debug(s, *it, arr[i]);
 		// } else {
