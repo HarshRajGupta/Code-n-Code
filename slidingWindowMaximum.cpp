@@ -45,6 +45,7 @@ class Solution {
 	void test() {
 		auto head = new ListNode(10);
 		(*head) + 10;
+		debug(head)
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
