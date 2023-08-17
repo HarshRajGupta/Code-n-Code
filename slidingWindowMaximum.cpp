@@ -15,6 +15,11 @@ struct ListNode {
 		while (pos != nullptr && index--) pos = pos->next;
 		return pos;
 	}
+	ListNode *operator+(int val) {
+		auto pos = this;
+		while (pos->next != nullptr) pos = pos->next;
+		return pos->next = new ListNode(val);
+	}
 };
 
 void __PRINT_VARIABLE(ListNode *x) {
@@ -46,8 +51,8 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		head->add(20);
-		head->add(30);
+		head = (*head)+ 11;
+		head = (*head)+ 12;
 		ListNode *t = (*head)[1];
 		debug(head, t)
 	}
