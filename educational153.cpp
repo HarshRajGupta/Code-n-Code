@@ -42,7 +42,7 @@ void solve() {
 	set<int> s;
 	for (int i = 0; i < n; ++i) {
 		auto it = s.lower_bound(arr[i]);
-		debug(*it)
+		debug(s, *it)
 		s.insert(arr[i]);
 	}
 	cout << ans;
