@@ -55,10 +55,9 @@ void solve() {
 				parity[arr[i]] = (parity[*it] + 1);
 				if (parity[arr[i]] == 1) ans++;
 			}
-		}
-		debug(s, parity);
-		
+		}		
 		s.insert(arr[i]);
+		debug(s, parity);
 	}
 	cout << ans;
 }
