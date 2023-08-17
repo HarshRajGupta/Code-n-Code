@@ -25,16 +25,16 @@ void __PRINT_VARIABLE(ListNode *z) {
 	std::cerr << ']';
 }
 
-// void __PRINT_VARIABLE(ListNode x) {
-// 	std::cerr << '[';
-// 	unsigned int f = 0;
-// 	cout << x.val;
-// 	for (ListNode *i = &x; i != nullptr; i = i->next, ++f) {
-// 		if (f) std::cerr << ", ";
-// 		std::cerr << i->val;
-// 	}
-// 	std::cerr << ']';
-// }
+void __PRINT_VARIABLE(ListNode x) {
+	std::cerr << '[';
+	unsigned int f = 0;
+	cout << x.val;
+	for (ListNode *i = &x; i != nullptr; i = i->next, ++f) {
+		if (f) std::cerr << ", ";
+		std::cerr << i->val;
+	}
+	std::cerr << ']';
+}
 
 #ifndef debug
 #define debug(...)
@@ -44,8 +44,8 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		(*head) + 112 + 11 + 12 + 20;
-		debug(head)
+		auto t = ((*head) + 112 + 11 + 12 + 20);
+		debug(t)
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
