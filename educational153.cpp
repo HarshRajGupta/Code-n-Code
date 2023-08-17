@@ -51,8 +51,10 @@ void solve() {
 			if (parity[arr[i]] == 1) ans++;
 		} else if (it != s.begin()) {
 			it = prev(it);
-			parity[arr[i]] = (parity[*it] + 1);
-			if (parity[arr[i]] == 1) ans++;
+			if (*it < arr[i]) {
+				parity[arr[i]] = (parity[*it] + 1);
+				if (parity[arr[i]] == 1) ans++;
+			}
 		}
 		s.insert(arr[i]);
 	}
