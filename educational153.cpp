@@ -53,10 +53,13 @@ void solve() {
 	string a;
 	for (int i = 0; i < s.size(); ++i) a += "()";
 	string b = string(s.size(), '(') + string(s.size(), ')');
-	if (isSubstr(a, s) || isSubstr(b, s))
-		cout << "YES";
-	else
+	if (!isSubstr(a, s)) {
+		cout << "YES\n" << a;
+	} else if (!isSubstr(b, s)) {
+		cout << "YES\n" << b;
+	} else {
 		cout << "NO";
+	}
 }
 
 static void preCompute() {
