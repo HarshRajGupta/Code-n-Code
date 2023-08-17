@@ -5,11 +5,7 @@ struct ListNode {
 	int val;
 	ListNode *next;
 	ListNode(int x = 0, ListNode *next = nullptr) : val(x), next(next) {}
-	ListNode operator[](int index) {
-		if (index == 0) return *this;
-		return next->operator[](index - 1);
-	}
-	ListNode* operator+(int val) {
+	bool add(int val) {
 		auto pos = this;
 		while (pos->next != nullptr) {
 			cout << pos->val << ' ';
@@ -17,7 +13,7 @@ struct ListNode {
 		}
 		cout << pos->val << endl;
 		pos->next = new ListNode(val);
-		return this;
+		return true;
 	}
 };
 
@@ -39,6 +35,9 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
+		head->add(20);
+		head->add(30);
+		debug(head)
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
