@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-
-#include <string>
 using namespace std;
 
 #ifndef debug
@@ -36,29 +34,23 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-bool isSubstr(string &a, string &b) {
-	string t(a.begin(), a.begin() + b.size());
-	for (int i = 0; i < b.size(); ++i) {
-		if (t == b) return true;
-		t.erase(t.begin());
-		t += a[i + b.size()];
-	}
-	if (t == b) return true;
-	return false;
-}
-
 void solve() {
-	string s;
-	cin >> s;
-	string a;
-	for (int i = 0; i < s.size(); ++i) a += "()";
-	string b = string(s.size(), '(') + string(s.size(), ')');
-	if (!isSubstr(a, s)) {
-		cout << "YES\n" << a;
-	} else if (!isSubstr(b, s)) {
-		cout << "YES\n" << b;
+	int m, k, a, b;
+	cin >> m >> k >> a >> b;
+	if (k * b >= m) {
+		if (m % k <= a) {
+			cout << 0;
+		} else {
+			cout << (m % k - a);
+		}
 	} else {
-		cout << "NO";
+		if ((k * b) + a >= m) {
+			cout << 0;
+		} else {
+			int diff = m - ((k * b));
+			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
+			cout << ans;
+		}
 	}
 }
 
