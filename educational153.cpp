@@ -51,8 +51,9 @@ void solve() {
 	string s;
 	cin >> s;
 	string a("()", s.size());
+	string tt('a', 10);
 	string b = string('(', s.size()) + string(')', s.size());
-	debug(s, b);
+	debug(s, tt);
 }
 
 static void preCompute() {
