@@ -28,16 +28,16 @@ void __PRINT_VARIABLE(ListNode *x) {
 	std::cerr << ']';
 }
 
-void __PRINT_VARIABLE(ListNode x) {
-	std::cerr << '[';
-	unsigned int f = 0;
-	cout << x.val;
-	for (ListNode *i = &x; i != nullptr; i = i->next, ++f) {
-		if (f) std::cerr << ", ";
-		std::cerr << i->val;
-	}
-	std::cerr << ']';
-}
+// void __PRINT_VARIABLE(ListNode x) {
+// 	std::cerr << '[';
+// 	unsigned int f = 0;
+// 	cout << x.val;
+// 	for (ListNode *i = &x; i != nullptr; i = i->next, ++f) {
+// 		if (f) std::cerr << ", ";
+// 		std::cerr << i->val;
+// 	}
+// 	std::cerr << ']';
+// }
 
 #ifndef debug
 #define debug(...)
