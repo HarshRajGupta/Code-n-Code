@@ -30,8 +30,8 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		head->add(20);
-		auto t = head->add(30);
+		auto t = head->add(20);
+		head->add(30);
 		debug(head, t)
 	}
 	Solution() {
