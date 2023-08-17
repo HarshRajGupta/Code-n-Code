@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+
+#include <string>
 using namespace std;
 
 #ifndef debug
@@ -7,13 +9,13 @@ using namespace std;
 
 #ifndef __MAIN__
 #define __MAIN__                           \
-    signed main() {                        \
-        preCompute();                      \
-        signed t;                          \
-        cin >> t;                          \
-        while (t--) solve(), cout << '\n'; \
-        return 0;                          \
-    }
+	signed main() {                        \
+		preCompute();                      \
+		signed t;                          \
+		cin >> t;                          \
+		while (t--) solve(), cout << '\n'; \
+		return 0;                          \
+	}
 #endif
 
 #define int long long
@@ -34,14 +36,29 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+bool isSubstr(string &a, string &b) {
+	string t(a.begin(), a.begin() + b.size());
+	for (int i = 0; i < b.size(); ++i) {
+		if (t == b) return true;
+		t.erase(t.begin());
+		t += a[i + b.size()];
+	}
+	if (t == b) return true;
+	return false;
+}
+
 void solve() {
-    cout << 1;
+	string s;
+	cin >> s;
+	string a("()", s.size());
+	string b = string('(', s.size()) + string(')', s.size());
+	debug(a, b);
 }
 
 static void preCompute() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 }
 
 /**
