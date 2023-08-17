@@ -7,13 +7,13 @@ using namespace std;
 
 #ifndef __MAIN__
 #define __MAIN__                           \
-	signed main() {                        \
-		preCompute();                      \
-		signed t;                          \
-		cin >> t;                          \
-		while (t--) solve(), cout << '\n'; \
-		return 0;                          \
-	}
+    signed main() {                        \
+        preCompute();                      \
+        signed t;                          \
+        cin >> t;                          \
+        while (t--) solve(), cout << '\n'; \
+        return 0;                          \
+    }
 #endif
 
 #define int long long
@@ -34,60 +34,28 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int z(int m, int k, int a, int b) {
-	int diff = m - ((k * b));
-	if (a >= k) {
-		diff -= (a - (a % k));
-		a = a % k;
-	}
-	return (diff / k) + (diff % k <= a ? 0 : diff % k - a);
-}
-
-int zz(int m, int k, int a, int b) {
-	int diff = m - ((k * b));
-	if (a >= k) {
-		diff -= (a - (a % k) - k);
-		a = (a % k) + k;
-	}
-	return (diff / k) + (diff % k <= a ? 0 : diff % k - a);
-}
-
 void solve() {
-	int m, k, a, b;
-	cin >> m >> k >> a >> b;
-	if (k * b >= m) {
-		if (m % k <= a) {
-			cout << 0;
-		} else {
-			cout << (m % k - a);
+    int n, ans = 0; cin >> n;
+    v<int> arr(n);
+    foreach(i, arr) cin >> i;
+    int currMAX = 0;
+    for(int i = 0; i < n; ++i) {
+    	if (arr[i] > currMAX) {
+    		++ans;
+			currMAX = arr[i];
 		}
-	} else {
-		if ((k * b) + a >= m) {
-			cout << 0;
-		} else {
-			// int diff = m - ((k * b));
-			// if (a >= k) {
-			// 	diff -= (a - (a % k));
-			// 	a = a % k;
-			// }
-			// int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
-			// debug(diff / k, diff % k);
-			int ans = min(z(m, k, a, b), zz(m, k, a, b));
-			cout << ans;
-		}
-	}
+    }
+    cout << ans;
 }
 
 static void preCompute() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 }
 
 /**
  * @ScratchPad
- * (diff - (((diff / k) + 1) * k)) <= a ? ((diff / k) + 1): ((diff / k) + 1) +
- * (diff - (((diff / k) + 1) * k) - a
  */
 
 __MAIN__
