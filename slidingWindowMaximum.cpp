@@ -8,7 +8,7 @@ struct ListNode {
 	ListNode(int x = 0, ListNode *next = nullptr) : val(x), next(next) {}
 };
 
-ListNode operator+(ListNode &x, int y) {
+ListNode operator+(ListNode x, int y) {
 	ListNode *X = &x;
 	while (X->next != nullptr) X = X->next;
 	X->next = new ListNode(y);
@@ -44,7 +44,7 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		(*head) + 10;
+		(*head) + 112 + 11 + 12 + 20;
 		debug(head)
 	}
 	Solution() {
