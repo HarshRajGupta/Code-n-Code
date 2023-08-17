@@ -39,18 +39,11 @@ void solve() {
 	cin >> n;
 	v<int> arr(n);
 	foreach (i, arr) cin >> i;
-	int i;
-	for (i = 1; i < n; ++i)
-		if (arr[i] > arr[i - 1]) break;
-	debug(i) if (i < n) {
-		++ans;
-		++i;
-	}
-	for (; i < n; ++i) {
-		if (arr[i] > arr[i - 1]) {
-			break;
-		}
-		++ans;
+	set<int> s;
+	for (int i = 0; i < n; ++i) {
+		auto it = s.lower_bound(arr[i]);
+		debug(*it)
+		s.insert(arr[i]);
 	}
 	cout << ans;
 }
