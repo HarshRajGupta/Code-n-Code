@@ -49,7 +49,10 @@ void solve() {
 		} else {
 			int diff = m - ((k * b));
 			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
-			ans = min(ans, (diff / k) + 1 + (k - (diff % k)) + (k - a));
+			ans = min(ans, (diff - (((diff / k) + 1) * k)) <= a
+							   ? ((diff / k) + 1)
+							   : ((diff / k) + 1) +
+									 (diff - (((diff / k) + 1) * k) - a));
 			cout << ans;
 		}
 	}
@@ -63,6 +66,8 @@ static void preCompute() {
 
 /**
  * @ScratchPad
+ * (diff - (((diff / k) + 1) * k)) <= a ? ((diff / k) + 1): ((diff / k) + 1) +
+ * (diff - (((diff / k) + 1) * k) - a
  */
 
 __MAIN__
