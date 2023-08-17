@@ -44,12 +44,11 @@ void solve() {
 	for (int i = 1; i < n; ++i) {
 		auto it = s.lower_bound(arr[i]);
 		bool b = (*it < arr[i]);
-		debug(s, arr[i], b)
-		// if (it != s.end() && *it < arr[i]) {
-		// 	debug(s, *it, arr[i]);
-		// } else {
-		// 	debug(s, "no", arr[i], *it);
-		// }
+		if (*it < arr[i]) {
+			debug(s, *it, arr[i]);
+		} else {
+			debug(s, "no", arr[i], *it);
+		}
 		s.insert(arr[i]);
 	}
 	cout << ans;
