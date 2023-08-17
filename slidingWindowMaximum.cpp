@@ -10,11 +10,11 @@ struct ListNode {
 		while (pos->next != nullptr) pos = pos->next;
 		return pos->next = new ListNode(val);
 	}
-	ListNode operator[](int index) {
+	ListNode *operator[](int index) {
 		cout << index;
 		auto pos = this;
 		while (index--) pos = pos->next;
-		return *pos;
+		return pos;
 	}
 };
 
@@ -49,7 +49,7 @@ class Solution {
 		auto head = new ListNode(10);
 		head->add(20);
 		head->add(30);
-		ListNode t =  (*head)[1];
+		ListNode *t = (*head)[1];
 		debug(head, t)
 	}
 	Solution() {
