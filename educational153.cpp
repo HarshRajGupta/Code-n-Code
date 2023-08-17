@@ -34,9 +34,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-bool canDo(int m, int k, int a, int b, int t) {
-	
-}
+bool canDo(int m, int k, int a, int b, int t) {}
 
 void solve() {
 	int m, k, a, b;
@@ -54,10 +52,10 @@ void solve() {
 			int diff = m - ((k * b));
 			if (a >= k) {
 				diff -= (a - (a % k));
-				debug(a - (a % k))
 				a = a % k;
 			}
 			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
+
 			debug(diff / k, diff % k);
 			cout << ans;
 		}
