@@ -42,7 +42,7 @@ void solve() {
 	set<int> s;
 	for (int i = 0; i < n; ++i) {
 		auto it = s.lower_bound(arr[i]);
-		bool a = it != s.end(), b = (*it < arr[i]);
+		bool a = (it != s.end()), b = (*it < arr[i]);
 		debug(s, arr[i], a, b)
 		// if (it != s.end() && *it < arr[i]) {
 		// 	debug(s, *it, arr[i]);
