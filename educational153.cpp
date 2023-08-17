@@ -51,7 +51,7 @@ void solve() {
 	string s;
 	cin >> s;
 	string a("()", s.size());
-	vector<char> tt('a', 10);
+	string tt(10, 'a');
 	string b = string('(', s.size()) + string(')', s.size());
 	debug(s, tt);
 }
