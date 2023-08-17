@@ -38,11 +38,11 @@ void solve() {
     int n, ans = 0; cin >> n;
     v<int> arr(n);
     foreach(i, arr) cin >> i;
-    int currMAX = 0;
+    int currMin = n+1;
     for(int i = 0; i < n; ++i) {
-    	if (arr[i] > currMAX) {
+    	if (arr[i] < currMin) {
     		++ans;
-			currMAX = arr[i];
+			currMin = arr[i];
 		}
     }
     cout << ans;
