@@ -42,7 +42,10 @@ void solve() {
 	int i;
 	for (i = 1; i < n; ++i)
 		if (arr[i] > arr[i - 1]) break;
-	debug(i)
+	debug(i) if (i < n) {
+		++ans;
+		++i;
+	}
 	for (; i < n; ++i) {
 		if (arr[i] > arr[i - 1]) {
 			break;
