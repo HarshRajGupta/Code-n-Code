@@ -54,6 +54,7 @@ void solve() {
 				int ANS = t;
 				if ((diff - (t * k)) > a) ANS += (diff - (t * k)) - a;
 				ans = min(ans, ANS);
+				debug(ANS)
 			}
 			cout << ans;
 		}
