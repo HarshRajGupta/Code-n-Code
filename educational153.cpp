@@ -49,13 +49,13 @@ void solve() {
 		} else {
 			int diff = m - ((k * b));
 			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
-			if (((int)((diff / k) + 1) * k) <= diff) {
-				int t = (diff / k) + 1;
-				int ANS = t;
-				if ((diff - (t * k)) > a) ANS += (diff - (t * k)) - a;
-				ans = min(ans, ANS);
-			}
-			cout << ans;
+			// if ((((diff / k) + 1) * k) <= diff) {
+			// 	int t = (diff / k) + 1;
+			// 	int ANS = t;
+			// 	if ((diff - (t * k)) > a) ANS += (diff - (t * k)) - a;
+			// 	ans = min(ans, ANS);
+			// }
+			debug(diff / k, diff % k); cout << ans;
 		}
 	}
 }
