@@ -52,7 +52,7 @@ void solve() {
 	cin >> s;
 	string a("()", s.size());
 	string b = string('(', s.size()) + string(')', s.size());
-	debug(a, b);
+	debug(b);
 }
 
 static void preCompute() {
