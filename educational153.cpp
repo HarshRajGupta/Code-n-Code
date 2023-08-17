@@ -49,6 +49,7 @@ void solve() {
 		} else {
 			int diff = m - ((k * b));
 			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
+			ans = min(ans, (diff / k) + 1 + (k - (diff % k)) + (k - a));
 			cout << ans;
 		}
 	}
