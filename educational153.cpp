@@ -43,10 +43,10 @@ void solve() {
 	s.insert(arr[0]);
 	v<int> parity(n + 1);
 	for (int i = 1; i < n; ++i) {
-		auto it = s.upper_bound(arr[i]);
+		auto it = s.lower_bound(arr[i]);
 		bool b = (*it < arr[i]);
 		debug(s, arr[i], *it, parity);
-		if (it == s.begin() && *it < arr[i]) {
+		if (*it < arr[i]) {
 			parity[arr[i]] = (parity[*it] + 1);
 			if (parity[arr[i]] == 1) ans++;
 		}
