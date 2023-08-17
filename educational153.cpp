@@ -45,6 +45,7 @@ void solve() {
 	for (int i = 1; i < n; ++i) {
 		auto it = s.lower_bound(arr[i]);
 		bool b = (*it < arr[i]);
+		debug(s, arr[i], *it, parity);
 		if (*it < arr[i]) {
 			parity[arr[i]] = parity[*it] + 1;
 			if (parity[arr[i]] == 1) ans++;
