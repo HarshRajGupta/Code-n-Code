@@ -45,7 +45,7 @@ void solve() {
 		if (it != s.end() && *it < arr[i]) {
 			debug(s, *it, arr[i]);
 		} else {
-			debug(s, "no", arr[i]);
+			debug(s, "no", arr[i], *it);
 		}
 		s.insert(arr[i]);
 	}
