@@ -18,7 +18,8 @@ struct ListNode {
 	ListNode *operator+(int val) {
 		auto pos = this;
 		while (pos->next != nullptr) pos = pos->next;
-		return pos->next = new ListNode(val);
+		pos->next = new ListNode(val);
+		return this;
 	}
 };
 
@@ -51,8 +52,8 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		head = (*head)+ 11;
-		head = (*head)+ 12;
+		head = (*head) + 11;
+		head = (*head) + 12;
 		ListNode *t = (*head)[1];
 		debug(head, t)
 	}
