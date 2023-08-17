@@ -50,10 +50,10 @@ void solve() {
 			int diff = m - ((k * b));
 			int ans = (diff / k) + (diff % k <= a ? 0 : diff % k - a);
 			if ((((diff / k) + 1) * k) <= diff) {
-				ans = min(ans, (diff - (((diff / k) + 1) * k)) <= a
-								   ? ((diff / k) + 1)
-								   : ((diff / k) + 1) +
-										 (diff - (((diff / k) + 1) * k) - a));
+				int t = (diff / k) + 1;
+				int ANS = t;
+				if ((diff - (t * k)) > a) ANS += (diff - (t * k)) - a;
+				ans = min(ans, ANS);
 			}
 			cout << ans;
 		}
