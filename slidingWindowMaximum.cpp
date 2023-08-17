@@ -2,26 +2,18 @@
 using namespace std;
 
 struct ListNode {
+   public:
 	int val;
 	ListNode *next;
 	ListNode(int x = 0, ListNode *next = nullptr) : val(x), next(next) {}
-	ListNode *add(int val) {
-		auto pos = this;
-		while (pos->next != nullptr) pos = pos->next;
-		return pos->next = new ListNode(val);
-	}
-	ListNode *operator[](int index) {
-		auto pos = this;
-		while (pos != nullptr && index--) pos = pos->next;
-		return pos;
-	}
-	ListNode *operator+(int val) {
-		auto pos = this;
-		while (pos->next != nullptr) pos = pos->next;
-		pos->next = new ListNode(val);
-		return this;
-	}
 };
+
+ListNode *operator+(ListNode x, ListNode y) {
+	ListNode *X = &x;
+	while (X->next != nullptr) X = X->next;
+	X->next = &y;
+	return &x;
+}
 
 void __PRINT_VARIABLE(ListNode *x) {
 	std::cerr << '[';
@@ -52,10 +44,8 @@ class Solution {
    public:
 	void test() {
 		auto head = new ListNode(10);
-		head = (*head) + 11;
-		head = (*head) + 12;
-		ListNode *t = (*head)[1];
-		debug(head, t)
+		auto t = (*head) + ListNode(10);
+		debug(head)
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
