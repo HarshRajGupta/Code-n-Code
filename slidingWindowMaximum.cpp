@@ -11,9 +11,8 @@ struct ListNode {
 		return pos->next = new ListNode(val);
 	}
 	ListNode *operator[](int index) {
-		cout << index;
 		auto pos = this;
-		while (index--) pos = pos->next;
+		while (pos != nullptr && index--) pos = pos->next;
 		return pos;
 	}
 };
