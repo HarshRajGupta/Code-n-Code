@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+
+#include <deque>
+#include <vector>
 using namespace std;
 using namespace __gnu_debug;
 
@@ -7,12 +10,11 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	int mod[10][10];
+	map<int, map<int, int>> mod;
 	string l, r;
 	int k;
 	int cnt(int pos, int even, int odd, int rem, bool isLow) {
-		debug(pos, even, odd, rem, isLow)
-		if (pos == r.size()) {
+		debug(pos, even, odd, rem, isLow) if (pos == r.size()) {
 			if (rem == 0 && even == odd) return 1;
 			return 0;
 		}
@@ -63,14 +65,13 @@ class Solution {
 		debug(l, r);
 		for (int i = 0; i < 10; ++i) {
 			for (int j = 0; j < 10; j++) {
-				mod[i][j] = (i *1ll* (int)pow(10, j)) % k;
+				mod[i][j] = (i * 1ll * (int)pow(10, j)) % k;
 			}
 		}
+		debug(mod)
 		return cnt(0, 0, 0, k, false);
 	}
-	void test() {
-		cout << numberOfBeautifulIntegers(10, 20, 3);
-	}
+	void test() { cout << numberOfBeautifulIntegers(10, 20, 3); }
 	Solution() {
 		ios::sync_with_stdio(0);
 		cin.tie(0);
