@@ -29,6 +29,9 @@ class Solution {
 							   (rem + (mod[i][r.size() - pos])) % k, isLow);
 			}
 		} else {
+			if (l[pos] == r[pos] && l[pos] == '0') {
+				return cnt(pos + 1, even, odd, rem, false);
+			}
 			for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
 				if (i & 1)
 					ans += cnt(pos + 1, even, odd + 1,
@@ -67,11 +70,9 @@ class Solution {
 			for (int j = 0; j < 10; j++) {
 				long long t = i * 1ll * (int)pow(10, j);
 				mod[i][j] = (t) % K;
-				debug(i, j, mod[i][j], t)
 			}
 		}
-		debug(mod)
-		return cnt(0, 0, 0, k, false);
+		debug(mod) return cnt(0, 0, 0, k, false);
 	}
 	void test() { cout << numberOfBeautifulIntegers(10, 20, 3); }
 	Solution() {
