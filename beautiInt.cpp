@@ -65,7 +65,9 @@ class Solution {
 		debug(l, r);
 		for (int i = 0; i < 10; ++i) {
 			for (int j = 0; j < 10; j++) {
-				mod[i][j] = (i * 1ll * (int)pow(10, j)) % K;
+				long long t = i * 1ll * (int)pow(10, j);
+				mod[i][j] = (t) % K;
+				debug(i, j, mod[i][j], t)
 			}
 		}
 		debug(mod)
