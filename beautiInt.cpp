@@ -72,7 +72,7 @@ class Solution {
 				mod[i][j] = (t) % K;
 			}
 		}
-		debug(mod) return cnt(0, 0, 0, k, false);
+		return cnt(0, 0, 0, k, false);
 	}
 	void test() { cout << numberOfBeautifulIntegers(10, 20, 3); }
 	Solution() {
