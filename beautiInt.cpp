@@ -11,6 +11,7 @@ class Solution {
 	string l, r;
 	int k;
 	int cnt(int pos, int even, int odd, int rem, bool isLow) {
+		debug(pos, even, odd, rem, isLow)
 		if (pos == r.size()) {
 			if (rem == 0 && even == odd) return 1;
 			return 0;
