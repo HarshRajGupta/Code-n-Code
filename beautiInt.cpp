@@ -51,7 +51,7 @@ class Solution {
 	}
 
    public:
-	int numberOfBeautifulIntegers(int low, int high, int K) {
+	int numberOfBeautifulIntegers(int low, int high, const int K) {
 		k = K;
 		l = "", r = "";
 		for (int i = 0; i < 9; ++i) {
@@ -65,7 +65,7 @@ class Solution {
 		debug(l, r);
 		for (int i = 0; i < 10; ++i) {
 			for (int j = 0; j < 10; j++) {
-				mod[i][j] = (i * 1ll * (int)pow(10, j)) % k;
+				mod[i][j] = (i * 1ll * (int)pow(10, j)) % K;
 			}
 		}
 		debug(mod)
