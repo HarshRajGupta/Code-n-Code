@@ -21,9 +21,9 @@ class Solution {
 		if (dp[pos][even][odd][rem][isLow][started] != -1)
 			return dp[pos][even][odd][rem][isLow][started];
 		int ans = 0;
-		int R = 10;
+		int R = 10, L = 0;
 		if (!isLow) {
-			R = r[pos] - '0';
+			R = r[pos] - '0', L = l[pos] - '0';
 			if (R & 1) {
 				ans +=
 					cnt(pos + 1, even, odd + 1,
@@ -34,7 +34,7 @@ class Solution {
 						(rem + (mod[R][r.size() - pos - 1])) % k, true, false);
 			}
 		}
-		for (int i = l[pos] - '0'; i < R; i++) {
+		for (int i = L; i < R; i++) {
 			if (i & 1) {
 				ans +=
 					cnt(pos + 1, even, odd + 1,
