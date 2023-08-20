@@ -15,45 +15,29 @@ class Solution {
 	int k;
 	int cnt(int pos, int even, int odd, int rem, bool isLow, bool started) {
 		if (pos == r.size()) {
-			if ((rem == 0) && (even == odd)) return 1;
-			return 0;
+			return ((rem == 0) && (even == odd));
 		}
 		int ans = 0;
-		if (isLow) {
-			for (int i = l[pos] - '0'; i <= r[pos] - '0'; i++) {
-				if (i & 1)
-					ans += cnt(pos + 1, even, odd + 1,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow,
-							   false);
-				else if (i == 0 && started)
-					ans += cnt(pos + 1, even, odd, rem, isLow, true);
-				else
-					ans += cnt(pos + 1, even + 1, odd,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow,
-							   false);
-			}
-		} else {
-			for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
-				if (i & 1)
-					ans += cnt(pos + 1, even, odd + 1,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, true,
-							   false);
-				else if (i == 0 && started)
-					ans += cnt(pos + 1, even, odd, rem, isLow, true);
-				else
-					ans += cnt(pos + 1, even + 1, odd,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, true,
-							   false);
-			}
-			if ((r[pos] - '0') & 1)
-				ans += cnt(pos + 1, even, odd + 1,
-						   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
-						   false, false);
+		for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
+			if (i & 1)
+				ans +=
+					cnt(pos + 1, even, odd + 1,
+						(rem + (mod[i][r.size() - pos - 1])) % k, true, false);
+			else if (i == 0 && started)
+				ans += cnt(pos + 1, even, odd, rem, isLow, true);
 			else
-				ans += cnt(pos + 1, even + 1, odd,
-						   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
-						   false, false);
+				ans +=
+					cnt(pos + 1, even + 1, odd,
+						(rem + (mod[i][r.size() - pos - 1])) % k, true, false);
 		}
+		if ((r[pos] - '0') & 1)
+			ans += cnt(pos + 1, even, odd + 1,
+					   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
+					   isLow, false);
+		else
+			ans += cnt(pos + 1, even + 1, odd,
+					   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
+					   isLow, false);
 		debug(pos, even, odd, rem, isLow, ans);
 		return ans;
 	}
