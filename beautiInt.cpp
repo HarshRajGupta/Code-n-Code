@@ -58,6 +58,7 @@ class Solution {
 	int numberOfBeautifulIntegers(int low, int high, const int K) {
 		k = K;
 		l = "", r = "";
+		debug(low, high)
 		for (int i = 0; i < (log10(high) + 1); ++i) {
 			l.push_back('0' + low % 10);
 			r.push_back('0' + high % 10);
