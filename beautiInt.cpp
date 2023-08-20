@@ -36,10 +36,10 @@ class Solution {
 			for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
 				if (i & 1)
 					ans += cnt(pos + 1, even, odd + 1,
-							   (rem + (mod[i][r.size() - pos])) % k, true);
+							   (rem + (mod[i][r.size() - pos] - 1)) % k, true);
 				else
 					ans += cnt(pos + 1, even + 1, odd,
-							   (rem + (mod[i][r.size() - pos])) % k, true);
+							   (rem + (mod[i][r.size() - pos] - 1)) % k, true);
 			}
 			if ((r[pos] - '0') & 1)
 				ans +=
