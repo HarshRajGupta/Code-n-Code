@@ -66,7 +66,7 @@ class Solution {
 		reverse(l.begin(), l.end());
 		reverse(r.begin(), r.end());
 		debug(l, r);
-		for (int i = 0; i < n; ++i) {
+		for (int i = 0; i < 10; ++i) {
 			for (int j = 0; j < n; j++) {
 				long long t = i * 1ll * (int)pow(10, j);
 				mod[i][j] = (t) % K;
