@@ -65,7 +65,7 @@ class Solution {
 		}
 		reverse(l.begin(), l.end());
 		reverse(r.begin(), r.end());
-		debug(l, r);
+		debug(l, r, mod);
 		for (int i = 0; i < 10; ++i) {
 			for (int j = 0; j < 10; j++) {
 				long long t = i * 1ll * (int)pow(10, j);
