@@ -13,7 +13,7 @@ class Solution {
 	map<int, map<int, int>> mod;
 	string l, r;
 	int k;
-	int cnt(int pos, int even, int odd, int rem, bool isLow) {
+	int cnt(int pos, int even, int odd, int rem, bool isLow, bool started) {
 		if (pos == r.size()) {
 			if ((rem == 0) && (even == odd)) return 1;
 			return 0;
@@ -23,28 +23,36 @@ class Solution {
 			for (int i = l[pos] - '0'; i <= r[pos] - '0'; i++) {
 				if (i & 1)
 					ans += cnt(pos + 1, even, odd + 1,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow);
+							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow,
+							   false);
+				else if (i == 0 && started)
+					ans += cnt(pos + 1, even, odd, rem, isLow, true);
 				else
 					ans += cnt(pos + 1, even + 1, odd,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow);
+							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow,
+							   false);
 			}
 		} else {
 			for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
 				if (i & 1)
 					ans += cnt(pos + 1, even, odd + 1,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, true);
+							   (rem + (mod[i][r.size() - pos - 1])) % k, true,
+							   false);
+				else if (i == 0 && started)
+					ans += cnt(pos + 1, even, odd, rem, isLow, true);
 				else
 					ans += cnt(pos + 1, even + 1, odd,
-							   (rem + (mod[i][r.size() - pos - 1])) % k, true);
+							   (rem + (mod[i][r.size() - pos - 1])) % k, true,
+							   false);
 			}
 			if ((r[pos] - '0') & 1)
 				ans += cnt(pos + 1, even, odd + 1,
 						   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
-						   false);
+						   false, false);
 			else
 				ans += cnt(pos + 1, even + 1, odd,
 						   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
-						   false);
+						   false, false);
 		}
 		debug(pos, even, odd, rem, isLow, ans);
 		return ans;
@@ -70,7 +78,7 @@ class Solution {
 				mod[i][j] = (t) % K;
 			}
 		}
-		return cnt(0, 0, 0, k, false);
+		return cnt(0, 0, 0, k, false, true);
 	}
 	void test() { cout << numberOfBeautifulIntegers(10, 20, 2); }
 	Solution() {
