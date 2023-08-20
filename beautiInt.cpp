@@ -13,8 +13,7 @@ class Solution {
 	map<int, map<int, int>> mod;
 	string l, r;
 	int k;
-	int cnt(int pos, int even, int odd, int rem, bool isLow,
-			bool started = false) {
+	int cnt(int pos, int even, int odd, int rem, bool isLow) {
 		if (pos == r.size()) {
 			if ((rem == 0) && (even == odd)) return 1;
 			return 0;
@@ -30,9 +29,6 @@ class Solution {
 							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow);
 			}
 		} else {
-			if (l[pos] == r[pos] && l[pos] == '0' && started) {
-				return cnt(pos + 1, even, odd, rem, false, true);
-			}
 			for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
 				if (i & 1)
 					ans += cnt(pos + 1, even, odd + 1,
@@ -74,7 +70,7 @@ class Solution {
 				mod[i][j] = (t) % K;
 			}
 		}
-		return cnt(0, 0, 0, k, false, true);
+		return cnt(0, 0, 0, k, false);
 	}
 	void test() { cout << numberOfBeautifulIntegers(10, 110, 3); }
 	Solution() {
