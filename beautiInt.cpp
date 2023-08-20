@@ -13,7 +13,8 @@ class Solution {
 	map<int, map<int, int>> mod;
 	string l, r;
 	int k;
-	int cnt(int pos, int even, int odd, int rem, bool isLow) {
+	int cnt(int pos, int even, int odd, int rem, bool isLow,
+			bool started = false) {
 		debug(pos, even, odd, rem, isLow);
 		if (pos == r.size()) {
 			if ((rem == 0) && (even == odd)) return 1;
@@ -30,25 +31,25 @@ class Solution {
 							   (rem + (mod[i][r.size() - pos - 1])) % k, isLow);
 			}
 		} else {
-			if (l[pos] == r[pos] && l[pos] == '0') {
-				return cnt(pos + 1, even, odd, rem, false);
+			if (l[pos] == r[pos] && l[pos] == '0' && started) {
+				return cnt(pos + 1, even, odd, rem, false, true);
 			}
 			for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
 				if (i & 1)
 					ans += cnt(pos + 1, even, odd + 1,
-							   (rem + (mod[i][r.size() - pos] - 1)) % k, true);
+							   (rem + (mod[i][r.size() - pos - 1])) % k, true);
 				else
 					ans += cnt(pos + 1, even + 1, odd,
-							   (rem + (mod[i][r.size() - pos] - 1)) % k, true);
+							   (rem + (mod[i][r.size() - pos - 1])) % k, true);
 			}
 			if ((r[pos] - '0') & 1)
-				ans +=
-					cnt(pos + 1, even, odd + 1,
-						(rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k, false);
+				ans += cnt(pos + 1, even, odd + 1,
+						   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
+						   false);
 			else
-				ans +=
-					cnt(pos + 1, even + 1, odd,
-						(rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k, false);
+				ans += cnt(pos + 1, even + 1, odd,
+						   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
+						   false);
 		}
 
 		return ans;
@@ -73,7 +74,7 @@ class Solution {
 				mod[i][j] = (t) % K;
 			}
 		}
-		return cnt(0, 0, 0, k, false);
+		return cnt(0, 0, 0, k, false, true);
 	}
 	void test() { cout << numberOfBeautifulIntegers(10, 20, 3); }
 	Solution() {
