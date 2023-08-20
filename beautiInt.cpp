@@ -15,7 +15,6 @@ class Solution {
 	int k;
 	int cnt(int pos, int even, int odd, int rem, bool isLow,
 			bool started = false) {
-		debug(pos, even, odd, rem, isLow);
 		if (pos == r.size()) {
 			if ((rem == 0) && (even == odd)) return 1;
 			return 0;
@@ -51,7 +50,7 @@ class Solution {
 						   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
 						   false);
 		}
-
+		debug(pos, even, odd, rem, isLow, ans);
 		return ans;
 	}
 
@@ -59,7 +58,7 @@ class Solution {
 	int numberOfBeautifulIntegers(int low, int high, const int K) {
 		k = K;
 		l = "", r = "";
-		for (int i = 0; i < 9; ++i) {
+		for (int i = 0; i < log10(high) + 1; ++i) {
 			l.push_back('0' + low % 10);
 			r.push_back('0' + high % 10);
 			low /= 10;
