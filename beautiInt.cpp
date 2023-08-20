@@ -18,7 +18,20 @@ class Solution {
 			return ((rem == 0) && (even == odd));
 		}
 		int ans = 0;
-		for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
+		int R = 10;
+		if (!isLow) {
+			R = r[pos] - '0';
+			if (R & 1) {
+				ans +=
+					cnt(pos + 1, even, odd + 1,
+						(rem + (mod[R][r.size() - pos - 1])) % k, isLow, false);
+			} else {
+				ans +=
+					cnt(pos + 1, even + 1, odd,
+						(rem + (mod[R][r.size() - pos - 1])) % k, isLow, false);
+			}
+		}
+		for (int i = l[pos] - '0'; i < R; i++) {
 			if (i & 1) {
 				ans +=
 					cnt(pos + 1, even, odd + 1,
@@ -30,15 +43,6 @@ class Solution {
 					cnt(pos + 1, even + 1, odd,
 						(rem + (mod[i][r.size() - pos - 1])) % k, true, false);
 			}
-		}
-		if ((r[pos] - '0') & 1) {
-			ans += cnt(pos + 1, even, odd + 1,
-					   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
-					   isLow, false);
-		} else {
-			ans += cnt(pos + 1, even + 1, odd,
-					   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
-					   isLow, false);
 		}
 		debug(pos, even, odd, rem, isLow, ans);
 		return ans;
