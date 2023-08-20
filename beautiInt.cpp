@@ -44,11 +44,11 @@ class Solution {
 			if ((r[pos] - '0') & 1)
 				ans +=
 					cnt(pos + 1, even, odd + 1,
-						(rem + (mod[r[pos] - '0'][r.size() - pos])) % k, false);
+						(rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k, false);
 			else
 				ans +=
 					cnt(pos + 1, even + 1, odd,
-						(rem + (mod[r[pos] - '0'][r.size() - pos])) % k, false);
+						(rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k, false);
 		}
 
 		return ans;
