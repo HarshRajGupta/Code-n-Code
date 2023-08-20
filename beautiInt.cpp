@@ -13,10 +13,13 @@ class Solution {
 	map<int, map<int, int>> mod;
 	string l, r;
 	int k;
+	int dp[12][12][12][21][2][2];
 	int cnt(int pos, int even, int odd, int rem, bool isLow, bool started) {
 		if (pos == r.size()) {
 			return ((rem == 0) && (even == odd));
 		}
+		if (dp[pos][even][odd][rem][isLow][started] != -1)
+			return dp[pos][even][odd][rem][isLow][started];
 		int ans = 0;
 		int R = 10;
 		if (!isLow) {
@@ -45,11 +48,12 @@ class Solution {
 			}
 		}
 		debug(pos, even, odd, rem, isLow, ans);
-		return ans;
+		return dp[pos][even][odd][rem][isLow][started] = ans;
 	}
 
    public:
 	int numberOfBeautifulIntegers(int low, int high, const int K) {
+        memset(dp, -1, sizeof(dp));
 		k = K;
 		l = "", r = "";
 		int n = log10(high) + 1;
