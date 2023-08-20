@@ -19,25 +19,27 @@ class Solution {
 		}
 		int ans = 0;
 		for (int i = l[pos] - '0'; i < r[pos] - '0'; i++) {
-			if (i & 1)
+			if (i & 1) {
 				ans +=
 					cnt(pos + 1, even, odd + 1,
 						(rem + (mod[i][r.size() - pos - 1])) % k, true, false);
-			else if (i == 0 && started)
+			} else if (i == 0 && started) {
 				ans += cnt(pos + 1, even, odd, rem, isLow, true);
-			else
+			} else {
 				ans +=
 					cnt(pos + 1, even + 1, odd,
 						(rem + (mod[i][r.size() - pos - 1])) % k, true, false);
+			}
 		}
-		if ((r[pos] - '0') & 1)
+		if ((r[pos] - '0') & 1) {
 			ans += cnt(pos + 1, even, odd + 1,
 					   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
 					   isLow, false);
-		else
+		} else {
 			ans += cnt(pos + 1, even + 1, odd,
 					   (rem + (mod[r[pos] - '0'][r.size() - pos - 1])) % k,
 					   isLow, false);
+		}
 		debug(pos, even, odd, rem, isLow, ans);
 		return ans;
 	}
@@ -46,8 +48,8 @@ class Solution {
 	int numberOfBeautifulIntegers(int low, int high, const int K) {
 		k = K;
 		l = "", r = "";
-		int n = log10(high);
-		for (int i = 0; i < (n + 1); ++i) {
+		int n = log10(high) + 1;
+		for (int i = 0; i < (n); ++i) {
 			l.push_back('0' + low % 10);
 			r.push_back('0' + high % 10);
 			low /= 10;
