@@ -65,13 +65,14 @@ class Solution {
 		}
 		reverse(l.begin(), l.end());
 		reverse(r.begin(), r.end());
-		debug(l, r, mod);
+		debug(l, r);
 		for (int i = 0; i < 10; ++i) {
 			for (int j = 0; j < 10; j++) {
 				long long t = i * 1ll * (int)pow(10, j);
 				mod[i][j] = (t) % K;
 			}
 		}
+		debug(mod);
 		return cnt(0, 0, 0, k, false, true);
 	}
 	void test() { cout << numberOfBeautifulIntegers(9, 25, 4); }
