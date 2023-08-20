@@ -75,7 +75,7 @@ class Solution {
 		}
 		return cnt(0, 0, 0, k, false, true);
 	}
-	void test() { cout << numberOfBeautifulIntegers(10, 20, 3); }
+	void test() { cout << numberOfBeautifulIntegers(10, 100, 3); }
 	Solution() {
 		ios::sync_with_stdio(0);
 		cin.tie(0);
