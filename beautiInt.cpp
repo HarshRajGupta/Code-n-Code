@@ -27,11 +27,11 @@ class Solution {
 			if (R & 1) {
 				ans +=
 					cnt(pos + 1, even, odd + 1,
-						(rem + (mod[R][r.size() - pos - 1])) % k, isLow, false);
+						(rem + (mod[R][r.size() - pos - 1])) % k, true, false);
 			} else {
 				ans +=
 					cnt(pos + 1, even + 1, odd,
-						(rem + (mod[R][r.size() - pos - 1])) % k, isLow, false);
+						(rem + (mod[R][r.size() - pos - 1])) % k, true, false);
 			}
 		}
 		for (int i = l[pos] - '0'; i < R; i++) {
@@ -53,7 +53,7 @@ class Solution {
 
    public:
 	int numberOfBeautifulIntegers(int low, int high, const int K) {
-        memset(dp, -1, sizeof(dp));
+		memset(dp, -1, sizeof(dp));
 		k = K;
 		l = "", r = "";
 		int n = log10(high) + 1;
