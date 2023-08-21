@@ -41,23 +41,21 @@ void solve() {
 	foreach (i, arr) cin >> i;
 	set<int> s;
 	s.insert(arr[0]);
-	v<int> parity(n + 1);
+	map<int, bool> mp;
 	for (int i = 1; i < n; ++i) {
-		auto it = s.lower_bound(arr[i]);
-		bool b = (*it < arr[i]);
-		debug(s, arr[i], *it, parity);
-		if (*it < arr[i]) {
-			parity[arr[i]] = (parity[*it] + 1);
-			if (parity[arr[i]] == 1) ans++;
-		} else if (it != s.begin()) {
-			it = prev(it);
-			if (*it < arr[i]) {
-				parity[arr[i]] = (parity[*it] + 1);
-				if (parity[arr[i]] == 1) ans++;
-			}
-		}		
 		s.insert(arr[i]);
-		debug(s, parity);
+		if (s.find(arr[i]) != s.begin()) {
+			mp[arr[i]] = 1;
+		}
+	}
+	s.clear();
+	for (int i = 0; i < n; ++i) {
+		if (mp[arr[i]]) {
+			s.insert(arr[i]);
+			if (s.find(arr[i]) == s.begin()) {
+				ans++;
+			}
+		}
 	}
 	cout << ans;
 }
