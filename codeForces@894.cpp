@@ -39,7 +39,7 @@ unsigned long long fun(int n) { return n * 1ull * (n + 1) >> 1; }
 void solve() {
 	int n;
 	cin >> n;
-	int l = 1, r = 2648956422, ans = 2648956422;
+	int l = 1, r = 2648956421, ans = 2648956421;
 	
 	while (l <= r) {
 		int mid = (l + r) / 2;
