@@ -48,6 +48,7 @@ void solve() {
 			ans.push_back(a[i]);
 		}
 	}
+	cout << sz(ans) << ln;
 	foreach (i, ans) cout << i << ' ';
 }
 
