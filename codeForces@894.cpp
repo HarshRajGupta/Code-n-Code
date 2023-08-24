@@ -35,26 +35,20 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-	int n, m;
-	cin >> n >> m;
-	v<char> a = {'v', 'i', 'k', 'a'};
-	v<string> arr(n);
-	for (auto &i : arr) cin >> i;
-	int ans = 0;
-	_for(i, m) {
-		_for(j, n) {
-			if (arr[j][i] == a[ans]) {
-				++ans;
-				break;
-			}
+	int n;
+	cin >> n;
+	v<int> a(n);
+	foreach (i, a) cin >> i;
+	v<int> ans = {a[0]};
+	rep(i, 1, n) {
+		if (a.back() <= a[i]) {
+			ans.push_back(a[i]);
+		} else {
+			ans.push_back(1);
+			ans.push_back(a[i]);
 		}
-		if (ans == 4) break;
 	}
-	if (ans == 4) {
-		cout << "YES";
-	} else {
-		cout << "NO";
-	}
+	foreach (i, ans) cout << i << ' ';
 }
 
 static void preCompute() {
