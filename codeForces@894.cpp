@@ -55,6 +55,7 @@ void solve() {
 	int n;
 	cin >> n;
 	v<int> a(n);
+	_for(i, n) cin >> a[i];
 	reverse(all(a));
 	v<int> ans(n);
 	_for(i, n) { 
