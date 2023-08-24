@@ -52,7 +52,7 @@ void solve() {
 	}
 	if (fun(ans) == n) cout << ans;
 	else {
-		cout << ans + (n - fun(ans - 1));
+		cout << ans + (n - fun(ans - 1) - 1);
 	}
 }
 
