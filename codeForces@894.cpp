@@ -76,7 +76,7 @@ void solve() {
 	reverse(all(a));
 	v<int> ans(n);
 	_for(i, n) {
-		int z = lb(a, i + 1);
+		int z = ub(a, i + 1);
 		debug(i, z);
 		ans[i] = z;
 	}
