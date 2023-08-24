@@ -40,6 +40,7 @@ void solve() {
 	int n;
 	cin >> n;
 	int l = 1, r = 1e9 + 7, ans = 2648956421;
+	debug(log10(n));
 	while (l <= r) {
 		int mid = (l + r) / 2;
 		if (fun(mid) >= n) {
