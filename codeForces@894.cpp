@@ -34,22 +34,31 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+const int ub(const vector<int> &arr, int t, int l = 0, int r = -1) {
+	if (r == -1) r = (arr.size() - 1);
+	if (t < arr[l])
+		return l;
+	else if (t >= arr[r])
+		return r + 1;
+	int ans = r + 1, mid;
+	while (l <= r) {
+		mid = (l + r) >> 1;
+		if (arr[mid] <= t)
+			l = (mid + 1);
+		else
+			ans = mid, r = (mid - 1);
+	}
+	return ans;
+}
+
 void solve() {
 	int n;
 	cin >> n;
 	v<int> a(n);
-	foreach (i, a) cin >> i;
-	v<int> ans = {a[0]};
-	rep(i, 1, n) {
-		if (ans.back() <= a[i]) {
-			ans.push_back(a[i]);
-		} else {
-			ans.push_back(1);
-			ans.push_back(a[i]);
-		}
-	}
-	cout << sz(ans) << ln;
-	foreach (i, ans) cout << i << ' ';
+	reverse(all(a));
+	v<int> ans(n);
+	_for(i, n) { ans[i] = ub(a, i + 1); }
+	debug(ans)
 }
 
 static void preCompute() {
