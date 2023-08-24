@@ -61,6 +61,7 @@ void solve() {
 	_for(i, n) { 
 		int z = ub(a, i + 1); 
 		debug(i, z);
+		ans[i] = z;
 	}
 	debug(a, ans)
 }
