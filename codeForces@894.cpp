@@ -48,7 +48,10 @@ void solve() {
 	// reverse(all(a));
 	v<int> ans(n);
 	int pos = n - 1;
-	_for(i, n) { ans[i] = pos = fun(a, pos, i + 1) + 1; }
+	_for(i, n) {
+		pos = fun(a, pos, i + 1);
+		ans[i] = pos + 1;
+	}
 	debug(a, ans)
 }
 
