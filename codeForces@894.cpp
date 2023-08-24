@@ -34,29 +34,22 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int fun(v<int> &arr, int pos, int t) {
-	if (pos < 0) return -1;
-	while (pos >= 0 && arr[pos] < t) --pos;
-	return pos;
-}
+int fun(int n) { return n * 1ll * (n + 1) / 2; }
 
 void solve() {
 	int n;
 	cin >> n;
-	v<int> a(n);
-	_for(i, n) cin >> a[i];
-	// reverse(all(a));
-	v<int> ans(n);
-	int pos = n - 1;
-	_for(i, n) {
-		pos = fun(a, pos, i + 1);
-		ans[i] = pos + 1;
-		if (ans[i] != a[i]) {
-			cout << "NO";
-			return;
+	int l = 1, r = 1e9 + 7, ans = 1e9 + 7;
+	while (l <= r) {
+		int mid = (l + r) / 2;
+		if (fun(mid) >= n) {
+			ans = min(ans, mid);
+			r = mid - 1;
+		} else {
+			l = mid + 1;
 		}
 	}
-	cout << "YES";
+	cout << ans;
 }
 
 static void preCompute() {
