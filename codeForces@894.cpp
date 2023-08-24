@@ -39,7 +39,7 @@ int fun(int n) { return n * 1ll * (n + 1) / 2; }
 void solve() {
 	int n;
 	cin >> n;
-	int l = 1, r = 1e9 + 7, ans = 1e9 + 7;
+	int l = 1, r = 1e9 + 7, ans = 2e9 + 7;
 	while (l <= r) {
 		int mid = (l + r) / 2;
 		if (fun(mid) >= n) {
