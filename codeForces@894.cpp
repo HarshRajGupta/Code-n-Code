@@ -57,7 +57,10 @@ void solve() {
 	v<int> a(n);
 	reverse(all(a));
 	v<int> ans(n);
-	_for(i, n) { ans[i] = ub(a, i + 1); }
+	_for(i, n) { 
+		int z = ub(a, i + 1); 
+		debug(i, z);
+	}
 	debug(a, ans)
 }
 
