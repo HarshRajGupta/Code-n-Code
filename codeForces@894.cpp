@@ -40,7 +40,7 @@ void solve() {
 	int n;
 	cin >> n;
 	int l = 1, r = 2648956421, ans = 2648956421;
-	
+
 	while (l <= r) {
 		int mid = (l + r) / 2;
 		if (fun(mid) >= n) {
@@ -50,7 +50,7 @@ void solve() {
 			l = mid + 1;
 		}
 	}
-	cout << ans;
+	if (fun(ans) == n) cout << ans;
 }
 
 static void preCompute() {
