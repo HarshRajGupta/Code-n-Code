@@ -34,7 +34,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-unsigned long long fun(int n) { return n * 1ull * (n + 1) >> 1; }
+unsigned long long fun(int n) { return n * 1ull * (n - 1) >> 1; }
 
 void solve() {
 	int n;
