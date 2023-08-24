@@ -58,7 +58,7 @@ void solve() {
 	reverse(all(a));
 	v<int> ans(n);
 	_for(i, n) { ans[i] = ub(a, i + 1); }
-	debug(ans)
+	debug(a, ans)
 }
 
 static void preCompute() {
