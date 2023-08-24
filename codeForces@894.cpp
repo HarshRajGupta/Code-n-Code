@@ -43,7 +43,7 @@ const int ub(const vector<int> &arr, int t, int l = 0, int r = -1) {
 	int ans = r + 1, mid;
 	while (l <= r) {
 		mid = (l + r) >> 1;
-		if (arr[mid] <= t)
+		if (arr[mid] < t)
 			l = (mid + 1);
 		else
 			ans = mid, r = (mid - 1);
