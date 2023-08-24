@@ -47,6 +47,7 @@ void solve() {
 			ans.push_back(1);
 			ans.push_back(a[i]);
 		}
+		debug(ans);
 	}
 	foreach (i, ans) cout << i << ' ';
 }
