@@ -36,7 +36,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 
 int fun(v<int> &arr, int pos, int t) {
 	if (pos < 0) return -1;
-	while (pos >= 0 && arr[pos] > t) --pos;
+	while (pos >= 0 && arr[pos] < t) --pos;
 	return pos;
 }
 
