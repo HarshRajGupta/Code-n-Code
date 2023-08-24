@@ -34,26 +34,23 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-unsigned long long fun(int n) { return n * 1ull * (n - 1) >> 1; }
+int d = 1;
+
+int ans(v<int> &a, int pos, int m, int cnt) {
+	if (pos == a.size() || !m) {
+		return 0;
+	}
+	int res = ans(a, pos + 1, m - 1, 1) + a[pos] - (d * cnt);
+	res = max(res, ans(a, pos + 1, m, cnt + 1));
+	return res;
+}
 
 void solve() {
-	int n;
-	cin >> n;
-	int l = 1, r = 2648956423, ans = 2648956423;
-
-	while (l <= r) {
-		int mid = (l + r) / 2;
-		if (fun(mid) >= n) {
-			ans = min(ans, mid);
-			r = mid - 1;
-		} else {
-			l = mid + 1;
-		}
-	}
-	if (fun(ans) == n) cout << ans;
-	else {
-		cout << ans + (n - fun(ans - 1) - 1);
-	}
+	int n, m;
+	cin >> n >> m >> d;
+	v<int> a(n);
+	_for(i, n) cin >> a[i];
+	cout << ans(a, 0, m, 1);
 }
 
 static void preCompute() {
