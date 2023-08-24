@@ -41,7 +41,7 @@ void solve() {
 	foreach (i, a) cin >> i;
 	v<int> ans = {a[0]};
 	rep(i, 1, n) {
-		if (a.back() <= a[i]) {
+		if (ans.back() <= a[i]) {
 			ans.push_back(a[i]);
 		} else {
 			ans.push_back(1);
