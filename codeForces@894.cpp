@@ -51,8 +51,12 @@ void solve() {
 	_for(i, n) {
 		pos = fun(a, pos, i + 1);
 		ans[i] = pos + 1;
+		if (ans[i] != a[i]) {
+			cout << "NO";
+			return;
+		}
 	}
-	debug(a, ans)
+	cout << "YES";
 }
 
 static void preCompute() {
