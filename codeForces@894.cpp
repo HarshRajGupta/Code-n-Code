@@ -34,14 +34,13 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-int fun(int n) { return n * 1ll * (n + 1) / 2; }
+int fun(int n) { return n * 1ull * (n + 1) / 2; }
 
 void solve() {
 	int n;
 	cin >> n;
 	int l = 1, r = 1e9 + 7, ans = 2648956421;
 	int z = n*1ll*(n+1)/2;
-	debug(z);
 	while (l <= r) {
 		int mid = (l + r) / 2;
 		if (fun(mid) >= n) {
