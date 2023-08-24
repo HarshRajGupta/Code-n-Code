@@ -40,7 +40,7 @@ void solve() {
 	int n;
 	cin >> n;
 	int l = 1, r = 1e9 + 7, ans = 2648956421;
-	int z = n*1ull*(n+1)/2;
+	unsigned long long z = n*1ull*(n+1)/2;
 	debug(z)
 	while (l <= r) {
 		int mid = (l + r) / 2;
