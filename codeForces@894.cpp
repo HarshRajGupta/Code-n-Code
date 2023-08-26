@@ -1,44 +1,29 @@
 #include <bits/stdc++.h>
-#include <vector>
 using namespace std;
-using namespace __gnu_debug;
 
-#ifndef debug
-#define debug(...)
-#endif
-
-class Solution {
-   public:
-    int solve(vector<int> &a, vector<int> &b) {
-    	int ans = 0;
-    	for(int i = 0; i < a.size(); ++i) {
-    		ans = max(5 * a[i] + 2 * b[i], ans);
-    	}
-    	return ans;
-    }
-    void test() {
-        {
-        	vector<int> a = {
-        		1, 2, 3
-        	}, b = {
-        		3, 2, 1
-        	};
-        	
-        	auto ans = solve(a, b);
-        	cout << ans;
-        }
-    }
-    Solution() {
-        ios::sync_with_stdio(0);
-        cin.tie(0);
-        cout.tie(0);
-    }
-};
-
-/**
- * @ScratchPad
- */
-
-#ifdef __TEST__
-__TEST__
-#endif
+signed main(void) {
+	int n;
+	cin >> n;
+	vector<int> range(n + 1), cost(n + 1);
+	for (auto &i : range) cin >> i;
+	for (auto &i : cost) cin >> i;
+	vector<multiset<int>> inc(n + 1), dec(n + 1);
+	for (int i = 0; i <= n; ++i) {
+		int l = min(i - range[i], 0), r = max(i + range[i], n);
+		inc[l].insert(cost[i]);
+		dec[r].insert(cost[i]);
+	}
+	int ans = 0;
+	multiset<int> s = inc[0];
+	for (int i = 1; i <= n; ++i) {
+		for (auto &j : dec[i - 1]) s.erase(s.find(j));
+		if (s.size())
+			ans += (*s.begin());
+		else {
+			cout << -1;
+			return 0;
+		}
+		for (auto &j : inc[i]) s.insert(j);
+	}
+	return 0;
+}
