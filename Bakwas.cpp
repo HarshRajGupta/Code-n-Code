@@ -30,10 +30,10 @@ signed main(void) {
 		dfs(graph, x, y, x, y, z);
 	}
 	int ans = 0;
-	for (auto &i : graph) {
-		for (auto &j : i) {
-			if (j) {
-				debug(i, j);
+	for (int i = 0; i <= n; ++i) {
+		for (int j = 0; j <= m; ++j) {
+			if (graph[i][j]) {
+				debug(i, j)
 				ans++;
 			}
 		}
