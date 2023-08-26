@@ -19,13 +19,13 @@ signed main(void) {
 	for (auto &j : dec[0]) s.erase(s.find(j));
 	for (int i = 1; i <= n; ++i) {
 		for (auto &j : dec[i - 1]) s.erase(s.find(j));
+		for (auto &j : inc[i]) s.insert(j);
 		if (s.size())
 			ans += (*s.begin());
 		else {
 			cout << -1;
 			return 0;
 		}
-		for (auto &j : inc[i]) s.insert(j);
 	}
 	cout << ans;
 	return 0;
