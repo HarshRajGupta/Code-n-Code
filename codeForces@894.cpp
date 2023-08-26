@@ -13,6 +13,7 @@ signed main(void) {
 		inc[l].insert(cost[i]);
 		dec[r].insert(cost[i]);
 	}
+	debug(inc, dec);
 	int ans = 0;
 	multiset<int> s = inc[0];
 	for (int i = 1; i <= n; ++i) {
