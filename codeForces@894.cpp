@@ -9,7 +9,7 @@ signed main(void) {
 	for (auto &i : cost) cin >> i;
 	vector<multiset<int>> inc(n + 1), dec(n + 1);
 	for (int i = 0; i <= n; ++i) {
-		int l = max(i - range[i], 0), r = min(i + range[i], n);
+		int l = max(i - range[i], 0), r = min(i + range[i] + 1, n);
 		inc[l].insert(cost[i]);
 		dec[r].insert(cost[i]);
 	}
@@ -28,6 +28,5 @@ signed main(void) {
 		for (auto &j : inc[i]) s.insert(j);
 	}
 	cout << ans;
-	
 	return 0;
 }
