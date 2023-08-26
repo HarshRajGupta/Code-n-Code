@@ -8,6 +8,7 @@ void dfs(vector<vector<int>> &graph, int x, int y, int i, int j, int z) {
 	if (visited[i][j]) return;
 	visited[i][j] = true;
 	long double dist = sqrt((x - i) * (x - i) + (y - j) * (y - j));
+	debug(x, y, i, j, dist)
 	if (dist <= z) {
 		graph[i][j] = 0;
 		dfs(graph, x, y, i + 1, j, z);
