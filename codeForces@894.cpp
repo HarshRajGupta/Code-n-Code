@@ -16,6 +16,7 @@ signed main(void) {
 	debug(inc, dec);
 	int ans = 0;
 	multiset<int> s = inc[0];
+	for (auto &j : dec[0]) s.erase(s.find(j));
 	for (int i = 1; i <= n; ++i) {
 		for (auto &j : dec[i - 1]) s.erase(s.find(j));
 		if (s.size())
