@@ -24,7 +24,7 @@ signed main(void) {
 	vector<pair<int, int>> adj(k);
 	for (auto &i : adj) cin >> i.first >> i.second;
 	cin >> r >> t;
-	vector<vector<int>> graph(n, vector<int>(m, 1));
+	vector<vector<int>> graph(n + 1, vector<int>(m + 1, 1));
 	for (int i = 0; i < k; ++i) {
 		memset(visited, false, sizeof(visited));
 		int x = adj[i].first, y = adj[i].second, z = r * t;
