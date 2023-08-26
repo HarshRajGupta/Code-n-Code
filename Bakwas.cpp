@@ -35,6 +35,7 @@ signed main(void) {
 			if (j) ans++;
 		}
 	}
+	debug(graph)
 	cout << ans;
 	return 0;
 }
