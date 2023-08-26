@@ -27,5 +27,7 @@ signed main(void) {
 		}
 		for (auto &j : inc[i]) s.insert(j);
 	}
+	cout << ans;
+	
 	return 0;
 }
