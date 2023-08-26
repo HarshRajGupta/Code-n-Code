@@ -32,10 +32,12 @@ signed main(void) {
 	int ans = 0;
 	for (auto &i : graph) {
 		for (auto &j : i) {
-			if (j) ans++;
+			if (j) {
+				debug(i, j);
+				ans++;
+			}
 		}
 	}
-	debug(graph)
 	cout << ans;
 	return 0;
 }
