@@ -41,7 +41,7 @@ class Solution {
 			vector<int> a = {
 				1, 2, 8
 			};
-			cout << minOperations(a, 7) << endl;
+			cout << minOperations(a, 9) << endl;
 		}
 	}
 	Solution() {
