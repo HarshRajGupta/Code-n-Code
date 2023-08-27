@@ -29,7 +29,7 @@ class Solution {
 			if(s.find(i) != s.end()) {
 				s.erase(s.find(i));
 			} else {
-				auto it = s.lower_bound(i);
+				auto it = s.upper_bound(i);
 				debug(*it, i);
 			}
 		}
