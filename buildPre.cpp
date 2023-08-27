@@ -54,8 +54,8 @@ class Solution {
 	}
 	void test() {
 		{
-			vector<int> a = {16, 16, 2};
-			cout << minOperations(a, 4) << endl;
+			vector<int> a = {1, 1, 1, 1, 32};
+			cout << minOperations(a, 6) << endl;
 		}
 	}
 	Solution() {
