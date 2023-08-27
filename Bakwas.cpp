@@ -25,6 +25,7 @@ class Solution {
 			target >>= 1;
 			cnt++;
 		}
+		debug(s, t)
 		int ans = 0;
 		for (auto& i : t) {
 			while (s.size() && s.find(i) == s.end()) {
@@ -46,8 +47,8 @@ class Solution {
 	}
 	void test() {
 		{
-			vector<int> a = {1, 2, 8};
-			cout << minOperations(a, 7) << endl;
+			vector<int> a = {1, 32, 1, 2};
+			cout << minOperations(a, 12) << endl;
 		}
 	}
 	Solution() {
