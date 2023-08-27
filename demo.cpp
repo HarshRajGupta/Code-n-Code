@@ -50,7 +50,7 @@ class Solution {
 			}
 			debug(bitCount, target, ans, i, z);
 			perform(bitCount, log2(target), 1);
-			target >>= 1;
+			target -= (1 << (int)log2(target));
 		}
 		return ans;
 	}
