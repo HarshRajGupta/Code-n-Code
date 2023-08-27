@@ -34,6 +34,7 @@ class Solution {
 			bitCount[log2(i)]++;
 		}
 		int ans = 0;
+		debug(bitCount);
 		while (target) {
 			long long z = 0;
 			int i = 0;
