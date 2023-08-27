@@ -26,7 +26,6 @@ class Solution {
 		}
 		int ans = 0;
 		for(auto &i: t) {
-			debug(i)
 			if(s.find(i) != s.end()) {
 				s.erase(s.find(i));
 			} else {
@@ -42,7 +41,7 @@ class Solution {
 			vector<int> a = {
 				1, 2, 8
 			};
-			cout << minOperations(a, 9) << endl;
+			cout << minOperations(a, 17) << endl;
 		}
 	}
 	Solution() {
