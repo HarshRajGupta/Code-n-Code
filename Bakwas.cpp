@@ -28,12 +28,11 @@ class Solution {
 		int ans = 0;
 		for (auto& i : t) {
 			while (s.size() && s.find(i) == s.end()) {
-				auto it = s.lower_bound(i);
+				auto it = s.upper_bound(i);
 				int z = *it;
 				if (z < i) {
 					return -1;
 				}
-				s.erase(it);
 				s.insert(z - 1);
 				s.insert(z - 1);
 				++ans;
