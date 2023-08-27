@@ -26,6 +26,7 @@ class Solution {
 		}
 		int ans = 0;
 		for(auto &i: t) {
+			debug(i)
 			if(s.find(i) != s.end()) {
 				s.erase(s.find(i));
 			} else {
