@@ -46,6 +46,7 @@ class Solution {
 				bitCount[j - 1] += 2;
 				++ans;
 			}
+			debug(bitCount, target, ans, i, z);
 			perform(bitCount, log2(target), 1);
 			target >>= 1;
 		}
