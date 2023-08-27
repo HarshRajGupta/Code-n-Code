@@ -43,7 +43,7 @@ class Solution {
 				debug(z, target, i, bitCount[i]);
 			}
 			if (z < target) return -1;
-			for (int j = i; j > log2(target); --j) {
+			for (int j = i - 1; j > log2(target); --j) {
 				bitCount[j]--;
 				bitCount[j - 1] += 2;
 				++ans;
