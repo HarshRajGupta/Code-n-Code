@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <functional>
 using namespace std;
 using namespace __gnu_debug;
 
@@ -17,11 +18,20 @@ class Solution {
 				s.insert(log2(nums[i]));
 		}
 		int cnt = 0;
-		multiset<int> t;
+		multiset<int, greater<int>> t;
 		while (target) {
 			if (target & 1) t.insert(cnt);
 			target >>= 1;
 			cnt++;
+		}
+		int ans = 0;
+		for(auto &i: t) {
+			if(s.find(i) != s.end()) {
+				s.erase(s.find(i));
+			} else {
+				auto it = s.lower_bound(i);
+				debug(*it, i);
+			}
 		}
 		debug(s, t);
 		return 0;
