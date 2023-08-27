@@ -12,7 +12,7 @@ class Solution {
 		multiset<int> s;
 		for (int i = 0; i < nums.size(); i++) {
 			if (nums[i] == 1) {
-				s.insert(1);
+				s.insert(0);
 			} else
 				s.insert(log2(nums[i]));
 		}
