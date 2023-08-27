@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 #include <functional>
 using namespace std;
 using namespace __gnu_debug;
@@ -25,22 +26,28 @@ class Solution {
 			cnt++;
 		}
 		int ans = 0;
-		for(auto &i: t) {
-			if(s.find(i) != s.end()) {
-				s.erase(s.find(i));
-			} else {
+		for (auto& i : t) {
+			while (s.size() && s.find(i) == s.end()) {
 				auto it = s.lower_bound(i);
-				debug(*it, i);
+				int z = *it;
+				if (z < i) {
+					return -1;
+				}
+				s.erase(it);
+				s.insert(z - 1);
+				s.insert(z - 1);
+				++ans;
 			}
+			if (s.size())
+				s.erase(s.find(i));
+			else
+				return -1;
 		}
-		debug(s, t);
-		return 0;
+		return ans;
 	}
 	void test() {
 		{
-			vector<int> a = {
-				1, 2, 8
-			};
+			vector<int> a = {1, 2, 8};
 			cout << minOperations(a, 17) << endl;
 		}
 	}
