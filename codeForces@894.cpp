@@ -18,6 +18,7 @@ class Solution {
 			else
 				break;
 		}
+		debug(nums, sum, target, i);
 		return sum >= target;
 	}
 
