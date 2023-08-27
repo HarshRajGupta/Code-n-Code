@@ -30,6 +30,7 @@ class Solution {
 			nums[i] >>= 1;
 			nums.push_back(nums[i]);
 			sort(nums.begin(), nums.end());
+			debug(nums);
 			++ans;
 		}
 		return ans;
