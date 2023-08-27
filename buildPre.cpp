@@ -1,87 +1,74 @@
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3", "fast-math", "unroll-loops", "no-stack-protector", \
-                         "omit-frame-pointer")
-#pragma GCC target("sse", "sse2", "sse3", "sse4", "abm", "mmx", "avx", "avx2")
-#endif
-
 #include <bits/stdc++.h>
+
+#include <functional>
 using namespace std;
+using namespace __gnu_debug;
 
 #ifndef debug
 #define debug(...)
 #endif
 
-#ifndef __MAIN__
-#define __MAIN__                           \
-    signed main() {                        \
-        preCompute();                      \
-        signed t;                          \
-        cin >> t;                          \
-        while (t--) solve(), cout << '\n'; \
-        return 0;                          \
-    }
-#endif
+class Solution {
+	bool canDo(vector<int>& nums, int pos, int cnt) {
+		if (pos == nums.size() || pos < 0) return cnt == 0;
+		if (nums[pos] >= cnt) {
+			return true;
+		} else {
+			return canDo(nums, pos - 1, (cnt - nums[pos]) * 2);
+		}
+	}
+	void perform(vector<int>& nums, int pos, int cnt) {
+		if (pos == nums.size() || pos < 0) return;
+		if (nums[pos] >= cnt) {
+			nums[pos] -= cnt;
+		} else {
+			perform(nums, pos - 1, (cnt - nums[pos]) * 2);
+			nums[pos] = 0;
+		}
+	}
 
-#define int long long
-const uint64_t MOD = 1e9 + 7;
-const char ln = '\n';
-
-#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
-#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
-#define foreach(i, x) for (auto &i : x)
-
-template <class T>
-using v = vector<T>;
-template <class T>
-using maxHeap = priority_queue<T>;
-template <class T>
-using minHeap = priority_queue<T, vector<T>, greater<T>>;
-
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
-
-vector<int32_t> allPrimes;
-vector<bool> sieve(const int32_t n = 1000007) {
-    vector<bool> isPrime(n + 1, true);
-    isPrime[0] = false, isPrime[1] = false;
-    for (int32_t i = 2; (i * i) <= n; ++i)
-        if (isPrime[i])
-            for (int j = (i * i); j <= n; j += i)
-                isPrime[j] = false;
-    for (int32_t i = 2; i <= n; ++i)
-        if (isPrime[i])
-            allPrimes.push_back(i);
-    return isPrime;
-}
-
-void solve() {
-    int n; cin >> n;
-    map<int, int> mp;
-    for (auto &i : allPrimes) {
-        if (i * i > n) break;
-        while (n % i == 0) {
-            mp[i]++;
-            n /= i;
-        }
-    }
-    if (n > 1) mp[n]++;
-    int ans = 1;
-    for (auto &i : mp) {
-        ans = ans * (i.second + 1) % MOD;
-    }
-    cout << ans;
-}
-
-static void preCompute() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    cout.flush();
-    sieve();
-}
+   public:
+	int minOperations(vector<int>& nums, int target) {
+		vector<int> bitCount(33);
+		for (auto& i : nums) {
+			bitCount[log2(i)]++;
+		}
+		int ans = 0;
+		for (int i = log2(target); i >= 0; --i) {
+			if (target & (1 << i)) {
+				if (canDo(bitCount, i, 1))
+					perform(bitCount, i, 1);
+				else {
+					int j = i + 1;
+					while (j < bitCount.size() && bitCount[j] == 0) j++;
+					if (j == bitCount.size()) return -1;
+					for (int k = j; k > i; --k) {
+						bitCount[k]--;
+						bitCount[k - 1] += 2;
+						++ans;
+					}
+				}
+			}
+		}
+		return ans;
+	}
+	void test() {
+		{
+			vector<int> a = {1, 32, 1, 2};
+			cout << minOperations(a, 12) << endl;
+		}
+	}
+	Solution() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		cout.tie(0);
+	}
+};
 
 /**
  * @ScratchPad
  */
 
-__MAIN__
+#ifdef __TEST__
+__TEST__
+#endif
