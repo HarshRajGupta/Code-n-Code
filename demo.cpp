@@ -39,7 +39,8 @@ class Solution {
 			long long z = 0;
 			int i = 0;
 			for (i = 0; z < target && i < 33; ++i) {
-				z += (1LL << i) * bitCount[i];
+				z += ((1LL << i) * bitCount[i]);
+				debug(z, target, i, bitCount[i]);
 			}
 			if (z < target) return -1;
 			for (int j = i; j > log2(target); --j) {
