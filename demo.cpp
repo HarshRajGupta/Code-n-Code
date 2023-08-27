@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+
+#include <functional>
 using namespace std;
 using namespace __gnu_debug;
 
@@ -7,49 +9,53 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	int kSum(multiset<int, greater<int>> &ms, int k) {
-		int ans = 0, count = 0;
-		for (auto &i : ms) {
-			ans += i;
-			if (++count == k) {
-				break;
-			}
+	bool canDo(vector<int>& nums, int pos, int cnt) {
+		if (pos == nums.size() || pos < 0) return cnt == 0;
+		if (nums[pos] >= cnt) {
+			return true;
+		} else {
+			return canDo(nums, pos - 1, (cnt - nums[pos]) * 2);
 		}
-		return ans;
+	}
+	void perform(vector<int>& nums, int pos, int cnt) {
+		if (pos == nums.size() || pos < 0) return;
+		if (nums[pos] >= cnt) {
+			nums[pos] -= cnt;
+		} else {
+			perform(nums, pos - 1, (cnt - nums[pos]) * 2);
+			nums[pos] = 0;
+		}
 	}
 
    public:
-	int maxKnowledge(vector<int> &s, vector<int> &e, vector<int> &a, int k) {
-		map<int, vector<pair<int, int>>> mp;
-		set<int> arr;
-		for (int i = 0; i < s.size(); ++i) {
-			mp[e[i]].push_back({a[i], -1});
-			mp[s[i]].push_back({a[i], 1});
-			arr.insert(e[i]);
-			arr.insert(s[i]);
+	int minOperations(vector<int>& nums, int target) {
+		vector<int> bitCount(33);
+		for (auto& i : nums) {
+			bitCount[log2(i)]++;
 		}
-		multiset<int, greater<int>> ms;
 		int ans = 0;
-		for (auto &i : arr) {
-			for (auto &j : mp[i]) {
-				if (j.second == 1) {
-					ms.insert(j.first);
-				} else {
-					ms.erase(ms.find(j.first));
-				}
+		while (target) {
+			long long z = 0;
+			int i = 0;
+			for (i = 0; z < target && i < 33; ++i) {
+				z += (1LL << i) * bitCount[i];
 			}
-			ans = max(ans, kSum(ms, k));
+			if (z < target) return -1;
+			for (int j = i; j > log2(target); --j) {
+				bitCount[j]--;
+				bitCount[j - 1] += 2;
+				++ans;
+			}
+			perform(bitCount, log2(target), 1);
+			target >>= 1;
 		}
 		return ans;
 	}
 	void test() {
-		int n, k;
-		cin >> n >> k;
-		vector<int> s(n), e(n), a(n);
-		for (auto &i : s) cin >> i;
-		for (auto &i : e) cin >> i;
-		for (auto &i : a) cin >> i;
-		cout << maxKnowledge(s, e, a, k);
+		{
+			vector<int> a = {1, 1, 1, 1, 32};
+			cout << minOperations(a, 6) << endl;
+		}
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
