@@ -14,7 +14,7 @@ class Solution {
 		int sum = 0;
 		for (i = 0; i < nums.size(); i++) {
 			if (nums[i] <= target)
-				sum += i;
+				sum += nums[i];
 			else
 				break;
 		}
