@@ -1,43 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
+using namespace __gnu_debug;
 
-bool visited[1001][1001];
+#ifndef debug
+#define debug(...)
+#endif
 
-void dfs(vector<vector<int>> &graph, int x, int y, int i, int j, int z) {
-	if (i < 0 || i >= graph.size() || j < 0 || j >= graph[0].size()) return;
-	if (visited[i][j]) return;
-	visited[i][j] = true;
-	long double dist = sqrt((x - i) * (x - i) + (y - j) * (y - j));
-	if (dist <= z) {
-		graph[i][j] = 0;
-		dfs(graph, x, y, i + 1, j, z);
-		dfs(graph, x, y, i - 1, j, z);
-		dfs(graph, x, y, i, j + 1, z);
-		dfs(graph, x, y, i, j - 1, z);
+class Solution {
+   public:
+	int minOperations(vector<int>& nums, int target) {
+		multiset<int> s;
+		for (int i = 0; i < nums.size(); i++) {
+			if (nums[i] == 1) {
+				s.insert(1);
+			} else
+				s.insert(log2(nums[i]));
+		}
+		int cnt = 0;
+		multiset<int> t;
+		while (target) {
+			if (target & 1) t.insert(cnt);
+			target >>= 1;
+			cnt++;
+		}
+		return 0;
 	}
-}
-
-signed main(void) {
-	int n, m, k, t, r;
-	cin >> n >> m >> k;
-	vector<pair<int, int>> adj(k);
-	for (auto &i : adj) cin >> i.first >> i.second;
-	cin >> r >> t;
-	vector<vector<int>> graph(n + 1, vector<int>(m + 1, 1));
-	for (int i = 0; i < k; ++i) {
-		memset(visited, false, sizeof(visited));
-		int x = adj[i].first, y = adj[i].second, z = r * t;
-		dfs(graph, x, y, x, y, z);
-	}
-	int ans = 0;
-	for (int i = 0; i <= n; ++i) {
-		for (int j = 0; j <= m; ++j) {
-			if (graph[i][j]) {
-				debug(i, j)
-				ans++;
-			}
+	void test() {
+		{
+			vector<int> a = {
+				1, 2, 8
+			};
+			cout << minOperations(a, 7) << endl;
 		}
 	}
-	cout << ans;
-	return 0;
-}
+	Solution() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		cout.tie(0);
+	}
+};
+
+/**
+ * @ScratchPad
+ */
+
+#ifdef __TEST__
+__TEST__
+#endif
