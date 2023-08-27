@@ -1,32 +1,56 @@
 #include <bits/stdc++.h>
-using namespace std;
 
-signed main(void) {
-	int n;
-	cin >> n;
-	vector<int> range(n + 1), cost(n + 1);
-	for (auto &i : range) cin >> i;
-	for (auto &i : cost) cin >> i;
-	vector<multiset<int>> inc(n + 1), dec(n + 1);
-	for (int i = 0; i <= n; ++i) {
-		int l = max(i - range[i], 0), r = min(i + range[i] + 1, n);
-		inc[l].insert(cost[i]);
-		dec[r].insert(cost[i]);
+#include <functional>
+using namespace std;
+using namespace __gnu_debug;
+
+#ifndef debug
+#define debug(...)
+#endif
+
+class Solution {
+	int i = 0;
+	bool canDo(vector<int>& nums, int target) {
+		int sum = 0;
+		for (i = 0; i < nums.size(); i++) {
+			if (nums[i] <= target)
+				sum += i;
+			else
+				break;
+		}
+		return sum >= target;
 	}
-	debug(inc, dec);
-	int ans = 0;
-	multiset<int> s = inc[0];
-	for (auto &j : dec[0]) s.erase(s.find(j));
-	for (int i = 1; i <= n; ++i) {
-		for (auto &j : dec[i - 1]) s.erase(s.find(j));
-		for (auto &j : inc[i]) s.insert(j);
-		if (s.size())
-			ans += (*s.begin());
-		else {
-			cout << -1;
-			return 0;
+
+   public:
+	int minOperations(vector<int>& nums, int target) {
+		sort(nums.begin(), nums.end());
+		int ans = 0;
+		while (!canDo(nums, target)) {
+			if (i == nums.size()) return -1;
+			nums[i] >>= 1;
+			nums.push_back(nums[i]);
+			sort(nums.begin(), nums.end());
+			++ans;
+		}
+		return ans;
+	}
+	void test() {
+		{
+			vector<int> a = {1, 32, 1, 2};
+			cout << minOperations(a, 12) << endl;
 		}
 	}
-	cout << ans;
-	return 0;
-}
+	Solution() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		cout.tie(0);
+	}
+};
+
+/**
+ * @ScratchPad
+ */
+
+#ifdef __TEST__
+__TEST__
+#endif
