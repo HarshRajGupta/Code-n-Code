@@ -23,6 +23,7 @@ class Solution {
 			target >>= 1;
 			cnt++;
 		}
+		debug(s, t);
 		return 0;
 	}
 	void test() {
