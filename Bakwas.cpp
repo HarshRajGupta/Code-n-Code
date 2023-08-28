@@ -32,10 +32,8 @@ vector<int> fun(int n, vector<string> &logs) {
 }
 
 signed main(void) {
-	int n;
-	cin >> n;
-	int m;
-	cin >> m;
+	int n, m;
+	cin >> n >> m;
 	vector<string> logs(m);
 	for (auto &i : logs) cin >> i;
 	auto ans = fun(n, logs);
