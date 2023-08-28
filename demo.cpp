@@ -28,9 +28,8 @@ class Solution {
 		stack<int> st;
 		for (int i = 0; i < 3007; i++) {
 			if (timeStamp[i].empty()) {
-				if (!st.empty()) {
+				if (!st.empty())
 					ans[st.top()]++;
-				}
 				continue;
 			}
 			for (auto &j : timeStamp[i]) {
