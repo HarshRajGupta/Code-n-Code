@@ -24,7 +24,7 @@ class Solution {
 			timeStamp[time].push_back({id, type == "start"});
 		}
 		debug(timeStamp);
-		vector<int> ans(n);
+		vector<int> ans(n, 0);
 		stack<int> st;
 		for (int i = 0; i < 3007; i++) {
 			for (auto &j : timeStamp[i]) {
@@ -33,7 +33,7 @@ class Solution {
 				else
 					st.pop();
 			}
-			if (st.size()) ans[st.top()]++;
+			if (st.size()) ++ans[st.top()];
 		}
 		return ans;
 	}
