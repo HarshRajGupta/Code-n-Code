@@ -27,6 +27,7 @@ class Solution {
 		vector<int> ans(n, 0);
 		stack<int> st;
 		for (int i = 0; i < 3007; i++) {
+			if (st.size()) ++ans[st.top()];
 			for (auto &j : timeStamp[i]) {
 				if (j[1])
 					st.push(j[0]);
@@ -34,7 +35,6 @@ class Solution {
 					st.pop();
 				}
 			}
-			if (st.size()) ++ans[st.top()];
 		}
 		return ans;
 	}
