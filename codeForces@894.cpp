@@ -1,28 +1,22 @@
 #include <iostream>
 using namespace std;
-
-int phi(int n) {
-	int result = n;
-	for (int p = 2; p * p <= n; ++p) {
-		if (n % p == 0) {
-			while (n % p == 0) {
-				n /= p;
-			}
-			result -= result / p;
-		}
+int f(int a[], int key) {
+	int n = 6;
+	int low = 0, high = 5;
+	while (low <= high) {
+		int mid = (low + high) / 2;
+		if (a[mid] == key)
+			return mid;
+		else if (a[mid] < key)
+			low = mid + 1;
+		else
+			high = mid - 1;
 	}
-	if (n > 1) {
-		result -= result / n;
-	}
-	return result;
+	return -1;
 }
-
 int main() {
-	int n, m;
-	cin >> n;
-	while(n--) {
-		cin >> m;
-		cout << phi(m) << ' ';
-	}
+	int a[] = {1, 3, 5, 67, 89, 758};
+	cout << f(a, 2) << endl;
+
 	return 0;
 }
