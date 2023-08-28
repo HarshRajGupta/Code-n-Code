@@ -16,7 +16,7 @@ int f(int a[], int key) {
 }
 int main() {
 	int a[] = {1, 3, 5, 67, 89, 758};
-	cout << f(a, 2) << endl;
+	cout << f(a, 3) << endl;
 
 	return 0;
 }
