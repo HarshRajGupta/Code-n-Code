@@ -29,6 +29,7 @@ vector<int> primeFactorization(int n) {
 
 int countNumbersWithNoCommonFactors(int x) {
 	vector<int> factors = primeFactorization(x);
+	debug(x, factors)
 	int result = x;
 	for (int factor : factors) result = result * (factor - 1) / factor;
 	return result;
