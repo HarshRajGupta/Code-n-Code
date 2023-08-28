@@ -1,26 +1,19 @@
 #include <iostream>
-#include <vector>
 
-std::vector<int> primeFactorization(int n) {
-    std::vector<int> factors;
-    for (int i = 2; i * i <= n; ++i) {
-        while (n % i == 0) {
-            factors.push_back(i);
-            n /= i;
+int phi(int n) {
+    int result = n; // Initialize result with n
+
+    for (int p = 2; p * p <= n; ++p) {
+        if (n % p == 0) {
+            while (n % p == 0) {
+                n /= p;
+            }
+            result -= result / p;
         }
     }
+
     if (n > 1) {
-        factors.push_back(n);
-    }
-    return factors;
-}
-
-int countNumbersWithNoCommonFactors(int x) {
-    std::vector<int> factors = primeFactorization(x);
-    int result = x; // Initialize result with x
-
-    for (int factor : factors) {
-        result = result * (factor - 1) / factor;
+        result -= result / n;
     }
 
     return result;
@@ -31,7 +24,7 @@ int main() {
     std::cout << "Enter a number (x): ";
     std::cin >> x;
 
-    int result = countNumbersWithNoCommonFactors(x);
+    int result = phi(x);
     std::cout << "Count of numbers less than " << x << " with no common factors: " << result << std::endl;
 
     return 0;
