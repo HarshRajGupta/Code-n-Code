@@ -1,64 +1,52 @@
 #include <bits/stdc++.h>
 
-#include <functional>
+#include <deque>
+#include <vector>
 using namespace std;
 using namespace __gnu_debug;
 
 #ifndef debug
 #define debug(...)
 #endif
-
 class Solution {
-	bool canDo(vector<int>& nums, int pos, int cnt) {
-		if (pos == nums.size() || pos < 0) return cnt == 0;
-		if (nums[pos] >= cnt) {
-			return true;
-		} else {
-			return canDo(nums, pos - 1, (cnt - nums[pos]) * 2);
-		}
-	}
-	void perform(vector<int>& nums, int pos, int cnt) {
-		if (pos == nums.size() || pos < 0) return;
-		if (nums[pos] >= cnt) {
-			nums[pos] -= cnt;
-		} else {
-			perform(nums, pos - 1, (cnt - nums[pos]) * 2);
-			nums[pos] = 0;
-		}
-	}
-
    public:
-	int minOperations(vector<int>& nums, int target) {
-		vector<int> bitCount(33);
-		for (auto& i : nums) {
-			bitCount[log2(i)]++;
+	vector<int> fun(int n, vector<string> &logs) {
+		vector<vector<vector<int>>> timeStamp(3007);
+		for (auto &i : logs) {
+			int id = 0, j = 0;
+			while (i[j] != ':') id = (id * 10) + i[j++] - '0';
+			j++;
+			string type = "";
+			while (i[j] != ':') type += i[j++];
+			j++;
+			int time = 0;
+			while (j < i.size()) time = (time * 10) + i[j++] - '0';
+			timeStamp[time].push_back({id, type == "start"});
 		}
-		int ans = 0;
-		debug(bitCount);
-		while (target) {
-			long long z = 0;
-			int i = 0;
-			for (i = 0; z < target && i < 33; ++i) {
-				z += ((1LL << i) * bitCount[i]);
-				debug(z, target, i, bitCount[i]);
+		vector<int> ans(n);
+		stack<int> st;
+		for (int i = 0; i < 3007; i++) {
+			for (auto &j : timeStamp[i]) {
+				if (j[1])
+					st.push(j[0]);
+				else
+					st.pop();
 			}
-			if (z < target) return -1;
-			for (int j = i - 1; j > log2(target); --j) {
-				bitCount[j]--;
-				bitCount[j - 1] += 2;
-				++ans;
-			}
-			debug(bitCount, target, ans, i, z);
-			perform(bitCount, log2(target), 1);
-			target -= (1 << (int)log2(target));
+			if (st.size()) ans[st.top()]++;
 		}
 		return ans;
 	}
 	void test() {
-		{
-			vector<int> a = {1, 1, 2, 32};
-			cout << minOperations(a, 12) << endl;
-		}
+		int n;
+		cin >> n;
+		int m;
+		cin >> m;
+		vector<string> logs(m);
+		for (auto &i : logs) cin >> i;
+		auto ans = fun(n, logs);
+		for (auto &i : ans) cout << i << " ";
+		cout << endl;
+	
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
