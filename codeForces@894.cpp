@@ -1,58 +1,38 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 
-#include <functional>
-using namespace std;
-using namespace __gnu_debug;
+std::vector<int> primeFactorization(int n) {
+    std::vector<int> factors;
+    for (int i = 2; i * i <= n; ++i) {
+        while (n % i == 0) {
+            factors.push_back(i);
+            n /= i;
+        }
+    }
+    if (n > 1) {
+        factors.push_back(n);
+    }
+    return factors;
+}
 
-#ifndef debug
-#define debug(...)
-#endif
+int countNumbersWithNoCommonFactors(int x) {
+    std::vector<int> factors = primeFactorization(x);
+    int result = x; // Initialize result with x
 
-class Solution {
-	int i = 0;
-	bool canDo(vector<int>& nums, int target) {
-		int sum = 0;
-		for (i = 0; i < nums.size(); i++) {
-			if (nums[i] <= target)
-				sum += nums[i];
-			else
-				break;
-		}
-		debug(nums, sum, target, i);
-		return sum >= target;
-	}
+    for (int factor : factors) {
+        result = result * (factor - 1) / factor;
+    }
 
-   public:
-	int minOperations(vector<int>& nums, int target) {
-		sort(nums.begin(), nums.end());
-		int ans = 0;
-		while (!canDo(nums, target)) {
-			if (i == nums.size()) return -1;
-			nums[i] >>= 1;
-			nums.push_back(nums[i]);
-			sort(nums.begin(), nums.end());
-			debug(nums);
-			++ans;
-		}
-		return ans;
-	}
-	void test() {
-		{
-			vector<int> a = {1, 32, 1, 2};
-			cout << minOperations(a, 12) << endl;
-		}
-	}
-	Solution() {
-		ios::sync_with_stdio(0);
-		cin.tie(0);
-		cout.tie(0);
-	}
-};
+    return result;
+}
 
-/**
- * @ScratchPad
- */
+int main() {
+    int x;
+    std::cout << "Enter a number (x): ";
+    std::cin >> x;
 
-#ifdef __TEST__
-__TEST__
-#endif
+    int result = countNumbersWithNoCommonFactors(x);
+    std::cout << "Count of numbers less than " << x << " with no common factors: " << result << std::endl;
+
+    return 0;
+}
