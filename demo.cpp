@@ -30,8 +30,9 @@ class Solution {
 			for (auto &j : timeStamp[i]) {
 				if (j[1])
 					st.push(j[0]);
-				else
+				else {
 					st.pop();
+				}
 			}
 			if (st.size()) ++ans[st.top()];
 		}
