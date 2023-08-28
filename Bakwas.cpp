@@ -1,67 +1,44 @@
 #include <bits/stdc++.h>
-
-#include <functional>
 using namespace std;
-using namespace __gnu_debug;
 
-#ifndef debug
-#define debug(...)
-#endif
-
-class Solution {
-   public:
-	int minOperations(vector<int>& nums, int target) {
-		multiset<int> s;
-		for (int i = 0; i < nums.size(); i++) {
-			if (nums[i] == 1) {
-				s.insert(0);
-			} else
-				s.insert(log2(nums[i]));
-		}
-		int cnt = 0;
-		multiset<int, greater<int>> t;
-		while (target) {
-			if (target & 1) t.insert(cnt);
-			target >>= 1;
-			cnt++;
-		}
-		debug(s, t)
-		int ans = 0;
-		for (auto& i : t) {
-			while (s.size() && s.find(i) == s.end()) {
-				auto it = s.upper_bound(i);
-				int z = *it;
-				if (z < i) {
-					return -1;
-				}
-				s.insert(z - 1);
-				s.insert(z - 1);
-				++ans;
+vector<int> fun(int n, vector<string> &logs) {
+	vector<vector<vector<int>>> timeStamp(3007);
+	for (auto &i : logs) {
+		int id = 0, j = 0, time = 0;
+		while (i[j] != ':') id = (id * 10) + i[j++] - '0';
+		j++;
+		string type = "";
+		while (i[j] != ':') type += i[j++];
+		j++;
+		while (j < i.size()) time = (time * 10) + i[j++] - '0';
+		timeStamp[time].push_back({id, type == "start"});
+	}
+	vector<int> ans(n, 0);
+	stack<int> st;
+	for (int i = 0; i < 3007; i++) {
+		if (timeStamp[i].empty()) {
+			if (!st.empty()) ans[st.top()]++;
+		} else {
+			for (auto &j : timeStamp[i]) {
+				ans[j[0]]++;
+				if (j[1])
+					st.push(j[0]);
+				else
+					st.pop();
 			}
-			if (s.size())
-				s.erase(s.find(i));
-			else
-				return -1;
-		}
-		return ans;
-	}
-	void test() {
-		{
-			vector<int> a = {1, 32, 1, 2};
-			cout << minOperations(a, 12) << endl;
 		}
 	}
-	Solution() {
-		ios::sync_with_stdio(0);
-		cin.tie(0);
-		cout.tie(0);
-	}
-};
+	return ans;
+}
 
-/**
- * @ScratchPad
- */
-
-#ifdef __TEST__
-__TEST__
-#endif
+signed main(void) {
+	int n;
+	cin >> n;
+	int m;
+	cin >> m;
+	vector<string> logs(m);
+	for (auto &i : logs) cin >> i;
+	auto ans = fun(n, logs);
+	for (auto &i : ans) cout << i << " ";
+	return 0;
+}
