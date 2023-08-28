@@ -29,8 +29,7 @@ vector<int> primeFactorization(int n) {
 
 int countNumbersWithNoCommonFactors(int x) {
 	vector<int> factors = primeFactorization(x);
-	debug(x, factors)
-	int result = x;
+	debug(x, factors) int result = x;
 	for (int factor : factors) result = result * (factor - 1) / factor;
 	return result;
 }
@@ -39,7 +38,10 @@ vector<int> fun(vector<int> &a) {
 	vector<bool> isPrime = sieve();
 	vector<int> ans = a;
 	for (int i = 0; i < a.size(); ++i) {
-		ans[i] = countNumbersWithNoCommonFactors(a[i]);
+		if (isPrime[a[i]])
+			ans[i] = a[i] - 1;
+		else
+			ans[i] = countNumbersWithNoCommonFactors(a[i]);
 	}
 	return ans;
 }
