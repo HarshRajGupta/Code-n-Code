@@ -23,6 +23,7 @@ class Solution {
 			while (j < i.size()) time = (time * 10) + i[j++] - '0';
 			timeStamp[time].push_back({id, type == "start"});
 		}
+		debug(timeStamp);
 		vector<int> ans(n);
 		stack<int> st;
 		for (int i = 0; i < 3007; i++) {
