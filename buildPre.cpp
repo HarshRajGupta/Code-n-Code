@@ -1,74 +1,54 @@
 #include <bits/stdc++.h>
 
-#include <functional>
+#include <vector>
 using namespace std;
-using namespace __gnu_debug;
 
-#ifndef debug
-#define debug(...)
-#endif
+vector<int32_t> allPrimes;
+vector<bool> sieve(const int32_t n = 100007) {
+	vector<bool> isPrime(n + 1, true);
+	isPrime[0] = false, isPrime[1] = false;
+	for (int32_t i = 2; (i * i) <= n; ++i)
+		if (isPrime[i])
+			for (int j = (i * i); j <= n; j += i) isPrime[j] = false;
+	for (int32_t i = 2; i <= n; ++i)
+		if (isPrime[i]) allPrimes.push_back(i);
+	return isPrime;
+}
 
-class Solution {
-	bool canDo(vector<int>& nums, int pos, int cnt) {
-		if (pos == nums.size() || pos < 0) return cnt == 0;
-		if (nums[pos] >= cnt) {
-			return true;
-		} else {
-			return canDo(nums, pos - 1, (cnt - nums[pos]) * 2);
+vector<int> primeFactorization(int n) {
+	vector<int> factors;
+	for (auto &i : allPrimes) {
+		if (i * i > n) break;
+		while (n % i == 0) {
+			n /= i;
+			factors.push_back(i);
 		}
 	}
-	void perform(vector<int>& nums, int pos, int cnt) {
-		if (pos == nums.size() || pos < 0) return;
-		if (nums[pos] >= cnt) {
-			nums[pos] -= cnt;
-		} else {
-			perform(nums, pos - 1, (cnt - nums[pos]) * 2);
-			nums[pos] = 0;
-		}
-	}
+	return factors;
+}
 
-   public:
-	int minOperations(vector<int>& nums, int target) {
-		vector<int> bitCount(33);
-		for (auto& i : nums) {
-			bitCount[log2(i)]++;
-		}
-		int ans = 0;
-		for (int i = log2(target); i >= 0; --i) {
-			if (target & (1 << i)) {
-				if (canDo(bitCount, i, 1))
-					perform(bitCount, i, 1);
-				else {
-					int j = i + 1;
-					while (j < bitCount.size() && bitCount[j] == 0) j++;
-					if (j == bitCount.size()) return -1;
-					for (int k = j; k > i; --k) {
-						bitCount[k]--;
-						bitCount[k - 1] += 2;
-						++ans;
-					}
-				}
-			}
-		}
-		return ans;
-	}
-	void test() {
-		{
-			vector<int> a = {1, 1, 1, 1, 32};
-			cout << minOperations(a, 6) << endl;
-		}
-	}
-	Solution() {
-		ios::sync_with_stdio(0);
-		cin.tie(0);
-		cout.tie(0);
-	}
-};
+int countNumbersWithNoCommonFactors(int x) {
+	vector<int> factors = primeFactorization(x);
+	int result = x;
+	for (int factor : factors) result = result * (factor - 1) / factor;
+	return result;
+}
 
-/**
- * @ScratchPad
- */
+vector<int> fun(vector<int> &a) {
+	vector<bool> isPrime = sieve();
+	vector<int> ans = a;
+	for (int i = 0; i < a.size(); ++i) {
+		ans[i] = countNumbersWithNoCommonFactors(a[i]);
+	}
+	return ans;
+}
 
-#ifdef __TEST__
-__TEST__
-#endif
+signed main(void) {
+	int n;
+	cin >> n;
+	vector<int> a(n);
+	for (auto &i : a) cin >> i;
+	auto ans = fun(a);
+	for (auto &i : ans) cout << i << " ";
+	return 0;
+}
