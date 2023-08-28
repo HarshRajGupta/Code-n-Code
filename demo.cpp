@@ -27,8 +27,14 @@ class Solution {
 		vector<int> ans(n, 0);
 		stack<int> st;
 		for (int i = 0; i < 3007; i++) {
-			if (st.size()) ++ans[st.top()];
+			if (timeStamp[i].empty()) {
+				if (!st.empty()) {
+					ans[st.top()]++;
+				}
+				continue;
+			}
 			for (auto &j : timeStamp[i]) {
+				ans[j[0]]++;
 				if (j[1])
 					st.push(j[0]);
 				else {
@@ -48,7 +54,6 @@ class Solution {
 		auto ans = fun(n, logs);
 		for (auto &i : ans) cout << i << " ";
 		cout << endl;
-	
 	}
 	Solution() {
 		ios::sync_with_stdio(0);
