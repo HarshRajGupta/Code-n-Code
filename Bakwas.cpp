@@ -30,6 +30,7 @@ signed main(void) {
 	for (auto &i : arr) cin >> i;
 	string temp = "";
 	ans(temp, arr);
+	for (auto &i : anss) cout << i << ',';
 	debug(anss);
 	debug(anss.size())
 	return 0;
