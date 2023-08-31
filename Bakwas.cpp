@@ -2,6 +2,7 @@
 using namespace std;
 
 int cnt = 0;
+set<string> anss;
 
 void isPalindrome(const string &ans) {
 	int i = 0, j = ans.length() - 1;
@@ -10,8 +11,7 @@ void isPalindrome(const string &ans) {
 		i++;
 		j--;
 	}
-	cnt++;
-	cout << ans << ",";
+	anss.insert(ans);
 }
 
 void ans(string &prev, vector<string> &arr) {
@@ -30,6 +30,6 @@ signed main(void) {
 	for (auto &i : arr) cin >> i;
 	string temp = "";
 	ans(temp, arr);
-	debug(cnt);
+	debug(anss);
 	return 0;
 }
