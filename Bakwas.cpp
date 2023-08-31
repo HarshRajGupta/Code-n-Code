@@ -1,42 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> fun(int n, vector<string> &logs) {
-	vector<vector<vector<int>>> timeStamp(3007);
-	for (auto &i : logs) {
-		int id = 0, j = 0, time = 0;
-		while (i[j] != ':') id = (id * 10) + i[j++] - '0';
-		j++;
-		string type = "";
-		while (i[j] != ':') type += i[j++];
-		j++;
-		while (j < i.size()) time = (time * 10) + i[j++] - '0';
-		timeStamp[time].push_back({id, type == "start"});
+void isPalindrome(const string &ans) {
+	int i = 0, j = ans.length() - 1;
+	while (i < j) {
+		if (ans[i] != ans[j]) return;
+		i++;
+		j--;
 	}
-	vector<int> ans(n, 0);
-	stack<int> st;
-	for (int i = 0; i < 3007; i++) {
-		if (timeStamp[i].empty()) {
-			if (!st.empty()) ans[st.top()]++;
-		} else {
-			for (auto &j : timeStamp[i]) {
-				ans[j[0]]++;
-				if (j[1])
-					st.push(j[0]);
-				else
-					st.pop();
-			}
-		}
+	cout << ans << ' ';
+}
+
+void ans(string &prev, vector<string> &arr) {
+	if (prev.length() == 9) isPalindrome(prev);
+	if (prev.length() >= 9) return;
+	for (auto &i : arr) {
+		string temp = prev + i;
+		ans(temp, arr);
 	}
-	return ans;
 }
 
 signed main(void) {
-	int n, m;
-	cin >> n >> m;
-	vector<string> logs(m);
-	for (auto &i : logs) cin >> i;
-	auto ans = fun(n, logs);
-	for (auto &i : ans) cout << i << " ";
+	int n;
+	cin >> n;
+	vector<string> arr(n);
+	for (auto &i : arr) cin >> i;
+	string temp = "";
+	ans(temp, arr);
 	return 0;
 }
