@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int cnt = 0;
+
 void isPalindrome(const string &ans) {
 	int i = 0, j = ans.length() - 1;
 	while (i < j) {
@@ -8,6 +10,7 @@ void isPalindrome(const string &ans) {
 		i++;
 		j--;
 	}
+	cnt++;
 	cout << ans << ' ';
 }
 
@@ -27,5 +30,6 @@ signed main(void) {
 	for (auto &i : arr) cin >> i;
 	string temp = "";
 	ans(temp, arr);
+	debug(cnt);
 	return 0;
 }
