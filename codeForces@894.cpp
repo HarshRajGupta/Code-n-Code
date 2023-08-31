@@ -1,22 +1,30 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int f(int a[], int key) {
-	int n = 6;
-	int low = 0, high = 5;
-	while (low <= high) {
-		int mid = (low + high) / 2;
-		if (a[mid] == key)
-			return mid;
-		else if (a[mid] < key)
-			low = mid + 1;
-		else
-			high = mid - 1;
-	}
-	return -1;
-}
-int main() {
-	int a[] = {1, 3, 5, 67, 89, 758};
-	cout << f(a, 3) << endl;
 
+void func(int pos, vector<set<char>> &arr, string &prev) {
+	if (pos == arr.size()) {
+		cout << prev << ' ';
+		return;
+	}
+	for (auto &i : arr[pos]) {
+		prev += i;
+		func(pos + 1, arr, prev);
+		prev.pop_back();
+	}
+}
+
+signed main(void) {
+	int n, k;
+	cin >> n >> k;
+	vector<set<char>> arr(n);
+	string temp;
+	for (auto &i : arr) {
+		cin >> temp;
+		for (auto &j : temp) {
+			i.insert(j);
+		}
+	}
+	temp = "";
+	func(0, arr, temp);
 	return 0;
 }
