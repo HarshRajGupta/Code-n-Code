@@ -31,5 +31,6 @@ signed main(void) {
 	string temp = "";
 	ans(temp, arr);
 	debug(anss);
+	debug(anss.size())
 	return 0;
 }
