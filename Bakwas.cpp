@@ -15,7 +15,7 @@ void isPalindrome(const string &ans) {
 }
 
 void ans(string &prev, vector<string> &arr) {
-	if (prev.length() == 9) isPalindrome(prev);
+	if (prev.length()) isPalindrome(prev);
 	if (prev.length() >= 9) return;
 	for (auto &i : arr) {
 		string temp = prev + i;
