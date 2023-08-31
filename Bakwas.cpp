@@ -11,7 +11,7 @@ void isPalindrome(const string &ans) {
 		j--;
 	}
 	cnt++;
-	cout << ans << ' ';
+	cout << ans << ",";
 }
 
 void ans(string &prev, vector<string> &arr) {
