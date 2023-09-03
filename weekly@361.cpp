@@ -28,8 +28,11 @@ class Solution {
 		debug(ans);
 		t = "75";
 		ans = min(ans, check(num, t, num.size() - 1, 1));
-		debug(ans);
-		return ans;
+		int cnt = 0;
+		for (auto &i : num) {
+			if (i != '0') cnt++;
+		}
+		return min(ans, cnt);
 	}
 	void test() {
 		{
