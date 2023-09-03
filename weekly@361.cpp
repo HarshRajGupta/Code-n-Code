@@ -24,6 +24,7 @@ class Solution {
 		vector<int> cnt(nums.size() + 1, 0);
 		map<int, int> rev;
 		long long ans = 0, prev = 0;
+		rev[0] = -1;
 		for (int i = 0; i < nums.size(); ++i) {
 			cnt[i + 1] = cnt[i];
 			if (nums[i] % modulo == k) {
