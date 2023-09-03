@@ -14,7 +14,7 @@ class Solution {
 		if (cnt[pos + 1] < k) return 0;
 		if (cnt[pos + 1] == k) return rev[1] + 1;
 		debug(rev[(cnt[pos + 1] - modulo) + 1], rev[cnt[pos + 1] - modulo],
-			  rem[rev[cnt[pos + 1] - modulo]]);
+			  rem[rev[cnt[pos + 1] - modulo]], rev[cnt[pos + 1]]);
 		return (rev[(cnt[pos + 1] - modulo) + 1] - rev[cnt[pos + 1] - modulo]) +
 			   rem[rev[cnt[pos + 1] - modulo]];
 	}
