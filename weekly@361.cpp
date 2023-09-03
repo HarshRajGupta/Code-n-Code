@@ -32,7 +32,7 @@ class Solution {
 	}
 	void test() {
 		{
-			string t = "2245047";
+			string t = "5";
 			debug(minimumOperations(t));
 		}
 	}
