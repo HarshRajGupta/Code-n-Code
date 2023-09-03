@@ -18,12 +18,16 @@ class Solution {
 		int ans = num.size();
 		string t = "00";
 		ans = min(ans, check(num, t, num.size() - 1, 0));
+		debug(ans);
 		t = "50";
 		ans = min(ans, check(num, t, num.size() - 1, 0));
+		debug(ans);
 		t = "25";
 		ans = min(ans, check(num, t, num.size() - 1, 0));
+		debug(ans);
 		t = "75";
 		ans = min(ans, check(num, t, num.size() - 1, 0));
+		debug(ans);
 		return ans;
 	}
 	void test() {
