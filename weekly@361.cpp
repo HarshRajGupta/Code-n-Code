@@ -27,7 +27,7 @@ class Solution {
 		for (int i = 0; i < nums.size(); ++i) {
 			cnt[i + 1] = cnt[i];
 			if (nums[i] % modulo == k) {
-				cnt[i + 1]++;
+				++cnt[i + 1];
 				rev[cnt[i + 1]] = i;
 				prev = fun(cnt, rev, i, k, modulo);
 			}
