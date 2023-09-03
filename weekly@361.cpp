@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 using namespace __gnu_debug;
 
@@ -7,37 +8,35 @@ using namespace __gnu_debug;
 #endif
 
 class Solution {
-	int check(string &num, string &t, int i, int j) {
-		if (j < 0) return 0;
-		if (i < 0) return 1;
-		if (num[i] == t[j]) return check(num, t, i - 1, j - 1);
-		return check(num, t, i - 1, j) + 1;
+	map<int, int> rem;
+	int fun(vector<int> &cnt, map<int, int> &rev, int pos, int k, int modulo) {
+		if (cnt[pos + 1] < k) return 0;
+		if (cnt[pos + 1] == k) return rem[pos] = rev[1] + 1;
+		return rem[pos] = rem[cnt[pos + 1] - modulo] + 1;
 	}
 
    public:
-	int minimumOperations(string &num) {
-		int ans = num.size();
-		string t = "00";
-		ans = min(ans, check(num, t, num.size() - 1, 1));
-		debug(ans);
-		t = "50";
-		ans = min(ans, check(num, t, num.size() - 1, 1));
-		debug(ans);
-		t = "25";
-		ans = min(ans, check(num, t, num.size() - 1, 1));
-		debug(ans);
-		t = "75";
-		ans = min(ans, check(num, t, num.size() - 1, 1));
-		int cnt = 0;
-		for (auto &i : num) {
-			if (i != '0') cnt++;
+	long long countInterestingSubarrays(vector<int> &nums, int modulo, int k) {
+		vector<int> cnt(nums.size() + 1, 0);
+		map<int, int> rev;
+		long long ans = 0, prev = 0;
+		for (int i = 0; i < nums.size(); ++i) {
+			cnt[i + 1] = cnt[i];
+			if (nums[i] % modulo == k) {
+				cnt[i + 1]++;
+				rev[cnt[i + 1]] = i;
+				prev = fun(cnt, rev, i, k, modulo);
+			} else {
+				ans += prev;
+			}
 		}
-		return min(ans, cnt);
+		return ans;
 	}
 	void test() {
 		{
-			string t = "10";
-			debug(minimumOperations(t));
+			vector<int> t = {3, 4, 2};
+			int modulo = 2, k = 1;
+			debug(countInterestingSubarrays(t, modulo, k));
 		}
 	}
 	Solution() {
