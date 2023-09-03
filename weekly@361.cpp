@@ -31,6 +31,7 @@ class Solution {
 			ans += prev;
 			rem[i] = prev;
 		}
+		debug(cnt, rev)
 		return ans;
 	}
 	void test() {
