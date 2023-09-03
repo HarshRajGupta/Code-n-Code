@@ -35,7 +35,7 @@ class Solution {
 	}
 	void test() {
 		{
-			vector<int> t = {3, 4, 2};
+			vector<int> t = {3, 4, 2, 3};
 			int modulo = 2, k = 1;
 			auto z = countInterestingSubarrays(t, modulo, k);
 			debug(rem, z);
