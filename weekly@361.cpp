@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 #include <vector>
 using namespace std;
 using namespace __gnu_debug;
@@ -29,6 +30,7 @@ class Solution {
 			} else {
 				ans += prev;
 			}
+			rem[i] = prev;
 		}
 		return ans;
 	}
