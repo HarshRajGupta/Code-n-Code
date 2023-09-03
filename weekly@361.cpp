@@ -31,7 +31,7 @@ class Solution {
 		map<int, int> rev;
 		long long ans = 0, prev = 0;
 		rev[0] = -1;
-		rem[-1] = 0;
+		rem[-1] = 1;
 		for (int i = 0; i < nums.size(); ++i) {
 			cnt[i + 1] = cnt[i];
 			if (nums[i] % modulo == k) {
