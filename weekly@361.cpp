@@ -12,8 +12,8 @@ class Solution {
 	map<int, int> rem;
 	int fun(vector<int> &cnt, map<int, int> &rev, int pos, int k, int modulo) {
 		if (cnt[pos + 1] < k) return 0;
-		if (cnt[pos + 1] == k) return rem[pos] = rev[1] + 1;
-		return rem[pos] = rem[cnt[pos + 1] - modulo] + 1;
+		if (cnt[pos + 1] == k) return rev[1] + 1;
+		return rem[cnt[pos + 1] - modulo] + 1;
 	}
 
    public:
