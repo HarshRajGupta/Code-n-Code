@@ -13,7 +13,10 @@ class Solution {
 	int fun(vector<int> &cnt, map<int, int> &rev, int pos, int k, int modulo) {
 		if (cnt[pos + 1] < k) return 0;
 		if (cnt[pos + 1] == k) return rev[1] + 1;
-		return  rem[rev[cnt[pos + 1] - modulo]];
+		debug(rev[(cnt[pos + 1] - modulo) + 1], rev[cnt[pos + 1] - modulo],
+			  rem[rev[cnt[pos + 1] - modulo]]);
+		return (rev[(cnt[pos + 1] - modulo) + 1] - rev[cnt[pos + 1] - modulo]) +
+			   rem[rev[cnt[pos + 1] - modulo]];
 	}
 
    public:
@@ -31,8 +34,7 @@ class Solution {
 			ans += prev;
 			rem[i] = prev;
 		}
-		debug(cnt, rev)
-		return ans;
+		debug(cnt, rev) return ans;
 	}
 	void test() {
 		{
