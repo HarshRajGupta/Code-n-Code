@@ -27,9 +27,8 @@ class Solution {
 				cnt[i + 1]++;
 				rev[cnt[i + 1]] = i;
 				prev = fun(cnt, rev, i, k, modulo);
-			} else {
-				ans += prev;
 			}
+			ans += prev;
 			rem[i] = prev;
 		}
 		return ans;
