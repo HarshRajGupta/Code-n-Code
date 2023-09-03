@@ -8,7 +8,8 @@ using namespace __gnu_debug;
 
 class Solution {
 	int check(string &num, string &t, int i, int j) {
-		if (j < 0 || i < 0) return 0;
+		if (j < 0) return 0;
+		if (i < 0) return 1;
 		if (num[i] == t[j]) return check(num, t, i - 1, j - 1);
 		return check(num, t, i - 1, j) + 1;
 	}
