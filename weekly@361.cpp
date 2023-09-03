@@ -33,7 +33,7 @@ class Solution {
 	}
 	void test() {
 		{
-			string t = "5";
+			string t = "10";
 			debug(minimumOperations(t));
 		}
 	}
