@@ -10,7 +10,7 @@ int countSubsetsWithSum(vector<int>& arr, int N, int X) {
         dp[i][0] = 1;
 
     for (int i = 1; i <= N; ++i) {
-        for (int j = 0; j <= X; ++j) {
+        for (int j = 1; j <= X; ++j) {
             dp[i][j] = dp[i - 1][j];
             if (arr[i - 1] <= j) {
                 dp[i][j] += dp[i - 1][j - arr[i - 1]];
@@ -31,7 +31,7 @@ int main() {
     }
 
     int result = countSubsetsWithSum(arr, N, X);
-    cout << result << endl;
+    cout << (result - 1) << endl;
 
     return 0;
 }
