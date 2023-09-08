@@ -36,10 +36,12 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+
+
 void solve(void) {
-    int x = 97;
-    int y = sizeof(x++);
-    cout << x;
+    char arr[] = "Deltax";
+    printf("%s", arr+3);
+
 }
 
 /**
