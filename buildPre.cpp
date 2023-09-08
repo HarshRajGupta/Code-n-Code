@@ -1,23 +1,24 @@
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 
 using namespace std;
 
 int countSubsetsWithSum(vector<int>& arr, int N, int X) {
-    unordered_map<int, int> dp;
-    dp[0] = 1;
-    int count = 0, currentSum = 0;
+    vector<vector<int>> dp(N + 1, vector<int>(X + 1, 0));
 
-    for (int i = 0; i < N; ++i) {
-        currentSum += arr[i];
-        if (dp.find(currentSum - X) != dp.end()) {
-            count += dp[currentSum - X];
+    for (int i = 0; i <= N; ++i)
+        dp[i][0] = 1;
+
+    for (int i = 1; i <= N; ++i) {
+        for (int j = 0; j <= X; ++j) {
+            dp[i][j] = dp[i - 1][j];
+            if (arr[i - 1] <= j) {
+                dp[i][j] += dp[i - 1][j - arr[i - 1]];
+            }
         }
-        dp[currentSum]++;
     }
 
-    return count;
+    return dp[N][X];
 }
 
 int main() {
