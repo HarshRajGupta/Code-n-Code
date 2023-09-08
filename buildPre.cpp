@@ -1,37 +1,28 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
+map<int, int> mp;
 
-int countSubsetsWithSum(vector<int>& arr, int N, int X) {
-    vector<vector<int>> dp(N + 1, vector<int>(X + 1, 0));
-
-    for (int i = 0; i <= N; ++i)
-        dp[i][0] = 1;
-
-    for (int i = 1; i <= N; ++i) {
-        for (int j = 1; j <= X; ++j) {
-            dp[i][j] = dp[i - 1][j];
-            if (arr[i - 1] <= j) {
-                dp[i][j] += dp[i - 1][j - arr[i - 1]];
-            }
-        }
-    }
-
-    return dp[N][X];
+int countSubset(vector<int> &arr, int pos, int target) {
+	if (target == 0) return 1;
+	if (pos >= arr.size() || arr[pos] > target) return 0;
+	int ans = 0;
+	for (int i = 0; i <= mp[arr[pos]]; i++) {
+		ans += countSubset(arr, pos + 1, target - (arr[pos] * i));
+	}
+	return ans;
 }
 
-int main() {
-    int N, X;
-    cin >> N >> X;
-    vector<int> arr(N);
-
-    for (int i = 0; i < N; ++i) {
-        cin >> arr[i];
-    }
-
-    int result = countSubsetsWithSum(arr, N, X);
-    cout << (result) << endl;
-
-    return 0;
+signed main(void) {
+	int n, x;
+	cin >> n >> x;
+	set<int> a;
+	for (int i = 0; i < n; i++) {
+		int t;
+		cin >> t;
+		mp[t]++;
+		a.insert(t);
+	}
+	vector<int> arr(a.begin(), a.end());
+    cout << countSubset(arr, 0, x) << endl;
+	return 0;
 }
