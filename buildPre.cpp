@@ -33,7 +33,7 @@ int main() {
     }
 
     int result = countSubsetsWithSum(arr, N, X);
-    cout << "Number of subsets with sum " << X << " is " << result << endl;
+    cout << result << endl;
 
     return 0;
 }
