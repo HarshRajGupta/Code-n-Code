@@ -31,7 +31,7 @@ int main() {
     }
 
     int result = countSubsetsWithSum(arr, N, X);
-    cout << (result - 1) << endl;
+    cout << (result) << endl;
 
     return 0;
 }
