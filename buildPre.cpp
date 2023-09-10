@@ -49,8 +49,11 @@ signed main(void) {
 	temp = "";
 	func(0, arr, temp);
 	func2(arr);
-    sort(a1.begin(), a1.end());
-    sort(a2.begin(), a2.end());
-    debug(a1, a2)
+	sort(a1.begin(), a1.end());
+	sort(a2.begin(), a2.end());
+	if (a1 == a2)
+		cout << "Yes" << endl;
+	else
+		cout << "No" << endl;
 	return 0;
 }
