@@ -35,7 +35,6 @@ void func2(vector<set<char>> &a) {
 		}
 		a2.push_back(temp);
 	}
-	debug(n, arr, a2)
 }
 
 signed main(void) {
