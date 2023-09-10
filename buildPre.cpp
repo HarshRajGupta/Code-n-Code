@@ -1,29 +1,44 @@
 #include <bits/stdc++.h>
-using namespace std;
-map<int, int> mp;
-map<int, map<int, int>> dp;
 
-int countSubset(vector<int> &arr, int pos, int target) {
-	if (target == 0) return 1;
-	if (pos >= arr.size() || arr[pos] > target) return 0;
-	if (dp.find(pos) != dp.end() && dp[pos].find(target) != dp[pos].end())
-		return dp[pos][target];
-	int ans = 0;
-	for (int i = 0; i <= mp[arr[pos]]; i++)
-		ans += countSubset(arr, pos + 1, target - (arr[pos] * i));
-	return dp[pos][target] = ans;
+#include <vector>
+using namespace std;
+
+// Prints unique output strings of length n
+
+vector<string> a1, a2;
+
+void func(int pos, vector<set<char>> &arr, string &prev) {
+	if (pos == arr.size()) {
+		a1.push_back(prev);
+		return;
+	}
+	for (auto &i : arr[pos]) {
+		prev += i;
+		func(pos + 1, arr, prev);
+		prev.pop_back();
+	}
+}
+
+void func2(vector<set<char>> &a) {
+	vector<vector<char>> arr(a.size());
+	int n = 1;
+	for (int i = 0; i < a.size(); i++) {
+		for (auto &j : a[i]) arr[i].push_back(j);
+		n *= a[i].size();
+	}
+	debug(n, arr)
 }
 
 signed main(void) {
-	int n, x;
-	cin >> n >> x;
-	set<int> a;
-	for (int i = 0, t; i < n; i++) {
-		cin >> t;
-		mp[t]++;
-		a.insert(t);
+	int n, k;
+	cin >> n >> k;
+	vector<set<char>> arr(n);
+	string temp;
+	for (auto &i : arr) {
+		cin >> temp;
+		for (auto &j : temp) i.insert(j);
 	}
-	vector<int> arr(a.begin(), a.end());
-	cout << countSubset(arr, 0, x) << endl;
+	temp = "";
+	func(0, arr, temp);
 	return 0;
 }
