@@ -49,5 +49,6 @@ signed main(void) {
 	temp = "";
 	func(0, arr, temp);
 	func2(arr);
+    debug(a1, a2)
 	return 0;
 }
