@@ -40,5 +40,6 @@ signed main(void) {
 	}
 	temp = "";
 	func(0, arr, temp);
+    func2(arr);
 	return 0;
 }
