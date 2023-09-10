@@ -26,7 +26,16 @@ void func2(vector<set<char>> &a) {
 		for (auto &j : a[i]) arr[i].push_back(j);
 		n *= a[i].size();
 	}
-	debug(n, arr)
+	for (int i = 0; i < n; i++) {
+		string temp = "";
+		int N = i;
+		for (int j = 0; j < a.size(); j++) {
+			temp += arr[j][N % arr[j].size()];
+			N /= arr[j].size();
+		}
+		a2.push_back(temp);
+	}
+	debug(n, arr, a2)
 }
 
 signed main(void) {
@@ -40,6 +49,6 @@ signed main(void) {
 	}
 	temp = "";
 	func(0, arr, temp);
-    func2(arr);
+	func2(arr);
 	return 0;
 }
