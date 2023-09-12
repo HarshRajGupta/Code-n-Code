@@ -32,8 +32,12 @@ string fun(vector<string> &arr) {
 signed main(void) {
 	int n;
 	vector<string> arr(n);
-	for (auto &i : arr) cin >> i;
-        debug(arr)
+    for (int i = 0; i < n; ++i) {
+        string s;
+        cin >> s;
+        arr[i] = s;
+    }
+    debug(arr);
 	cout << fun(arr) << endl;
 
 	return 0;
