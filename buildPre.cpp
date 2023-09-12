@@ -33,6 +33,7 @@ signed main(void) {
 	int n;
 	vector<string> arr(n);
 	for (auto &i : arr) cin >> i;
+        debug(arr)
 	cout << fun(arr) << endl;
 
 	return 0;
