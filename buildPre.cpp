@@ -26,7 +26,7 @@ string fun(vector<string> &arr) {
 			ans = i.first;
 		else if (i.second == mp[ans] && i.first < ans)
 			ans = i.first;
-        debug(i, ans)
+        debug(i, ans);
 	}
     
 	return ans;
