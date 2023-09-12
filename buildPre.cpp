@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int ans(int n, string s) {
@@ -30,7 +31,7 @@ string fun(vector<string> &arr) {
 }
 
 signed main(void) {
-	int n;
+	int n; cin >> n;
 	vector<string> arr(n);
     for (int i = 0; i < n; ++i) {
         string s;
