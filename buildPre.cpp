@@ -1,7 +1,4 @@
 #include <bits/stdc++.h>
-
-#include <string>
-#include <vector>
 using namespace std;
 
 int ans(int n, string s) {
