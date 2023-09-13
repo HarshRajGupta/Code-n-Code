@@ -38,7 +38,7 @@ void solve() {
 	int n;
 	string s;
 	cin >> n >> s;
-	_for(i, n - 2) {
+	_for(i, n - 1) {
 		if (s[i] == '1') {
 			s[i] = '1';
 			s[i + 1] = '0';
