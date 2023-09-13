@@ -46,7 +46,7 @@ void solve() {
 			break;
 	}
 	
-	if (n - z < 1) {
+	if (n - z) {
 		cout << s;
 		return;
 	}
