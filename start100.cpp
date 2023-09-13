@@ -38,13 +38,15 @@ void solve() {
 	int n;
 	string s;
 	cin >> n >> s;
-	_for(i, n - 2) {
-		if (s[i] == '1') {
-			s[i] = '1';
-			s[i + 1] = '0';
-			s[i + 2] = '0';
-		}
-		debug(s, i)
+	int z = 0;
+	_for(i, n) {
+		if (s[i] == '0')
+			z++;
+		else
+			break;
+	}
+	for(int i = z + 1; i < n - 2; ++i) {
+		s[i] = '0';
 	}
 	cout << s;
 }
