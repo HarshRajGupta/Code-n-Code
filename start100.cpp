@@ -45,6 +45,11 @@ void solve() {
 		else
 			break;
 	}
+	
+	if (n - z < 2) {
+		cout << s;
+		return;
+	}
 	for (int i = z + 1; i < n; ++i) {
 		s[i] = '0';
 	}
