@@ -45,8 +45,7 @@ void solve() {
 		else
 			break;
 	}
-	debug(z)
-	for(int i = z + 1; i < n - 1; ++i) {
+	for (int i = z + 1; i < n - 1; ++i) {
 		s[i] = '0';
 	}
 	cout << s;
