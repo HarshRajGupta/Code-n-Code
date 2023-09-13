@@ -45,6 +45,7 @@ void solve() {
 		else
 			break;
 	}
+	debug(z)
 	for(int i = z + 1; i < n - 2; ++i) {
 		s[i] = '0';
 	}
