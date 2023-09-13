@@ -45,7 +45,6 @@ void solve() {
 		else
 			break;
 	}
-	debug(n - z)
 	if (n - z < 3) {
 		cout << s;
 		return;
