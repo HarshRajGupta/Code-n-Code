@@ -1,45 +1,51 @@
 #include <bits/stdc++.h>
-#include <iostream>
 using namespace std;
 
-int ans(int n, string s) {
-	int G = 0, count = 0;
-	for (auto &i : s) {
-		if (i == 'G')
-			++G;
-		else if (G) {
-			++count;
-			--G;
-		}
-	}
-	return count;
-}
+#ifndef debug
+#define debug(...)
+#endif
 
-string fun(vector<string> &arr) {
-	map<string, int> mp;
-	for (auto &i : arr) ++mp[i];
-	string ans = "";
-	for (auto &i : mp) {
-		if (i.second > mp[ans])
-			ans = i.first;
-		else if (i.second == mp[ans] && i.first < ans)
-			ans = i.first;
-		debug(i, ans);
-	}
-
-	return ans;
-}
-
-signed main(void) {
-	int n; cin >> n;
-	vector<string> arr(n);
-    for (int i = 0; i < n; ++i) {
-        string s;
-        cin >> s;
-        arr[i] = s;
+#ifndef __MAIN__
+#define __MAIN__                           \
+    signed main() {                        \
+        preCompute();                      \
+        signed t;                          \
+        cin >> t;                          \
+        while (t--) solve(), cout << '\n'; \
+        return 0;                          \
     }
-    debug(arr);
-	cout << fun(arr) << endl;
+#endif
 
-	return 0;
+#define int long long
+const uint64_t MOD = 1e9 + 7;
+const char ln = '\n';
+
+#define _for(i, n) for (int32_t i = 0; i < (int32_t)n; ++i)
+#define rep(i, a, n) for (int32_t i = a; i < (int32_t)n; ++i)
+#define foreach(i, x) for (auto &i : x)
+
+template <class T>
+using v = vector<T>;
+template <class T>
+using maxHeap = priority_queue<T>;
+template <class T>
+using minHeap = priority_queue<T, vector<T>, greater<T>>;
+
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(), (x).end()
+
+void solve() {
+    cout << "\v3";
 }
+
+static void preCompute() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+}
+
+/**
+ * @ScratchPad
+ */
+
+__MAIN__
