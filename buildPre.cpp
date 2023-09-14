@@ -35,7 +35,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define all(x) (x).begin(), (x).end()
 
 void solve() {
-    cout << "\v3";
+    cout << "\t3";
 }
 
 static void preCompute() {
