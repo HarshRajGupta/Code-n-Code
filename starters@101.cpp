@@ -36,7 +36,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-bool fun(v<int> &arr, int x, int h) {
+bool fun(v<int> &arr, int x, const int h) {
 	int H = 0;
 	foreach (i, arr) {
 		if (i > x) {
