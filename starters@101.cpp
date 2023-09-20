@@ -43,7 +43,7 @@ bool fun(v<int> &arr, int x, const int h) {
 			H += i;
 		}
 	}
-	debug(x, H, h)
+	// debug(x, H, h)
 	return H < h;
 }
 
