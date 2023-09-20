@@ -40,7 +40,7 @@ int ans(int a, int b) {
 		z >>= 1;
 		pos++;
 	}
-	return a ^ (1 << (pos - 1));
+	return a ^ (1ll << (pos - 1));
 }
 
 void solve() {
