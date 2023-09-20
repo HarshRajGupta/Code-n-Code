@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-
-#include <climits>
 using namespace std;
 
 #ifndef debug
@@ -36,33 +34,19 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-bool fun(v<int> &arr, int x, const int h) {
-	int H = 0;
-	foreach (i, arr) {
-		if (i > x) {
-			H += i;
-		}
+int ans(int a, int b) {
+	int z = a ^ b, pos = 0;
+	while (z) {
+		z >>= 1;
+		pos++;
 	}
-	// debug(x, H, h)
-	return H < h;
+	return a ^ (1 << (pos - 1));
 }
 
 void solve() {
-	int n, h;
-	cin >> n >> h;
-	v<int> arr(n);
-	foreach (i, arr) cin >> i;
-	int l = 0, r = INT_MAX, ans = INT_MAX;
-	while (l <= r) {
-		int mid = (l + r) / 2;
-		if (fun(arr, mid, h)) {
-			ans = min(ans, mid);
-			r = mid - 1;
-		} else {
-			l = mid + 1;
-		}
-	}
-	cout << ans;
+	int a, b;
+	cin >> a >> b;
+	cout << ans(a, b);
 }
 
 static void preCompute() {
