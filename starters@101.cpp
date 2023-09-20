@@ -37,7 +37,8 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 int ans(string &s, string &k, int pos) {
 	int res = 0;
 	for (int i = 0; i < k.size(); ++i) {
-		res += min(10 - s[pos + i] + k[i], abs(s[pos + i] - k[i]));
+		res += min(min(10 - s[pos + i] + k[i], 10 - k[i] + s[pos + i]),
+				   abs(s[pos + i] - k[i]));
 	}
 	return res;
 }
