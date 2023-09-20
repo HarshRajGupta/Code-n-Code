@@ -44,7 +44,7 @@ bool fun(v<int> &arr, int x, const int h) {
 		}
 	}
 	debug(x, H, h)
-	return H <= h;
+	return H < h;
 }
 
 void solve() {
