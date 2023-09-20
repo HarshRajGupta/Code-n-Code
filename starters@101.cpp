@@ -34,10 +34,23 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+int ans(string &s, string &k, int pos) {
+	int res = 0;
+	for (int i = 0; i < k.size(); ++i) {
+		res += abs(s[pos + i] - k[i]);
+	}
+	return res;
+}
+
 void solve() {
-	int n;
-	cin >> n;
-	cout << n;
+	int n, m;
+	string s, k;
+	cin >> n >> m >> s >> k;
+	int res = INT_MAX;
+	for (int i = 0; i <= n - m; ++i) {
+		res = min(res, ans(s, k, i));
+	}
+	cout << res;
 }
 
 static void preCompute() {
