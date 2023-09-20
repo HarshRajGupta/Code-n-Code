@@ -37,7 +37,7 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 void solve() {
 	int a, b;
 	cin >> a >> b;
-	int x = 3, y = 4;
+	int x = 8, y = 8;
 	cout << abs((a ^ x) - (b ^ x)) << ' ' << abs((a ^ y) - (b ^ y));
 }
 
