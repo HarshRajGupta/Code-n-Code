@@ -40,7 +40,7 @@ int ans(int a, int b) {
 		z >>= 1;
 		pos++;
 	}
-	debug(a, pos)
+	if(!pos) return 0;
 	return a ^ (1 << (pos - 1));
 }
 
