@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 #ifndef debug
@@ -34,11 +35,24 @@ using minHeap = priority_queue<T, vector<T>, greater<T>>;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
+string add(string &a, string &b) {
+	string ans = "";
+	int i = sz(a) - 1, j = sz(b) - 1, carry = 0;
+	while (i >= 0 || j >= 0 || carry) {
+		int sum = carry;
+		if (i >= 0) sum += a[i--] - '0';
+		if (j >= 0) sum += b[j--] - '0';
+		carry = sum / 10;
+		sum %= 10;
+		ans += to_string(sum);
+	}
+	reverse(all(ans));
+	return ans;
+}
+
 void solve() {
-	int a, b;
-	cin >> a >> b;
-	int x = 11, y =11;
-	cout << abs((a ^ x) - (b ^ x)) << ' ' << abs((a ^ y) - (b ^ y));
+	string a, b; cin >> a >> b;
+	cout << add(a, b);
 }
 
 static void preCompute() {
