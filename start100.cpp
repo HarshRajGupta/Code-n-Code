@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <iostream>
 using namespace std;
 
 #ifndef debug
@@ -51,9 +50,9 @@ string add(string &a, string &b) {
 }
 
 void solve() {
-	string a, b; cin >> a >> b;
-	debug(a, b)
-	cout << add(a, b);
+	string a, b;
+	cin >> a >> b;
+	debug(a, b) cout << add(a, b);
 }
 
 static void preCompute() {
