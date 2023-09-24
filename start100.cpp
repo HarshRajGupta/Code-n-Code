@@ -52,6 +52,7 @@ string add(string &a, string &b) {
 
 void solve() {
 	string a, b; cin >> a >> b;
+	debug(a, b)
 	cout << add(a, b);
 }
 
