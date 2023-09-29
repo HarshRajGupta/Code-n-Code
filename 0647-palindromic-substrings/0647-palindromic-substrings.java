@@ -28,10 +28,8 @@ class Solution
 		// 		}
 		// 	}
 		// }
-        for(int i = 0; i < s.length(); ++i) {
-            arr[i][i] = 1;
-        }
         for(int i = 0; i < s.length() - 1; ++i) {
+            arr[i][i] = 1;
             if (s.charAt(i) == s.charAt(i + 1)) {
                 arr[i][i + 1] = 1;
                 ++ans;
