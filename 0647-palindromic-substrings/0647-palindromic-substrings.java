@@ -1,6 +1,6 @@
 class Solution 
 { 
-    int[][] arr = new int[3007][3007];
+    int[][] arr = new int[1007][1007];
     boolean isPalindrome(String s, int l, int r) {
 		// System.out.println(l + " " + r);
 		if (l >= r || l >= s.length() || r < 0)
